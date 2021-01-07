@@ -1,21 +1,20 @@
 import logo from './logo.svg';
 import './App.css';
 
+function CoolComponent({ adjective = 'Cool' }) {
+  return <p>Youpi So {adjective} !</p>
+}
+
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          I'm sorry
+          <CoolComponent adjective="awesome" />
+          <CoolComponent />
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-        </a>
       </header>
     </div>
   );
