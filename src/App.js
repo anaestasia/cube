@@ -1,13 +1,13 @@
 import './App.css';
-import Compo from './components/menu/Compo';
+import Form from './components/form/Form';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src="/img/logo/logo_ressources_relationnelles.png" className="App-logo" alt="logo" />
+        <img src="/img/logo/logo_ressources_relationnelles_transparent.png" className="App-logo" alt="logo" />
         <p>
-          <Compo />
+          <Form />
         </p>
       </header>
     </div>
