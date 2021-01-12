@@ -1,19 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
-
-function CoolComponent({ adjective = 'Cool' }) {
-  return <p>Youpi So {adjective} !</p>
-}
+import Form from './components/form/Form';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src="/img/logo/logo_ressources_relationnelles_transparent.png" className="App-logo" alt="logo" />
         <p>
-          I'm sorry
-          <CoolComponent adjective="awesome" />
-          <CoolComponent />
+          <Form />
         </p>
       </header>
     </div>
