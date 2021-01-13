@@ -1,0 +1,7 @@
+.login-form {
+text-align: left;
+}
+
+.login-form label input{
+margin-left: 10px;
+}
