@@ -2,13 +2,20 @@
   "name": "cube",
   "version": "0.1.0",
   "private": true,
+  "homepage": "./",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "mobx": "^6.0.4",
+    "mobx-persist": "^0.4.1",
+    "mobx-react": "^7.0.5",
+    "mobx-react-form": "^3.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",
+    "valid-url": "^1.0.9",
+    "validatorjs": "^3.22.1",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
