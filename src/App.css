@@ -1,24 +1,20 @@
 .App {
-  text-align: center;
+  text-align: left;
+  /* Définir la police */
+  /* Définir la couleur de fond par défaut */
+  /* Définir la taille de police par défaut */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
+.App-body {
   background-color: #03989e;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  display: flex; /* le conteneur App-body est en flex on peut utiliser les lignes en dessous */
+  flex-direction: row; /* Permet de définir dans quelle direction s'align les élement dans le conteneur, ici de gauche à droite */
+  align-items: center; /* Centre les éléments du conteneur verticalement */
+  justify-content: center; /* Centre les éléments du conteneur horizontalement */
+  font-size: 18px;
   color: white;
 }
 
-.App-link {
+.App-link:hover { /* Tous les liens devront avoir App-link comme class et ici on défini la couleur au survol du lien (hover) */
   color: #61dafb;
 }
