@@ -6,21 +6,21 @@ class MenuBackOffice extends Component {
   
     render() {
         return (
-            <li><i class="fas fa-user"></i>Back-Office
+            <li> Back-Office
                 <ul>
-                    <li><i class="fas fa-tachometer-alt"></i>UTILISATEURS
+                    <li><i class="fas fa-users-cog"></i> UTILISATEURS
                         <ul>
                             <li>Gérer les utilisateurs</li>
                         </ul>
                     </li>
-                    <li><i class="fas fa-tachometer-alt"></i>RESSOURCES
+                    <li><i class="fas fa-mail-bulk"></i>  RESSOURCES
                         <ul>
                             <li>Gérer les ressources</li>
                             <li>Gérer les catégories</li>
                             <li>Gérer les commentaires</li>
                         </ul>
                     </li>
-                    <li><i class="fas fa-tachometer-alt"></i>DOCUMENTATION
+                    <li><i class="fas fa-book"></i> DOCUMENTATION
                         <ul>
                             <li>Visiteur</li>
                             <li>Citoyen</li>
