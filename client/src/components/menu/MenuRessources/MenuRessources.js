@@ -8,7 +8,7 @@ class MenuRessources extends Component {
         return (
             <li> Ressources
                 <ul>
-                    <li><i class="fas fa-file-contract"></i> RESSOURCES
+                    <li><i class="fas fa-folder-open"></i> RESSOURCES
                         <ul>
                             <li>Créer une ressource</li>
                             <li>Consulter le catalogue</li>

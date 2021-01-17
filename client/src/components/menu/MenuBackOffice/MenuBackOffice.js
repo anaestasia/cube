@@ -13,14 +13,14 @@ class MenuBackOffice extends Component {
                             <li>Gérer les utilisateurs</li>
                         </ul>
                     </li>
-                    <li><i class="fas fa-mail-bulk"></i>  RESSOURCES
+                    <li><i class="fas fa-folder-open"></i>  RESSOURCES
                         <ul>
                             <li>Gérer les ressources</li>
                             <li>Gérer les catégories</li>
                             <li>Gérer les commentaires</li>
                         </ul>
                     </li>
-                    <li><i class="fas fa-book"></i> DOCUMENTATION
+                    <li><i class="fas fa-info-circle"></i> DOCUMENTATION
                         <ul>
                             <li>Visiteur</li>
                             <li>Citoyen</li>
