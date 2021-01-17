@@ -60,4 +60,28 @@ router.delete("/delete/:id", (req, res) => {
   });
 //fin delete
   
+router.get("/login/:mail", (req, res) => {
+  const mail = req.params.mail;
+  const password = req.body.password;
+
+  console.log(mail);
+  console.log(password);
+
+  db.query("SELECT * FROM users where mail = ?", mail, (err, result) => {
+    
+    if (err) {
+      console.log(err);
+    } else {
+      if(password == result[0].password)
+      {
+        res.send({ message: "Mot de passe Ok" });
+      }
+      else
+      {
+        res.send({ message: "Mauvais MDP" });
+      }
+    }
+  });
+});
+
 module.exports = router;
