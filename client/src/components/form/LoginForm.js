@@ -1,41 +1,49 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from "react";
 import './LoginForm.css';
+import { Link } from 'react-router-dom';
+import Axios from "axios";
 
-class LoginForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {value: ''};
+var hash = require('object-hash');
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+export default function LoginForm() {
 
-  handleChange(event) {
-    this.setState({value: event.target.value});
-  }
+  const [EmailReg, setEmailReg] = useState("");
+  const [MDPReg, setMDPReg] = useState("");
 
-  handleSubmit(event) {
-    alert('Le formulaire est soumis: ' + this.state.value);
-    event.preventDefault();
-  }
-  
-  render() {
+  const [loginStatus, setLoginStatus] = useState("");
+
+  const login = () => {
+    const password = hash.sha1(MDPReg);
+
+    Axios.post("http://localhost:3001/users/login", {
+      mail: EmailReg,
+      password: password,
+    }).then((response) => {
+      if (response.data.message) {
+        setLoginStatus(response.data.message);
+      } else {
+        setLoginStatus(response.data[0].username);
+      }
+    });
+  };
+
     return (
-      <form onSubmit={this.handleSubmit}>
+      <div>
+      <form onSubmit={login}>
         <label>
           Email :
           <i class="fas fa-at"></i>
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
+          <input type="email" onChange={(e) => {setEmailReg(e.target.value); }} />
         </label><br/>
         <label>
           Mot de passe :
           <i class="fas fa-unlock-alt"></i>
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
+          <input type="password" onChange={(e) => {setMDPReg(e.target.value); }} />
         </label><br/>
-        <button type="button">Se connecter</button>
+        <input type="submit" value='Se connecter'/>
+        <Link to="/register">s'inscrire</Link>
       </form>
+      <h1>{loginStatus}</h1>
+      </div>
     );
   }
-}
-
-export default LoginForm;

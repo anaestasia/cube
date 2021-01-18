@@ -45,8 +45,6 @@ export default function Register() {
     });
   };
 
-  const test = () => {
-  };
 
   return (
     <div className="App">
