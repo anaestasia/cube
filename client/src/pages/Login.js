@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import LoginForm from "../components/form/LoginForm";
 
 // import NormalUser from "../components/NormalUser";
