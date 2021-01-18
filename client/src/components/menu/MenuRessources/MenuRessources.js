@@ -6,9 +6,9 @@ class MenuRessources extends Component {
   
     render() {
         return (
-            <li><i class="fas fa-user"></i>Ressources
+            <li> Ressources
                 <ul>
-                    <li><i class="fas fa-tachometer-alt"></i>RESSOURCES
+                    <li><i class="fas fa-folder-open"></i> RESSOURCES
                         <ul>
                             <li>Créer une ressource</li>
                             <li>Consulter le catalogue</li>

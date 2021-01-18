@@ -1,11 +1,10 @@
 import React from 'react';
 import { observer } from 'mobx-react';
+import './App.css';
+//import "typeface-roboto";
 import UserStore from './components/user/UserStore';
 import LoginForm from './components/form/LoginForm';
-//import InputField from './components/form/InputField';
-//import SubmitBtn from './components/form/SubmitBtn';
 import Menu from './components/menu/Menu';
-import './App.css';
 import SubmitBtn from './components/form/SubmitBtn/SubmitBtn';
 
 
