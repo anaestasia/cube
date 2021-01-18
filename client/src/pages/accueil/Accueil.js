@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
-import Axios from "axios";
 import LoginForm from '../../components/form/LoginForm';
 import "./Accueil.css";
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import './LoginForm.css';
 import { Link } from 'react-router-dom';
 import Axios from "axios";
@@ -16,7 +16,7 @@ export default function LoginForm() {
     event.preventDefault();
     const password = hash.sha1(mdpReg);
 
-    if(emailReg.trim() != "")
+    if(emailReg.trim() !== "")
     {
       Axios.post("http://localhost:3001/users/login", {
         mail: emailReg,

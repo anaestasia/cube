@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Axios from "axios";
 import "../App.css";
 import { Link } from 'react-router-dom';
@@ -24,11 +24,11 @@ export default function Register() {
   const register = event => {
     event.preventDefault();
     const mdpHash = hash.sha1(MDPReg);
-    if(FirstNameReg.trim() != '' && NameReg.trim() != '' && EmailReg.trim() != '' && MDPReg.trim() != '' )
+    if(FirstNameReg.trim() !== '' && NameReg.trim() !== '' && EmailReg.trim() !== '' && MDPReg.trim() !== '' )
     {
       const date = new Date();
       const sqlDate = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
-      if(MDPDReg == MDPReg){
+      if(MDPDReg === MDPReg){
         Axios.post("http://localhost:3001/users/create", {
           firstname: FirstNameReg,
           lastname: NameReg,

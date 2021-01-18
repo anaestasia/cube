@@ -1,5 +1,3 @@
-import React, { useEffect, useState } from "react";
-import Axios from "axios";
 
 // import NormalUser from "../components/NormalUser";
 // import Mod from "../components/Mod";
