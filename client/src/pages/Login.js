@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Axios from "axios";
+import LoginForm from "../components/form/LoginForm";
 
 // import NormalUser from "../components/NormalUser";
 // import Mod from "../components/Mod";
@@ -10,7 +10,7 @@ export default function Login() {
  
   return (
     <div>
-        Login
+        <LoginForm />
       {/* {role == "visitor" && <NormalUser />}
       {role == "mod" && <Mod />}
       {role == "admin" && <Admin />} */}

@@ -12,19 +12,17 @@ export default function LoginForm() {
   const [mdpReg, setMDPReg] = useState("");
   const [loginStatus, setLoginStatus] = useState("");
 
-  const login = () => {
-    const password = hash.sha1(mdpReg);
+  const login = event => {
+    event.preventDefault();
+    const password = hash.sha1(MDPReg);
 
     Axios.post("http://localhost:3001/users/login", {
       mail: emailReg,
       password: password,
     }).then((response) => {
-      if (response.data.message) {
-        setLoginStatus(response.data.message);
-      } else {
-        setLoginStatus(response.data[0].username);
-      }
+         setLoginStatus(response.data.message);
     });
+
   };
 
     return (
