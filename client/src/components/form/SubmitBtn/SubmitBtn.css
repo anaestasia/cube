@@ -1,0 +1,11 @@
+.submit-btn input {
+    background-color: #febd59;
+    height: 40px;
+    border : none;
+    border-radius: 10px;
+    font-size: 20px;
+    padding: 0 10px 0 10px;
+}
+.submit-btn input:hover {
+    background-color: #bcbdbc;
+}

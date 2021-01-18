@@ -1,6 +1,12 @@
+@font-face {
+  font-family: 'Roboto';
+  src: local('Roboto') url('./fonts/Roboto/Roboto-Medium.ttf') format("ttf");
+}
+
 .App {
   text-align: left;
-  /* Définir la police */
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
   /* Définir la couleur de fond par défaut */
   /* Définir la taille de police par défaut */
 }
@@ -9,8 +15,8 @@
   background-color: #03989e;
   display: flex; /* le conteneur App-body est en flex on peut utiliser les lignes en dessous */
   flex-direction: row; /* Permet de définir dans quelle direction s'align les élement dans le conteneur, ici de gauche à droite */
-  align-items: center; /* Centre les éléments du conteneur verticalement */
-  justify-content: center; /* Centre les éléments du conteneur horizontalement */
+  align-items: center; /* Centre les éléments du conteneur horizontalement */
+  justify-content: center; /* Centre les éléments du conteneur verticalement */
   font-size: 18px;
   color: white;
 }

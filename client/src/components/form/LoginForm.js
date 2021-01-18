@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import './LoginForm.css';
 import { Link } from 'react-router-dom';
 import Axios from "axios";
+import SubmitBtn from "./SubmitBtn/SubmitBtn";
 
 var hash = require('object-hash');
 
 export default function LoginForm() {
 
-  const [EmailReg, setEmailReg] = useState("");
-  const [MDPReg, setMDPReg] = useState("");
-
+  const [emailReg, setEmailReg] = useState("");
+  const [mdpReg, setMDPReg] = useState("");
   const [loginStatus, setLoginStatus] = useState("");
 
   const login = event => {
@@ -17,7 +17,7 @@ export default function LoginForm() {
     const password = hash.sha1(MDPReg);
 
     Axios.post("http://localhost:3001/users/login", {
-      mail: EmailReg,
+      mail: emailReg,
       password: password,
     }).then((response) => {
          setLoginStatus(response.data.message);
@@ -26,22 +26,29 @@ export default function LoginForm() {
   };
 
     return (
-      <div>
-      <form onSubmit={login}>
-        <label>
-          Email :
-          <i class="fas fa-at"></i>
-          <input type="email" onChange={(e) => {setEmailReg(e.target.value); }} required />
-        </label><br/>
-        <label>
-          Mot de passe :
-          <i class="fas fa-unlock-alt"></i>
-          <input type="password" onChange={(e) => {setMDPReg(e.target.value); }} />
-        </label><br/>
-        <input type="submit" value='Se connecter'/>
-        <Link to="/register">s'inscrire</Link>
-      </form>
-      <h1>{loginStatus}</h1>
+      <div className="login-form">
+
+        <form onSubmit={login}>
+
+          <div className="email-field">
+            <label>Email :</label>
+            <input className="email-input" type="email" onChange={(e) => {setEmailReg(e.target.value); }} />
+          </div>
+
+          <div className="pass-field">
+            <label>Mot de passe :</label>
+            <input className="pass-input" type="password" onChange={(e) => {setMDPReg(e.target.value); }} />
+          </div>
+
+          <h1>{loginStatus}</h1>
+
+          <div className="btns">
+            <SubmitBtn inputText="Se connecter" />
+            <Link to="/register">Se créer un compte</Link>
+          </div>
+
+        </form>
+
       </div>
     );
   }

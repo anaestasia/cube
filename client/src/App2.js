@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route , Switch } from "react-router-dom";
 import "./App.css";
-import Accueil from "./pages/Accueil";
+import Accueil from "./pages/accueil/Accueil";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Main from "./pages/Main";
