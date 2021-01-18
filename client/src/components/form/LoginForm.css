@@ -19,6 +19,7 @@
 
 .login-form form div label {
     margin-bottom : 10px;
+    color: #ffffff;
 }
 
 .login-form form .email-field input,

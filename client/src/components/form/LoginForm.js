@@ -14,7 +14,7 @@ export default function LoginForm() {
 
   const login = event => {
     event.preventDefault();
-    const password = hash.sha1(MDPReg);
+    const password = hash.sha1(mdpReg);
 
     Axios.post("http://localhost:3001/users/login", {
       mail: emailReg,
