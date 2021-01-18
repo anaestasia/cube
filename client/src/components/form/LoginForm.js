@@ -12,19 +12,17 @@ export default function LoginForm() {
 
   const [loginStatus, setLoginStatus] = useState("");
 
-  const login = () => {
+  const login = event => {
+    event.preventDefault();
     const password = hash.sha1(MDPReg);
 
     Axios.post("http://localhost:3001/users/login", {
       mail: EmailReg,
       password: password,
     }).then((response) => {
-      if (response.data.message) {
-        setLoginStatus(response.data.message);
-      } else {
-        setLoginStatus(response.data[0].username);
-      }
+         setLoginStatus(response.data.message);
     });
+
   };
 
     return (
@@ -33,7 +31,7 @@ export default function LoginForm() {
         <label>
           Email :
           <i class="fas fa-at"></i>
-          <input type="email" onChange={(e) => {setEmailReg(e.target.value); }} />
+          <input type="email" onChange={(e) => {setEmailReg(e.target.value); }} required />
         </label><br/>
         <label>
           Mot de passe :

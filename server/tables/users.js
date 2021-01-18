@@ -120,16 +120,17 @@ router.post("/login", (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      res.send('test');
-      console.log(result);
-      // if(password == result[0].password)
-      // {
+       console.log(result);
+       if(password == result[0].password)
+       {
+         console.log('même mdp');
          res.send({ message: "Mot de passe Ok" });
-      // }
-      // else
-      // {
-      //   res.send({ message: "Mauvais MDP" });
-      // }
+       }
+       else
+       {
+         console.log('mdp diférent');
+         res.send({ message: "Mauvais MDP" });
+       }
     }
   });
 });
