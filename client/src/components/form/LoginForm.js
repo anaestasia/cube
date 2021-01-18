@@ -14,17 +14,18 @@ export default function LoginForm() {
 
   const login = event => {
     event.preventDefault();
-    const password = hash.sha1(MDPReg);
-
-    Axios.post("http://localhost:3001/users/login", {
-      mail: emailReg,
-      password: password,
-    }).then((response) => {
-         setLoginStatus(response.data.message);
-    });
-
+    const password = hash.sha1(mdpReg);
+    if(emailReg.trim() != "")
+    {
+      Axios.post("http://localhost:3001/users/login", {
+        mail: emailReg,
+        password: password,
+      }).then((response) => {
+           setLoginStatus(response.data.message);
+      });
+    }
   };
-
+    
     return (
       <div className="login-form">
 
