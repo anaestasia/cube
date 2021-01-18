@@ -10,14 +10,14 @@ class MenuUser extends Component {
                 <ul>
                     <li><i class="fas fa-tachometer-alt"></i> TABLEAU DE BORD
                         <ul>
-                            <li>Mes ressources</li>
-                            <li>Mes favoris</li>
+                            <li class="sous-titre">Mes ressources</li>
+                            <li class="sous-titre">Mes favoris</li>
                         </ul>
                     </li>
 
                     <li><i class="fas fa-address-card"></i> MON PROFIL
                         <ul>
-                            <li>Modifier mon profil</li>
+                            <li >Modifier mon profil</li>
                             <li class="logout">Déconnexion</li>
                         </ul>
                     </li>

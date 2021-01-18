@@ -3,7 +3,8 @@ import Axios from "axios";
 import "./Accueil.css";
 import LoginForm from '../components/form/LoginForm';
 import { Link } from 'react-router-dom';
-
+import Ressource from '../components/ressource/Ressource';
+import MenuFilter from "../components/menufilter/MenuFilter";
 
 // import NormalUser from "../components/NormalUser";
 // import Mod from "../components/Mod";
@@ -15,6 +16,8 @@ export default function Accueil() {
     <div>
       {/* mettre icone */}
       <LoginForm />
+      <Ressource />
+      <MenuFilter />
       <Link to="/main">main menu</Link> {/* ton logo pour entrer dans le site */}
      
     </div>
