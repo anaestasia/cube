@@ -1,0 +1,28 @@
+.page{
+    display: flex;
+    flex-direction: row;
+}
+
+div.content-page{
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    min-height: 94vh;
+    margin: 2%;
+}
+
+div.comments {
+    border: 1px solid black;
+    margin: 2% 0;
+}
+
+div.origin {
+    border: 1px solid black;
+    margin: 1%;
+    padding: 1%;
+}
+div.answer {
+    border: 1px solid black;
+    margin: 0 1% 1% 4%;
+    padding: 1%;
+}

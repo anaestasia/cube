@@ -1,0 +1,9 @@
+div.ressource-container {
+    border: 1px solid black;
+    padding: 1%;
+}
+
+div.ressource-container ul li{
+    list-style-type: none;
+}
+
