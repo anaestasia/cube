@@ -9,7 +9,6 @@ import DashBoard from "./pages/dashboard/Dashboard";
 
 require('dotenv').config()
 
-
 function App() {
   return (
     <Router>
