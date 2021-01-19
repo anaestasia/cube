@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import "./token.css";
 import Axios from "axios";
 
@@ -11,8 +11,8 @@ export default function Token() {
 
     const [message, setMessage] = useState("");
     let { token } = useParams();
-
-        Axios.post(process.env.REACT_APP_SITE_URL_API+"/users/token",{
+    
+    useEffect(() => {Axios.post(process.env.REACT_APP_SITE_URL_API+"/users/token",{
             token : token,
         }).then((response) => {
           if (response.data.token === true) {
@@ -23,6 +23,7 @@ export default function Token() {
             setMessage("Erreur lors de l'enregristrement");
           }
         });
+    }, [token]);
 
     return (
     <div id="token">
