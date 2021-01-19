@@ -1,25 +1,16 @@
-import React, { useEffect, useState } from "react";
-import Axios from "axios";
-import "./Accueil.css";
-import LoginForm from '../components/form/LoginForm';
+import React from "react";
 import { Link } from 'react-router-dom';
-import Ressource from '../components/ressource/Ressource';
-import MenuFilter from "../components/menufilter/MenuFilter";
-
-// import NormalUser from "../components/NormalUser";
-// import Mod from "../components/Mod";
-// import Admin from "../components/Admin";
+import Ressource from '../../components/ressource/Ressource';
+import MenuFilter from "../../components/menufilter/MenuFilter";
 
 export default function DashBoard() {
 
   return (
     <div>
-      {/* mettre icone */}
-      <LoginForm />
       <Ressource />
       <MenuFilter />
       <Link to="/main">main menu</Link> {/* ton logo pour entrer dans le site */}
-     
+      Un peu de texte test
     </div>
   );
 }
