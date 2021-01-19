@@ -16,7 +16,7 @@ app.use(
     resave: false,
     saveUninitialized: false,
     cookie: {
-      maxAge: 3600000, // 3600000 milliseconde = 1h
+      expire: 1800000, // 3600000 milliseconde = 1h
     },
   })
 );
@@ -173,6 +173,43 @@ app.get("/logout", (req, res) => {
   req.session.destroy((err) => {
     res.send({ destroy: true });
  })
+});
+
+app.post("/token", (req, res) => {
+  const token = req.body.token;
+  console.log(token);
+
+  db.query("SELECT * FROM users where token = ? and checked = 0", token, (err, result) => {
+    if (err) 
+    {
+      console.log(err);
+    } 
+    else {
+       //console.log(result);
+       if (result.length > 0) {
+        if(token === result[0].token)
+        {
+          console.log('okey go update');
+          db.query("UPDATE users SET checked = 1 , fk_role = 2 WHERE token = ?", token, (err, result) => 
+          {
+            if (err) 
+            {
+              console.log(err);
+              res.send({ token: false });
+            } else 
+            {
+              res.send({ token: true });
+            }
+          });
+        }
+       }
+       else
+       {
+          console.log('liens erronée');
+          res.send({ token: false });
+       }
+    }
+  });
 });
 
 module.exports = app;

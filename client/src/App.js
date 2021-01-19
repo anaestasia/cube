@@ -9,6 +9,7 @@ import NotFound from './pages/404/404';
 import Axios from "axios";
 import DashBoard from "./pages/dashboard/Dashboard";
 import NoAccess from "./pages/403/403";
+import Token from "./pages/token/token";
 
 require('dotenv').config()
 
@@ -66,11 +67,12 @@ function App() {
   return (
     <Router>
       <Switch>
+        <Route exact path="/" render={(props) => accueil ? <Accueil /> : <NotFound />} />
+        <Route exact path="/Main" render={(props) =>  main ? <Main />: <NoAccess />} />
         <Route exact path="/register" render={(props) =>  register ? <Register />: <NoAccess />} />
         <Route exact path="/login" render={(props) =>  login ? <Login />: <NoAccess />} />
-        <Route exact path="/Main" render={(props) =>  main ? <Main />: <NoAccess />} />
+        <Route exact path="/token/:token" render={(props) =>  <Token />} />
         <Route exact path="/dashboard" render={(props) => dashboard ? <DashBoard /> : <NoAccess />} />
-        <Route exact path="/" render={(props) => accueil ? <Accueil /> : <NotFound />} />
         <Route component={NotFound} />
       </Switch>
     </Router>
