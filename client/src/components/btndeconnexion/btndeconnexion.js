@@ -12,11 +12,10 @@ export default function BtnDeconnexion() {
             }
         });
         }
-      
    
     return (
         <div>
-            <button onClick={deco}>déconexion</button>
+            <button onClick={deco}>déconnexion</button>
         </div>
     );
 }

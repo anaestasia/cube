@@ -32,12 +32,14 @@ function App() {
   let login;
   let main;
   let accueil;
+  let dashboard;
   if(role >= 0) //pas connecte
   {
     login = true;
     register = true;
     accueil = true;
     main = true;
+    dashboard = true;
   }
   if (role >= 1) //Mail non verifé 
   {
