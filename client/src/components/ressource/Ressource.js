@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Ressource.css';
 
 class Ressource extends Component {
-    
+
     render() {
         let catégorie = "Intelligence Émotionelle";
         let typeRelation = "Soi";

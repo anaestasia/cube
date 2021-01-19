@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Axios from "axios";
 import "../App.css";
 import { Link } from 'react-router-dom';
+import SubmitBtn from "../components/form/SubmitBtn/SubmitBtn";
 
 var hash = require('object-hash');
 
@@ -103,7 +104,7 @@ export default function Register() {
           <input type="text" onChange={(e) => {setnameCountry(e.target.value); }} />
           <br />
           
-          <input type="submit" value="S'inscrire"/>
+          <SubmitBtn inputText="S'inscrire" />
           <Link to="/"> retour</Link>
 
         </form>

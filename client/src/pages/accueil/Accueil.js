@@ -39,7 +39,6 @@ export default function Accueil() {
           <img src="/img/discover.png" className="App-logo-menu" alt="logo" />
           <Link to="/main">Découvrir</Link>
         </div>
-
       </div>
 
     </div>

@@ -7,7 +7,9 @@ import Login from "./pages/Login";
 import Main from "./pages/Main";
 import NotFound from './pages/404/404';
 import Axios from "axios";
+import DashBoard from "./pages/dashboard/Dashboard";
 
+require('dotenv').config()
 
 function App() {
 

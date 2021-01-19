@@ -48,7 +48,7 @@ export default function LoginForm() {
             <input className="pass-input" type="password" onChange={(e) => {setMDPReg(e.target.value); }} />
           </div>
 
-          <h1>{loginStatus}</h1>
+          <h1 className="msg-login-status">{loginStatus}</h1>
 
           <div className="btns">
             <SubmitBtn inputText="Se connecter" />
