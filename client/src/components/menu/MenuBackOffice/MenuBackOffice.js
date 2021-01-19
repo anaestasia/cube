@@ -6,7 +6,9 @@ class MenuBackOffice extends Component {
   
     render() {
         return (
-            <li> Back-Office
+            <div>
+                <h2>Back-Office</h2>
+
                 <ul>
                     <li><i class="fas fa-users-cog"></i> UTILISATEURS
                         <ul>
@@ -29,7 +31,8 @@ class MenuBackOffice extends Component {
                         </ul>
                     </li>
                 </ul>
-            </li>
+                
+            </div>
         );
     }
 }
