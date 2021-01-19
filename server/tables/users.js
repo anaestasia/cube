@@ -1,5 +1,25 @@
 const express = require("express");
-const router = express.Router();
+
+const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
+const session = require("express-session");
+
+
+const app = express();
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(
+  session({
+    key: "userId",
+    secret: "l720UhCXMkyT0rxMO8mM",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      maxAge: 3600000, // 3600000 milliseconde = 1h
+    },
+  })
+);
 
 const db = require("../config/db");
 
@@ -31,7 +51,7 @@ function strRandom(o) {
 }
 
 //insert
-router.post("/create", (req, res) => {
+app.post("/create", (req, res) => {
     const firstname = req.body.firstname;
     const lastname = req.body.lastname;
     const mail = req.body.mail;
@@ -83,7 +103,7 @@ router.post("/create", (req, res) => {
 //fin insert
 
 //get
-  router.get("/get", (req, res) => {
+app.get("/get", (req, res) => {
     db.query("SELECT * FROM users", (err, result) => {
       if (err) {
         console.log(err);
@@ -95,7 +115,7 @@ router.post("/create", (req, res) => {
 //fin get  
 
 //delete
-router.delete("/delete/:id", (req, res) => {
+app.delete("/delete/:id", (req, res) => {
     const id = req.params.id;
     db.query("DELETE FROM users WHERE id = ?", id, (err, result) => {
       if (err) {
@@ -106,33 +126,53 @@ router.delete("/delete/:id", (req, res) => {
     });
   });
 //fin delete
-  
+app.get("/login", (req, res) => {
+  if (req.session.user) {
+    res.send({ loggedIn: true, user: req.session.user });
+  } else {
+    res.send({ loggedIn: false });
+  }
+});
 
-router.post("/login", (req, res) => {
+app.post("/login", (req, res) => {
   const mail = req.body.mail;
   const password = req.body.password;
 
-  console.log(mail);
-  console.log(password);
+  // console.log(mail);
+  // console.log(password);
 
   db.query("SELECT * FROM users where mail = ?", mail, (err, result) => {
     
     if (err) {
       console.log(err);
     } else {
-       console.log(result);
-       if(password == result[0].password)
-       {
-         console.log('même mdp');
-         res.send({ message: "Mot de passe Ok" });
+       //console.log(result);
+       if (result.length > 0) {
+        if(password === result[0].password)
+        {
+          req.session.user = result;
+          console.log('même mdp');
+          console.log(req.session.user);
+          res.send({ connecte: true, result });
+        }
+        else
+        {
+          console.log('mdp diférent');
+          res.send({ connecte: false,message: "Mauvais MDP" });
+        }
        }
-       else
-       {
-         console.log('mdp diférent');
-         res.send({ message: "Mauvais MDP" });
+       else{
+          console.log('utilisateur inconnu');
+          res.send({ connecte: false,message: "Mauvais MDP" });
        }
     }
   });
 });
 
-module.exports = router;
+app.get("/logout", (req, res) => {
+  req.session.destroy((err) => {
+    res.send({ destroy: true });
+ })
+});
+
+module.exports = app;

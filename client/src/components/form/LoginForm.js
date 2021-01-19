@@ -12,6 +12,8 @@ export default function LoginForm() {
   const [mdpReg, setMDPReg] = useState("");
   const [loginStatus, setLoginStatus] = useState("");
 
+  Axios.defaults.withCredentials = true;
+
   const login = event => {
     event.preventDefault();
     const password = hash.sha1(mdpReg);
@@ -22,7 +24,11 @@ export default function LoginForm() {
         mail: emailReg,
         password: password,
       }).then((response) => {
-           setLoginStatus(response.data.message);
+           if (response.data.connecte) {
+            window.location.href = "/";
+          } else {
+            setLoginStatus("Inpossible de se connecter");
+          }
       });
     }
   };

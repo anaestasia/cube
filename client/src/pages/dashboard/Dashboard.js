@@ -1,5 +1,3 @@
-import React, { useEffect, useState } from "react";
-import Axios from "axios";
 import "./Accueil.css";
 import LoginForm from '../components/form/LoginForm';
 import { Link } from 'react-router-dom';
