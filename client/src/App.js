@@ -69,6 +69,7 @@ function App() {
         <Route exact path="/register" render={(props) =>  register ? <Register />: <NoAccess />} />
         <Route exact path="/login" render={(props) =>  login ? <Login />: <NoAccess />} />
         <Route exact path="/Main" render={(props) =>  main ? <Main />: <NoAccess />} />
+        <Route exact path="/dashboard" render={(props) => dashboard ? <DashBoard /> : <NoAccess />} />
         <Route exact path="/" render={(props) => accueil ? <Accueil /> : <NotFound />} />
         <Route component={NotFound} />
       </Switch>
