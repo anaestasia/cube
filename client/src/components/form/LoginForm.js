@@ -18,7 +18,7 @@ export default function LoginForm() {
 
     if(emailReg.trim() !== "")
     {
-      Axios.post("http://localhost:3001/users/login", {
+      Axios.post(process.env.REACT_APP_SITE_URL_API+"/users/login", {
         mail: emailReg,
         password: password,
       }).then((response) => {

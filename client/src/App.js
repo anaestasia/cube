@@ -5,6 +5,7 @@ import Accueil from "./pages/accueil/Accueil";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Main from "./pages/Main";
+require('dotenv').config()
 
 function App() {
   return (

@@ -29,7 +29,7 @@ export default function Register() {
       const date = new Date();
       const sqlDate = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
       if(MDPDReg === MDPReg){
-        Axios.post("http://localhost:3001/users/create", {
+        Axios.post(process.env.REACT_APP_SITE_URL_API+"/users/create", {
           firstname: FirstNameReg,
           lastname: NameReg,
           mail: EmailReg,
