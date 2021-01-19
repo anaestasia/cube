@@ -12,7 +12,7 @@ function App() {
       <Route path="/register" exact render={(props) => <Register />} />
       <Route path="/login" exact render={(props) => <Login />} />
       <Route path="/Main" exact render={(props) => <Main />} />
-      <Route path="/" exact render={(props) => <Accueil />} />
+      <Route path="/Accueil" exact render={(props) => <Accueil />} />
     </Router>
   );
 }
