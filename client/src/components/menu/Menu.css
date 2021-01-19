@@ -1,5 +1,9 @@
 div.main-menu{
     text-align: left;
+    width: 20%;
+    min-height: 94vh;
+    margin: 2% 0 2% 2%;
+    border: 1px solid black;
 }
 
 div.main-menu ul li{

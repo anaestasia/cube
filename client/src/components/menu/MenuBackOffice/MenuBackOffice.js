@@ -6,8 +6,7 @@ class MenuBackOffice extends Component {
   
     render() {
         return (
-            <div>
-                <h2>Back-Office</h2>
+            <li><span>Back-Office</span>
 
                 <ul>
                     <li><i class="fas fa-tachometer-alt"></i>UTILISATEURS
@@ -32,7 +31,7 @@ class MenuBackOffice extends Component {
                     </li>
                 </ul>
                 
-            </div>
+            </li>
         );
     }
 }
