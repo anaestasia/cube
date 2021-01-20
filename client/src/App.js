@@ -11,6 +11,7 @@ import DashBoard from "./pages/dashboard/Dashboard";
 import RessourcePage from "./pages/ressource/Ressource";
 import NoAccess from "./pages/403/403";
 import Token from "./pages/token/token";
+import Ressourcenonconnecte from "./pages/ressourcenonconnecte/ressourcenonconnecte";
 
 require('dotenv').config()
 
@@ -37,6 +38,7 @@ function App() {
   let accueil;
   let dashboard;
   let ressource;
+  let ressourceNonCo ;
 
   if(role >= 0) //pas connecte
   {
@@ -46,6 +48,7 @@ function App() {
     main = true;
     dashboard = true;
     ressource = true;
+    ressourceNonCo = true;
   }
   if (role >= 1) //Mail non verifé 
   {
@@ -54,7 +57,7 @@ function App() {
   }
   if (role >= 2) //Citoyen
   {
-    
+    ressourceNonCo = false;
   }
   if (role >= 3) //Modérateur
   {
@@ -73,7 +76,8 @@ function App() {
       <Switch>
         <Route exact path="/" render={(props) => accueil ? <Accueil /> : <NotFound />} />
         <Route exact path="/Main" render={(props) =>  main ? <Main />: <NoAccess />} />
-        <Route exact path="/ressource" render={(props) =>  ressource ? <RessourcePage />: <NotFound />} />
+        <Route exact path="/ressource/:id" render={(props) =>  ressource ? <RessourcePage />: <NotFound />} />
+          <Route exact path="/ressourcenonConnecte" render={(props) =>  ressourceNonCo ? <Ressourcenonconnecte />: <NotFound />} />
         <Route exact path="/register" render={(props) =>  register ? <Register />: <NoAccess />} />
         <Route exact path="/login" render={(props) =>  login ? <Login />: <NoAccess />} />
         <Route exact path="/token/:token" render={(props) =>  <Token />} />

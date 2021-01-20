@@ -1,10 +1,10 @@
 const express = require("express");
-const router = express.Router();
+const app = express();
 
 const db = require("../config/db");
 
 //insert
-router.post("/create", (req, res) => {
+app.post("/create", (req, res) => {
     const title = req.body.title;
     const content = req.body.content;
     const nb_consultation = req.body.nb_consultation;
@@ -33,7 +33,7 @@ router.post("/create", (req, res) => {
 //fin insert
 
 //get
-  router.get("/get", (req, res) => {
+  app.get("/get", (req, res) => {
     db.query("SELECT * FROM ressources", (err, result) => {
       if (err) {
         console.log(err);
@@ -44,8 +44,58 @@ router.post("/create", (req, res) => {
   });
 //fin get  
 
+//get 1 ressource
+app.post("/getid", (req, res) => {
+  const id = req.body.id;
+  let lesCategories = "";
+
+  let requete;
+  requete = "SELECT *, types_ressources.name AS 'nametyperss' ";
+  requete += ", relationship_ressources.name AS 'namerelationship' ";
+  requete += ", status.name AS 'namestatus'  ";
+  requete += "FROM ressources ";
+  requete += "INNER JOIN types_ressources ON types_ressources.id = ressources.fk_type_ressource ";
+  requete += "INNER JOIN relationship_ressources ON relationship_ressources.id = ressources.fk_relationship_ressource ";
+  requete += "INNER JOIN status ON status.id = ressources.fk_status ";
+  requete += "where ressources.id = ? and deleted = 0 and approved = 1";
+  //console.log(requete);
+  db.query(requete, id, (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+       if (result.length > 0) {
+          db.query("SELECT * , categories.name as 'categoriename' FROM categories_ressources INNER JOIN categories ON categories.id = categories_ressources.fk_category where fk_ressource = ? ", id, (err, resultCatRess) => {
+            if (err) {
+              console.log(err);
+            } else {
+              for(let i = 0; i <resultCatRess.length; i++)
+              {
+                if(i === resultCatRess.length-1)
+                {
+                  lesCategories += resultCatRess[i].categoriename;
+                }
+                else
+                {
+                  lesCategories += resultCatRess[i].categoriename+', ';
+                }
+              }
+              res.send({ result, lesCategories, existe: true });
+            }
+          });
+          
+          //console.log(result);
+        }
+        else
+        {
+          res.send({ existe: false });
+        }
+      }
+  });
+});
+//fin get  
+
 //delete
-router.delete("/delete/:id", (req, res) => {
+app.delete("/delete/:id", (req, res) => {
     const id = req.params.id;
     db.query("DELETE FROM ressources WHERE id = ?", id, (err, result) => {
       if (err) {
@@ -57,4 +107,4 @@ router.delete("/delete/:id", (req, res) => {
   });
 //fin delete
   
-module.exports = router;
+module.exports = app;

@@ -1,0 +1,61 @@
+* {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  
+  body {
+    padding: 0;
+    margin: 0;
+  }
+  
+  #token {
+    position: relative;
+    height: 100vh;
+  }
+  
+  #token .token {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+  }
+  
+  .token {
+    max-width: 520px;
+    width: 100%;
+    line-height: 1.4;
+    text-align: center;
+  }
+  
+  .token .token-div {
+    position: relative;
+    height: 240px;
+  }
+  
+  .token h2 {
+    font-family: 'Cabin', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #000;
+    margin-top: 0px;
+    margin-bottom: 25px;
+  }
+  
+  @media only screen and (max-width: 767px) {
+    .token .token-div {
+      height: 200px;
+    }
+  }
+  
+  @media only screen and (max-width: 480px) {
+    .token .token-div {
+      height: 162px;
+    }
+    .token h2 {
+      font-size: 16px;
+    }
+  }
+  
