@@ -11,7 +11,12 @@ export default function DashBoard() {
 
   return (
     <div>
-      <Ressource />
+      <Ressource title= "Réussir au CESi"
+            categorie= "Études"
+            typeRelation= "Soi"
+            typeRessource= "Développement Personnel"
+            content="Trop fort"
+            media="" />
       <MenuFilter />
       <CommentButton/>
       <RessourceButton />

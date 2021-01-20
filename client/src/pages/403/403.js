@@ -8,9 +8,9 @@ import "./403.css";
 export default function NoAccess() {
 
   return (
-    <div id="notfound">
-		<div class="notfound">
-			<div class="notfound-403">
+    <div id="noAccess">
+		<div class="noAccess">
+			<div class="noAccess-403">
 				<h3>Oops! Accès refusé </h3>
 				<h1><span>4</span><span>0</span><span>3</span></h1>
 			</div>
