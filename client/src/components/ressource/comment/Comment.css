@@ -1,0 +1,16 @@
+div.comments {
+    border: 1px solid black;
+    margin: 2% 0;
+    padding: 1%;
+}
+
+div.origin {
+    border: 1px solid black;
+    margin: 1%;
+    padding: 1%;
+}
+div.answer {
+    border: 1px solid black;
+    margin: 0 1% 1% 4%;
+    padding: 1%;
+}

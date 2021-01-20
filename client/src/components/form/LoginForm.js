@@ -27,7 +27,7 @@ export default function LoginForm() {
            if (response.data.connecte) {
             window.location.href = "/";
           } else {
-            setLoginStatus("Inpossible de se connecter");
+            setLoginStatus("Impossible de se connecter");
           }
       });
     }

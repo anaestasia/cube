@@ -8,12 +8,12 @@
     margin: 0;
   }
   
-  #notfound {
+  #noAccess {
     position: relative;
     height: 100vh;
   }
   
-  #notfound .notfound {
+  #noAccess .noAccess {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -22,19 +22,19 @@
             transform: translate(-50%, -50%);
   }
   
-  .notfound {
+  .noAccess {
     max-width: 520px;
     width: 100%;
     line-height: 1.4;
     text-align: center;
   }
   
-  .notfound .notfound-404 {
+  .noAccess .noAccess-403 {
     position: relative;
     height: 240px;
   }
   
-  .notfound .notfound-404 h1 {
+  .noAccess .noAccess-403 h1 {
     font-family: 'Montserrat', sans-serif;
     position: absolute;
     left: 50%;
@@ -51,11 +51,11 @@
     margin-left: -20px;
   }
   
-  .notfound .notfound-404 h1>span {
+  .noAccess .noAccess-403 h1>span {
     text-shadow: -8px 0px 0px #fff;
   }
   
-  .notfound .notfound-404 h3 {
+  .noAccess .noAccess-403 h3 {
     font-family: 'Cabin', sans-serif;
     position: relative;
     font-size: 16px;
@@ -67,7 +67,7 @@
     padding-left: 6px;
   }
   
-  .notfound h2 {
+  .noAccess h2 {
     font-family: 'Cabin', sans-serif;
     font-size: 20px;
     font-weight: 400;
@@ -78,24 +78,24 @@
   }
   
   @media only screen and (max-width: 767px) {
-    .notfound .notfound-404 {
+    .noAccess .noAccess-403 {
       height: 200px;
     }
-    .notfound .notfound-404 h1 {
+    .noAccess .noAccess-403 h1 {
       font-size: 200px;
     }
   }
   
   @media only screen and (max-width: 480px) {
-    .notfound .notfound-404 {
+    .noAccess .noAccess-403 {
       height: 162px;
     }
-    .notfound .notfound-404 h1 {
+    .noAccess .noAccess-403 h1 {
       font-size: 162px;
       height: 150px;
       line-height: 162px;
     }
-    .notfound h2 {
+    .noAccess h2 {
       font-size: 16px;
     }
   }
