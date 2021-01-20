@@ -1,13 +1,11 @@
-.page{
-    display: flex;
-    flex-direction: row;
+.col-menu{
+    text-align: left;
+    border: 1px solid black;
+    padding: 1%;
 }
 
-div.content-page{
-    display: flex;
-    flex-direction: column;
-    width: 75%;
-    min-height: 94vh;
-    margin: 2%;
+.col-content-page {
+    border: 1px solid black;
+    padding: 1%;
 }
 

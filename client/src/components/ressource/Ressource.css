@@ -1,6 +1,7 @@
 div.ressource-container {
     border: 1px solid black;
     padding: 1%;
+    margin-bottom: 2%;
 }
 
 div.ressource-container ul li{
