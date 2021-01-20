@@ -1,37 +1,39 @@
 import React, { Component } from 'react';
 import './MenuBackOffice.css';
-
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 class MenuBackOffice extends Component {
   
     render() {
         return (
-            <li><span>Back-Office</span>
+            <Row className="back-office">
+                <Col>
 
-                <ul>
-                    <li><i class="fas fa-tachometer-alt"></i>UTILISATEURS
-                        <ul>
-                            <li>Gérer les utilisateurs</li>
-                        </ul>
-                    </li>
-                    <li><i class="fas fa-tachometer-alt"></i>RESSOURCES
-                        <ul>
-                            <li>Gérer les ressources</li>
-                            <li>Gérer les catégories</li>
-                            <li>Gérer les commentaires</li>
-                        </ul>
-                    </li>
-                    <li><i class="fas fa-tachometer-alt"></i>DOCUMENTATION
-                        <ul>
-                            <li>Visiteur</li>
-                            <li>Citoyen</li>
-                            <li>Modérateurs</li>
-                            <li>Administrateur</li>
-                        </ul>
-                    </li>
-                </ul>
-                
-            </li>
+                    <h2>Back-Office</h2>
+                    
+                    <ul>
+                        <li className="subtitle"><i class="fas fa-users-cog"></i> UTILISATEURS</li>
+                        <li>Gérer les utilisateurs</li>
+                    </ul>
+                                
+                    <ul>
+                        <li className="subtitle"><i class="fas fa-folder-open"></i> RESSOURCES</li>
+                        <li>Gérer les ressources</li>
+                        <li>Gérer les catégories</li>
+                        <li>Gérer les commentaires</li>
+                    </ul>
+                    
+                    <ul>
+                        <li className="subtitle"><i class="fas fa-info-circle"></i> DOCUMENTATION</li>
+                        <li>Visiteur</li>
+                        <li>Citoyen</li>
+                        <li>Modérateurs</li>
+                        <li>Administrateur</li>
+                    </ul>
+
+                </Col>
+            </Row>
         );
     }
 }

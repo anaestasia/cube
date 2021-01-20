@@ -17,8 +17,8 @@ export default function RessourcePage () {
             </Col>
 
             <Col xl={9} className="col-content-page">
-                <Row><Ressource /></Row>
-                <Row><Comment /></Row>
+                <Row className="row-ressource "><Ressource /></Row>
+                <Row className="row-comment"><Comment /></Row>
             </Col>
         </Row>
     </Container>
