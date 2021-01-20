@@ -1,11 +1,7 @@
-div.main-menu{
-    text-align: left;
-    width: 20%;
-    min-height: 94vh;
-    margin: 2% 0 2% 2%;
+.main-menu{
     border: 1px solid black;
+    padding: 1%;
 }
-
 div.main-menu ul li{
     list-style-type: none;
 }
