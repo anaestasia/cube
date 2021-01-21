@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import './MenuBackOffice.css';
 
-
 class MenuBackOffice extends Component {
-  
+    
     render() {
         return (
             <li><span>Back-Office</span>
@@ -30,7 +29,6 @@ class MenuBackOffice extends Component {
                         </ul>
                     </li>
                 </ul>
-                
             </li>
         );
     }
