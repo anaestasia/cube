@@ -12,6 +12,7 @@ import RessourcePage from "./pages/ressource/Ressource";
 import NoAccess from "./pages/403/403";
 import Token from "./pages/token/token";
 import Ressourcenonconnecte from "./pages/ressourcenonconnecte/ressourcenonconnecte";
+import SubmitRessource from "./pages/SubmitRessource";
 
 require('dotenv').config()
 
@@ -39,6 +40,7 @@ function App() {
   let dashboard;
   let ressource;
   let ressourceNonCo ;
+  let submitRessource;
 
   if(role >= 0) //pas connecte
   {
@@ -58,6 +60,7 @@ function App() {
   if (role >= 2) //Citoyen
   {
     ressourceNonCo = false;
+    submitRessource = true;
   }
   if (role >= 3) //Modérateur
   {
@@ -82,6 +85,7 @@ function App() {
         <Route exact path="/login" render={(props) =>  login ? <Login />: <NoAccess />} />
         <Route exact path="/token/:token" render={(props) =>  <Token />} />
         <Route exact path="/dashboard" render={(props) => dashboard ? <DashBoard /> : <NoAccess />} />
+        <Route exact path="/submitressource" render={(props) => submitRessource ? <SubmitRessource /> : <NoAccess />} />
         <Route component={NotFound} />
       </Switch>
     </Router>
