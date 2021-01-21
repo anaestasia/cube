@@ -80,7 +80,7 @@ function App() {
         <Route exact path="/" render={(props) => accueil ? <Accueil /> : <NotFound />} />
         <Route exact path="/Main" render={(props) =>  main ? <Main />: <NoAccess />} />
         <Route exact path="/ressource/:id" render={(props) =>  ressource ? <RessourcePage />: <NotFound />} />
-          <Route exact path="/ressourcenonConnecte" render={(props) =>  ressourceNonCo ? <Ressourcenonconnecte />: <NotFound />} />
+        <Route exact path="/ressourcenonConnecte" render={(props) =>  ressourceNonCo ? <Ressourcenonconnecte />: <NotFound />} />
         <Route exact path="/register" render={(props) =>  register ? <Register />: <NoAccess />} />
         <Route exact path="/login" render={(props) =>  login ? <Login />: <NoAccess />} />
         <Route exact path="/token/:token" render={(props) =>  <Token />} />
