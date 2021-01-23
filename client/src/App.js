@@ -14,6 +14,7 @@ import Token from "./pages/token/token";
 import Ressourcenonconnecte from "./pages/ressourcenonconnecte/ressourcenonconnecte";
 import Admin from "./pages/Admin/Admin"
 import SubmitRessource from "./pages/SubmitRessource";
+import Profil from "./pages/profil/profil";
 
 require('dotenv').config()
 
@@ -43,6 +44,7 @@ function App() {
   let ressourceNonCo ;
   let admin;
   let submitRessource;
+  let profil;
 
   if(role >= 0) //pas connecte
   {
@@ -55,11 +57,13 @@ function App() {
     ressourceNonCo = true;
     admin = false;
     submitRessource = false;
+    profil = false;
   }
   if (role >= 1) //Mail non verifé 
   {
     login = false;
     register = false;
+    profil = true;
   }
   if (role >= 2) //Citoyen
   {
@@ -91,6 +95,7 @@ function App() {
         <Route exact path="/dashboard" render={(props) => dashboard ? <DashBoard /> : <NoAccess />} />
         <Route exact path="/admin" render={(props) => admin ? <Admin /> : <NotFound />} />
         <Route exact path="/submitressource" render={(props) => submitRessource ? <SubmitRessource /> : <NoAccess />} />
+        <Route exact path="/profil" render={(props) => profil ? <Profil /> : <NoAccess />} />
         <Route component={NotFound} />
       </Switch>
     </Router>

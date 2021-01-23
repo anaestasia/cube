@@ -157,7 +157,7 @@ app.post("/login", (req, res) => {
         }
         else
         {
-          console.log('mdp diférent');
+          console.log('mdp différent');
           res.send({ connecte: false,message: "Mauvais MDP" });
         }
        }
@@ -212,4 +212,19 @@ app.post("/token", (req, res) => {
   });
 });
 
+app.post("/editPassword", (req, res) => {
+  const password = req.body.password;
+  const id = req.body.id;
+
+  db.query("UPDATE users SET password = ? WHERE id = ?", [password,id],  (err, result) => {
+    if (err) 
+    {
+      console.log(err);
+    } 
+    else {
+      res.send({ verif: true });
+      console.log('MdpChangé')
+    }
+  });
+});
 module.exports = app;
