@@ -18,35 +18,36 @@ import './Ressource.css';
 
         useEffect(() => 
         {
-
-            Axios.get(process.env.REACT_APP_SITE_URL_API+"/users/login").then((response) => {
-                if (response.data.loggedIn === true) {
-                  test(response.data.user[0].fk_role);
+            const verifRole = (role) => {
+                if (isNaN(id)) 
+                {
+                    window.location.href = "/404";
                 }
                 else
                 {
-                  test(0);
-
-                }
-              });
-            
-            
-        }, [id]);
-
-        const test = (role) => {
-            if (isNaN(id)) 
-            {
-                window.location.href = "/404";
-            }
-            else
-            {
-                Axios.post(process.env.REACT_APP_SITE_URL_API+"/ressources/getid", {
-                    id: id,
-                  }).then((response) => {
-                    if (response.data.existe) {
-                        if(response.data.result[0].namestatus === 'privée')
-                        {
-                            if(role >= 2)
+                    Axios.post(process.env.REACT_APP_SITE_URL_API+"/ressources/getid", {
+                        id: id,
+                      }).then((response) => {
+                        if (response.data.existe) {
+                            if(response.data.result[0].namestatus === 'privée')
+                            {
+                                if(role >= 2)
+                                {
+                                    setCategorie(response.data.lesCategories);
+                                    setTypeRelation(response.data.result[0].namerelationship);
+                                    setTypeRessource(response.data.result[0].title);
+                                    setMessage(response.data.result[0].content);  
+                                    setTitle(response.data.result[0].title);
+                                    setNbLike(response.data.result[0].nb_like);
+                                }
+                                else
+                                {
+                                   window.location.href = "/ressourcenonConnecte";
+                                }
+                                //renvoyer sur une page veuillez vous connecté pour voir cette article 
+                                //si la personne n'est pas connecté  
+                            }
+                            else //public 
                             {
                                 setCategorie(response.data.lesCategories);
                                 setTypeRelation(response.data.result[0].namerelationship);
@@ -55,30 +56,30 @@ import './Ressource.css';
                                 setTitle(response.data.result[0].title);
                                 setNbLike(response.data.result[0].nb_like);
                             }
-                            else
-                            {
-                               window.location.href = "/ressourcenonConnecte";
-                            }
-                            //renvoyer sur une page veuillez vous connecté pour voir cette article 
-                            //si la personne n'est pas connecté  
                         }
-                        else //public 
+                        else
                         {
-                            setCategorie(response.data.lesCategories);
-                            setTypeRelation(response.data.result[0].namerelationship);
-                            setTypeRessource(response.data.result[0].title);
-                            setMessage(response.data.result[0].content);  
-                            setTitle(response.data.result[0].title);
-                            setNbLike(response.data.result[0].nb_like);
+                            window.location.href = "/main";
                         }
-                    }
-                    else
-                    {
-                        window.location.href = "/main";
-                    }
-                  });
+                      });
+                }
             }
-        }
+            
+            Axios.get(process.env.REACT_APP_SITE_URL_API+"/users/login").then((response) => {
+                if (response.data.loggedIn === true) {
+                  verifRole(response.data.user[0].fk_role);
+                }
+                else
+                {
+                    verifRole(0);
+
+                }
+              });
+            
+            
+        }, [id]);
+
+       
 
         return (
             <div className="ressource-container">
