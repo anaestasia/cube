@@ -1,7 +1,54 @@
 .main-menu{
-    border: 1px solid black;
-    padding: 1%;
+    padding: 0 2%;
 }
-div.main-menu ul li{
+
+.navbar-menu {
+    width:100%;
+    background-color: #222320;
+    padding: 0;
+}
+
+.navbar-menu .row{
+    width: 100%;
+    margin: 40% 0 0 0;
+    justify-content: center;
+}
+
+.navbar-menu .logo-navbar{
+    margin-bottom: 100%;
+}
+
+.navbar-menu .row i{
+    color: #ffffff;
+    font-size: 200%;
+}
+
+.logo-navbar {
+    width: 100%;
+}
+
+.logo-navbar .app-logo-navbar{
+    width: 80%;
+    text-align: center;
+}
+
+.narvbar-menu .row {
+    justify-content: center;
+}
+.logo-navbar div.row i {
+    color: #ffffff;
+}
+.sub-menu {
+    background-color: #ffffff;
+    box-shadow: 1px 1px 5px #222320;
+}
+.sub-menu ul {
     list-style-type: none;
+    margin: 2% 0;
+    padding: 0;
+}
+.sub-menu h2 {
+    font-size: 24px;
+    text-align: center;
+    margin: 10% 0;
 }

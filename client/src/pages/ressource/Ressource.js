@@ -11,14 +11,14 @@ export default function RessourcePage () {
 
   return (
     <Container fluid>
-        <Row>
+        <Row className="parent-row">
             <Col xl={3} className="col-menu">
                 <Menu />
             </Col>
 
             <Col xl={9} className="col-content-page">
-                <Row><Ressource /></Row>
-                <Row><Comment /></Row>
+                <Row className="row-ressource "><Ressource /></Row>
+                <Row className="row-comment"><Comment /></Row>
             </Col>
         </Row>
     </Container>

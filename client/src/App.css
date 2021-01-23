@@ -3,24 +3,13 @@
   src: local('Roboto') url('./fonts/Roboto/Roboto-Medium.ttf') format("ttf");
 }
 
-.App {
-  text-align: left;
-  font-family: "Roboto", sans-serif;
-  font-size: 18px;
-  /* Définir la couleur de fond par défaut */
-  /* Définir la taille de police par défaut */
+@font-face {
+  font-family: 'Oswald';
+  src: local('Oswald') url('./fonts/Oswald/Oswald-SemiBold.ttf') format("ttf");
 }
 
-.App-body {
+div#root {
   background-color: #03989e;
-  display: flex; /* le conteneur App-body est en flex on peut utiliser les lignes en dessous */
-  flex-direction: row; /* Permet de définir dans quelle direction s'align les élement dans le conteneur, ici de gauche à droite */
-  align-items: center; /* Centre les éléments du conteneur horizontalement */
-  justify-content: center; /* Centre les éléments du conteneur verticalement */
-  font-size: 18px;
-  color: white;
+  height: 100vh;
 }
 
-.App-link:hover { /* Tous les liens devront avoir App-link comme class et ici on défini la couleur au survol du lien (hover) */
-  color: #61dafb;
-}

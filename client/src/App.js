@@ -13,6 +13,7 @@ import NoAccess from "./pages/403/403";
 import Token from "./pages/token/token";
 import Ressourcenonconnecte from "./pages/ressourcenonconnecte/ressourcenonconnecte";
 import Admin from "./pages/Admin/Admin"
+import SubmitRessource from "./pages/SubmitRessource";
 
 require('dotenv').config()
 
@@ -41,6 +42,7 @@ function App() {
   let ressource;
   let ressourceNonCo ;
   let admin;
+  let submitRessource;
 
   if(role >= 0) //pas connecte
   {
@@ -52,6 +54,7 @@ function App() {
     ressource = true;
     ressourceNonCo = true;
     admin = false;
+    submitRessource = false;
   }
   if (role >= 1) //Mail non verifé 
   {
@@ -61,6 +64,7 @@ function App() {
   if (role >= 2) //Citoyen
   {
     ressourceNonCo = false;
+    submitRessource = true;
   }
   if (role >= 3) //Modérateur
   {
@@ -80,12 +84,13 @@ function App() {
         <Route exact path="/" render={(props) => accueil ? <Accueil /> : <NotFound />} />
         <Route exact path="/Main" render={(props) =>  main ? <Main />: <NoAccess />} />
         <Route exact path="/ressource/:id" render={(props) =>  ressource ? <RessourcePage />: <NotFound />} />
-          <Route exact path="/ressourcenonConnecte" render={(props) =>  ressourceNonCo ? <Ressourcenonconnecte />: <NotFound />} />
+        <Route exact path="/ressourcenonConnecte" render={(props) =>  ressourceNonCo ? <Ressourcenonconnecte />: <NotFound />} />
         <Route exact path="/register" render={(props) =>  register ? <Register />: <NoAccess />} />
         <Route exact path="/login" render={(props) =>  login ? <Login />: <NoAccess />} />
         <Route exact path="/token/:token" render={(props) =>  <Token />} />
         <Route exact path="/dashboard" render={(props) => dashboard ? <DashBoard /> : <NoAccess />} />
         <Route exact path="/admin" render={(props) => admin ? <Admin /> : <NotFound />} />
+        <Route exact path="/submitressource" render={(props) => submitRessource ? <SubmitRessource /> : <NoAccess />} />
         <Route component={NotFound} />
       </Switch>
     </Router>
