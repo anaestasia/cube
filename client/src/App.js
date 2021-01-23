@@ -12,6 +12,7 @@ import RessourcePage from "./pages/ressource/Ressource";
 import NoAccess from "./pages/403/403";
 import Token from "./pages/token/token";
 import Ressourcenonconnecte from "./pages/ressourcenonconnecte/ressourcenonconnecte";
+import Admin from "./pages/Admin/Admin"
 
 require('dotenv').config()
 
@@ -39,6 +40,7 @@ function App() {
   let dashboard;
   let ressource;
   let ressourceNonCo ;
+  let admin;
 
   if(role >= 0) //pas connecte
   {
@@ -49,6 +51,7 @@ function App() {
     dashboard = true;
     ressource = true;
     ressourceNonCo = true;
+    admin = false;
   }
   if (role >= 1) //Mail non verifé 
   {
@@ -61,7 +64,7 @@ function App() {
   }
   if (role >= 3) //Modérateur
   {
-    
+    admin = true;
   }
   if (role >= 4) //Admin
   {
@@ -82,6 +85,7 @@ function App() {
         <Route exact path="/login" render={(props) =>  login ? <Login />: <NoAccess />} />
         <Route exact path="/token/:token" render={(props) =>  <Token />} />
         <Route exact path="/dashboard" render={(props) => dashboard ? <DashBoard /> : <NoAccess />} />
+        <Route exact path="/admin" render={(props) => admin ? <Admin /> : <NotFound />} />
         <Route component={NotFound} />
       </Switch>
     </Router>

@@ -12,7 +12,8 @@ export default function Token() {
     const [message, setMessage] = useState("");
     let { token } = useParams();
     
-    useEffect(() => {Axios.post(process.env.REACT_APP_SITE_URL_API+"/users/token",{
+    useEffect(() => {
+      Axios.post(process.env.REACT_APP_SITE_URL_API+"/users/token",{
             token : token,
         }).then((response) => {
           if (response.data.token === true) {
