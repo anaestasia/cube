@@ -137,10 +137,10 @@ export default function EditPassword() {
                 <span>{bonMDPMessage}</span><br /><br />
             
                 <label>Mot de passe :</label><br />
-                <input id='inputMDP1' className="pass-input"  minlength="3" type="password" onChange={(e) => { mdpIdentique1(e) }} /><br /><br />
+                <input id='inputMDP1' className="pass-input"  minlength="12" type="password" onChange={(e) => { mdpIdentique1(e) }} /><br /><br />
 
                 <label>Vérification mot de passe :</label><br />
-                <input id='inputMDP2' className="pass-input"  minlength="3" type="password" onChange={(e) => { mdpIdentique2(e) }} /> <br />
+                <input id='inputMDP2' className="pass-input"  minlength="12" type="password" onChange={(e) => { mdpIdentique2(e) }} /> <br />
                 <span>{doubleMdpMessage}</span>
                 <br /><br />
 
