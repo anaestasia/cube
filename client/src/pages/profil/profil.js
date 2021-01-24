@@ -5,7 +5,9 @@ import Col from 'react-bootstrap/Col';
 // import EditPassword from '../../components/profil/editpassword';
 // import EditMail from '../../components/profil/editmail';
 // import EditFirstname from '../../components/profil/editfirstname';
-import EditLastName from '../../components/profil/editlastname';
+//import EditLastName from '../../components/profil/editlastname';
+// import EditStreetNB from '../../components/profil/editstreetnb';
+import EditStreetName from '../../components/profil/editstreetname';
 
 export default function Profil() {
 
@@ -18,7 +20,9 @@ export default function Profil() {
               {/* <EditMail/> */}
               {/* <EditPassword /> */}
               {/* <EditFirstname /> */}
-              <EditLastName />
+              {/* <EditLastName /> */}
+              {/* <EditStreetNB /> */}
+              <EditStreetName />
             </Col>
           </Row>
         </Container>  
