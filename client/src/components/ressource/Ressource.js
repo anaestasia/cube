@@ -45,7 +45,7 @@ import './Ressource.css';
                     if (response.data.existe) {
                         if(response.data.result[0].namestatus === 'privée')
                         {
-                            if(role === 2)
+                            if(role >= 2)
                             {
                                 setCategorie(response.data.lesCategories);
                                 setTypeRelation(response.data.result[0].namerelationship);

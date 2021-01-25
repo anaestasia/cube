@@ -11,7 +11,7 @@ export default function RessourcePage () {
 
   return (
     <Container fluid>
-        <Row>
+        <Row className="parent-row">
             <Col xl={3} className="col-menu">
                 <Menu />
             </Col>

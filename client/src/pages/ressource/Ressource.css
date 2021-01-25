@@ -1,3 +1,9 @@
+.container-fluid {
+    height: 100vh;
+}
+.parent-row{
+    height: 100%;
+}
 .col-menu{
     text-align: left;
     border: 1px solid black;
