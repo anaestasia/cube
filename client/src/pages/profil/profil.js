@@ -7,7 +7,10 @@ import Col from 'react-bootstrap/Col';
 // import EditFirstname from '../../components/profil/editfirstname';
 //import EditLastName from '../../components/profil/editlastname';
 // import EditStreetNB from '../../components/profil/editstreetnb';
-import EditStreetName from '../../components/profil/editstreetname';
+// import EditStreetName from '../../components/profil/editstreetname';
+import EditCity from '../../components/profil/editcity';
+import EditCountry from '../../components/profil/editcountry';
+import EditPostalCode from '../../components/profil/editpostalcode';
 
 export default function Profil() {
 
@@ -22,7 +25,10 @@ export default function Profil() {
               {/* <EditFirstname /> */}
               {/* <EditLastName /> */}
               {/* <EditStreetNB /> */}
-              <EditStreetName />
+              {/* <EditStreetName /> */}
+              <EditCity />
+              <EditCountry />
+              <EditPostalCode />
             </Col>
           </Row>
         </Container>  

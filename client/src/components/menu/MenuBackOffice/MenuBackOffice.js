@@ -8,29 +8,29 @@ class MenuBackOffice extends Component {
     
     render() {
         return (
-            <Row className="back-office">
+            <Row className={`back-office ${this.props.active}`}>
                 <Col>
 
                     <h2>Back-Office</h2>
                     
                     <ul>
-                        <li className="subtitle"><i class="fas fa-users-cog"></i> UTILISATEURS</li>
-                        <li>Gérer les utilisateurs</li>
+                        <li className="subtitle"><span><i class="fas fa-users-cog"></i> UTILISATEURS</span></li>
+                        <li className="link"><span>Gérer les utilisateurs</span></li>
                     </ul>
                                 
                     <ul>
-                        <li className="subtitle"><i class="fas fa-folder-open"></i> RESSOURCES</li>
-                        <li>Gérer les ressources</li>
-                        <li>Gérer les catégories</li>
-                        <li>Gérer les commentaires</li>
+                        <li className="subtitle"><span><i class="fas fa-folder-open"></i> RESSOURCES</span></li>
+                        <li className="link"><span>Gérer les ressources</span></li>
+                        <li className="link"><span>Gérer les catégories</span></li>
+                        <li className="link"><span>Gérer les commentaires</span></li>
                     </ul>
                     
                     <ul>
-                        <li className="subtitle"><i class="fas fa-info-circle"></i> DOCUMENTATION</li>
-                        <li>Visiteur</li>
-                        <li>Citoyen</li>
-                        <li>Modérateurs</li>
-                        <li>Administrateur</li>
+                        <li className="subtitle"><span><i class="fas fa-info-circle"></i> DOCUMENTATION</span></li>
+                        <li className="link"><span>Visiteur</span></li>
+                        <li className="link"><span>Citoyen</span></li>
+                        <li className="link"><span>Modérateurs</span></li>
+                        <li className="link"><span>Administrateur</span></li>
                     </ul>
 
                 </Col>

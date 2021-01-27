@@ -9,10 +9,10 @@ import MultipleSelector from "../components/button/multipleselector/MultipleSele
 export default function FormRessource() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  //const [nbConsultation, setNbConsultation] = useState(""); à ajouter par le futur (pas sûr mdr)
- // const [nbLike, setNbLike] = useState("");
- // const [approved, setApproved] = useState("");
-//  const [archived, setArchived] = useState("");
+  //  const [nbConsultation, setNbConsultation] = useState(""); à ajouter par le futur (pas sûr mdr)
+  //  const [nbLike, setNbLike] = useState("");
+  //  const [approved, setApproved] = useState("");
+  //  const [archived, setArchived] = useState("");
   const [typeRessource, setTypeRessource] = useState("");
   const [relationshipRessource, setRelationshipRessource] = useState("");
   const [status, setStatus] = useState("");
@@ -89,7 +89,7 @@ export default function FormRessource() {
                     <option value="mondeprofessionel"> Monde Professionel</option>
                     <option value="communication"> Communicaton </option>
             </select>*/}
-            <MultipleSelector />
+          <MultipleSelector />
           </div>
           <SubmitBtn inputText="Envoyer" />
           <Link to="/"> retour</Link>
