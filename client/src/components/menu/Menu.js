@@ -55,14 +55,14 @@ class Menu extends Component {
 
         return (
             <Row className="main-menu">
-                <Col md={2} className="navbar-menu">
+                <Col xs={3} md={2} className="navbar-menu">
                     <Row className="logo-navbar"><img src="/img/logo/logo_ressources_relationnelles_mini_menu.png" className="app-logo-navbar" alt="logo" /></Row>
                     <Row onClick={() => this.ToggleClass('user')}><i className="far fa-user"></i></Row>
                     <Row onClick={() => this.ToggleClass('ressource')}><i className="far fa-file-alt"></i></Row>
                     <Row onClick={() => this.ToggleClass('backoffice')}><i className="fas fa-sliders-h"></i></Row>
                 </Col>
 
-                <Col md={10} className="sub-menu">
+                <Col xs={9} md={10} className="sub-menu">
                     <MenuUser active={this.state.activeUser ? "active" : "hidden"}/>
                     <MenuRessources active={this.state.activeRessource ? "active" : "hidden"}/>
                     <MenuBackOffice active={this.state.activeBackOffice ? "active" : "hidden"}/>
