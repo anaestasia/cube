@@ -72,15 +72,13 @@ import './Ressource.css';
                 else
                 {
                     verifRole(0);
-
                 }
               });
             
             
         }, [id]);
 
-       
-
+        
         return (
             <div className="ressource-container">
                 <h2>{title} <i class="fas fa-external-link-alt"></i></h2>
@@ -90,7 +88,7 @@ import './Ressource.css';
                     <li class="ressource-type-relation"> <i class="fas fa-users"></i> Type(s) de relation : {typeRelation} </li>
                     <li class="ressource-type-ressource"> <i class="fas fa-file-alt"></i> Type(s) de ressource : {typeRessource} </li>
                 </ul>
-                <div className="ressource-content"> {message} </div>
+                <div className="content" dangerouslySetInnerHTML={{__html: message}}></div>
             </div>
         );
     }

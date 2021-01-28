@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -8,31 +8,32 @@ import Col from 'react-bootstrap/Col';
 //import EditLastName from '../../components/profil/editlastname';
 // import EditStreetNB from '../../components/profil/editstreetnb';
 // import EditStreetName from '../../components/profil/editstreetname';
-import EditCity from '../../components/profil/editcity';
-import EditCountry from '../../components/profil/editcountry';
-import EditPostalCode from '../../components/profil/editpostalcode';
+// import EditCity from '../../components/profil/editcity';
+// import EditCountry from '../../components/profil/editcountry';
+// import EditPostalCode from '../../components/profil/editpostalcode';
+
 
 export default function Profil() {
 
-
+ 
   return (
     <>
-      <Container fluid>
+      {/* <Container fluid>
         <Row>
-            <Col xl={5} className="col-menu">
+            <Col xl={5} className="col-menu"> */}
               {/* <EditMail/> */}
               {/* <EditPassword /> */}
               {/* <EditFirstname /> */}
               {/* <EditLastName /> */}
               {/* <EditStreetNB /> */}
               {/* <EditStreetName /> */}
-              <EditCity />
+              {/* <EditCity />
               <EditCountry />
               <EditPostalCode />
             </Col>
           </Row>
         </Container>  
-          
+           */}
         
 
     </>
