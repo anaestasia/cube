@@ -7,6 +7,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 const App = () => {
+  const [idUser, setIdUser] = useState("");
 
   const { id } = useParams();
   
@@ -24,6 +25,13 @@ const App = () => {
     };
 
     fetchPosts();
+
+    axios.get(process.env.REACT_APP_SITE_URL_API+"/users/login").then((response) => {
+      if (response.data.loggedIn === true) {
+        setIdUser(response.data.user[0].id);
+      }
+    });
+
   }, []);
 
   // Get current posts
@@ -37,7 +45,7 @@ const App = () => {
   return (
     <Row>
       <Col>
-      <Posts posts={currentPosts} loading={loading} />
+      <Posts posts={currentPosts} loading={loading}  idUser={idUser}/>
       <Pagination
         postsPerPage={postsPerPage}
         totalPosts={posts.length}
