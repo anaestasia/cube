@@ -8,19 +8,19 @@ class MenuUser extends Component {
   
     render() {
         return (
-            <Row className="profil-handler">
+            <Row className={`profil-handler ${this.props.active}`}>
                 <Col>
                     <h2>Gestion du Profil</h2>
                     <ul>
-                        <li className="subtitle"><i class="fas fa-tachometer-alt"></i> TABLEAU DE BORD</li>
-                        <li>Mes ressources</li>
-                        <li>Mes favoris</li>
+                        <li className="subtitle"><span><i class="fas fa-tachometer-alt"></i> TABLEAU DE BORD</span></li>
+                        <li className="link"><span>Mes ressources</span></li>
+                        <li className="link"><span>Mes favoris</span></li>
                     </ul>
 
                     <ul>
-                        <li className="subtitle"><i class="fas fa-user-cog"></i> MON PROFIL</li>
-                        <li>Modifier mon profil</li>
-                        <li class="logout">Déconnexion</li>
+                        <li className="subtitle"><span><i class="fas fa-user-cog"></i> MON PROFIL</span></li>
+                        <li className="link"><span>Modifier mon profil</span></li>
+                        <li class="link logout"><span>Déconnexion</span></li>
                     </ul>
                 </Col>
             </Row>

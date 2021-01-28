@@ -1,13 +1,19 @@
 div.ressource-container {
-    border: 1px solid black;
     padding: 1%;
     margin-bottom: 2%;
     background-color: #ffffff;
     width: 100%;
-    border-radius: 3% / 15%;
+    border-radius: 30px;
+    box-shadow: 1px 1px 5px #222320;
 }
 
 div.ressource-container ul li{
     list-style-type: none;
 }
 
+/* ----- max 1200 PX ----- */
+@media (max-width: 1199px) {
+    div.ressource-container {
+        padding: 2%;
+    }
+}

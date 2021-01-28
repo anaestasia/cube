@@ -1,37 +1,42 @@
-.main-menu{
-    padding: 0 2%;
-}
 
+.main-menu{
+    margin: 0 5% 0 2%;
+    padding: 0;
+    height: 100%;
+    background-color: #ffffff;
+    border-radius: 30px;
+    box-shadow: 1px 1px 5px #222320;
+}
 .navbar-menu {
     width:100%;
     background-color: #222320;
     padding: 0;
+    border-radius: 30px;
+    box-shadow: 1px 1px 5px #222320;
+    z-index: 1;
 }
-
 .navbar-menu .row{
     width: 100%;
-    margin: 40% 0 0 0;
+    margin: 50% 0 70% 0;
     justify-content: center;
 }
-
+.navbar-menu .row i:hover{
+    color:#febd59;
+}
 .navbar-menu .logo-navbar{
     margin-bottom: 100%;
 }
-
 .navbar-menu .row i{
     color: #ffffff;
     font-size: 200%;
 }
-
 .logo-navbar {
     width: 100%;
 }
-
 .logo-navbar .app-logo-navbar{
     width: 80%;
     text-align: center;
 }
-
 .narvbar-menu .row {
     justify-content: center;
 }
@@ -39,16 +44,182 @@
     color: #ffffff;
 }
 .sub-menu {
-    background-color: #ffffff;
-    box-shadow: 1px 1px 5px #222320;
+    border-radius: 0 30px 30px 0;
+    padding: 0;
+}
+.sub-menu h2 {
+    font-size: 24px;
+    text-align: left;
+    margin: 10% 0;
+    padding-left: 20px;
+}
+.sub-menu .row {
+    margin-right: 0;
+}
+.sub-menu .row .col {
+    padding-right: 0;
+}
+.sub-menu .hidden {
+    display: none;
 }
 .sub-menu ul {
     list-style-type: none;
     margin: 2% 0;
     padding: 0;
 }
-.sub-menu h2 {
-    font-size: 24px;
-    text-align: center;
-    margin: 10% 0;
+.sub-menu .row li{
+    padding-left: 20px;
+    text-decoration: none;
 }
+.sub-menu .row li.subtitle{
+    margin: 10px 0;
+}
+.sub-menu .row li.link span{
+    display: block;
+    padding-left: 20px;
+    border-left: solid 1px #bcbdbc;
+    margin: 0 0 0 10px;
+    line-height: 30px;
+}
+.sub-menu .row li.link:hover {
+    background-color: #c0e5e7;
+    color: #222320;
+    
+}
+
+/* ----- max 1200 PX ----- */
+@media (max-width: 1199px) {
+    .col-menu {
+        width: 28%;
+    }
+    .col-content-page{
+        width: 69%;
+    }
+}
+
+/* ----- max 1100 PX ----- */
+@media (max-width: 1099px) {
+    .col-menu {
+        width: 30%;
+    }
+    .col-content-page{
+        width: 67%;
+    }
+    .sub-menu .row li.link span{
+        font-size: 14px;
+    }
+}
+
+/* ----- max 980 PX ----- */
+@media (max-width: 979px) {
+    .col-menu {
+        width: 32%;
+    }
+    .col-content-page{
+        width: 65%;
+    }
+}
+/* ----- max 900 PX ----- */
+@media (max-width: 899px) {
+    .col-menu {
+        width: 34%;
+    }
+    .col-content-page{
+        width: 63%;
+    }
+    .sub-menu .row li.link span{
+        font-size: 13px;
+        padding-left: 10px;
+        margin-left: 8px;
+        line-height: 30px;
+    }
+    .sub-menu .row li{
+        padding-left: 15px;
+    }
+}
+/* ----- max 840 PX ----- */
+@media (max-width: 839px) {
+    .col-menu {
+        width: 34%;
+    }
+    .col-content-page{
+        width: 63%;
+    }
+    .sub-menu .row li.link span{
+        font-size: 13px;
+        padding-left: 10px;
+        margin-left: 8px;
+        line-height: 30px;
+    }
+    .sub-menu .row li{
+        padding-left: 15px;
+    }
+}
+/* ----- max 780 PX ----- */
+@media (max-width: 779px) {
+    .col-menu {
+        width: 34%;
+    }
+    .col-content-page{
+        width: 63%;
+    }
+    .sub-menu .row li.link span{
+        font-size: 13px;
+        margin-left: 8px;
+        line-height: 30px;
+    }
+    .sub-menu .row li{
+        padding-left: 10px;
+    }
+}
+/* ----- max 760 PX ----- */
+@media (max-width: 759px) {
+    .col-menu {
+        width: 36%;
+    }
+    .col-content-page{
+        width: 61%;
+    }
+    .sub-menu .row li{
+        padding-left: 6px;
+    }
+    .sub-menu .row li.subtitle{
+        margin: 8px 0;
+    }
+    .sub-menu .row li.subtitle span{
+        font-size: 16px;
+    }
+    .sub-menu .row li.link span{
+        font-size: 13px;
+        padding-left: 8px;
+        margin-left: 8px;
+        line-height: 25px;
+        height: 25px;
+    }
+}
+/* ----- max 710 PX ----- */
+@media (max-width: 709px) {
+    .col-menu {
+        width: 36%;
+    }
+    .col-content-page{
+        width: 61%;
+    }
+    .sub-menu .row li{
+        padding-left: 6px;
+    }
+    .sub-menu .row li.subtitle{
+        margin: 8px 0;
+    }
+    .sub-menu .row li.subtitle span{
+        font-size: 16px;
+    }
+    .sub-menu .row li.link span{
+        font-size: 13px;
+        padding-left: 8px;
+        margin-left: 8px;
+        line-height: 25px;
+        height: 25px;
+    }
+}
+

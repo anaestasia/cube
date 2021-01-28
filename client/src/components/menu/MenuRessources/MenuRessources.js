@@ -8,13 +8,13 @@ class MenuRessources extends Component {
   
     render() {
         return (
-            <Row className="ressource">
+            <Row className={`ressource ${this.props.active}`}>
                 <Col>
                     <h2>Ressources</h2>
                     <ul>
-                        <li className="subtitle"><i className="fas fa-folder-open"></i> RESSOURCES</li>
-                        <li>Créer une ressource</li>
-                        <li>Consulter le catalogue</li>
+                        <li className="subtitle"><span><i className="fas fa-folder-open"></i> RESSOURCES</span></li>
+                        <li className="link"><span>Créer une ressource</span></li>
+                        <li className="link"><span>Consulter le catalogue</span></li>
                     </ul>
                 </Col>
             </Row>
