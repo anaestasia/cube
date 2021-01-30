@@ -15,8 +15,8 @@ export default function FormRessource() {
   const [status, setStatus] = useState("");
   const [statusDB, setStatusDB] = useState([]);
 
-  const [typeRessource, setTypeRessource] = useState("");
-  const [relationshipRessource, setRelationshipRessource] = useState("");
+  // const [typeRessource, setTypeRessource] = useState("");
+  // const [relationshipRessource, setRelationshipRessource] = useState("");
   
   const [submitRessourceStatus, setSubmitRessourceStatus] = useState("");
   
@@ -121,7 +121,7 @@ const handleCkeditorState = (event,editor) => {
           </select>
           <SubmitBtn inputText="Envoyer" />
           <Link to="/"> retour</Link>
-
+{/* ajouter le choix de catégorie d'une ressource */}
         </form>
       <h1>{submitRessourceStatus}</h1>
         

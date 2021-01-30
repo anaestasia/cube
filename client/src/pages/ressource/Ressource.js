@@ -29,7 +29,7 @@ export default function RessourcePage () {
       setEcrireCommentaire(true);
     }
 
-  });
+  }, [connecte, role]);
   
   
   return (
