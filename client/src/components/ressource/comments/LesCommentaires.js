@@ -12,16 +12,15 @@ const App = () => {
   const { id } = useParams();
   
   const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(10);
 
   useEffect(() => {
-    const fetchPosts = async () => {
-      setLoading(true);
+
+    const interval = setInterval(() => {
+     const fetchPosts = async () => {
       const res = await axios.get('http://localhost:3001/comments/get/'+id);
       setPosts(res.data);
-      setLoading(false);
     };
 
     fetchPosts();
@@ -31,6 +30,10 @@ const App = () => {
         setIdUser(response.data.user[0].id);
       }
     });
+    }, 1000);
+    return () => clearInterval(interval);
+
+    
 
   }, []);
 
@@ -45,7 +48,7 @@ const App = () => {
   return (
     <Row>
       <Col>
-      <Posts posts={currentPosts} loading={loading}  idUser={idUser}/>
+      <Posts posts={currentPosts}  idUser={idUser}/>
       <Pagination
         postsPerPage={postsPerPage}
         totalPosts={posts.length}

@@ -3,13 +3,7 @@ import Card from 'react-bootstrap/Card'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
-const Posts = ({ posts, loading , idUser}) => {
-  if (loading) {
-    return <h2>Loading...</h2>;
-  }
-
-  
-
+const Posts = ({ posts , idUser}) => {
 
   return (
    <>
