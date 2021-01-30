@@ -17,7 +17,12 @@ export default function FormRessource() {
   const [relationshipRessource, setRelationshipRessource] = useState("");
   const [status, setStatus] = useState("");
   
-  
+  //j'ai mis ca pour supprimer l'erreur car il n'était pas utilisé
+  setRelationshipRessource('annul erreur')
+  setTypeRessource('annul erreur')
+  setStatus('annul erreur')
+//fin 
+
   const [submitRessourceStatus, setSubmitRessourceStatus] = useState("");
   
   Axios.defaults.withCredentials = true;
@@ -28,7 +33,7 @@ export default function FormRessource() {
     {
       const date = new Date();
       const sqlDate = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
-      if(title != ''){
+      if(title !== ''){
         Axios.post(process.env.REACT_APP_SITE_URL_API+"/ressource/create", {
           title: title,
           content: content,

@@ -2,7 +2,7 @@ import React, { useState , useEffect } from "react";
 import Menu from "../../components/menu/Menu";
 import Ressource from '../../components/ressource/Ressource';
 import WriteComment from '../../components/ressource/writecomment/WriteComment';
-import Comments from '../../components/ressource/comments/comments';
+import Comments from '../../components/ressource/comments/LesCommentaires';
 import './Ressource.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';

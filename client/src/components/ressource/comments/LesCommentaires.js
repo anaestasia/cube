@@ -35,7 +35,7 @@ const App = () => {
 
     
 
-  }, []);
+  }, [id]);
 
   // Get current posts
   const indexOfLastPost = currentPage * postsPerPage;

@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import React from "react";
+// import Container from 'react-bootstrap/Container';
+// import Row from 'react-bootstrap/Row';
+// import Col from 'react-bootstrap/Col';
 // import EditPassword from '../../components/profil/editpassword';
 // import EditMail from '../../components/profil/editmail';
 // import EditFirstname from '../../components/profil/editfirstname';

@@ -1,12 +1,13 @@
 import React, { useState , useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import ckeditor, { CKEditor } from '@ckeditor/ckeditor5-react';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Axios from "axios";
+import '@ckeditor/ckeditor5-build-classic/build/translations/fr.js';
 
 export default function WriteComment () {
 
@@ -14,6 +15,7 @@ export default function WriteComment () {
 
   const [Ckeditor, setCkeditor] = useState("");
   const [idUser, setIdUser] = useState("");
+  const [donneCkeditor, setDonneCkeditor] = useState("");
 
   Axios.defaults.withCredentials = true;
 
@@ -30,12 +32,13 @@ export default function WriteComment () {
   const handleCkeditorState = (event,editor) => {
     const data = editor.getData();
     setCkeditor(data);
+    setDonneCkeditor(data);
     console.log(Ckeditor);
   }
 
   function envoyerMSG()
   {
-    if(Ckeditor.trim() != '')
+    if(Ckeditor.trim() !== '')
     {
       const date = new Date();
       const sqlDate = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()+" "+(date.getHours()+1)+":"+date.getMinutes()+":"+date.getSeconds();
@@ -50,7 +53,8 @@ export default function WriteComment () {
         fk_user : idUser,
       }).then((response) => {
         console.log(response);
-        document.location.reload();
+        setDonneCkeditor('');
+        console.log(donneCkeditor);
       });
     }
     else
@@ -62,13 +66,16 @@ export default function WriteComment () {
 
   return (
     <>
-      <Container fluid>
+      <Container fluid className="ml-4">
         <Row>
-          <Col>
+          <Col xl={11}>
             <CKEditor 
               editor={ClassicEditor}
-              onInit={ editor =>{}}
+              data={donneCkeditor}
               onChange={handleCkeditorState}
+              config={ {
+                language: 'fr',
+              } }
             />
           </Col>
         </Row>
