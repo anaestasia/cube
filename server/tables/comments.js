@@ -14,7 +14,7 @@ router.post("/create", (req, res) => {
     const fk_user = req.body.fk_user;
   
     db.query(
-      "INSERT INTO comments (content,nb_like,date_creation,date_edition,deleted,fk_ressource,fk_user) VALUES (?,?,?,?,?,?)",
+      "INSERT INTO comments (content,nb_like,date_creation,date_edition,deleted,fk_ressource,fk_user) VALUES (?,?,?,?,?,?,?)",
       [content,nb_like,date_creation,date_edition,deleted,fk_ressource,fk_user],
       (err, result) => {
         if (err) {
@@ -38,6 +38,28 @@ router.post("/create", (req, res) => {
     });
   });
 //fin get  
+
+//get
+router.get("/get/:id", (req, res) => {
+  const id = req.params.id;
+  
+  let requete;
+  requete = "SELECT comments.*, users.lastname AS 'nom' ";
+  requete += ", users.firstname AS 'prénom' ";
+  requete += "FROM comments ";
+  requete += "INNER JOIN users ON users.id = comments.fk_user ";
+  requete += "where fk_ressource = ? and comments.deleted = 0";
+  requete += " ORDER BY comments.date_creation ASC";
+  //"SELECT * FROM comments WHERE fk_ressource = ?"
+  db.query(requete, id, (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
+//fin get
 
 //delete
 router.delete("/delete/:id", (req, res) => {

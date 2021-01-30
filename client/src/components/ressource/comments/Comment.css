@@ -1,7 +1,7 @@
 div.comments {
-    border: 1px solid black;
     background-color: #ffffff;
     border-radius: 3% / 10%;
+    box-shadow: 1px 1px 5px #222320;
     padding: 1%;
     width: 100%;
 }
@@ -15,4 +15,11 @@ div.answer {
     border: 1px solid black;
     margin: 0 1% 1% 4%;
     padding: 1%;
+}
+
+/* ----- max 1200 PX ----- */
+@media (max-width: 1199px) {
+    div.comments {
+        padding: 2%;
+    }
 }
