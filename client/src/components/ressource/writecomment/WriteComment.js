@@ -41,7 +41,7 @@ export default function WriteComment () {
     if(Ckeditor.trim() !== '')
     {
       const date = new Date();
-      const sqlDate = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()+" "+(date.getHours()+1)+":"+date.getMinutes()+":"+date.getSeconds();
+      const sqlDate = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()+" "+(date.getHours())+":"+date.getMinutes()+":"+date.getSeconds();
 
       Axios.post(process.env.REACT_APP_SITE_URL_API+"/comments/create", {
         content : Ckeditor,
