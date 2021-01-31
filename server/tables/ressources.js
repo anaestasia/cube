@@ -15,12 +15,12 @@ app.post("/create", (req, res) => {
     const date_edition = req.body.date_edition;
     const deleted = req.body.deleted;
     const fk_type_ressource = req.body.fk_type_ressource;
-    const fk_relationship_ressouce = req.body.fk_relationship_ressouce;
+    const fk_relationship_ressource = req.body.fk_relationship_ressource;
     const fk_status = req.body.fk_status;
-  
+    
     db.query(
-      "INSERT INTO ressources (title,content,nb_consultation,nb_like,approved,archived,date_creation,date_edition,deleted,fk_type_ressource,fk_relationship_ressouce,fk_status) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)",
-      [title,content,nb_consultation,nb_like,approved,archived,date_creation,date_edition,deleted,fk_type_ressource,fk_relationship_ressouce,fk_status],
+      "INSERT INTO ressources (title,content,nb_consultation,nb_like,approved,archived,date_creation,date_edition,deleted,fk_type_ressource,fk_relationship_ressource,fk_status) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)",
+      [title,content,nb_consultation,nb_like,approved,archived,date_creation,date_edition,deleted,fk_type_ressource,fk_relationship_ressource,fk_status],
       (err, result) => {
         if (err) {
           console.log(err);

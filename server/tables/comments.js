@@ -39,7 +39,7 @@ router.post("/create", (req, res) => {
   });
 //fin get  
 
-//get
+//donne tous les commentaires avec l'id de la ressource
 router.get("/get/:id", (req, res) => {
   const id = req.params.id;
   
@@ -59,7 +59,40 @@ router.get("/get/:id", (req, res) => {
     }
   });
 });
+
+router.get("/gets/:id", (req, res) => {
+  const id = req.params.id;
+  
+  let requete;
+  requete = "SELECT * ";
+  requete += "FROM comments ";
+  requete += "where id = ?";
+  //"SELECT * FROM comments WHERE fk_ressource = ?"
+  db.query(requete, id, (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
 //fin get
+
+router.post("/editComment", (req, res) => {
+  const content = req.body.content;
+  const id = req.body.id;
+  const date_edition = req.body.date_edition;
+  db.query("UPDATE comments SET content = ?, date_edition = ? WHERE id = ?", [content,date_edition,id],  (err, result) => {
+    if (err) 
+    {
+      console.log(err);
+    } 
+    else {
+      res.send({ verif: true });
+      console.log('Commentaire '+id+" changé");
+    }
+  });
+});
 
 //delete
 router.delete("/delete/:id", (req, res) => {

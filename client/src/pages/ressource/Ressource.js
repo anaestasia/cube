@@ -12,16 +12,25 @@ import Axios from "axios";
 export default function RessourcePage () {
 
   const [connecte, setConnecte] = useState("");
+  const [role, setRole] = useState("");
+  const [ecrireCommentaire, setEcrireCommentaire] = useState(false);
 
   useEffect(() => 
   {
     Axios.get(process.env.REACT_APP_SITE_URL_API+"/users/login").then((response) => {
       if (response.data.loggedIn === true) {
-        setConnecte(true);      
+        setConnecte(true);   
+        setRole(response.data.user[0].fk_role);
       }
       else {setConnecte(false)}
     });
-  });
+    if(connecte === true && role >= 2)
+    {
+      setEcrireCommentaire(true);
+    }
+
+  }, [connecte, role]);
+  
   
   return (
     <Container fluid>
@@ -34,7 +43,7 @@ export default function RessourcePage () {
                 <Row className="row-ressource "><Ressource /></Row>
                 <h1>Commentaires :</h1><br /><br />
                 <Row className="row-comment"><Comments /></Row><br />
-                <Row className="row-comment"> {connecte ? <WriteComment /> : <Col />}</Row>
+                <Row className="row-comment"> {ecrireCommentaire ? <WriteComment /> : <Col />}</Row>
             </Col>
         </Row>
     </Container>

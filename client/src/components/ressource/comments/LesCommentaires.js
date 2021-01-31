@@ -8,6 +8,7 @@ import Col from 'react-bootstrap/Col';
 
 const App = () => {
   const [idUser, setIdUser] = useState("");
+  const [role, setRole] = useState("");
 
   const { id } = useParams();
   
@@ -28,6 +29,7 @@ const App = () => {
     axios.get(process.env.REACT_APP_SITE_URL_API+"/users/login").then((response) => {
       if (response.data.loggedIn === true) {
         setIdUser(response.data.user[0].id);
+        setRole(response.data.user[0].fk_role);
       }
     });
     }, 1000);
@@ -48,7 +50,7 @@ const App = () => {
   return (
     <Row>
       <Col>
-      <Posts posts={currentPosts}  idUser={idUser}/>
+      <Posts posts={currentPosts}  idUser={idUser} role={role}/>
       <Pagination
         postsPerPage={postsPerPage}
         totalPosts={posts.length}
