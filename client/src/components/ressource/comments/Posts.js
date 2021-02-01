@@ -30,7 +30,6 @@ const Posts = ({ posts , idUser , role}) => {
   const handleCkeditorState = (event,editor) => {
     const data = editor.getData();
     setContenuCommentsCkeditor(data);
-    console.log(CKEditor);
   }
 
   const editComments = () => 
@@ -81,8 +80,7 @@ const Posts = ({ posts , idUser , role}) => {
       <Row>
         <Col className="ml-5">
       {posts.map(post => ( 
-        //li obligatoire sinon erreur dans la console
-      <li key={post.id} style={{ listStyle: 'none' }} >
+      <div key={post.id} >
         <Card style={{ width: '65rem' }}>
           <Card.Title>{post.nom}{" "}{post.prénom}</Card.Title>
           <span>Date création le {post.date_creation.substring(8,10)}/{post.date_creation.substring(5,7)}/{post.date_creation.substring(0,4)} à {post.date_creation.substring(11,19)}</span>
@@ -94,7 +92,7 @@ const Posts = ({ posts , idUser , role}) => {
           {post.date_creation !== post.date_edition && <>Dernière modification : {post.date_edition.substring(8,10)}/{post.date_edition.substring(5,7)}/{post.date_edition.substring(0,4)} à {post.date_edition.substring(11,19)} <br /></> }
            {post.nb_like} ♡ 
         </Card><br />
-      </li>
+      </div>
       ))}
       </Col>
     </Row></>

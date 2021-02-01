@@ -79,7 +79,17 @@ app.post("/getid", (req, res) => {
                   lesCategories += resultCatRess[i].categoriename+', ';
                 }
               }
-              res.send({ result, lesCategories, existe: true });
+              
+              db.query("select * FROM users_ressources INNER JOIN users ON users.id = users_ressources.fk_user  WHERE users_ressources.fk_ressource = ?", id, (err, user) => {
+                if (err) {
+                  console.log(err);
+                } else {
+                  console.log(user)
+                  res.send({ result, lesCategories, user, existe: true });
+
+                }
+              });
+
             }
           });
           
@@ -93,6 +103,22 @@ app.post("/getid", (req, res) => {
   });
 });
 //fin get  
+
+app.post("/editRessource", (req, res) => {
+  const content = req.body.content;
+  const id = req.body.id;
+  const date_edition = req.body.date_edition;
+  db.query("UPDATE ressources SET content = ?, date_edition = ? WHERE id = ?", [content,date_edition,id],  (err, result) => {
+    if (err) 
+    {
+      console.log(err);
+    } 
+    else {
+      res.send({ verif: true });
+      console.log('ressource '+id+" changé");
+    }
+  });
+});
 
 //delete
 app.delete("/delete/:id", (req, res) => {
