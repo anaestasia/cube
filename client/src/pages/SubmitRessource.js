@@ -11,7 +11,6 @@ import { CKEditor } from '@ckeditor/ckeditor5-react';
 export default function FormRessource() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-
   const [status, setStatus] = useState("");
   const [statusDB, setStatusDB] = useState([]);
 
