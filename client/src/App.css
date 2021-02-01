@@ -14,5 +14,8 @@ div#root {
   width: 100%;
 }
 
+div.row {
+  margin: 0;
+}
 
 
