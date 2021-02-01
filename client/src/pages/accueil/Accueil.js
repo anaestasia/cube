@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import LoginForm from '../../components/form/LoginForm';
-import BtnDeconnexion from '../../components/btndeconnexion/btndeconnexion';
+import BtnDeconnexion from '../../components/button/btndeconnexion/btndeconnexion';
 import "./Accueil.css";
 import React, { useEffect, useState } from "react";
 import Axios from "axios";

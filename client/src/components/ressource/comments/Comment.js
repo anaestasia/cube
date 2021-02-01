@@ -5,6 +5,7 @@ import Pagination from './Pagination';
 import axios from 'axios';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import './Comment.css';
 
 const App = () => {
   const [idUser, setIdUser] = useState("");
@@ -48,16 +49,14 @@ const App = () => {
   const paginate = pageNumber => setCurrentPage(pageNumber);
 
   return (
-    <Row>
       <Col>
-      <Posts posts={currentPosts}  idUser={idUser} role={role}/>
-      <Pagination
-        postsPerPage={postsPerPage}
-        totalPosts={posts.length}
-        paginate={paginate}
-      />
+        <Posts posts={currentPosts}  idUser={idUser} role={role}/>
+        <Pagination
+          postsPerPage={postsPerPage}
+          totalPosts={posts.length}
+          paginate={paginate}
+        />
       </Col>
-    </Row>
   );
 };
 

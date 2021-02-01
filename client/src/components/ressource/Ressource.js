@@ -165,8 +165,11 @@ import './Ressource.css';
             </Modal>
 
             <div className="ressource-container">
-                <h2>{title} <i class="fas fa-external-link-alt"></i></h2>
-                <span><i class="fas fa-ellipsis-v"></i>{nbLike}<i class="far fa-heart"></i><i class="fas fa-reply"></i></span>
+                <div>
+                    <h2>{title} <i class="fas fa-external-link-alt"></i></h2>
+                    <span><i class="fas fa-thumbs-up"></i> {nbLike}</span>
+                    <span><i class="fas fa-ellipsis-v"></i><i class="far fa-heart"></i><i class="fas fa-reply"></i></span>
+                </div>
                 <ul>
                     <li class="ressource-categorie"> <i class="fas fa-folder-open"> </i> Catégorie : {categorie}</li>
                     <li class="ressource-type-relation"> <i class="fas fa-users"></i> Type(s) de relation : {typeRelation} </li>
