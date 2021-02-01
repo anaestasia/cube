@@ -104,6 +104,7 @@ app.post("/getid", (req, res) => {
 });
 //fin get  
 
+//update
 app.post("/editRessource", (req, res) => {
   const content = req.body.content;
   const id = req.body.id;
@@ -119,6 +120,24 @@ app.post("/editRessource", (req, res) => {
     }
   });
 });
+
+
+app.post("/addVue", (req, res) => {
+  const nb_consultation = req.body.nb_consultation;
+  const id = req.body.id;
+  db.query("UPDATE ressources SET nb_consultation = ? WHERE id = ?", [nb_consultation,id],  (err, result) => {
+    if (err) 
+    {
+      console.log(err);
+    } 
+    else {
+      res.send({ verif: true });
+      console.log('nombre de vue :'+nb_consultation);
+    }
+  });
+});
+
+//fin update
 
 //delete
 app.delete("/delete/:id", (req, res) => {

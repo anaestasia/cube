@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import Posts from './Posts';
 import Pagination from './Pagination';
 import axios from 'axios';
-import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './Comment.css';
 

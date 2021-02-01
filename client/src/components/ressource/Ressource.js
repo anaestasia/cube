@@ -30,6 +30,8 @@ import './Ressource.css';
         const [auteur, setAuteur] = useState("");
         const [date_creation, setDate_creation] = useState("");
         const [date_edition, setDate_edition] = useState("");
+        const [nombreVue, setNombreVue] = useState("");
+        const [vueIncremente, setVueIncremente] = useState(false);
         
         Axios.defaults.withCredentials = true;
 
@@ -59,7 +61,18 @@ import './Ressource.css';
                                     setTitle(response.data.result[0].title);
                                     setNbLike(response.data.result[0].nb_like);
                                     setDate_creation(response.data.result[0].date_creation);
+                                    setNombreVue(response.data.result[0].nb_consultation);
                                     setDate_edition(response.data.result[0].date_edition);
+                                    //ajout nombre de vue :
+                                    if(!vueIncremente)
+                                    {
+                                        Axios.post(process.env.REACT_APP_SITE_URL_API+"/ressources/addVue", {
+                                            id: id,
+                                            nb_consultation: nombreVue+1,
+                                            });
+                                            setVueIncremente(true)
+                                    }
+                                    //fin ajout nombre de vue 
                                 }
                                 else
                                 {
@@ -81,6 +94,17 @@ import './Ressource.css';
                                 setDate_edition(response.data.result[0].date_edition);
                                 setAuteur(response.data.user[0].lastname + " "+ response.data.user[0].firstname);
                                 setIdUserAuteur(response.data.user[0].fk_user);
+                                setNombreVue(response.data.result[0].nb_consultation);
+                                //ajout nombre de vue :
+                                if(!vueIncremente)
+                                {
+                                    Axios.post(process.env.REACT_APP_SITE_URL_API+"/ressources/addVue", {
+                                        id: id,
+                                        nb_consultation: nombreVue+1,
+                                        });
+                                        setVueIncremente(true)
+                                }
+                                //fin ajout nombre de vue 
                             }
                         }
                         else
@@ -104,7 +128,7 @@ import './Ressource.css';
               });
             
             
-        }, [id]);
+        }, [id,nombreVue,vueIncremente]);
 
         const handleClose = () => setShow(false);
 
@@ -181,6 +205,7 @@ import './Ressource.css';
                     <div>Date création : {date_creation.substring(8,10)}/{date_creation.substring(5,7)}/{date_creation.substring(0,4)} à {date_creation.substring(11,19)}</div>
                     {date_creation !== date_edition && <>Dernière modification : {date_edition.substring(8,10)}/{date_edition.substring(5,7)}/{date_edition.substring(0,4)} à {date_edition.substring(11,19)} <br /></> }
                     {(idUserConnecte === idUserAuteur || role >=3) && <Button variant="primary" onClick={() => {handleShow(id); }}> Edit </Button> }
+                    Nombre de vue : {nombreVue}
             </div>
             </>
         );
