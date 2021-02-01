@@ -55,14 +55,16 @@ import './Ressource.css';
                                 {
                                     setCategorie(response.data.lesCategories);
                                     setTypeRelation(response.data.result[0].namerelationship);
-                                    setTypeRessource(response.data.result[0].title);
-                                    setMessage(response.data.result[0].content); 
-                                    setContenuCommentsCkeditor(response.data.result[0].content);
+                                    setTypeRessource(response.data.result[0].title); //a modifier
+                                    setMessage(response.data.result[0].content);  
+                                    setContenuCommentsCkeditor(response.data.result[0].content); 
                                     setTitle(response.data.result[0].title);
                                     setNbLike(response.data.result[0].nb_like);
                                     setDate_creation(response.data.result[0].date_creation);
-                                    setNombreVue(response.data.result[0].nb_consultation);
                                     setDate_edition(response.data.result[0].date_edition);
+                                    setAuteur(response.data.user[0].lastname + " "+ response.data.user[0].firstname);
+                                    setIdUserAuteur(response.data.user[0].fk_user);
+                                    setNombreVue(response.data.result[0].nb_consultation);
                                     //ajout nombre de vue :
                                     if(!vueIncremente)
                                     {
@@ -85,7 +87,7 @@ import './Ressource.css';
                             {
                                 setCategorie(response.data.lesCategories);
                                 setTypeRelation(response.data.result[0].namerelationship);
-                                setTypeRessource(response.data.result[0].title);
+                                setTypeRessource(response.data.result[0].title); //a modifier
                                 setMessage(response.data.result[0].content);  
                                 setContenuCommentsCkeditor(response.data.result[0].content); 
                                 setTitle(response.data.result[0].title);

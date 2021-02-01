@@ -9,12 +9,13 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 
 export default function FormRessource() {
+
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [status, setStatus] = useState("");
   const [statusDB, setStatusDB] = useState([]);
 
-  // const [typeRessource, setTypeRessource] = useState("");
+  const [idUser, setIdUser] = useState("");
   // const [relationshipRessource, setRelationshipRessource] = useState("");
   
   const [submitRessourceStatus, setSubmitRessourceStatus] = useState("");
@@ -40,6 +41,7 @@ export default function FormRessource() {
           fk_type_ressource: 1,
           fk_relationship_ressource: 1,
           fk_status: status,
+          idUser: idUser,
         }).then((response) => {
           console.log(response);
           setSubmitRessourceStatus(response.data.message);
@@ -57,6 +59,11 @@ export default function FormRessource() {
     Axios.get(process.env.REACT_APP_SITE_URL_API+"/status/get").then((response) => {
         setStatusDB(response.data);
         console.log(response.data)
+    });
+    Axios.get(process.env.REACT_APP_SITE_URL_API+"/users/login").then((response) => {
+      if (response.data.loggedIn === true) {
+        setIdUser(response.data.user[0].id);
+      }
     });
   }, []);
 

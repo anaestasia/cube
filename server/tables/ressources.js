@@ -17,6 +17,7 @@ app.post("/create", (req, res) => {
     const fk_type_ressource = req.body.fk_type_ressource;
     const fk_relationship_ressource = req.body.fk_relationship_ressource;
     const fk_status = req.body.fk_status;
+    const idUser = req.body.idUser;
     
     db.query(
       "INSERT INTO ressources (title,content,nb_consultation,nb_like,approved,archived,date_creation,date_edition,deleted,fk_type_ressource,fk_relationship_ressource,fk_status) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)",
@@ -25,7 +26,17 @@ app.post("/create", (req, res) => {
         if (err) {
           console.log(err);
         } else {
-          res.send("Valeur insérée !");
+          db.query(
+            "INSERT into users_ressources (fk_user,fk_ressource) VALUES (?, (SELECT id FROM ressources WHERE date_creation = ?))",
+            [idUser,date_creation],
+            (err, result) => {
+              if (err) {
+                console.log(err);
+              } else {
+                res.send("Valeur insérée !");
+              }
+            }
+          );
         }
       }
     );
