@@ -33,7 +33,7 @@ export default function WriteComment () {
     const data = editor.getData();
     setCkeditor(data);
     setDonneCkeditor(data);
-    console.log(Ckeditor);
+    //console.log(Ckeditor);
   }
 
   function envoyerMSG()

@@ -53,6 +53,16 @@ app.post("/create", (req, res) => {
       }
     });
   });
+
+  app.get("/getNonAp", (req, res) => {
+    db.query("SELECT * FROM ressources where approved = 0", (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    });
+  });
 //fin get  
 
 //get 1 ressource
