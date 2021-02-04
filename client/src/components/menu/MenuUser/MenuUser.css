@@ -1,7 +1,3 @@
-@font-face {
-    font-family: 'Oswald';
-    src: local('Oswald') url('../../../fonts/Oswald/Oswald-SemiBold.ttf') format("ttf");
-}
 .sub-menu ul li {
     font: 16px 'Roboto', sans-serif;
 }

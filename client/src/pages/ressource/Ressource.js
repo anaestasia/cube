@@ -8,6 +8,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Axios from "axios";
+import Footer from "../../components/footer/Footer";
 
 export default function RessourcePage () {
 
@@ -50,6 +51,7 @@ export default function RessourcePage () {
               </Row>
             </Col>
         </Row>
+        <Footer/>
     </Container>
   );
 }

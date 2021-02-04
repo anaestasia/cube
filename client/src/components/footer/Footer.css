@@ -1,107 +1,110 @@
-@font-face {
-  font-family: 'Roboto';
-  src: local('Roboto'), url(./fonts/Roboto/Roboto-Medium.ttf) format('truetype');
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #222320;
+    color: #ffffff;
+    width: 100%;
+    padding: 15px;
 }
-
-@font-face {
-  font-family: 'Oswald';
-  src: local('Oswald'), url(./fonts/Oswald/Oswald-SemiBold.ttf) format('truetype');
+.footer .logo-footer {
+    margin: auto;
+    padding-left: 1%;
 }
-
-@font-face {
-  font-family: 'SegoePrint';
-  src: local('SegoePrint'), url(./fonts/SegoePrint/SegoePrint.ttf) format('truetype');
+.footer .img-logo-footer {
+    width: 100%;
 }
-
-body {
-  margin: 0;
-  font-family: Roboto, sans-serif;
-  font-size: 16px;
-  color: #222320;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  height: 100%;
-  width: 100%;
-  min-height: 100vh;
+.footer .presentation {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: auto;
+    font-size: 14px;;
 }
-
-a:hover,
-.link:hover {
-  color: #febd59;
+.presentation .slogan {
+    font: italic 18px 'SegoePrint', sans-serif;
+    color: #febd59;
 }
-h1 {
-  font-size: 24px;
-  font-family: 'Oswald', sans-serif;
+.presentation .copyright {
+    font-size: 12px;
+    padding: 15px;
 }
-h2 {
-  font-size: 20px;
-  font-family: 'Oswald', sans-serif;
+.footer .services {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+.footer .services {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+.footer .services h3 {
+    font-size: 20px;
+    font-weight: bold;
+}
+.footer .services ul {
+    padding-left: 15px;
+}
+.footer .services ul li {
+    list-style-type: none;
+    font-size: 14px;
 }
 
 /* ----------------------- */
 /* ----- MAX 1200 PX ----- */
 /* ----------------------- */
 @media (max-width: 1200px) {
-  body {
-    font-size: 14px;
-  }
+
 }
 
 /* --------------------------------- */
 /* ----- MAX 1024 PX / Laptop  ----- */
 /* --------------------------------- */
 @media (max-width: 1024px){
-  body {
-    font-size: 14px;
-  }
-  h1 {
-    font-size: 20px;
-  }
-  h2 {
-    font-size: 18px;
-  }
+
 }
 
 /* ----------------------- */
 /* ----- MAX 966 PX  ----- */
 /* ----------------------- */
 @media (max-width: 966px){
-  
+
 }
 
 /* ---------------------- */
 /* ----- MAX 840 PX ----- */
 /* ---------------------- */
 @media (max-width: 840px) {
-  
+
 }
 
 /* ------------------------ */
 /* ----- MAX 800 PX   ----- */
 /* ------------------------ */
 @media (max-width: 800px){
-  
+
 }
 
 /* ---------------------------------- */
 /* ----- MAX 768 PX / Tablette  ----- */
 /* ---------------------------------- */
 @media (max-width: 768px) {
-  
+
 }
 
 /* ---------------------- */
 /* ----- MAX 710 PX ----- */
 /* ---------------------- */
 @media (max-width: 709px) {
-  
+
 }
 
 /* ----------------------- */
 /* ----- MAX 660 PX  ----- */
 /* ----------------------- */
 @media (max-width: 660px){
-  
+
 }
 
 /* ---------------------- */
@@ -116,19 +119,19 @@ h2 {
 /* ----- MAX 425 PX / L mobile  ----- */
 /* ---------------------------------- */
 @media (max-width: 425px){
-  
+
 }
 
 /* ---------------------------------- */
 /* ----- MAX 375 PX / M mobile  ----- */
 /* ---------------------------------- */
 @media (max-width: 375px){
-  
+
 }
 
 /* ---------------------------------- */
 /* ----- MAX 320 PX / S mobile  ----- */
 /* ---------------------------------- */
 @media (max-width: 320px){
-  
+
 }

@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import './fonts/SegoePrint/SegoePrint.ttf';
+import './fonts/Roboto/Roboto-Light.ttf';
+import './fonts/Oswald/Oswald-Medium.ttf';
 
 ReactDOM.render(
     <App />,
