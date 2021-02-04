@@ -81,10 +81,10 @@ const Posts = ({ posts , idUser , role}) => {
         <Col className="ml-5">
       {posts.map(post => ( 
       <div key={post.id} >
-        <Card style={{ width: '65rem' }}>
+        <Card>
           <Card.Title>{post.nom}{" "}{post.prénom}</Card.Title>
           <span>Date création le {post.date_creation.substring(8,10)}/{post.date_creation.substring(5,7)}/{post.date_creation.substring(0,4)} à {post.date_creation.substring(11,19)}</span>
-          {(post.fk_user === idUser || role >=3) && <Button variant="primary" onClick={() => {handleShow(post.id); }}> Edit </Button>  }
+          {(post.fk_user === idUser || role >=4) && <Button variant="primary" onClick={() => {handleShow(post.id); }}> Edit </Button>  }
           <hr />
             <Card.Text dangerouslySetInnerHTML={{__html: post.content}}>
           </Card.Text>

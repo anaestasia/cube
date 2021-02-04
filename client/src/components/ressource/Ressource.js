@@ -55,7 +55,7 @@ import './Ressource.css';
                                 {
                                     setCategorie(response.data.lesCategories);
                                     setTypeRelation(response.data.result[0].namerelationship);
-                                    setTypeRessource(response.data.result[0].title); //a modifier
+                                    setTypeRessource(response.data.result[0].nametyperss); //a modifier
                                     setMessage(response.data.result[0].content);  
                                     setContenuCommentsCkeditor(response.data.result[0].content); 
                                     setTitle(response.data.result[0].title);
@@ -87,7 +87,7 @@ import './Ressource.css';
                             {
                                 setCategorie(response.data.lesCategories);
                                 setTypeRelation(response.data.result[0].namerelationship);
-                                setTypeRessource(response.data.result[0].title); //a modifier
+                                setTypeRessource(response.data.result[0].nametyperss); //a modifier
                                 setMessage(response.data.result[0].content);  
                                 setContenuCommentsCkeditor(response.data.result[0].content); 
                                 setTitle(response.data.result[0].title);
@@ -206,7 +206,7 @@ import './Ressource.css';
                     <div>Auteur : {auteur}</div>
                     <div>Date création : {date_creation.substring(8,10)}/{date_creation.substring(5,7)}/{date_creation.substring(0,4)} à {date_creation.substring(11,19)}</div>
                     {date_creation !== date_edition && <>Dernière modification : {date_edition.substring(8,10)}/{date_edition.substring(5,7)}/{date_edition.substring(0,4)} à {date_edition.substring(11,19)} <br /></> }
-                    {(idUserConnecte === idUserAuteur || role >=3) && <Button variant="primary" onClick={() => {handleShow(id); }}> Edit </Button> }
+                    {(idUserConnecte === idUserAuteur || role >=4) && <Button variant="primary" onClick={() => {handleShow(id); }}> Edit </Button> }
                     Nombre de vue : {nombreVue}
             </div>
             </>
