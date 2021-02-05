@@ -15,7 +15,7 @@ export default function MyRessources() {
             </Col>
 
             <Col xl={9} className="col-content-page">
-              <Row className="my-ressources-list">Voici mes ressources (celles que j'ai créées, que je suis où que j'ai ajouté à ma liste pour les consulter plus tard)</Row>
+              <Row className="my-ressources-list">Voici mes ressources (celles que j'ai créé, que je suis ou que j'ai ajouté à ma liste pour les consulter plus tard)</Row>
             </Col>
         </Row>
         <Footer/>
