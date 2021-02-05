@@ -3,11 +3,15 @@ import Axios from "axios";
 import "../App.css";
 import { Link } from 'react-router-dom';
 import SubmitBtn from "../components/form/SubmitBtn/SubmitBtn";
-// import MultipleSelector from "../components/button/multipleselector/MultipleSelector";
 import '@ckeditor/ckeditor5-build-classic/build/translations/fr.js';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import { Multiselect } from 'multiselect-react-dropdown';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Menu from '../components/menu/Menu';
+import Footer from '../components/footer/Footer';
 
 export default function FormRessource() {
 
@@ -134,54 +138,67 @@ const onRemove = (selectedList, selectedItem) =>
 }
 
   return (
-    <div className="App">
-      <div className="formRessource">
-        <h1>Soumettre une ressource</h1>
-         <form onSubmit={submitRessource}> 
+    <Container fluid>
+        <Row className="parent-row">
+            <Col xl={3} className="col-menu">
+                <Menu />
+            </Col>
 
-          <label>Titre :</label>
-          <input type="text" onChange={(e) => {setTitle(e.target.value); }} required/>
-          <br />
-          <label> Contenu :</label>
-          <CKEditor 
-              editor={ClassicEditor}
-              data={content}
-              onChange={handleCkeditorState}
-              config={ {
-                language: 'fr',
-              } }
-            />
-          <br />
-          <Multiselect
-            options={categoriesDB} // Options to display in the dropdown
-            displayValue="name" // Property name to display in the dropdown options
-            onSelect={onSelect}
-            onRemove={onRemove} // Function will trigger on remove event
-          />
-          <br />
-          <select name="type-ressource" id="type-ressource" required onChange={(e) => {setTypesressources(e.target.value); }}>
-            <option disabled selected>--Sélectionner un type de ressource--</option>
-            {optionSelectTypeRessources}
-          </select>
-          <br />
-          <br />
-          <select name="relationship-ressource" id="relationship-ressource" required onChange={(e) => {setRelationshipRessource(e.target.value); }}>
-            <option disabled selected>--Sélectionner un type de relationship Ressource--</option>
-            {optionSelectRelationshipRessourceDB}
-          </select>
-          <br />
-          <br />
-          <select name="status-ressource" id="status-ressource" required onChange={(e) => {setStatus(e.target.value); }}>
-            <option disabled selected>--Sélectionner le statut--</option>
-            {optionSelectStatus}
-          </select>
-          <SubmitBtn inputText="Envoyer" />
-          <Link to="/"> retour</Link>
-        </form>
-      <h1>{submitRessourceStatus}</h1>
-        
-      </div>
+            <Col xl={9} className="col-content-page">
+              <Row className="submit-ressource">
+                <div className="formRessource">
 
-    </div>
+                  <h1>Soumettre une ressource</h1>
+                  <form onSubmit={submitRessource}> 
+
+                    <label>Titre :</label>
+                    <input type="text" onChange={(e) => {setTitle(e.target.value); }} required/>
+
+                    <label> Contenu :</label>
+                    <CKEditor 
+                        editor={ClassicEditor}
+                        data={content}
+                        onChange={handleCkeditorState}
+                        config={ {
+                          language: 'fr',
+                        } }
+                      />
+
+                    <Multiselect
+                      options={categoriesDB} // Options to display in the dropdown
+                      displayValue="name" // Property name to display in the dropdown options
+                      onSelect={onSelect}
+                      onRemove={onRemove} // Function will trigger on remove event
+                    />
+
+                    <select name="type-ressource" id="type-ressource" required onChange={(e) => {setTypesressources(e.target.value); }}>
+                      <option disabled selected>--Sélectionner un type de ressource--</option>
+                      {optionSelectTypeRessources}
+                    </select>
+
+                    <select name="relationship-ressource" id="relationship-ressource" required onChange={(e) => {setRelationshipRessource(e.target.value); }}>
+                      <option disabled selected>--Sélectionner un type de relationship Ressource--</option>
+                      {optionSelectRelationshipRessourceDB}
+                    </select>
+
+                    <select name="status-ressource" id="status-ressource" required onChange={(e) => {setStatus(e.target.value); }}>
+                      <option disabled selected>--Sélectionner le statut--</option>
+                      {optionSelectStatus}
+                    </select>
+
+                    <SubmitBtn inputText="Envoyer" />
+                    <Link to="/">Retour</Link>
+
+                  </form>
+
+                  <h1>{submitRessourceStatus}</h1>
+                  
+                </div>
+              </Row>
+            </Col>
+        </Row>
+        <Footer/>
+    </Container>
+    
   );
 }

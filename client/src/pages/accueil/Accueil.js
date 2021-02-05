@@ -37,7 +37,7 @@ export default function Accueil() {
 
         <div className="btn-discover">
           <img src="/img/discover.png" className="App-logo-menu" alt="logo" />
-          <Link to="/main">Découvrir</Link>
+          <Link to="/catalog">Découvrir</Link>
         </div>
       </div>
 
