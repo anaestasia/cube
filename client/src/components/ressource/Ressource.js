@@ -168,7 +168,7 @@ import './Ressource.css';
             <>
             <Modal size="lg" show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                <Modal.Title>Modifier ton commentaire </Modal.Title>
+                <Modal.Title>Modifier la ressource </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                 <CKEditor 
