@@ -15,6 +15,7 @@ import Ressourcenonconnecte from "./pages/ressourcenonconnecte/ressourcenonconne
 import Admin from "./pages/Admin/Admin"
 import SubmitRessource from "./pages/SubmitRessource";
 import Profil from "./pages/profil/profil";
+import AdminApprovedRessources from "./pages/Admin/approvedRessources/ApprovedRessources"
 
 require('dotenv').config()
 
@@ -45,6 +46,7 @@ function App() {
   let admin;
   let submitRessource;
   let profil;
+  let adminApprovedRessources;
 
   if(role >= 0) //pas connecte
   {
@@ -58,6 +60,7 @@ function App() {
     admin = false;
     submitRessource = false;
     profil = false;
+    adminApprovedRessources = false;
   }
   if (role >= 1) //Mail non verifé 
   {
@@ -73,6 +76,7 @@ function App() {
   if (role >= 3) //Modérateur
   {
     admin = true;
+    adminApprovedRessources = true;
   }
   if (role >= 4) //Admin
   {
@@ -94,6 +98,7 @@ function App() {
         <Route exact path="/token/:token" render={(props) =>  <Token />} />
         <Route exact path="/dashboard" render={(props) => dashboard ? <DashBoard /> : <NoAccess />} />
         <Route exact path="/admin" render={(props) => admin ? <Admin /> : <NotFound />} />
+        <Route exact path="/admin/approvedRessources" render={(props) => adminApprovedRessources ? <AdminApprovedRessources /> : <NotFound />} />
         <Route exact path="/submitressource" render={(props) => submitRessource ? <SubmitRessource /> : <NoAccess />} />
         <Route exact path="/profil" render={(props) => profil ? <Profil /> : <NoAccess />} />
         <Route component={NotFound} />

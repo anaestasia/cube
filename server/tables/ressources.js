@@ -53,17 +53,144 @@ app.post("/create", (req, res) => {
       }
     });
   });
+  
+  function ajoutUser(result) {
+    return new Promise((resolve,reject)=>{
+      let i = 0;
+      let f = 0;
+      for (let num of result) {
+        let requeteUser = "SELECT * FROM users where id = ? ";
+        db.query(requeteUser, result[f].fk_user, (err, resultUser) => 
+        {
+          if (err) {
+            console.log(err);
+          }
+          else
+          {
+            // console.log(h);
+            result[i].user = resultUser[0].lastname + " "+ resultUser[0].firstname;
+            // console.log(result)
+            // console.log(resultUser);
+            // console.log(resultUser[0].fk_user);
+            i++;
+          }
+          // console.log(resultRess)
+          if(result.length === i)
+          {
+            resolve();
+          }
+        });
+        f++;
+      }
+    });
+   }
 
-  app.get("/getNonAp", (req, res) => {
-    db.query("SELECT * FROM ressources where approved = 0", (err, result) => {
+  function ajoutIdUser(result) {
+    return new Promise((resolve,reject)=>{
+    let f = 0;
+    let h = 0;
+      for (let num of result) {
+        let requeteUser = "SELECT * FROM users_ressources where fk_ressource = ? ";
+        db.query(requeteUser, result[f].idRessource, (err, resultRes) => 
+        {
+          if (err) {
+            console.log(err);
+          }
+          else
+          {
+            // console.log(h);
+            result[h].fk_user = resultRes[0].fk_user;
+             console.log(result[h].idRessource)
+             console.log(resultRes);
+             console.log(resultRes[0].fk_user);
+            h++;
+          }
+          // console.log(resultRess)
+          if(result.length === h)
+          {
+            resolve();
+          }
+        });
+        f++;
+      }
+    });
+   }
+  
+  function ajoutCategories(result) {
+  return new Promise((resolve,reject)=>{
+    let f = 0;
+    let g = 0;
+    for (let num of result) {
+      let requeteCategorie = "SELECT * , categories.name as 'categoriename' FROM categories_ressources INNER JOIN categories ON categories.id = categories_ressources.fk_category where fk_ressource = ? ";
+      db.query(requeteCategorie, result[f].idRessource, (err, resultCatRess) => 
+      {
+        if (err) {
+          console.log(err);
+        }
+        else
+        {
+          lesCategories ="";
+          //debut for
+          for(let i = 0; i <resultCatRess.length; i++)
+          {
+            if(i === resultCatRess.length-1)
+            {
+              lesCategories += resultCatRess[i].categoriename;
+            }
+            else
+            {
+              lesCategories += resultCatRess[i].categoriename+', ';
+            }
+          }
+          //fin for
+          // console.log(lesCategories)
+          // console.log(g);
+          result[g].categories = lesCategories
+          g++;
+        }
+        // console.log(lesCategories)
+        if(result.length === g)
+        {
+          resolve();
+        }
+      });
+      f++;
+    }
+  });
+ }
+
+  app.get("/getNonAp",(req, res) => {
+    
+    let requete;
+    requete = "SELECT *, ressources.id AS 'idRessource', types_ressources.name AS 'nametyperss' ";
+    requete += ", relationship_ressources.name AS 'namerelationship' ";
+    requete += ", status.name AS 'namestatus'  ";
+    requete += "FROM ressources ";
+    requete += "INNER JOIN types_ressources ON types_ressources.id = ressources.fk_type_ressource ";
+    requete += "INNER JOIN relationship_ressources ON relationship_ressources.id = ressources.fk_relationship_ressource ";
+    requete += "INNER JOIN status ON status.id = ressources.fk_status ";
+    requete += "where deleted = 0 and approved = 0";
+    db.query(requete, (err, result) => {
       if (err) {
         console.log(err);
       } else {
-        res.send(result);
+        if (result.length > 0) {
+
+          (async function() {
+            await ajoutCategories(result)
+            await ajoutIdUser(result)
+            await ajoutUser(result)
+            res.send(result);
+
+         })();
+        }
+        else
+        {
+          res.send({ existe: false });
+        }
       }
-    });
   });
-//fin get  
+});//fin get  
 
 //get 1 ressource
 app.post("/getid", (req, res) => {
@@ -158,6 +285,26 @@ app.post("/addVue", (req, res) => {
   });
 });
 
+app.post("/ressourceApprouved", (req, res) => {
+  const id = req.body.id;
+  console.log(id);
+  db.query("UPDATE ressources SET approved = true WHERE id = ?", id,  (err, result) => {
+    if (err) 
+    {
+      console.log(err);
+    } 
+  });
+});
+
+app.post("/ressourceDeleted", (req, res) => {
+  const id = req.body.id;
+  db.query("UPDATE ressources SET deleted = true WHERE id = ?", id,  (err, result) => {
+    if (err) 
+    {
+      console.log(err);
+    } 
+  });
+});
 //fin update
 
 //delete
