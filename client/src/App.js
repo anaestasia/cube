@@ -15,6 +15,7 @@ import MyRessources from "./pages/myRessources/MyRessources";
 import MyFavorites from "./pages/myFavorites/MyFavorites";
 import Admin from "./pages/Admin/Admin"
 import SubmitRessource from "./pages/SubmitRessource";
+import AdminApprovedRessources from "./pages/Admin/approvedRessources/ApprovedRessources"
 import Profile from "./pages/profile/Profile";
 
 require('dotenv').config()
@@ -46,6 +47,7 @@ function App() {
   let ressourceNonCo ;
   let admin;
   let submitRessource;
+  let adminApprovedRessources;
   let profile;
 
   if(role >= 0) //pas connecte
@@ -60,6 +62,7 @@ function App() {
     ressourceNonCo = true;
     admin = false;
     submitRessource = false;
+    adminApprovedRessources = false;
     profile = false;
   }
   if (role >= 1) //Mail non verifé 
@@ -76,6 +79,7 @@ function App() {
   if (role >= 3) //Modérateur
   {
     admin = true;
+    adminApprovedRessources = true;
   }
   if (role >= 4) //Admin
   {
@@ -107,6 +111,8 @@ function App() {
 
         {/* BO */}
         <Route exact path="/admin" render={(props) => admin ? <Admin /> : <NotFound />} />
+        <Route exact path="/admin/approvedRessources" render={(props) => adminApprovedRessources ? <AdminApprovedRessources /> : <NotFound />} />
+
 
         <Route component={NotFound} />
       </Switch>
