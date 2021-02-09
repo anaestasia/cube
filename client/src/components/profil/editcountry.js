@@ -35,7 +35,7 @@ export default function EditCountry() {
     }
 
     return (
-        <div >
+        <div className="profile-field">
             <form onSubmit={validerChangement}>
                 <label>Pays :</label><br />
                 <input id='countryId' className="pass-input" type="text" onChange={(e) => { setCountry(e.target.value) }} /><br /><br />

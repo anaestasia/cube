@@ -13,6 +13,7 @@ import EditStreetName from '../../components/profil/editstreetname';
 import EditCity from '../../components/profil/editcity';
 import EditCountry from '../../components/profil/editcountry';
 import EditPostalCode from '../../components/profil/editpostalcode';
+import './Profile.css';
 
 
 export default function Profile() {
@@ -27,7 +28,7 @@ export default function Profile() {
               </Col>
 
               <Col xl={9} className="col-content-page">
-                <Row className="my-ressources-list">
+                <Row className="profil-form">
                   <EditMail />
                   <EditPassword />
                   <EditFirstname />

@@ -35,7 +35,7 @@ export default function EditLastName() {
     }
 
     return (
-        <div >
+        <div className="profile-field">
             <form onSubmit={validerChangement}>
                 <label>Nom :</label><br />
                 <input id='lastName' className="pass-input" type="text" onChange={(e) => { setNom(e.target.value) }} /><br /><br />

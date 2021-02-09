@@ -35,7 +35,7 @@ export default function EditCity() {
     }
 
     return (
-        <div >
+        <div className="profile-field">
             <form onSubmit={validerChangement}>
                 <label>Nom de la ville :</label><br />
                 <input id='cityId' className="pass-input" type="text" onChange={(e) => { setCity(e.target.value) }} /><br /><br />

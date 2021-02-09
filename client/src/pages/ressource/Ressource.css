@@ -1,21 +1,3 @@
-.container-fluid {
-    height: 100%;
-    padding: 0;
-}
-.parent-row{
-    height: 100%;
-}
-.col-menu{
-    text-align: left;
-    padding: 1%;
-    height: 100vh;
-}
-
-.col-content-page {
-    padding: 1%;
-    height: 100%;
-}
-
 .comments-container {
     padding: 1.5%;
     background-color: #ffffff;

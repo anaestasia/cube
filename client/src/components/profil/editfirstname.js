@@ -35,7 +35,7 @@ export default function EditFirstname() {
     }
 
     return (
-        <div >
+        <div className="profile-field">
             <form onSubmit={validerChangement}>
                 <label>Prénom :</label><br />
                 <input id='firstName' className="pass-input" type="text" onChange={(e) => { setPrenom(e.target.value) }} /><br /><br />

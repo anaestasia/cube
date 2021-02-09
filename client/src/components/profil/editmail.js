@@ -62,7 +62,7 @@ export default function EditMail() {
     }
 
     return (
-        <div >
+        <div className="profile-field">
             <form onSubmit={validerChangementEmail}>
                 <label>Email :</label><br />
                 <input id='inputEmail1' className="pass-input" type="email" onChange={(e) => { emailIdentique1(e) }} /><br /><br />
