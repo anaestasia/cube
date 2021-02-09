@@ -23,25 +23,38 @@ export default function Profile() {
     <>
       <Container fluid>
         <Row className="parent-row">
-              <Col xl={3} className="col-menu">
-                  <Menu />
+
+          <Col xl={3} className="col-menu">
+              <Menu />
+          </Col>
+
+          <Col xl={9} className="col-content-page">
+            <Row className="profil-form">
+
+              <Col xl={12}>
+                <h2>MODIFIER MON PROFIL</h2>
               </Col>
 
-              <Col xl={9} className="col-content-page">
-                <Row className="profil-form">
-                  <EditMail />
-                  <EditPassword />
-                  <EditFirstname />
-                  <EditLastName />
-                  <EditStreetNB />
-                  <EditStreetName />
-                  <EditCity /> 
-                  <EditCountry />
-                  <EditPostalCode />
-                </Row>
+              <Col xl={6}>
+                <EditFirstname />
+                <EditLastName />
+                <EditStreetNB />
+                <EditStreetName />
+                <EditCity /> 
+                <EditCountry />
+                <EditPostalCode />
               </Col>
-          </Row>
-          <Footer/>
+
+              <Col xl={6}>
+                <EditMail />
+                <EditPassword />
+              </Col>
+
+            </Row>
+          </Col>
+            
+        </Row>
+        <Footer/>
       </Container>        
     </>
   );

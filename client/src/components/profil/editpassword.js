@@ -130,7 +130,7 @@ export default function EditPassword() {
     }
 
     return (
-        <div className="profile-field">
+        <div className="password-field">
             <form onSubmit={validerChangementMdp}>
                 <label>Ancien mot de passe :</label><br />
                 <input id='ancienMDP' className="pass-input" type="password" onChange={(e) => {verifSibonMDP(e) }} /> { '  ' }

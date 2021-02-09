@@ -6,3 +6,12 @@
     border-radius: 30px;
     box-shadow: 1px 1px 5px #222320;
 }
+.profile-field,
+.email-field,
+.password-field{
+    padding: 2% 0;;
+}
+
+.profile-field input{
+    width: 80%;
+}

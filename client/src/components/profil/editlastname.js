@@ -38,9 +38,8 @@ export default function EditLastName() {
         <div className="profile-field">
             <form onSubmit={validerChangement}>
                 <label>Nom :</label><br />
-                <input id='lastName' className="pass-input" type="text" onChange={(e) => { setNom(e.target.value) }} /><br /><br />
-
-                <button id="btnModifier"> Modifier </button>
+                <input id='lastName' className="pass-input" type="text" onChange={(e) => { setNom(e.target.value) }} />
+                <button id="btnModifier"><i class="far fa-save"></i></button>
           </form>  
           {informationNom}
   
