@@ -5,6 +5,8 @@ import Menu from '../../components/menu/Menu';
 import Footer from '../../components/footer/Footer';
 import CatalogComp from '../../components/ressource/catalog/CatalogComp';
 import Ressource from '../../components/ressource/Ressource';
+import './Catalog.css';
+import VignetteRessource from '../../components/ressource/vignetteRessource/vignetteRessource';
 // import NormalUser from "../components/NormalUser";
 // import Mod from "../components/Mod";
 // import Admin from "../components/Admin";
@@ -24,17 +26,26 @@ export default function Catalog() {
                 {role == "admin" && <Admin />} */}
 
             <Col xl={9} className="col-content-page">
-              <Row className="last-adds">
-                <div>Liste des 3 dernières ressources ajoutées</div>
-              </Row>
+
               <Row className="catalog">
-                <Col>
+
+                <Col xl={12}>
+                  <div className="last-adds">
+                    <h2>DERNIERES RESSOURCES AJOUTÉES</h2>
+                    <Row>
+                      <Col sm={12} xl={4}><div className="ressource"><VignetteRessource /></div></Col>
+                      <Col sm={12} xl={4}><div className="ressource"><VignetteRessource /></div></Col>
+                      <Col sm={12} xl={4}><div className="ressource"><VignetteRessource /></div></Col>
+                    </Row>
+                  </div>
+                </Col>
+
+                <Col xl={4}>
                   <CatalogComp />
                 </Col>
-                <Col>
-                  <div>Tableau de ressources</div>
-                </Col>
+                
               </Row>
+
             </Col>
         </Row>
         <Footer/>

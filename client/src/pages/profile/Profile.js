@@ -4,15 +4,15 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Menu from '../../components/menu/Menu';
 import Footer from '../../components/footer/Footer';
-// import EditPassword from '../../components/profil/editpassword';
-// import EditMail from '../../components/profil/editmail';
-// import EditFirstname from '../../components/profil/editfirstname';
-//import EditLastName from '../../components/profil/editlastname';
-// import EditStreetNB from '../../components/profil/editstreetnb';
-// import EditStreetName from '../../components/profil/editstreetname';
-// import EditCity from '../../components/profil/editcity';
-// import EditCountry from '../../components/profil/editcountry';
-// import EditPostalCode from '../../components/profil/editpostalcode';
+import EditPassword from '../../components/profil/editpassword';
+import EditMail from '../../components/profil/editmail';
+import EditFirstname from '../../components/profil/editfirstname';
+import EditLastName from '../../components/profil/editlastname';
+import EditStreetNB from '../../components/profil/editstreetnb';
+import EditStreetName from '../../components/profil/editstreetname';
+import EditCity from '../../components/profil/editcity';
+import EditCountry from '../../components/profil/editcountry';
+import EditPostalCode from '../../components/profil/editpostalcode';
 
 
 export default function Profile() {
@@ -28,16 +28,15 @@ export default function Profile() {
 
               <Col xl={9} className="col-content-page">
                 <Row className="my-ressources-list">
-                  Vous êtes sur la page profil
-                  {/* <EditMail/> */}
-                  {/* <EditPassword /> */}
-                  {/* <EditFirstname /> */}
-                  {/* <EditLastName /> */}
-                  {/* <EditStreetNB /> */}
-                  {/* <EditStreetName /> */}
-                  {/* <EditCity /> 
+                  <EditMail />
+                  <EditPassword />
+                  <EditFirstname />
+                  <EditLastName />
+                  <EditStreetNB />
+                  <EditStreetName />
+                  <EditCity /> 
                   <EditCountry />
-                  <EditPostalCode /> */}
+                  <EditPostalCode />
                 </Row>
               </Col>
           </Row>
