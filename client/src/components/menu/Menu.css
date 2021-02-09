@@ -20,7 +20,8 @@
     margin: 50% 0 70% 0;
     justify-content: center;
 }
-.navbar-menu .row i:hover{
+.navbar-menu .row i:hover,
+.navbar-menu .row i.activeTab {
     color:#febd59;
 }
 .navbar-menu .logo-navbar{

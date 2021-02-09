@@ -20,7 +20,7 @@ class MenuUser extends Component {
                     <ul>
                         <li className="subtitle"><span><i class="fas fa-user-cog"></i> MON PROFIL</span></li>
                         <li className="link"><Link to={'/profile'}><span>Modifier mon profil</span></Link></li>
-                        <li class="link logout"><span>Déconnexion</span></li>
+                        <li class="link logout" onClick={ this.props.logout }><span>Déconnexion</span></li>
                     </ul>
                 </Col>
             </Row>

@@ -8,7 +8,7 @@ class MenuRessources extends Component {
   
     render() {
         return (
-            <Row className={`ressource ${this.props.active}`}>
+            <Row>
                 <Col>
                     <h2>Ressources</h2>
                     <ul>
