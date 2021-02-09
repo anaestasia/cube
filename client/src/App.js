@@ -37,34 +37,20 @@ function App() {
       }
     });
   }, []);
-  let register;
-  let login;
-  let catalog;
-  let accueil;
-  let ressource;
-  let myRessources;
-  let myFavorites;
-  let ressourceNonCo ;
-  let admin;
-  let submitRessource;
-  let adminApprovedRessources;
-  let profile;
 
-  if(role >= 0) //pas connecte
-  {
-    login = true;
-    register = true;
-    accueil = true;
-    catalog = true;
-    ressource = true;
-    myRessources = true;
-    myFavorites = true;
-    ressourceNonCo = true;
-    admin = false;
-    submitRessource = false;
-    adminApprovedRessources = false;
-    profile = false;
-  }
+  //droit pour les non connecté
+  let login = true;
+  let register = true;
+  let accueil = true;
+  let catalog = true;
+  let ressource = true;
+  let myRessources = true;
+  let myFavorites = true;
+  let ressourceNonCo = true;
+  let admin = false;
+  let submitRessource = false;
+  let adminApprovedRessources = false;
+  let profile = false;
   if (role >= 1) //Mail non verifé 
   {
     login = false;
@@ -98,7 +84,7 @@ function App() {
         <Route exact path="/token/:token" render={(props) =>  <Token />} />
 
         {/* RESSOURCES */}
-        <Route exact path="/catalog" render={(props) =>  catalog ? <Catalog role={role} />: <NoAccess />} />
+        <Route exact path="/catalog" render={(props) =>  catalog ? <Catalog />: <NoAccess />} />
         <Route exact path="/submit-ressource" render={(props) => submitRessource ? <SubmitRessource /> : <NoAccess />} />
         <Route exact path="/ressource/:id" render={(props) =>  ressource ? <RessourcePage />: <NotFound />} />
         <Route exact path="/ressourcenonConnecte" render={(props) =>  ressourceNonCo ? <Ressourcenonconnecte />: <NotFound />} />

@@ -3,10 +3,6 @@ import React, { useState , useEffect } from "react";
 import "./token.css";
 import Axios from "axios";
 
-// import NormalUser from "../components/NormalUser";
-// import Mod from "../components/Mod";
-// import Admin from "../components/Admin";
-
 export default function Token() {
 
     const [message, setMessage] = useState("");

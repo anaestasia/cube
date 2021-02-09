@@ -9,17 +9,26 @@ import CatalogComp from '../../components/ressource/catalog/CatalogComp';
 import Axios from "axios";
 import './Catalog.css';
 import VignetteRessource from '../../components/ressource/vignetteRessource/vignetteRessource';
-// import NormalUser from "../components/NormalUser";
-// import Mod from "../components/Mod";
-// import Admin from "../components/Admin";
 
-export default function Catalog({role}) {
+export default function Catalog() {
 
 const [lastRessources, setLastRessources] = useState([]);
 const [status, setStatus] = useState("2");
 
-// const fk_status = req.body.status;
-  useEffect(() => 
+const [role, setRole] = useState("");
+
+useEffect(() => 
+{
+  Axios.get(process.env.REACT_APP_SITE_URL_API+"/users/login").then((response) => {
+    if (response.data.loggedIn === true) {
+      setRole(response.data.user[0].fk_role);
+    }
+    else {setRole(0)}
+  });
+}, []);
+
+
+useEffect(() => 
   {
     if(role >=2){ setStatus("1") }
       Axios.get(process.env.REACT_APP_SITE_URL_API+"/ressources/lastressource/"+status).then((response) => {

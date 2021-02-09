@@ -14,8 +14,8 @@ export default function NoAccess() {
 				<h3>Oops! Accès refusé </h3>
 				<h1><span>4</span><span>0</span><span>3</span></h1>
 			</div>
-			<h2>Nous sommes désolés, vous devez vous déconnecter avant d'accéder à cette page</h2>
-            <Link to="/main">Retour sur le site</Link>
+			<h2>Nous sommes désolés, cette page n'est pas accessible </h2>
+            <Link to="/catalog">Retour sur le site</Link>
 		</div>
 	</div>
   );
