@@ -62,13 +62,13 @@ export default function EditMail() {
     }
 
     return (
-        <div className="profile-field">
+        <div className="email-field">
             <form onSubmit={validerChangementEmail}>
                 <label>Email :</label><br />
                 <input id='inputEmail1' className="pass-input" type="email" onChange={(e) => { emailIdentique1(e) }} /><br /><br />
 
                 <label>Vérification email :</label><br />
-                <input id='inputEmail2' className="pass-input"  type="email" onChange={(e) => { emailIdentique2(e) }} /> <br />
+                <input id='inputEmail2' className="pass-input"  type="email" onChange={(e) => { emailIdentique2(e) }} /><br />
                 <span>{doubleEmailMessage}</span>
                 <br /><br />
                 <button id="btnModifier" disabled> Modifier </button>

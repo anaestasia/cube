@@ -35,12 +35,11 @@ export default function EditStreetNB() {
     }
 
     return (
-        <div >
+        <div className="profile-field">
             <form onSubmit={validerChangement}>
                 <label>Numéro de rue :</label><br />
-                <input id='street_nb' className="pass-input" type="number" onChange={(e) => { setstreetNb(e.target.value) }} /><br /><br />
-
-                <button id="btnModifier"> Modifier </button>
+                <input id='street_nb' className="pass-input" type="number" onChange={(e) => { setstreetNb(e.target.value) }} />
+                <button id="btnModifier"><i class="far fa-save"></i></button>
           </form>  
           {informationstreetNb}
   

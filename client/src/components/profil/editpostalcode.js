@@ -38,9 +38,8 @@ export default function EditPostalCode() {
         <div className="profile-field">
             <form onSubmit={validerChangement}>
                 <label>Code postale :</label><br />
-                <input id='postal_codeId' max="99999" className="pass-input" type="number" onChange={(e) => { setPostalCode(e.target.value) }} /><br /><br />
-
-                <button id="btnModifier"> Modifier </button>
+                <input id='postal_codeId' max="99999" className="pass-input" type="number" onChange={(e) => { setPostalCode(e.target.value) }} />
+                <button id="btnModifier"><i class="far fa-save"></i></button>
           </form>  
           {informationPostalCode}
   
