@@ -190,7 +190,45 @@ app.post("/create", (req, res) => {
         }
       }
   });
-});//fin get  
+});
+//fin get  
+
+//get 3 derniere rss
+app.get("/lastRessource/:status",(req, res) => {
+  const fk_status = req.params.status;
+  // const fk_status = req.body.fk_status;
+  let requete;
+  requete = "SELECT *, ressources.id AS 'idRessource', types_ressources.name AS 'nametyperss' ";
+  requete += ", relationship_ressources.name AS 'namerelationship' ";
+  requete += "FROM ressources ";
+  requete += "INNER JOIN types_ressources ON types_ressources.id = ressources.fk_type_ressource ";
+  requete += "INNER JOIN relationship_ressources ON relationship_ressources.id = ressources.fk_relationship_ressource ";
+  requete += "where deleted = 0 and approved = 1";
+  if(fk_status == "2")
+  {
+    requete += " and fk_status = ?";
+  }
+  requete += " order by ressources.date_creation DESC";
+  requete += " limit 3";
+  db.query(requete, fk_status , (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      if (result.length > 0) {
+
+        (async function() {
+          await ajoutCategories(result)
+          res.send(result);
+       })();
+      }
+      else
+      {
+        res.send({ existe: false });
+      }
+    }
+});
+});
+//fin get 3 derniere rss
 
 //get 1 ressource
 app.post("/getid", (req, res) => {
@@ -234,7 +272,6 @@ app.post("/getid", (req, res) => {
                 } else {
                   console.log(user)
                   res.send({ result, lesCategories, user, existe: true });
-
                 }
               });
 

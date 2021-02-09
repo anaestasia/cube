@@ -98,7 +98,7 @@ function App() {
         <Route exact path="/token/:token" render={(props) =>  <Token />} />
 
         {/* RESSOURCES */}
-        <Route exact path="/catalog" render={(props) =>  catalog ? <Catalog />: <NoAccess />} />
+        <Route exact path="/catalog" render={(props) =>  catalog ? <Catalog role={role} />: <NoAccess />} />
         <Route exact path="/submit-ressource" render={(props) => submitRessource ? <SubmitRessource /> : <NoAccess />} />
         <Route exact path="/ressource/:id" render={(props) =>  ressource ? <RessourcePage />: <NotFound />} />
         <Route exact path="/ressourcenonConnecte" render={(props) =>  ressourceNonCo ? <Ressourcenonconnecte />: <NotFound />} />
