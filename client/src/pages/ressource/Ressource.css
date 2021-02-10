@@ -6,6 +6,13 @@
     box-shadow: 1px 1px 5px #222320;
 }
 
+.menuFixe{
+    position: sticky;
+    position: -webkit-sticky;
+    top: 10px;
+    margin-bottom: 10px;
+}
+
 /* ----------------------- */
 /* ----- MAX 1200 PX ----- */
 /* ----------------------- */

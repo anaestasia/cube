@@ -3,7 +3,7 @@ import Axios from "axios";
 
 export default function EditMail() {
 
-    const [email1, setEmail1] = useState("");
+    const [email1, setEmail1] = useState("test");
     const [email2, setEmail2] = useState("");
     const [doubleEmailMessage, setDoubleEmailMessage] = useState("");
 
@@ -11,6 +11,8 @@ export default function EditMail() {
 
     const [informationEmail, setInformationEmail] = useState("");
     
+    document.getElementById("inputEmail1").value = email1;
+
     Axios.defaults.withCredentials = true;
   
     Axios.get(process.env.REACT_APP_SITE_URL_API+"/users/login").then((response) => {
@@ -24,9 +26,11 @@ export default function EditMail() {
         setEmail1(e.target.value)
         if(email2 === e.target.value){ 
             setDoubleEmailMessage('') 
+            document.getElementById("btn-edit-email").disabled = false;
         } 
         else { 
-            setDoubleEmailMessage('Les deux email ne sont pas identique') 
+            setDoubleEmailMessage('Les deux email ne sont pas identique')
+            document.getElementById("btn-edit-email").disabled = true;
         }
     }
 
@@ -35,11 +39,11 @@ export default function EditMail() {
         setEmail2(e.target.value)
         if(email1 === e.target.value){ 
             setDoubleEmailMessage('') 
-            document.getElementById("btnModifier").disabled = false;
+            document.getElementById("btn-edit-email").disabled = false;
         } 
         else { 
             setDoubleEmailMessage('Les deux email ne sont pas identique') 
-            document.getElementById("btnModifier").disabled = true;
+            document.getElementById("btn-edit-email").disabled = true;
         }
     }
 
@@ -56,7 +60,7 @@ export default function EditMail() {
                 setInformationEmail('Ton email a bien était changé')
                 document.getElementById("inputEmail1").value = '';
                 document.getElementById("inputEmail2").value = '';
-                document.getElementById("btnModifier").disabled = true;
+                document.getElementById("btn-edit-email").disabled = true;
               }
         });
     }
@@ -71,7 +75,7 @@ export default function EditMail() {
                 <input id='inputEmail2' className="pass-input"  type="email" onChange={(e) => { emailIdentique2(e) }} /><br />
                 <span>{doubleEmailMessage}</span>
                 <br /><br />
-                <button id="btnModifier" disabled> Modifier </button>
+                <button id="btn-edit-email" disabled> Modifier </button>
           </form>  
           {informationEmail}
   

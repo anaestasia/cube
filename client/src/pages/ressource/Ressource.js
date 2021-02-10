@@ -36,7 +36,7 @@ export default function RessourcePage () {
   return (
     <Container fluid>
         <Row className="parent-row">
-            <Col xl={3} className="col-menu">
+            <Col xl={3} className="col-menu menuFixe">
                 <Menu />
             </Col>
 

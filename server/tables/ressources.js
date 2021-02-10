@@ -193,6 +193,40 @@ app.post("/create", (req, res) => {
 });
 //fin get  
 
+//get avec condition #filtre
+app.post("/getFiltre",(req, res) => {
+  const filtre = req.body.filtre;
+    
+  let requete;
+  requete = "SELECT *, ressources.id AS 'idRessource', types_ressources.name AS 'nametyperss' ";
+  requete += ", relationship_ressources.name AS 'namerelationship' ";
+  requete += ", status.name AS 'namestatus'  ";
+  requete += "FROM ressources ";
+  requete += "INNER JOIN types_ressources ON types_ressources.id = ressources.fk_type_ressource ";
+  requete += "INNER JOIN relationship_ressources ON relationship_ressources.id = ressources.fk_relationship_ressource ";
+  requete += "INNER JOIN status ON status.id = ressources.fk_status ";
+  requete += "where deleted = 0 and approved = 1 ";
+  requete += filtre;
+  requete += " ORDER BY ressources.date_creation DESC";
+  db.query(requete, (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      if (result.length > 0) {
+        (async function() {
+          await ajoutCategories(result)
+          res.send(result);
+       })();
+      }
+      else
+      {
+        res.send({ existe: false });
+      }
+    }
+});
+});
+//get fin avec condition #filtre
+
 //get 3 derniere rss
 app.get("/lastRessource/:status",(req, res) => {
   const fk_status = req.params.status;

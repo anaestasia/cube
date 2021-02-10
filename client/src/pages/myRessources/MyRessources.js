@@ -3,6 +3,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Menu from '../../components/menu/Menu';
 import Footer from '../../components/footer/Footer';
+import "./MyRessources.css"
 
 export default function MyRessources() {
 
@@ -10,7 +11,7 @@ export default function MyRessources() {
   return (
     <Container fluid>
         <Row className="parent-row">
-            <Col xl={3} className="col-menu">
+            <Col xl={3} className="col-menu menuFixe">
                 <Menu />
             </Col>
 

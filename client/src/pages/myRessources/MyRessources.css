@@ -1,0 +1,6 @@
+.menuFixe{
+    position: sticky;
+    position: -webkit-sticky;
+    top: 20px;
+    margin-bottom: 10px;
+}

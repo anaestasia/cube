@@ -1,8 +1,6 @@
 import React from "react";
-import '@ckeditor/ckeditor5-build-classic/build/translations/fr.js';
 
-
-    export default function VignetteRessource({titre , idRessource , nombreLike , categorie , typeRelation , typeRessource , nb_consultation}){
+    export default function VignetteLastRessource({titre , idRessource , nombreLike , categorie , typeRelation , typeRessource , nb_consultation}){
         const lienRessource = "/ressource/"+idRessource
         return (
             <div className="vignette-ressource-container">
