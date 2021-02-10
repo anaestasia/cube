@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Axios from "axios";
+import Row from "react-bootstrap/esm/Row";
+import Col from "react-bootstrap/esm/Col";
 
 export default function EditMail() {
 
@@ -19,63 +21,70 @@ export default function EditMail() {
         }
       });
 
-    function emailIdentique1(e)
-    {
+      function emailIdentique1(e)
+      {
         setEmail1(e.target.value)
         if(email2 === e.target.value){ 
             setDoubleEmailMessage('') 
+            document.getElementById("btn-edit-email").disabled = false;
         } 
         else { 
-            setDoubleEmailMessage('Les deux email ne sont pas identique') 
+            setDoubleEmailMessage('Les deux email ne sont pas identique')
+            document.getElementById("btn-edit-email").disabled = true;
         }
     }
-
-    function emailIdentique2(e)
-    {
+  
+      function emailIdentique2(e)
+      {
         setEmail2(e.target.value)
         if(email1 === e.target.value){ 
             setDoubleEmailMessage('') 
-            document.getElementById("btnModifier").disabled = false;
+            document.getElementById("btn-edit-email").disabled = false;
         } 
         else { 
             setDoubleEmailMessage('Les deux email ne sont pas identique') 
-            document.getElementById("btnModifier").disabled = true;
+            document.getElementById("btn-edit-email").disabled = true;
         }
     }
 
-    function validerChangementEmail(event)
-    {
+      function validerChangementEmail(event)
+      {
         event.preventDefault();
 
         Axios.post(process.env.REACT_APP_SITE_URL_API+"/users/editEmail", {
             id: idUser,
             mail: email1
-          }).then((response) => {
-              if(response.data.verif)
-              {
+        }).then((response) => {
+            if(response.data.verif)
+            {
                 setInformationEmail('Ton email a bien était changé')
                 document.getElementById("inputEmail1").value = '';
                 document.getElementById("inputEmail2").value = '';
-                document.getElementById("btnModifier").disabled = true;
-              }
+                document.getElementById("btn-edit-email").disabled = true;
+            }
         });
     }
 
     return (
-        <div className="email-field">
-            <form onSubmit={validerChangementEmail}>
-                <label>Email :</label><br />
-                <input id='inputEmail1' className="pass-input" type="email" onChange={(e) => { emailIdentique1(e) }} /><br /><br />
+        <Row className="email-field">
+            <Col sm={12}>
+                <form onSubmit={validerChangementEmail} id="emailForm">
+                    <Row>
+                        <Col sm={12}><label>Email :</label></Col>
+                        <Col sm={12}><input id='inputEmail1' className="pass-input" type="email" value="anaestasia.mathieu@viacesi.fr" onChange={(e) => { emailIdentique1(e) }} /></Col>
+                    </Row>
 
-                <label>Vérification email :</label><br />
-                <input id='inputEmail2' className="pass-input"  type="email" onChange={(e) => { emailIdentique2(e) }} /><br />
-                <span>{doubleEmailMessage}</span>
-                <br /><br />
-                <button id="btnModifier" disabled> Modifier </button>
-          </form>  
-          {informationEmail}
-  
-        </div>
+                    <Row>
+                        <Col sm={12}><label>Vérification email :</label></Col>
+                        <Col sm={12}><input id='inputEmail2' className="pass-input"  type="email" onChange={(e) => { emailIdentique2(e) }} /></Col>
+                        <Col sm={12}><span>{doubleEmailMessage}</span></Col>
+                    </Row>
+                    <Col sm={12} className="btn-edit-text"><button id="btn-edit-email" form="emailForm" disabled> Modifier </button></Col>
+            </form>  
+            {informationEmail}
+
+            </Col>
+        </Row>
       );
     }
 

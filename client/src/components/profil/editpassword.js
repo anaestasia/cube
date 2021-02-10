@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Axios from "axios";
+import Row from "react-bootstrap/esm/Row";
+import Col from "react-bootstrap/esm/Col";
 
 var hash = require('object-hash');
 
@@ -130,25 +132,33 @@ export default function EditPassword() {
     }
 
     return (
-        <div className="password-field">
-            <form onSubmit={validerChangementMdp}>
-                <label>Ancien mot de passe :</label><br />
-                <input id='ancienMDP' className="pass-input" type="password" onChange={(e) => {verifSibonMDP(e) }} /> { '  ' }
-                <span>{bonMDPMessage}</span><br /><br />
-            
-                <label>Mot de passe :</label><br />
-                <input id='inputMDP1' className="pass-input"  minlength="12" type="password" onChange={(e) => { mdpIdentique1(e) }} /><br /><br />
+        <Row className="password-field">
+            <Col sm={12}>
+                <form onSubmit={validerChangementMdp} id="passForm">
+                <Row>
+                    <Col sm={12}><label>Ancien mot de passe :</label></Col>
+                    <Col sm={12}><input id='ancienMDP' className="pass-input" type="password"  value="motdepassedetest" onChange={(e) => {verifSibonMDP(e) }} /> { '  ' }</Col>
+                    <Col sm={12}><span>{bonMDPMessage}</span></Col>
+                </Row>
+                
+                <Row>
+                    <Col sm={12}><label>Mot de passe :</label></Col>
+                    <Col sm={12}><input id='inputMDP1' className="pass-input"  minlength="12" type="password" onChange={(e) => { mdpIdentique1(e) }} /></Col>
+                </Row>
+                <Row>
+                    <Col sm={12}><label>Vérification mot de passe :</label></Col>
+                    <Col sm={12}><input id='inputMDP2' className="pass-input"  minlength="12" type="password" onChange={(e) => { mdpIdentique2(e) }} /></Col>
+                    <Col sm={12}><span>{doubleMdpMessage}</span></Col>
+                </Row>
+                <Row>
+                    <Col sm={12} className="btn-edit-text"><button id="btn-edit-password" form="passForm" disabled> Modifier </button></Col>
+                </Row>
 
-                <label>Vérification mot de passe :</label><br />
-                <input id='inputMDP2' className="pass-input"  minlength="12" type="password" onChange={(e) => { mdpIdentique2(e) }} /> <br />
-                <span>{doubleMdpMessage}</span>
-                <br /><br />
-
-                <button id="btnModifier" disabled> Modifier </button>
-          </form>  
-          {informationMDP}
-  
-        </div>
+                    
+                </form>  
+                {informationMDP}
+            </Col>
+        </Row>
       );
     }
 

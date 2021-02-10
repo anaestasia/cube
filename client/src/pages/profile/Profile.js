@@ -32,7 +32,7 @@ export default function Profile() {
             <Row className="profil-form">
 
               <Col xl={12}>
-                <h2>MODIFIER MON PROFIL</h2>
+                <h2 className="page-title">MODIFIER MON PROFIL</h2>
               </Col>
 
               <Col xl={6}>
