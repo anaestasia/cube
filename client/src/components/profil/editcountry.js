@@ -1,5 +1,10 @@
 import React, { useState } from "react";
 import Axios from "axios";
+import Row from "react-bootstrap/esm/Row";
+import Col from "react-bootstrap/esm/Col";
+
+
+
 
 export default function EditCountry() {
  
@@ -35,14 +40,16 @@ export default function EditCountry() {
     }
 
     return (
-        <div className="profile-field">
-            <form onSubmit={validerChangement}>
-                <label>Pays :</label><br />
-                <input id='countryId' className="pass-input" type="text" onChange={(e) => { setCountry(e.target.value) }} />
-                <button id="btnModifier"><i class="far fa-save"></i></button>
+        <Row className="profile-field">
+            <form onSubmit={validerChangement} id="countryForm">
+              <Col sm={12}><label>Pays :</label></Col>
+              <Row className="input-btn-field">
+                <Col sm={10}><input id='countryId' className="pass-input" type="text" value="Paradise" onChange={(e) => { setCountry(e.target.value) }} /></Col>
+                <Col sm={2}><button id="btn-edit" form="countryForm"><i class="far fa-save"></i></button></Col>
+              </Row>
           </form>  
           {informationCountry}
   
-        </div>
+        </Row>
       );
     }

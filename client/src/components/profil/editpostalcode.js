@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Axios from "axios";
+import Row from "react-bootstrap/esm/Row";
+import Col from "react-bootstrap/esm/Col";
 
 export default function EditPostalCode() {
  
@@ -35,14 +37,16 @@ export default function EditPostalCode() {
     }
 
     return (
-        <div className="profile-field">
-            <form onSubmit={validerChangement}>
-                <label>Code postale :</label><br />
-                <input id='postal_codeId' max="99999" className="pass-input" type="number" onChange={(e) => { setPostalCode(e.target.value) }} />
-                <button id="btnModifier"><i class="far fa-save"></i></button>
+        <Row className="profile-field">
+            <form onSubmit={validerChangement} id="codeForm">
+              <Col sm={12}><label>Code postale :</label></Col>
+              <Row className="input-btn-field">
+                <Col sm={10}><input id='postal_codeId' max="99999" className="pass-input" type="number" value="01001" onChange={(e) => { setPostalCode(e.target.value) }} /></Col>
+                <Col sm={2}><button id="btn-edit" form="codeForm"><i class="far fa-save"></i></button></Col>
+              </Row>
           </form>  
           {informationPostalCode}
   
-        </div>
+        </Row>
       );
     }

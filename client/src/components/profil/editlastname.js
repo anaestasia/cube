@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Axios from "axios";
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 export default function EditLastName() {
  
@@ -35,14 +37,16 @@ export default function EditLastName() {
     }
 
     return (
-        <div className="profile-field">
-            <form onSubmit={validerChangement}>
-                <label>Nom :</label><br />
-                <input id='lastName' className="pass-input" type="text" onChange={(e) => { setNom(e.target.value) }} />
-                <button id="btnModifier"><i class="far fa-save"></i></button>
+        <Row className="profile-field">
+            <form onSubmit={validerChangement} id="lastnameForm">
+              <Col sm={12}><label>Nom :</label></Col>
+              <Row className="input-btn-field">
+                <Col sm={10}><input id='lastName' className="pass-input" type="text" value="Mathieu" onChange={(e) => { setNom(e.target.value) }} /></Col>
+                <Col sm={2}><button id="btn-edit" form="lastnameForm"><i class="far fa-save"></i></button></Col>
+              </Row>
           </form>  
           {informationNom}
   
-        </div>
+        </Row>
       );
     }

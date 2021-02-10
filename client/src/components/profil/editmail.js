@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import Axios from "axios";
+import Row from "react-bootstrap/esm/Row";
+import Col from "react-bootstrap/esm/Col";
 
 export default function EditMail() {
 
-    const [email1, setEmail1] = useState("test");
+    const [email1, setEmail1] = useState("monMailici@test.com");
     const [email2, setEmail2] = useState("");
     const [doubleEmailMessage, setDoubleEmailMessage] = useState("");
 
@@ -21,8 +23,8 @@ export default function EditMail() {
         }
       });
 
-    function emailIdentique1(e)
-    {
+      function emailIdentique1(e)
+      {
         setEmail1(e.target.value)
         if(email2 === e.target.value){ 
             setDoubleEmailMessage('') 
@@ -33,9 +35,9 @@ export default function EditMail() {
             document.getElementById("btn-edit-email").disabled = true;
         }
     }
-
-    function emailIdentique2(e)
-    {
+  
+      function emailIdentique2(e)
+      {
         setEmail2(e.target.value)
         if(email1 === e.target.value){ 
             setDoubleEmailMessage('') 
@@ -47,16 +49,16 @@ export default function EditMail() {
         }
     }
 
-    function validerChangementEmail(event)
-    {
+      function validerChangementEmail(event)
+      {
         event.preventDefault();
 
         Axios.post(process.env.REACT_APP_SITE_URL_API+"/users/editEmail", {
             id: idUser,
             mail: email1
-          }).then((response) => {
-              if(response.data.verif)
-              {
+        }).then((response) => {
+            if(response.data.verif)
+            {
                 setInformationEmail('Ton email a bien était changé')
                 document.getElementById("inputEmail1").value = '';
                 document.getElementById("inputEmail2").value = '';
@@ -66,20 +68,25 @@ export default function EditMail() {
     }
 
     return (
-        <div className="email-field">
-            <form onSubmit={validerChangementEmail}>
-                <label>Email :</label><br />
-                <input id='inputEmail1' className="pass-input" type="email" onChange={(e) => { emailIdentique1(e) }} /><br /><br />
+        <Row className="email-field">
+            <Col sm={12}>
+                <form onSubmit={validerChangementEmail} id="emailForm">
+                    <Row>
+                        <Col sm={12}><label>Email :</label></Col>
+                        <Col sm={12}><input id='inputEmail1' className="pass-input" type="email"  onChange={(e) => { emailIdentique1(e) }} /></Col>
+                    </Row>
 
-                <label>Vérification email :</label><br />
-                <input id='inputEmail2' className="pass-input"  type="email" onChange={(e) => { emailIdentique2(e) }} /><br />
-                <span>{doubleEmailMessage}</span>
-                <br /><br />
-                <button id="btn-edit-email" disabled> Modifier </button>
-          </form>  
-          {informationEmail}
-  
-        </div>
+                    <Row>
+                        <Col sm={12}><label>Vérification email :</label></Col>
+                        <Col sm={12}><input id='inputEmail2' className="pass-input"  type="email" onChange={(e) => { emailIdentique2(e) }} /></Col>
+                        <Col sm={12}><span>{doubleEmailMessage}</span></Col>
+                    </Row>
+                    <Col sm={12} className="btn-edit-text"><button id="btn-edit-email" form="emailForm" disabled> Modifier </button></Col>
+            </form>  
+            {informationEmail}
+
+            </Col>
+        </Row>
       );
     }
 
