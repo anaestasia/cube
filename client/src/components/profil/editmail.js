@@ -13,12 +13,11 @@ export default function EditMail() {
 
     const [informationEmail, setInformationEmail] = useState("");
     
-
     useEffect(() => 
     {
         document.getElementById("inputEmail1").value = email1;
-
     })
+    
     Axios.defaults.withCredentials = true;
   
     Axios.get(process.env.REACT_APP_SITE_URL_API+"/users/login").then((response) => {
