@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -18,7 +18,13 @@ import './Profile.css';
 
 export default function Profile() {
 
+  const [voirEmail, setVoirEmail] = useState(false);
  
+  const voirE = () =>
+  {
+    if(voirEmail === false){setVoirEmail(true)}
+    else{setVoirEmail(false)}
+  }
   return (
     <>
       <Container fluid>
@@ -46,7 +52,10 @@ export default function Profile() {
               </Col>
 
               <Col xl={6}>
-                <EditMail />
+                <button onClick={voirE}>modif email </button>
+                <button>modif pswd</button>
+                {voirEmail ? <EditMail /> : <span></span>}
+                
                 <EditPassword />
               </Col>
 
