@@ -18,16 +18,16 @@ class Menu extends Component {
   }
 
   ToggleClass(text) {
-        this.setState({
-            currentActiveMenu: text
-        })
-    }
+      this.setState({
+          currentActiveMenu: text
+      })
+  }
 
-    Logout() {
-        this.setState({
-            user: null
-        })
-    }
+  Logout() {
+      this.setState({
+          user: null
+      })
+  }
 
   render() {
     return (

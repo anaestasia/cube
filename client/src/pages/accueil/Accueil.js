@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import LoginForm from '../../components/form/LoginForm';
-import BtnDeconnexion from '../../components/button/btndeconnexion/btndeconnexion';
+import BtnLogout from '../../components/button/BtnLogout/BtnLogout';
 import "./Accueil.css";
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
@@ -28,7 +28,7 @@ export default function Accueil() {
 
       <div className="container-form">
         {role === "" && <LoginForm />}
-        {role !== "" && <BtnDeconnexion />}
+        {role !== "" && <BtnLogout />}
 
         <div className="btn-discover">
           <img src="/img/discover.png" className="App-logo-menu" alt="logo" />
