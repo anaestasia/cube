@@ -44,7 +44,7 @@ function App() {
   let accueil = true;
   let catalog = true;
   let ressource = true;
-  let myRessources = true;
+  let myRessources = false;
   let myFavorites = true;
   let ressourceNonCo = true;
   let admin = false;
@@ -59,6 +59,7 @@ function App() {
   }
   if (role >= 2) //Citoyen
   {
+    myRessources = true;
     ressourceNonCo = false;
     submitRessource = true;
   }
