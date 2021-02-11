@@ -1,6 +1,8 @@
 import Axios from "axios";
 
-export default function BtnDeconnexion() {
+import './BtnLogout.css'
+
+export default function BtnLogout() {
 
 
     Axios.defaults.withCredentials = true;
@@ -14,8 +16,9 @@ export default function BtnDeconnexion() {
         }
    
     return (
-        <div>
-            <button onClick={deco}>déconnexion</button>
+        <div className="logout-container">
+            <i class="fas fa-sign-out-alt"></i>
+            <button onClick={deco} className="btn-logout">Déconnexion</button>
         </div>
     );
 }

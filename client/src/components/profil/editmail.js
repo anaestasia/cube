@@ -5,7 +5,7 @@ import Col from "react-bootstrap/esm/Col";
 
 export default function EditMail() {
 
-    const [email1, setEmail1] = useState("monMailici@test.com");
+    const [email1, setEmail1] = useState("anaestasia.mathieu@gmail.com");
     const [email2, setEmail2] = useState("");
     const [doubleEmailMessage, setDoubleEmailMessage] = useState("");
 
@@ -71,7 +71,7 @@ export default function EditMail() {
     }
 
     return (
-        <Row className="email-field">
+        <Row className="profile-field-part-2">
             <Col sm={12}>
                 <form onSubmit={validerChangementEmail} id="emailForm">
                     <Row>
@@ -82,7 +82,7 @@ export default function EditMail() {
                     <Row>
                         <Col sm={12}><label>Vérification email :</label></Col>
                         <Col sm={12}><input id='inputEmail2' className="pass-input"  type="email" onChange={(e) => { emailIdentique2(e) }} /></Col>
-                        <Col sm={12}><span>{doubleEmailMessage}</span></Col>
+                        <Col sm={12}><span className="input-info">{doubleEmailMessage}</span></Col>
                     </Row>
                     <Col sm={12} className="btn-edit-text"><button id="btn-edit-email" form="emailForm" disabled> Modifier </button></Col>
             </form>  

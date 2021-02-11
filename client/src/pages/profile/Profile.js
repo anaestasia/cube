@@ -18,13 +18,28 @@ import './Profile.css';
 
 export default function Profile() {
 
-  const [voirEmail, setVoirEmail] = useState(false);
+  const [editEmail, setEditEmail] = useState(true);
+  const [editPsswd, setEditPsswd] = useState(false);
+  const [currentActiveForm, setCurrentActiveForm] = useState('email');
  
-  const voirE = () =>
+  const toggleEmail = () =>
   {
-    if(voirEmail === false){setVoirEmail(true)}
-    else{setVoirEmail(false)}
+    if(editEmail === false){
+      setEditEmail(true)
+      setEditPsswd(false)
+      setCurrentActiveForm('email')
+    }
   }
+
+  const togglePsswd = () =>
+  {
+    if(editPsswd === false){
+      setEditEmail(false)
+      setEditPsswd(true)
+      setCurrentActiveForm('psswd')
+    }
+  }
+
   return (
     <>
       <Container fluid>
@@ -38,7 +53,7 @@ export default function Profile() {
             <Row className="profil-form">
 
               <Col xl={12}>
-                <h2 className="page-title">MODIFIER MON PROFIL</h2>
+                <h1 className="page-title">MODIFIER MON PROFIL</h1>
               </Col>
 
               <Col xl={6}>
@@ -52,11 +67,11 @@ export default function Profile() {
               </Col>
 
               <Col xl={6}>
-                <button onClick={voirE}>modif email </button>
-                <button>modif pswd</button>
-                {voirEmail ? <EditMail /> : <span></span>}
-                
-                <EditPassword />
+                <Row>
+                  <Col xl={6}><button onClick={toggleEmail} className={ `btn-email-psswd ${ currentActiveForm === 'email' && 'activeForm' }` }>Mon email</button></Col>
+                  <Col xl={6}><button onClick={togglePsswd}  className={ `btn-email-psswd ${ currentActiveForm === 'psswd' && 'activeForm' }` }>Mon mot de passe</button></Col>
+                  <Col xl={12}>{editPsswd ? <EditPassword /> : <EditMail />}</Col>
+                </Row>
               </Col>
 
             </Row>
