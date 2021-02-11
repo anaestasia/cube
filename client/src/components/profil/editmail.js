@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import Axios from "axios";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
@@ -13,8 +13,12 @@ export default function EditMail() {
 
     const [informationEmail, setInformationEmail] = useState("");
     
-    document.getElementById("inputEmail1").value = email1;
 
+    useEffect(() => 
+    {
+        document.getElementById("inputEmail1").value = email1;
+
+    })
     Axios.defaults.withCredentials = true;
   
     Axios.get(process.env.REACT_APP_SITE_URL_API+"/users/login").then((response) => {
