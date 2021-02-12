@@ -25,7 +25,14 @@ export default function LoginForm() {
         password: password,
       }).then((response) => {
            if (response.data.connecte) {
-            window.location.href = "/";
+             console.log(response)
+            const date = new Date();
+            const sqlDate = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()+" "+(date.getHours())+":"+date.getMinutes()+":"+date.getSeconds();
+            Axios.post(process.env.REACT_APP_SITE_URL_API+"/users/edit", {
+              id: response.data.result[0].id,
+              valeur: sqlDate,
+              champ: "last_connexion",
+          }).then((res) => { window.location.href = "/"; });
           } else {
             setLoginStatus("Impossible de se connecter");
           }
