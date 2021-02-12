@@ -32,7 +32,7 @@ export default function LoginForm() {
               id: response.data.result[0].id,
               valeur: sqlDate,
               champ: "last_connexion",
-          }).then((res) => { window.location.href = "/"; });
+          }).then((res) => { window.location.href = "/catalog"; });
           } else {
             setLoginStatus("Impossible de se connecter");
           }
