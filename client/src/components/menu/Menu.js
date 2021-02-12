@@ -1,35 +1,33 @@
-import React, { Component } from "react";
+import React, { useState , useEffect } from "react";
 import "./Menu.css";
 import MenuUser from "./MenuUser/MenuUser";
 import MenuRessources from "./MenuRessources/MenuRessources";
 import MenuBackOffice from "./MenuBackOffice/MenuBackOffice";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Axios from "axios";
 
-class Menu extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentActiveMenu: "ressource",
-      user: {
-          name : 'Tasia'
-      },
-    };
-  }
+export default function Menu() {
 
-  ToggleClass(text) {
-      this.setState({
-          currentActiveMenu: text
-      })
-  }
+  const [currentActiveMenu, setCurrentActiveMenu] = useState("ressource");
 
-  Logout() {
-      this.setState({
-          user: null
-      })
-  }
+  const [role, setRole] = useState("");
 
-  render() {
+  Axios.defaults.withCredentials = true;
+
+  useEffect(() => {
+
+    Axios.get(process.env.REACT_APP_SITE_URL_API+"/users/login").then((response) => {
+      if (response.data.loggedIn === true) {
+        setRole(response.data.user[0].fk_role);
+      }
+      else
+      {
+        setRole(0);
+      }
+    });
+  }, []);
+
     return (
       <Row className="main-menu">
         <Col xs={3} md={2} className="navbar-menu">
@@ -42,32 +40,29 @@ class Menu extends Component {
             />            
           </Row>
 
-          <Row onClick={() => this.ToggleClass("user")}>
-            <i className={ `far fa-user ${ this.state.currentActiveMenu === 'user' && 'activeTab' }` }></i>
+          <Row onClick={() => setCurrentActiveMenu("user")}>
+            <i className={ `far fa-user ${ currentActiveMenu === 'user' && 'activeTab' }` }></i>
           </Row>
 
-          <Row onClick={() => this.ToggleClass("ressource")}>
-            <i className={ `far fa-file-alt ${ this.state.currentActiveMenu === 'ressource' && 'activeTab' }` }></i>
+          <Row onClick={() => setCurrentActiveMenu("ressource")}>
+            <i className={ `far fa-file-alt ${ currentActiveMenu === 'ressource' && 'activeTab' }` }></i>
           </Row>
 
-          <Row onClick={() => this.ToggleClass("backoffice")}>
-            <i className={ `fas fa-sliders-h ${ this.state.currentActiveMenu === 'backoffice' && 'activeTab' }` }></i>
+          <Row onClick={() => setCurrentActiveMenu("backoffice")}>
+            <i className={ `fas fa-sliders-h ${ currentActiveMenu === 'backoffice' && 'activeTab' }` }></i>
           </Row>
 
         </Col>
 
         <Col xs={9} md={10} className="sub-menu">
-          {this.state.currentActiveMenu === "ressource" ? (
-            <MenuRessources />
-          ) : this.state.currentActiveMenu === "user" ? (
-            <MenuUser logout={ () => this.Logout() }/>
+          {currentActiveMenu === "ressource" ? (
+            <MenuRessources role={role} />
+          ) : currentActiveMenu === "user" ? (
+            <MenuUser role={role} />
           ) : (
-            <MenuBackOffice />
+            <MenuBackOffice role={role} />
           )}
         </Col>
       </Row>
     );
-  }
 }
-
-export default Menu;
