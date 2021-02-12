@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import Axios from "axios";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -13,11 +13,18 @@ export default function EditLastName() {
     
     Axios.defaults.withCredentials = true;
   
-    Axios.get(process.env.REACT_APP_SITE_URL_API+"/users/login").then((response) => {
-        if (response.data.loggedIn === true) {
-            setIdUser(response.data.user[0].id)
-        }
-      });
+    useEffect(() => 
+    {
+        Axios.get(process.env.REACT_APP_SITE_URL_API+"/users/login").then((response) => {
+            if (response.data.loggedIn === true) {
+                setIdUser(response.data.user[0].id)
+                Axios.get(process.env.REACT_APP_SITE_URL_API+"/users/getid/"+response.data.user[0].id).then((resp) => {
+                    document.getElementById("lastName").value = resp.data[0].lastname;
+                    setNom(resp.data[0].lastname)
+                })
+            }
+        });
+    }, []);
 
     function validerChangement(event)
     {
@@ -30,8 +37,11 @@ export default function EditLastName() {
           }).then((response) => {
               if(response.data.verif)
               {
-                setInformationNom('Ton prénom a bien été changé')
-                document.getElementById("lastName").value = '';
+                setInformationNom('Ton nom a bien été changé')
+                // document.getElementById("lastName").value = '';
+                setInterval(() => {
+                  setInformationNom('')
+                }, 2000);
               }
         });
     }
@@ -41,7 +51,7 @@ export default function EditLastName() {
             <form onSubmit={validerChangement} id="lastnameForm">
               <Col sm={12}><label>Nom :</label></Col>
               <Row className="input-btn-field">
-                <Col sm={10}><input id='lastName' className="pass-input" type="text" value="Mathieu" onChange={(e) => { setNom(e.target.value) }} /></Col>
+                <Col sm={10}><input id='lastName' className="pass-input" type="text" onChange={(e) => { setNom(e.target.value) }} /></Col>
                 <Col sm={2}><button id="btn-edit" form="lastnameForm"><i class="far fa-save"></i></button></Col>
               </Row>
           </form>  

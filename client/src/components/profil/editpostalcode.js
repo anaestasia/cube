@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import Axios from "axios";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
@@ -12,13 +12,20 @@ export default function EditPostalCode() {
     const [informationPostalCode, setInformationPostalCode] = useState("");
     
     Axios.defaults.withCredentials = true;
-  
-    Axios.get(process.env.REACT_APP_SITE_URL_API+"/users/login").then((response) => {
-        if (response.data.loggedIn === true) {
-            setIdUser(response.data.user[0].id)
-        }
-      });
-
+    
+    useEffect(() => 
+    {
+        Axios.get(process.env.REACT_APP_SITE_URL_API+"/users/login").then((response) => {
+            if (response.data.loggedIn === true) {
+                setIdUser(response.data.user[0].id)
+                Axios.get(process.env.REACT_APP_SITE_URL_API+"/users/getid/"+response.data.user[0].id).then((resp) => {
+                    document.getElementById("postal_codeId").value = resp.data[0].postal_code;
+                    setPostalCode(resp.data[0].postal_code)
+                })
+            }
+        });
+    }, []); 
+      
     function validerChangement(event)
     {
         event.preventDefault();
@@ -31,7 +38,10 @@ export default function EditPostalCode() {
               if(response.data.verif)
               {
                 setInformationPostalCode('Ton code postal bien été changé')
-                document.getElementById("postal_codeId").value = '';
+                // document.getElementById("postal_codeId").value = '';
+                setInterval(() => {
+                  setInformationPostalCode('')
+                }, 2000);
               }
         });
     }
@@ -41,7 +51,7 @@ export default function EditPostalCode() {
             <form onSubmit={validerChangement} id="codeForm">
               <Col sm={12}><label>Code postale :</label></Col>
               <Row className="input-btn-field">
-                <Col sm={10}><input id='postal_codeId' max="99999" className="pass-input" type="number" value="01001" onChange={(e) => { setPostalCode(e.target.value) }} /></Col>
+                <Col sm={10}><input id='postal_codeId' max="99999" className="pass-input" type="number" onChange={(e) => { setPostalCode(e.target.value) }} /></Col>
                 <Col sm={2}><button id="btn-edit" form="codeForm"><i class="far fa-save"></i></button></Col>
               </Row>
           </form>  

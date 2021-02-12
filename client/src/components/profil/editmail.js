@@ -5,7 +5,7 @@ import Col from "react-bootstrap/esm/Col";
 
 export default function EditMail() {
 
-    const [email1, setEmail1] = useState("anaestasia.mathieu@gmail.com");
+    const [email1, setEmail1] = useState("");
     const [email2, setEmail2] = useState("");
     const [doubleEmailMessage, setDoubleEmailMessage] = useState("");
 
@@ -15,16 +15,19 @@ export default function EditMail() {
     
     useEffect(() => 
     {
-        document.getElementById("inputEmail1").value = email1;
-    })
-    
+        Axios.get(process.env.REACT_APP_SITE_URL_API+"/users/login").then((response) => {
+            if (response.data.loggedIn === true) {
+                setIdUser(response.data.user[0].id)
+                Axios.get(process.env.REACT_APP_SITE_URL_API+"/users/getid/"+response.data.user[0].id).then((resp) => {
+                    document.getElementById("inputEmail1").value = resp.data[0].mail;
+                    setEmail1(resp.data[0].mail)
+                })
+            }
+        });
+    }, []);  
+
     Axios.defaults.withCredentials = true;
   
-    Axios.get(process.env.REACT_APP_SITE_URL_API+"/users/login").then((response) => {
-        if (response.data.loggedIn === true) {
-            setIdUser(response.data.user[0].id)
-        }
-      });
 
       function emailIdentique1(e)
       {
@@ -63,9 +66,12 @@ export default function EditMail() {
             if(response.data.verif)
             {
                 setInformationEmail('Ton email a bien était changé')
-                document.getElementById("inputEmail1").value = '';
+                // document.getElementById("inputEmail1").value = '';
                 document.getElementById("inputEmail2").value = '';
                 document.getElementById("btn-edit-email").disabled = true;
+                setInterval(() => {
+                    setInformationEmail('')
+                  }, 2000);
               }
         });
     }
@@ -91,10 +97,4 @@ export default function EditMail() {
             </Col>
         </Row>
       );
-    }
-
-
-
-
-
-  
+    }  

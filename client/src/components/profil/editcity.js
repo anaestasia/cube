@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import Axios from "axios";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
@@ -13,11 +13,18 @@ export default function EditCity() {
     
     Axios.defaults.withCredentials = true;
   
-    Axios.get(process.env.REACT_APP_SITE_URL_API+"/users/login").then((response) => {
-        if (response.data.loggedIn === true) {
-            setIdUser(response.data.user[0].id)
-        }
-      });
+    useEffect(() => 
+    {
+        Axios.get(process.env.REACT_APP_SITE_URL_API+"/users/login").then((response) => {
+            if (response.data.loggedIn === true) {
+                setIdUser(response.data.user[0].id)
+                Axios.get(process.env.REACT_APP_SITE_URL_API+"/users/getid/"+response.data.user[0].id).then((resp) => {
+                    document.getElementById("cityId").value = resp.data[0].city;
+                    setCity(resp.data[0].city)
+                })
+            }
+        });
+    }, []); 
 
     function validerChangement(event)
     {
@@ -31,7 +38,10 @@ export default function EditCity() {
               if(response.data.verif)
               {
                 setInformationCity('Ta ville a bien été changé')
-                document.getElementById("cityId").value = '';
+                // document.getElementById("cityId").value = '';
+                setInterval(() => {
+                  setInformationCity('')
+                }, 2000);
               }
         });
     }
@@ -41,7 +51,7 @@ export default function EditCity() {
             <form onSubmit={validerChangement} id="cityForm">
               <Col sm={12}><label>Nom de la ville :</label></Col>
               <Row className="input-btn-field">
-                <Col sm={10}><input id='cityId' className="pass-input" type="text" value="AngelCity" onChange={(e) => { setCity(e.target.value) }} /></Col>
+                <Col sm={10}><input id='cityId' className="pass-input" type="text" onChange={(e) => { setCity(e.target.value) }} /></Col>
                 <Col sm={2}><button id="btn-edit" form="cityForm"><i class="far fa-save"></i></button></Col>
               </Row>
           </form>  

@@ -20,7 +20,7 @@ const App = () => {
 
     const interval = setInterval(() => {
      const fetchPosts = async () => {
-      const res = await axios.get('http://localhost:3001/comments/get/'+id);
+      const res = await axios.get(process.env.REACT_APP_SITE_URL_API+'/comments/get/'+id);
       setPosts(res.data);
     };
 

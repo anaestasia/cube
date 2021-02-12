@@ -114,6 +114,19 @@ app.get("/get", (req, res) => {
   });
 //fin get  
 
+//get id
+app.get("/getid/:id", (req, res) => {
+  id = req.params.id;
+  db.query("SELECT * FROM users where id = ?",id, (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
+//fin get id
+
 //delete
 app.delete("/delete/:id", (req, res) => {
     const id = req.params.id;
