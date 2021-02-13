@@ -68,7 +68,7 @@ export default function MyRessources() {
 
         <Row className="parent-row">
             <Col xl={3} className="col-menu menuFixe">
-                <Menu />
+                <Menu activeSubMenu="user" activeSubSubMenu="MyRessource"/>
             </Col>
 
             <Col xl={9} className="col-content-page">

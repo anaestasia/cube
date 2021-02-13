@@ -141,7 +141,7 @@ const onRemove = (selectedList, selectedItem) =>
     <Container fluid>
         <Row className="parent-row">
             <Col xl={3} className="col-menu">
-                <Menu />
+                <Menu activeSubMenu="ressource" activeSubSubMenu="submitRessource"/>
             </Col>
 
             <Col xl={9} className="col-content-page">

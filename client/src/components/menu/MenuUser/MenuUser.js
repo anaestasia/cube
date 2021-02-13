@@ -1,11 +1,11 @@
 import React from 'react';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';// eslint-disable-next-line
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'; 
+import Col from 'react-bootstrap/Col';
+import { Link } from 'react-router-dom'; 
 import Axios from "axios";
 
 
-export default function MenuUser({role}) {
+export default function MenuUser({role , activeSubSubMenu }) {
   
     const logout = () => 
     {
@@ -26,31 +26,52 @@ export default function MenuUser({role}) {
                             <li className="link"><Link to={'/'}><span>Se connecter</span></Link></li>
                             <li className="link"><Link to={'/register'}><span>S'inscrire</span></Link></li>
                         </ul> 
-                        :
-                    role=== 1 ?
+                        : <></>
+                    }
+
+                    {role=== 1 ?
                         <>
                         <ul>
                             <li className="subtitle"><span>Vérifie ton mail</span></li>
                         </ul> 
-                        <ul>
-                            <li className="subtitle"><span><i class="fas fa-user-cog"></i> MON PROFIL</span></li>
-                            <li className="link"><Link to={'/profile'}><span>Modifier mon profil</span></Link></li>
-                            <li class="link logout"><span className="logoutHover" onClick={ logout }>Déconnexion</span></li>
-                        </ul>
-                        </>
-                        :
+                        </> : <></>
+                    }
+
+                    {role>=2 ?
                         <>
                         <ul>
                             <li className="subtitle"><span><i class="fas fa-tachometer-alt"></i> TABLEAU DE BORD</span></li>
-                            <li className="link"><Link to={'/my-ressources'}><span>Mes ressources</span></Link></li>
-                            <li className="link"><Link to={'/my-favorites'}><span>Mes favoris</span></Link></li>
+                            <li className="link">
+                                <Link to={'/my-ressources'}><span>
+                                    {activeSubSubMenu === "MyRessource" ? <i class="fa  fa-hand-o-right"></i> : <></>}
+                                    {' '}Mes ressources</span>
+                                </Link>
+                            </li>
+                            <li className="link">
+                                <Link to={'/my-favorites'}><span>
+                                    {activeSubSubMenu === "myFavorites" ? <i class="fa  fa-hand-o-right"></i> : <></>}
+                                    {' '}Mes favoris</span>
+                                </Link>
+                            </li>
                         </ul>
+                        </>
+                        : <></>
+                    }
+
+                    {role >=1 ?
+                        <>
                         <ul>
                             <li className="subtitle"><span><i class="fas fa-user-cog"></i> MON PROFIL</span></li>
-                            <li className="link"><Link to={'/profile'}><span>Modifier mon profil</span></Link></li>
+                            <li className="link">
+                                <Link to={'/profile'}><span>
+                                    {activeSubSubMenu === "ModifierMonProfil" ? <i class="fa  fa-hand-o-right"></i> : <></>}
+                                    {' '}Modifier mon profil</span>
+                                </Link>
+                            </li>
                             <li class="link logout"><span className="logoutHover" onClick={ logout }>Déconnexion</span></li>
                         </ul>
                         </>
+                        : <></>
                     }
                 </Col>
             </Row>

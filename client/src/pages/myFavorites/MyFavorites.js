@@ -11,7 +11,7 @@ export default function MyFavorites() {
     <Container fluid>
         <Row className="parent-row">
             <Col xl={3} className="col-menu">
-                <Menu />
+                <Menu activeSubMenu="user" activeSubSubMenu="myFavorites"/>
             </Col>
 
             <Col xl={9} className="col-content-page">
