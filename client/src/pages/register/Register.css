@@ -1,0 +1,54 @@
+.registration {
+    margin: 0 auto;
+    max-width: 700px;
+    padding: 15px;
+    align-self: center;
+}
+
+h1.register{
+    text-align: center;
+    font-size: 3em;
+    margin-bottom: 5%;
+}
+
+.registration .input-register {
+    width: 100%;
+    border: none;
+    height: 30px;
+    padding: 2px 20px;
+    border-radius: 10px;
+    font-size: 18px;
+}
+.registration .field{
+    margin-top: 2%;
+}
+.registration .field label{
+    font-size: 1.1em;
+}
+.registration .dble-field {
+    padding: 0;
+}
+.registration .btn-container{
+    margin-top: 5%;
+    text-align: center;
+}
+.btn-back-link{
+    display: flex;
+    justify-content: center;
+}
+
+.btn-back{
+    background-color: #bcbdbc;
+    color: #272828;
+    height: 40px;
+    line-height: 40px;
+    border : none;
+    border-radius: 10px;
+    font-size: 20px;
+    padding: 0 10px;
+}
+.btn-back:hover {
+    background-color: #c0e5e7;
+    color: #272828;
+    text-decoration: none;;
+}

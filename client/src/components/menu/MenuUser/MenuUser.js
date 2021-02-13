@@ -23,7 +23,8 @@ export default function MenuUser({role}) {
                     {role=== 0 ?
                         <ul>
                         <li className="subtitle"><span><i class="fas fa-user-cog"></i> MON PROFIL</span></li>
-                            <li className="link"><Link to={'/login'}><span>Connecte toi</span></Link></li>
+                            <li className="link"><Link to={'/'}><span>Se connecter</span></Link></li>
+                            <li className="link"><Link to={'/register'}><span>S'inscrire</span></Link></li>
                         </ul> 
                         :
                     role=== 1 ?
