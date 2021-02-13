@@ -46,7 +46,7 @@ useEffect(() =>
     <Container fluid>
         <Row className="parent-row">
             <Col xl={3} className="col-menu menuFixe">
-              <Menu />
+              <Menu activeSubMenu="ressource" activeSubSubMenu="catalog"/>
             </Col>
             <Col xl={9} className="col-content-page">
               <Row className="catalog">

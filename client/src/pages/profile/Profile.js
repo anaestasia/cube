@@ -46,7 +46,7 @@ export default function Profile() {
         <Row className="parent-row">
 
           <Col xl={3} className="col-menu">
-              <Menu />
+              <Menu activeSubMenu="user" activeSubSubMenu="ModifierMonProfil"/>
           </Col>
 
           <Col xl={9} className="col-content-page">

@@ -7,9 +7,9 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Axios from "axios";
 
-export default function Menu() {
+export default function Menu({activeSubMenu , activeSubSubMenu }) {
 
-  const [currentActiveMenu, setCurrentActiveMenu] = useState("ressource");
+  const [currentActiveMenu, setCurrentActiveMenu] = useState(activeSubMenu);
 
   const [role, setRole] = useState("");
 
@@ -56,9 +56,9 @@ export default function Menu() {
 
         <Col xs={9} md={10} className="sub-menu">
           {currentActiveMenu === "ressource" ? (
-            <MenuRessources role={role} />
+            <MenuRessources role={role} activeSubSubMenu={activeSubSubMenu}/>
           ) : currentActiveMenu === "user" ? (
-            <MenuUser role={role} />
+            <MenuUser role={role} activeSubSubMenu={activeSubSubMenu}/>
           ) : (
             <MenuBackOffice role={role} />
           )}
