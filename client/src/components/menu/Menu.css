@@ -1,7 +1,3 @@
-.logoutHover{
-    cursor: pointer;
-}
-
 .main-menu{
     margin: 0 5% 0 2%;
     padding: 0;
@@ -26,6 +22,7 @@
 .navbar-menu .row i:hover,
 .navbar-menu .row i.activeTab {
     color:#febd59;
+    cursor: pointer;
 }
 .navbar-menu .logo-navbar{
     margin-bottom: 100%;
@@ -89,8 +86,24 @@
 }
 .sub-menu .row li.link:hover {
     background-color: #c0e5e7;
+}
+.sub-menu .row li.link a {
     color: #222320;
+}
+.sub-menu .row li.link a:hover {
+    color: #222320;
+    text-decoration: none;
+}
+.sub-menu .row li.link span.activeSubTab {
+    color: #febd59;
+    border-left: solid 1px #febd59;
     
+}
+.logoutHover{
+    cursor: pointer;
+}
+.logoutHover:hover{
+    color: red;
 }
 
 /* ----- max 1200 PX ----- */

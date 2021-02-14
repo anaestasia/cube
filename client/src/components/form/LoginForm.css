@@ -22,6 +22,13 @@
     color: #ffffff;
 }
 
+.login-form form .email-field input {
+    background-image: url("./icon_email.png") !important;
+}
+
+.login-form form .pass-field input {
+    background-image: url("./icon_password.png") !important;
+}
 .login-form form .email-field input,
 .login-form form .pass-field input {
     border: none;
@@ -33,18 +40,8 @@
     background-size: 18px;
     background-repeat: no-repeat;
     background-position: center left 10px;
-    font-size: 18px;
     font-family: 'Roboto';
 }
-
-.login-form form .email-field input {
-    background-image: url("./icon_email.png") !important;
-}
-
-.login-form form .pass-field input {
-    background-image: url("./icon_password.png") !important;
-}
-
 .msg-login-status{
     font-size: 18px;
 }

@@ -4,8 +4,8 @@
     border : none;
     border-radius: 10px;
     font-size: 20px;
-    padding: 0 10px 0 10px;
+    padding: 0 10px;
 }
 .submit-btn input:hover {
-    background-color: #bcbdbc;
+    background-color: #c0e5e7;
 }

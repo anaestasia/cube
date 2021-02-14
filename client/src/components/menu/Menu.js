@@ -60,7 +60,7 @@ export default function Menu({activeSubMenu , activeSubSubMenu }) {
           ) : currentActiveMenu === "user" ? (
             <MenuUser role={role} activeSubSubMenu={activeSubSubMenu}/>
           ) : (
-            <MenuBackOffice role={role} />
+            <MenuBackOffice role={role} activeSubSubMenu={activeSubSubMenu}/>
           )}
         </Col>
       </Row>
