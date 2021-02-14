@@ -4,17 +4,18 @@ import Axios from "axios";
 import Table from './table';
 import Button from 'react-bootstrap/Button';
 
-export default function TableRoles({actionRole}) {
+export default function TablePunishement({actionRole}) {
   
+  const nomDeLaTable = "punishements"
   //modal 
   const [show, setShow] = useState(false);
-  const titreModal = 'Rôle';
-  const [nameRole, setNameRole] = useState('');
+  const titreModal = 'Types de sanctions';
+  const [labelPunishement, setLabelPunishement] = useState('');
   const [ajouterModal, setAjouterModal] = useState(true);
 
   const handleClose = () => setShow(false);
   //fin modal
-  const titreTableau = "Rôles";
+  const titreTableau = "Les types de sanctions";
   //modal del
   const [showD, setShowD] = useState(false);
   const handleCloseD = () => setShowD(false);
@@ -26,15 +27,15 @@ export default function TableRoles({actionRole}) {
   
   const columns = [
     {
-      name: "Nom du role",
-      selector: "name",
+      name: "Nom de sanction",
+      selector: "label",
       sortable: true
     }  
   ];
  
   const getApi = () => 
   {
-    Axios.get(process.env.REACT_APP_SITE_URL_API + "/roles/get").then((reponse) => {
+    Axios.get(process.env.REACT_APP_SITE_URL_API + "/"+nomDeLaTable+"/get").then((reponse) => {
       setData(reponse.data)
     })
   }
@@ -65,7 +66,7 @@ export default function TableRoles({actionRole}) {
     setRowEdit(row)
     setAjouterModal(false)
     setShow(true);
-    setNameRole(row.name);
+    setLabelPunishement(row.label);
   }
 
   const delRow = row => {
@@ -75,7 +76,7 @@ export default function TableRoles({actionRole}) {
 
   const delApi = () => 
   {
-    Axios.delete(process.env.REACT_APP_SITE_URL_API + "/roles/delete/"+rowEdit.id)
+    Axios.delete(process.env.REACT_APP_SITE_URL_API + "/"+nomDeLaTable+"/delete/"+rowEdit.id)
         .then(res => {
           getApi()
           handleCloseD()
@@ -85,13 +86,13 @@ export default function TableRoles({actionRole}) {
   {
     setAjouterModal(true)
     setShow(true);
-    setNameRole("");
+    setLabelPunishement("");
   }
 
   const EditApi = () => 
   {
-    Axios.post(process.env.REACT_APP_SITE_URL_API + "/roles/update", {
-      name: nameRole,
+    Axios.post(process.env.REACT_APP_SITE_URL_API + "/"+nomDeLaTable+"/update", {
+      name : labelPunishement,
       id: rowEdit.id,
     }).then(() => 
     {
@@ -102,8 +103,8 @@ export default function TableRoles({actionRole}) {
 
   const AddApi = () => 
   {
-    Axios.post(process.env.REACT_APP_SITE_URL_API + "/roles/create", {
-      name: nameRole,
+    Axios.post(process.env.REACT_APP_SITE_URL_API + "/"+nomDeLaTable+"/create", {
+      label: labelPunishement,
     }).then(() => 
     {
       getApi()
@@ -116,7 +117,7 @@ export default function TableRoles({actionRole}) {
         <Modal.Header closeButton>
           <Modal.Title>Supprimer</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Voulez vous supprimer {rowEdit.name}</Modal.Body>
+        <Modal.Body>Voulez vous supprimer {rowEdit.label}</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleCloseD}>
             Fermer
@@ -134,7 +135,7 @@ export default function TableRoles({actionRole}) {
         <Modal.Body>
           <label>Nom :</label>
           {/* value={checkbox1.name} */}
-          <input type="text" id="idNameEdit" value={nameRole} onChange={(e) => { setNameRole(e.target.value); }} />
+          <input type="text" id="idNameEdit" value={labelPunishement} onChange={(e) => { setLabelPunishement(e.target.value); }} />
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>

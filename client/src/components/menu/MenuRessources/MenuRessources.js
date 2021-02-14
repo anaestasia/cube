@@ -13,7 +13,7 @@ export default function MenuRessources({role , activeSubSubMenu}) {
                     {role >= 2 ? 
                         <li className="link">
                             <Link to={'/submit-ressource'}>
-                                <span className={ activeSubSubMenu === 'submitRessource' && 'activeSubTab' }>Créer une ressource</span>
+                                <span className={ activeSubSubMenu === 'submitRessource' && 'activeSubTab' }> <i class="fa  fa-hand-o-right"></i> {" "}Créer une ressource</span>
                             </Link>
                         </li>
                     : <></>} 
