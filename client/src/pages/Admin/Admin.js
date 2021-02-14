@@ -6,19 +6,15 @@ import TableRoles from '../../components/table/roles';
 
 export default function Admin() {
 
-
   return (
     <>
       <Container fluid>
         <Row>
-            <Col xl={5} className="col-menu">
-              <TableRoles />
+            <Col xl={6} className="col-menu">
+              <TableRoles actionRole={true}/>
             </Col>
           </Row>
         </Container>  
-          
-        
-
     </>
   );
 }
