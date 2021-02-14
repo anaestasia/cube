@@ -20,12 +20,11 @@ export default function MenuBackOffice({role , activeSubSubMenu}) {
                 <ul>
                     <li className="subtitle"><span><i class="fas fa-folder-open"></i> RESSOURCES</span></li>
                     <li className="link">
-                        <Link to={'/admin/approvedRessources'}><span>
-                            {activeSubSubMenu === "MyRessource" ? <i class="fa  fa-hand-o-right"></i> : <></>}
-                            {' '}Approuver une ressources</span>
+                        <Link to={'/admin/approvedRessources'}>
+                            <span>Gérer les ressources</span>
+                            {/* <span className={ activeSubSubMenu === 'approvedRessources' && 'activeSubTab' }>Gérer les ressources</span> */}
                         </Link>
                     </li>
-                    <li className="link"><span>Gérer les ressources</span></li>
                     <li className="link"><span>Gérer les catégories</span></li>
                     <li className="link"><span>Gérer les commentaires</span></li>
                 </ul> : <></> 

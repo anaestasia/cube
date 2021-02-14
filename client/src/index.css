@@ -25,10 +25,6 @@ body {
   min-height: 100vh;
 }
 
-a:hover,
-.link:hover {
-  color: #febd59;
-}
 h1 {
   font-size: 2em;
   font-family: 'Oswald', sans-serif;

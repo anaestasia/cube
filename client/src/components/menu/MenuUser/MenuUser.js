@@ -42,15 +42,13 @@ export default function MenuUser({role , activeSubSubMenu }) {
                         <ul>
                             <li className="subtitle"><span><i class="fas fa-tachometer-alt"></i> TABLEAU DE BORD</span></li>
                             <li className="link">
-                                <Link to={'/my-ressources'}><span>
-                                    {activeSubSubMenu === "MyRessource" ? <i class="fa  fa-hand-o-right"></i> : <></>}
-                                    {' '}Mes ressources</span>
+                                <Link to={'/my-ressources'}>
+                                    <span className={ activeSubSubMenu === 'MyRessource' && 'activeSubTab' }>Mes ressources</span>
                                 </Link>
                             </li>
                             <li className="link">
-                                <Link to={'/my-favorites'}><span>
-                                    {activeSubSubMenu === "myFavorites" ? <i class="fa  fa-hand-o-right"></i> : <></>}
-                                    {' '}Mes favoris</span>
+                                <Link to={'/my-favorites'}>
+                                    <span className={ activeSubSubMenu === "myFavorites" && 'activeSubTab' }>Mes favoris</span>
                                 </Link>
                             </li>
                         </ul>
@@ -63,9 +61,8 @@ export default function MenuUser({role , activeSubSubMenu }) {
                         <ul>
                             <li className="subtitle"><span><i class="fas fa-user-cog"></i> MON PROFIL</span></li>
                             <li className="link">
-                                <Link to={'/profile'}><span>
-                                    {activeSubSubMenu === "ModifierMonProfil" ? <i class="fa  fa-hand-o-right"></i> : <></>}
-                                    {' '}Modifier mon profil</span>
+                                <Link to={'/profile'}>
+                                    <span className={ activeSubSubMenu === 'ModifierMonProfil' && 'activeSubTab' }>Modifier mon profil</span>
                                 </Link>
                             </li>
                             <li class="link logout"><span className="logoutHover" onClick={ logout }>Déconnexion</span></li>

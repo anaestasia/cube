@@ -12,17 +12,15 @@ export default function MenuRessources({role , activeSubSubMenu}) {
                     <li className="subtitle"><span><i className="fas fa-folder-open"></i> RESSOURCES</span></li>
                     {role >= 2 ? 
                         <li className="link">
-                            <Link to={'/submit-ressource'}><span>
-                                {activeSubSubMenu === "submitRessource" ? <i class="fa  fa-hand-o-right"></i> : <></>}
-                                {' '}Créer une ressource</span>
+                            <Link to={'/submit-ressource'}>
+                                <span className={ activeSubSubMenu === 'submitRessource' && 'activeSubTab' }>Créer une ressource</span>
                             </Link>
                         </li>
                     : <></>} 
                     
                     <li className="link">
-                        <Link to={'/catalog'}><span>
-                            {activeSubSubMenu === "catalog" ? <i class="fa  fa-hand-o-right"></i> : <></>}
-                            {' '}Consulter le catalogue</span>
+                        <Link to={'/catalog'}>
+                            <span className={ activeSubSubMenu === 'catalog' && 'activeSubTab' }>Consulter le catalogue</span>
                         </Link>
                     </li>
                 </ul>
