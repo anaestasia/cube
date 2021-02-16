@@ -33,6 +33,25 @@ router.post("/create", (req, res) => {
   });
 //fin get  
 
+//update
+router.post("/update", (req, res) => {
+  const name = req.body.name;
+  const id = req.body.id;
+
+  db.query(
+    "UPDATE roles set name = ? where id = ?",
+    [name,id],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send("Valeur modifié !");
+      }
+    }
+  );
+});
+//fin update
+
 //delete
 router.delete("/delete/:id", (req, res) => {
     const id = req.params.id;
@@ -40,6 +59,7 @@ router.delete("/delete/:id", (req, res) => {
       if (err) {
         console.log(err);
       } else {
+        console.log('supprimé')
         res.send(result);
       }
     });
