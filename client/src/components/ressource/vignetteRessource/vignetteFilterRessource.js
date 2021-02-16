@@ -1,4 +1,5 @@
 import React from "react";
+import './vignetteRessource.css';
 
     export default function vignetteFilterRessource({titre , idRessource , nombreLike , categorie , typeRelation , typeRessource , nb_consultation}){
         const lienRessource = "/ressource/"+idRessource

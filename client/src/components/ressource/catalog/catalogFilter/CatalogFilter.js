@@ -3,7 +3,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './CatalogFilter.css';
 import Axios from "axios";
-import VignetteFilterRessource from '../vignetteRessource/vignetteFilterRessource';
+import VignetteFilterRessource from '../../vignetteRessource/vignetteFilterRessource';
 
 export default function CatalogFilter() {
 
@@ -124,7 +124,6 @@ export default function CatalogFilter() {
   return (
       <>
         <Col xl={4}>
-            <br />
             <div className="cards">
                 Filtres
                 <select name="type-ressource" id="type-ressource" onChange={(e) => { filtreressource("fk_type_ressource",e.target.value);}}>
@@ -139,8 +138,8 @@ export default function CatalogFilter() {
                 <br />
             </div>
         </Col>
+
         <Col xl={8}>
-            <br />
             <div className="cards">
                 <Row>
                     {filtreExiste ? lastRessources.map(lastRessource => ( 

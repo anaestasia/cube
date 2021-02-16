@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Menu from '../../components/menu/Menu';
 import Footer from '../../components/footer/Footer';
 // import CatalogComp from '../../components/ressource/catalog/CatalogComp';
-import CatalogFilter from '../../components/ressource/catalogFilter/CatalogFilter';
+import CatalogFilter from '../../components/ressource/catalog/catalogFilter/CatalogFilter';
 // import Ressource from '../../components/ressource/Ressource';
 import Axios from "axios";
 import './Catalog.css';
@@ -45,37 +45,40 @@ useEffect(() =>
   return (
     <Container fluid>
         <Row className="parent-row">
+
             <Col xl={3} className="col-menu menuFixe">
               <Menu activeSubMenu="ressource" activeSubSubMenu="catalog"/>
             </Col>
+
             <Col xl={9} className="col-content-page">
+
               <Row className="catalog">
 
-                <Col xl={12}>
-                  <div className="last-adds">
-                    <h2>DERNIERES RESSOURCES AJOUTÉES</h2>
-                    <Row>
-                      {lastRessources.map(lastRessource => ( 
-                        <Col key={lastRessource.idRessource} sm={12} xl={4}><div className="ressource">
-                          <VignetteLastRessource 
-                            titre={lastRessource.title} 
-                            categorie={lastRessource.categories}
-                            typeRelation={lastRessource.namerelationship}
-                            typeRessource={lastRessource.nametyperss}
-                            nombreLike={lastRessource.nb_like}
-                            idRessource= {lastRessource.idRessource}
-                            nb_consultation = {lastRessource.nb_consultation}
-                          />
-                          </div></Col>
-                      ))}
-                    </Row>
-                  </div>
+                {/* Derniers ajouts ressources */}
+                <Col xl={12} className="last-adds">
+                  <Row>
+                    <Col xl={12}><h2>DERNIERES RESSOURCES AJOUTÉES</h2></Col>
+                    {lastRessources.map(lastRessource => ( 
+                      <Col key={lastRessource.idRessource} sm={12} xl={4}>
+                        <VignetteLastRessource 
+                          titre={lastRessource.title} 
+                          categorie={lastRessource.categories}
+                          typeRelation={lastRessource.namerelationship}
+                          typeRessource={lastRessource.nametyperss}
+                          nombreLike={lastRessource.nb_like}
+                          idRessource= {lastRessource.idRessource}
+                          nb_consultation = {lastRessource.nb_consultation}
+                        />
+                      </Col>
+                    ))}
+                  </Row>
                 </Col>
 
-                {/* <Col xl={4}>
-                   <CatalogComp />
-                </Col> */}
-                <CatalogFilter />
+                 {/* catalogue + filtres */}
+                <Col xl={12} className="search-catalog">
+                  <CatalogFilter />
+                </Col>
+
               </Row>
 
             </Col>
