@@ -47,6 +47,7 @@ h2 {
 }
 .col-content-page {
   padding: 1%;
+  height: 100vh;
 }
 
 /* ----------------------- */

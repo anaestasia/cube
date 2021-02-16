@@ -69,7 +69,7 @@ export default function Profile() {
               <Col xl={6}>
                 <Row>
                   <Col xl={6}><button onClick={toggleEmail} className={ `btn-email-psswd ${ currentActiveForm === 'email' && 'activeForm' }` }>Mon email</button></Col>
-                  <Col xl={6}><button onClick={togglePsswd}  className={ `btn-email-psswd ${ currentActiveForm === 'psswd' && 'activeForm' }` }>Modifier mon mot de passe</button></Col>
+                  <Col xl={6}><button onClick={togglePsswd}  className={ `btn-email-psswd ${ currentActiveForm === 'psswd' && 'activeForm' }` }>Mon mot de passe</button></Col>
                   <Col xl={12}>{editPsswd ? <EditPassword /> : <EditMail />}</Col>
                 </Row>
               </Col>
