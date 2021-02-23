@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const mysql = require("mysql");
 const cors = require("cors");
 
 app.use(
@@ -8,8 +9,7 @@ app.use(
     methods: ["GET", "POST","DELETE"],
     credentials: true,
   })
-);
-app.use(express.json());
+);app.use(express.json());
 
 
 const categoriesRoute = require("./tables/categories");

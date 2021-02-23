@@ -6,15 +6,15 @@ import './vignetteRessource.css';
         return (
             <div className="vignette-ressource-container">
                 <div>
-                    <h2>{titre} <a href={lienRessource} ><i class="fas fa-external-link-alt"></i></a></h2>
-                    <span><i class="fas fa-thumbs-up"></i> {nombreLike} </span>
-                    <span><i class="fas fa-ellipsis-v"></i><i class="far fa-heart"></i><i class="fas fa-reply"></i></span>
+                    <h2>{titre} <a href={lienRessource} ><i className="fas fa-external-link-alt"></i></a></h2>
+                    <span><i className="fas fa-thumbs-up"></i> {nombreLike} </span>
+                    <span><i className="fas fa-ellipsis-v"></i><i className="far fa-heart"></i><i className="fas fa-reply"></i></span>
                     <span> vu : {nb_consultation}</span>
                 </div>
                 <ul>
-                    <li class="ressource-categorie"> <i class="fas fa-folder-open"> </i> Catégorie : {categorie} </li>
-                    <li class="ressource-type-relation"> <i class="fas fa-users"></i> Type(s) de relation : {typeRelation} </li>
-                    <li class="ressource-type-ressource"> <i class="fas fa-file-alt"></i> Type(s) de ressource : {typeRessource} </li>
+                    <li className="ressource-categorie"> <i className="fas fa-folder-open"> </i> Catégorie : {categorie} </li>
+                    <li className="ressource-type-relation"> <i className="fas fa-users"></i> Type(s) de relation : {typeRelation} </li>
+                    <li className="ressource-type-ressource"> <i className="fas fa-file-alt"></i> Type(s) de ressource : {typeRessource} </li>
                 </ul>
                 <div className="description"></div>
             </div>

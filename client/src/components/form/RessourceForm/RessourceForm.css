@@ -1,80 +1,23 @@
-@font-face {
-  font-family: 'Roboto';
-  src: local('Roboto'), url(./fonts/Roboto/Roboto-Medium.ttf) format('truetype');
-}
-
-@font-face {
-  font-family: 'Oswald';
-  src: local('Oswald'), url(./fonts/Oswald/Oswald-SemiBold.ttf) format('truetype');
-}
-
-@font-face {
-  font-family: 'SegoePrint';
-  src: local('SegoePrint'), url(./fonts/SegoePrint/SegoePrint.ttf) format('truetype');
-}
-
-body {
-  margin: 0;
-  font-family: Roboto, sans-serif;
-  font-size: 16px;
-  color: #222320;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  height: 100%;
-  width: 100%;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 2em;
-  font-family: 'Oswald', sans-serif;
-  margin-bottom: 3%;
-}
-h2 {
-  font-size: 1.4em;
-  font-family: 'Oswald', sans-serif;
-}
-.container-fluid {
-  height: 100%;
-  padding: 0;
-}
-.parent-row{
-  min-height: 100vh;
-  display: flex;
-  flex-direction: row;
-}
-.col-menu{
-  text-align: left;
-  padding: 1%;
-  height: 100vh;
-}
-.col-content-page {
-  padding: 1%;
-  height: 100vh;
+.submit-ressource {
+    padding: 1.5%;
+    background-color: #ffffff;
+    width: 100%;
+    border-radius: 30px;
+    box-shadow: 1px 1px 5px #222320;
 }
 
 /* ----------------------- */
 /* ----- MAX 1200 PX ----- */
 /* ----------------------- */
 @media (max-width: 1200px) {
-  body {
-    font-size: 14px;
-  }
+
 }
 
 /* --------------------------------- */
 /* ----- MAX 1024 PX / Laptop  ----- */
 /* --------------------------------- */
 @media (max-width: 1024px){
-  body {
-    font-size: 14px;
-  }
-  h1 {
-    font-size: 20px;
-  }
-  h2 {
-    font-size: 18px;
-  }
+  
 }
 
 /* ----------------------- */
@@ -118,8 +61,6 @@ h2 {
 @media (max-width: 660px){
   
 }
-
-/* A partir de 630px la taille de l'écran est bizarre */
 
 /* ---------------------- */
 /* ----- MAX 481 PX ----- */

@@ -1,125 +1,130 @@
-@font-face {
-  font-family: 'Roboto';
-  src: local('Roboto'), url(./fonts/Roboto/Roboto-Medium.ttf) format('truetype');
+ .login-row{
+     width: 100%;
+ }
+ form.login-form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: left;
+    width: 90%;
+    margin: 0 5%;
+    font-size: 1.2em;
 }
 
-@font-face {
-  font-family: 'Oswald';
-  src: local('Oswald'), url(./fonts/Oswald/Oswald-SemiBold.ttf) format('truetype');
+.login-form .email-field,
+.login-form .pass-field {
+    margin: 5px 0 5px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
-@font-face {
-  font-family: 'SegoePrint';
-  src: local('SegoePrint'), url(./fonts/SegoePrint/SegoePrint.ttf) format('truetype');
+.login-form div label {
+    margin-bottom : 10px;
+    color: #ffffff;
 }
 
-body {
-  margin: 0;
-  font-family: Roboto, sans-serif;
-  font-size: 16px;
-  color: #222320;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  height: 100%;
-  width: 100%;
-  min-height: 100vh;
+.login-form .email-field input {
+    background-image: url("./icon_email.png") !important;
 }
 
-h1 {
-  font-size: 2em;
-  font-family: 'Oswald', sans-serif;
-  margin-bottom: 3%;
+.login-form .pass-field input {
+    background-image: url("./icon_password.png") !important;
 }
-h2 {
-  font-size: 1.4em;
-  font-family: 'Oswald', sans-serif;
+.login-form .email-field input,
+.login-form .pass-field input {
+    border: none;
+    height: 30px;
+    padding: 2px 10px 2px 40px;
+    width: 100%;
+    border-radius: 10px;
+    font-size: 18px;
+    background-size: 18px;
+    background-repeat: no-repeat;
+    background-position: center left 10px;
+    font-family: 'Roboto';
 }
-.container-fluid {
-  height: 100%;
-  padding: 0;
+.msg-login-status{
+    font-size: 18px;
 }
-.parent-row{
-  min-height: 100vh;
-  display: flex;
-  flex-direction: row;
+
+.btns {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
 }
-.col-menu{
-  text-align: left;
-  padding: 1%;
-  height: 100vh;
+
+.btns .row {
+    text-align: center;
+    width: 100%;
 }
-.col-content-page {
-  padding: 1%;
-  height: 100vh;
+
+.btns a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.8em;
+}
+
+.btns a:hover {
+    color: #febd59;
 }
 
 /* ----------------------- */
 /* ----- MAX 1200 PX ----- */
 /* ----------------------- */
 @media (max-width: 1200px) {
-  body {
-    font-size: 14px;
-  }
+
 }
 
 /* --------------------------------- */
 /* ----- MAX 1024 PX / Laptop  ----- */
 /* --------------------------------- */
 @media (max-width: 1024px){
-  body {
-    font-size: 14px;
-  }
-  h1 {
-    font-size: 20px;
-  }
-  h2 {
-    font-size: 18px;
-  }
+
 }
 
 /* ----------------------- */
 /* ----- MAX 966 PX  ----- */
 /* ----------------------- */
 @media (max-width: 966px){
-  
+
 }
 
 /* ---------------------- */
 /* ----- MAX 840 PX ----- */
 /* ---------------------- */
 @media (max-width: 840px) {
-  
+
 }
 
 /* ------------------------ */
 /* ----- MAX 800 PX   ----- */
 /* ------------------------ */
 @media (max-width: 800px){
-  
+
 }
 
 /* ---------------------------------- */
 /* ----- MAX 768 PX / Tablette  ----- */
 /* ---------------------------------- */
 @media (max-width: 768px) {
-  
+
 }
 
 /* ---------------------- */
 /* ----- MAX 710 PX ----- */
 /* ---------------------- */
 @media (max-width: 709px) {
-  
+
 }
 
 /* ----------------------- */
 /* ----- MAX 660 PX  ----- */
 /* ----------------------- */
 @media (max-width: 660px){
-  
-}
 
-/* A partir de 630px la taille de l'écran est bizarre */
+}
 
 /* ---------------------- */
 /* ----- MAX 481 PX ----- */
@@ -133,19 +138,19 @@ h2 {
 /* ----- MAX 425 PX / L mobile  ----- */
 /* ---------------------------------- */
 @media (max-width: 425px){
-  
+
 }
 
 /* ---------------------------------- */
 /* ----- MAX 375 PX / M mobile  ----- */
 /* ---------------------------------- */
 @media (max-width: 375px){
-  
+
 }
 
 /* ---------------------------------- */
 /* ----- MAX 320 PX / S mobile  ----- */
 /* ---------------------------------- */
 @media (max-width: 320px){
-  
+
 }

@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
-import './Footer.css';
 import logo from './img/logo_mini_ressources_relationnelles_tranparent.png';
+
+import './Footer.css';
 
 
 class Footer extends Component {
