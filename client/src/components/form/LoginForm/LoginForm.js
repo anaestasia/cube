@@ -6,23 +6,21 @@ import Col from 'react-bootstrap/Col';
 
 import './LoginForm.css';
 
-export default function LoginForm( { onSubmit, connected, onChange }) {
+export default function LoginForm( { onSubmit, onChange, formValue }) {
     
     return (
       
       <Row className="login-row">
-        <form onSubmit={ onSubmit } className="login-form">
+        <form onSubmit={ onSubmit } className="login-form" onChange={ onChange }>
           <Col className="email-field">
             <label>Email :</label>
-            <input className="email-input" type="email" name="email" onChange={ onChange } />
+            <input className="email-input" type="email" name="email" value={ formValue.email }/>
           </Col>
 
           <Col className="pass-field">
             <label>Mot de passe :</label>
-            <input className="pass-input" type="password" name="password" onChange={ onChange } />
+            <input className="pass-input" type="password" name="password" value={ formValue.password }/>
           </Col>
-
-          <Col><h1 className="msg-login-status">{ connected === false ? "Erreur" : "OK"}</h1></Col>
 
           <Col className="btns">
             <Row>

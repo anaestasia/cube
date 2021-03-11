@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route , Switch  } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Axios from "axios";
 
 import Home from "./components/home/Home";
-import Menu from './components/menu/MenuNav/Menu';
-import Footer from './components/footer/Footer';
+import Menu from "./components/menu/MenuNav/Menu";
+import Footer from "./components/footer/Footer";
 import RegisterForm from "./components/form/RegisterForm/RegisterForm";
 import Catalog from "./components/Catalog/Catalog";
 import Ressource from "./components/ressource/Ressource";
@@ -15,19 +15,18 @@ import RessourceNotConnected from "./components/ressource/RessourceNotConnected/
 import Admin from "./components/admin/Admin";
 import AdminApprovedRessources from "./components/admin/approvedRessources/ApprovedRessources";
 import NoAccess from "./components/403/403";
-import NotFound from './components/404/404';
+import NotFound from "./components/404/404";
 import Token from "./components/token/token";
 
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 import "./App.css";
 
-require('dotenv').config()
+require("dotenv").config();
 
 function App() {
-
   const [openMenu, setOpenMenu] = useState(true);
   const [xs, setXs] = useState(3);
   const [md, setMd] = useState(9);
@@ -35,96 +34,97 @@ function App() {
   const [status, setStatus] = useState("2");
   const [lastRessources, setLastRessources] = useState([]);
   const [connected, setConnected] = useState(false);
-  const [emailReg, setEmailReg] = useState("");
-  const [mdpReg, setMDPReg] = useState("");
+  const [loginForm, setLoginForm] = useState({ email: '', password:''});
+  
 
-  const toggleMenu = () =>
-  {
-    console.log('fonction toggleMenu')
-    if(openMenu === true){
+  const toggleMenu = () => {
+    console.log("fonction toggleMenu");
+    if (openMenu === true) {
       setOpenMenu(false);
       setXs(1);
       setMd(11);
-    }
-    else {
+    } else {
       setOpenMenu(true);
       setXs(3);
       setMd(9);
     }
-  }
+  };
 
   Axios.defaults.withCredentials = true;
 
   const handleLogin = (event) => {
     event.preventDefault();
-    console.log("App :"+emailReg+" "+mdpReg);
-    var hash = require('object-hash');
-    const password = hash.sha1(mdpReg);
+    console.log("App :" + loginForm.email + " " + loginForm.password);
+    var hash = require("object-hash");
+    const password = hash.sha1(loginForm.password);
 
-    if(emailReg.trim() !== "")
-    {
-      Axios.post(process.env.REACT_APP_SITE_URL_API+"/users/login", {
-        mail: emailReg,
+    if (loginForm.email.trim() !== "") {
+
+      Axios.post(process.env.REACT_APP_SITE_URL_API + "/users/login", {
+        mail: loginForm.email,
         password: password,
+
       }).then((response) => {
-           if (response.data.connecte) {
-             console.log(response)
-            const date = new Date();
-            const sqlDate = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()+" "+(date.getHours())+":"+date.getMinutes()+":"+date.getSeconds();
-            Axios.post(process.env.REACT_APP_SITE_URL_API+"/users/edit", {
-              id: response.data.result[0].id,
-              valeur: sqlDate,
-              champ: "last_connexion",
-          }).then((res) => {  setConnected(true); })
-          .then((res) => { 
-            console.log(connected);
-            window.location.href = "/catalog"; });
-          } else {
-            setConnected(false);
-          }
+        console.log(response.data)
+        if (response.data.connecte) {
+          console.log(response);
+          const date = new Date();
+          const sqlDate =
+            date.getFullYear() +
+            "-" +
+            (date.getMonth() + 1) +
+            "-" +
+            date.getDate() +
+            " " +
+            date.getHours() +
+            ":" +
+            date.getMinutes() +
+            ":" +
+            date.getSeconds();
+
+          Axios.post(process.env.REACT_APP_SITE_URL_API + "/users/edit", {
+            id: response.data.result[0].id,
+            valeur: sqlDate,
+            champ: "last_connexion",
+          })
+            .then((res) => {
+              setConnected(true);
+            })
+        } else {
+          setConnected(false);
+        }
       });
     }
   };
 
   const handleOnChange = (event) => {
-    const name = event.target.getAttribute('name');
-    console.log("Onchange : "+event.target.value)
-    if ( name === 'email' ) {
-      setEmailReg(event.target.value);
-    } else {
-      setMDPReg(event.target.value);
-    }
+    setLoginForm( { ...loginForm, [ event.target.name ] : event.target.value } )
   };
 
-  useEffect(() => 
-  {
-    console.log('Colonne OK')
+  useEffect(() => {
+    console.log("Colonne OK");
   }, [xs, md]);
 
-  useEffect(() => 
-  {
-    Axios.get(process.env.REACT_APP_SITE_URL_API+"/users/login").then((response) => {
-      if (response.data.loggedIn === true) {
-        setRole(response.data.user[0].fk_role);
+  useEffect(() => {
+    Axios.get(process.env.REACT_APP_SITE_URL_API + "/users/login").then(
+      (response) => {
+        if (response.data.loggedIn === true) {
+          setRole(response.data.user[0].fk_role);
+        } else {
+          setRole(0);
+        }
       }
-      else {setRole(0)}
+    );
+
+    Axios.get(
+      process.env.REACT_APP_SITE_URL_API + "/ressources/lastressource/" + status
+    ).then((response) => {
+      if (response.data.existe !== false) {
+        setLastRessources(response.data);
+      }
+      console.log(response);
     });
-    
-    Axios.get(process.env.REACT_APP_SITE_URL_API+"/ressources/lastressource/"+status).then((response) => {
-      if(response.data.existe !== false)
-      {
-        setLastRessources(response.data)
-      } 
-      console.log(response)
-  });
   }, []);
-
-
-  // useEffect(() => 
-  // {
-  //   if(role >=2){ setStatus("1") }
-      
-  // }, [role,status]);
 
   Axios.defaults.withCredentials = true;
 
@@ -142,85 +142,145 @@ function App() {
   let adminApprovedRessources = false;
   let profile = false;
 
-  if (role >= 1) // Mail non verifé 
-  {
+  if (role >= 1) {
+    // Mail non verifé
     login = false;
     register = false;
     profile = true;
   }
-  if (role >= 2) // Citoyen
-  {
+  if (role >= 2) {
+    // Citoyen
     myRessources = true;
     ressourceNotConnected = false;
     submitRessource = true;
   }
-  if (role >= 3) // Modérateur
-  {
+  if (role >= 3) {
+    // Modérateur
     admin = true;
     adminApprovedRessources = true;
   }
-  if (role >= 4) // Admin
-  {
-    
+  if (role >= 4) {
+    // Admin
   }
-  if (role >= 5) // Super-Admin
-  {
-    
+  if (role >= 5) {
+    // Super-Admin
   }
   return (
     <Router>
       <Switch>
+        <Route
+          exact
+          path="/"
+          render={(props) =>
+            home ? (
+              <Home onSubmit={handleLogin} formValue={ loginForm } onChange={ handleOnChange } connected = { connected }/>
+            ) : (
+              <NotFound />
+            )
+          }
+          onChange={handleOnChange}
+        />
 
-        { connected === false ? (
-          <Route exact path="/" render={(props) => home ? <Home 
-              onSubmit={ handleLogin } 
-              connected={ connected } /> : <NotFound />}
-              onChange= { handleOnChange }
-          />
-        ) : (
-          <Container fluid>
-            <Row className="parent-row">
+        <Container fluid>
+          <Row className="parent-row">
+            <Col xl={xs} className="col-menu menuFixe">
+              <Menu
+                activeSubMenu="ressource"
+                activeSubSubMenu="catalog"
+                handleToggleMenu={toggleMenu}
+                openMenu={openMenu}
+                apiRole={role}
+              />
+            </Col>
 
-                <Col xl={xs} className="col-menu menuFixe">
-                  <Menu
-                    activeSubMenu="ressource"
-                    activeSubSubMenu="catalog"
-                    handleToggleMenu={ toggleMenu }
-                    openMenu={openMenu}
-                    apiRole={role}
-                  />
-                </Col>
+            <Col xl={md} className="col-content-page">
+              <Route
+                exact
+                path="/catalog"
+                render={(props) =>
+                  catalog ? (
+                    <Catalog ressources={lastRessources} />
+                  ) : (
+                    <NoAccess />
+                  )
+                }
+              />
 
-                <Col xl={md} className="col-content-page">
+              {/* RESSOURCES */}
 
-                  <Route exact path="/catalog" render={(props) =>  catalog ? <Catalog ressources={lastRessources}/>: <NoAccess />} />
+              <Route
+                exact
+                path="/submit-ressource"
+                render={(props) =>
+                  submitRessource ? <SubmitRessource /> : <NoAccess />
+                }
+              />
+              <Route
+                exact
+                path="/ressource/:id"
+                render={(props) => (ressource ? <Ressource /> : <NotFound />)}
+              />
+              <Route
+                exact
+                path="/ressource-not-connected"
+                render={(props) =>
+                  ressourceNotConnected ? (
+                    <RessourceNotConnected />
+                  ) : (
+                    <NotFound />
+                  )
+                }
+              />
 
-                  {/* RESSOURCES */}
-                  
-                  <Route exact path="/submit-ressource" render={(props) => submitRessource ? <SubmitRessource /> : <NoAccess />} />
-                  <Route exact path="/ressource/:id" render={(props) =>  ressource ? <Ressource />: <NotFound />} />
-                  <Route exact path="/ressource-not-connected" render={(props) =>  ressourceNotConnected ? <RessourceNotConnected />: <NotFound />} />
-                  
-                  {/* USER */}
-                  <Route exact path="/profile" render={(props) => profile ? <Profile /> : <NoAccess />} />
-                  <Route exact path="/my-ressources" render={(props) =>  myRessources ? "Mes Ressources": <NoAccess />} />
-                  <Route exact path="/my-favorites" render={(props) =>  myFavorites ? <Favorites />: <NoAccess />} />
+              {/* USER */}
+              <Route
+                exact
+                path="/profile"
+                render={(props) => (profile ? <Profile /> : <NoAccess />)}
+              />
+              <Route
+                exact
+                path="/my-ressources"
+                render={(props) =>
+                  myRessources ? "Mes Ressources" : <NoAccess />
+                }
+              />
+              <Route
+                exact
+                path="/my-favorites"
+                render={(props) => (myFavorites ? <Favorites /> : <NoAccess />)}
+              />
 
-                  <Route exact path="/register" render={(props) =>  register ? <RegisterForm />: <NoAccess />} />
-                  <Route exact path="/token/:token" render={(props) =>  <Token />} />
+              <Route
+                exact
+                path="/register"
+                render={(props) => (register ? <RegisterForm /> : <NoAccess />)}
+              />
+              <Route exact path="/token/:token" render={(props) => <Token />} />
 
-                  {/* BO */}
-                  <Route exact path="/admin" render={(props) => admin ? <Admin /> : <NotFound />} />
-                  <Route exact path="/admin/approvedRessources" render={(props) => adminApprovedRessources ? <AdminApprovedRessources /> : <NotFound />} />
+              {/* BO */}
+              <Route
+                exact
+                path="/admin"
+                render={(props) => (admin ? <Admin /> : <NotFound />)}
+              />
+              <Route
+                exact
+                path="/admin/approvedRessources"
+                render={(props) =>
+                  adminApprovedRessources ? (
+                    <AdminApprovedRessources />
+                  ) : (
+                    <NotFound />
+                  )
+                }
+              />
 
-                  <Route component={NotFound} />
-
-                </Col>
-            </Row>
-            <Footer/>
-          </Container>
-        )}
-
+              <Route component={NotFound} />
+            </Col>
+          </Row>
+          <Footer />
+        </Container>
       </Switch>
     </Router>
   );

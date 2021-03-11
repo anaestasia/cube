@@ -158,6 +158,7 @@ app.post("/login", (req, res) => {
     
     if (err) {
       console.log(err);
+      res.status(404).send('username incorrect');
     } else {
        //console.log(result);
        if (result.length > 0) {
