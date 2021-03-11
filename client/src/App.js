@@ -211,9 +211,7 @@ function App() {
               <Route
                 exact
                 path="/submit-ressource"
-                render={(props) =>
-                  submitRessource ? <SubmitRessource /> : <NoAccess />
-                }
+                render={ (props) =>  (submitRessource ? <SubmitRessource /> : <NotFound /> ) }
               />
               <Route
                 exact
@@ -276,7 +274,6 @@ function App() {
                 }
               />
 
-              <Route component={NotFound} />
             </Col>
           </Row>
           <Footer />

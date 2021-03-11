@@ -52,67 +52,60 @@ export default function Admin() {
     }
 
   return (
-    <Container fluid>
-      <Row className="parent-row">
+    <>
+      <Col xl={9} className="col-content-page">
+        <Row className="approved-ressource-container">
 
-        <Col xl={3} className="col-menu">
-            <Menu activeSubMenu="user" activeSubSubMenu="ModifierMonProfil"/>
-        </Col>
+          <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Contenue de l'article : {titreModal}</Modal.Title>
+            </Modal.Header>
+            <Modal.Body><div><span dangerouslySetInnerHTML={{__html: contenuModal}}></span></div></Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Close
+              </Button>
+            </Modal.Footer>
+          </Modal>
 
-        <Col xl={9} className="col-content-page">
-          <Row className="approved-ressource-container">
+          <Container fluid>
+            <Table bordered hover>
+              <thead>
+                <tr>
+                <th>#</th>
+                <th>Autheur</th>
+                <th>Titre</th>
+                <th>Contenu</th>
+                <th>Type ressource</th>
+                <th>Relationship</th>
+                <th>Categories</th>
+                <th>Statut</th>
+                <th>Date de création</th>
+                </tr>
+              </thead>
+              <tbody>
+              {articleNonApprouved.map(article => ( 
+                <tr key={article.idRessource} >
+                    {/* dangerouslySetInnerHTML={{__html: article.content}}> */}
+                    <td><button onClick={() => {approuvedRessource(article.idRessource); }} >Approuver</button>/
+                    <button onClick={() => {delRessource(article.idRessource); }} >Supprimer</button></td>
+                    <td>{article.user}</td>
+                    <td>{article.title}</td>
+                    <td><button onClick={() =>( modal(article.content,article.title) )}>Voir</button></td>
+                    <td>{article.nametyperss}</td>
+                    <td>{article.namerelationship}</td>
+                    <td>{article.categories}</td>
+                    <td>{article.namestatus}</td>
+                    <td>{article.date_creation.substring(8,10)}/{article.date_creation.substring(5,7)}/{article.date_creation.substring(0,4)} à {article.date_creation.substring(11,19)}</td>
+                </tr>
+              ))}
+                  {/* <td><button>Approuver</button>/<button>Supprimer</button></td> */}
+              </tbody>
+            </Table>
+          </Container>
 
-            <Modal show={show} onHide={handleClose}>
-              <Modal.Header closeButton>
-                <Modal.Title>Contenue de l'article : {titreModal}</Modal.Title>
-              </Modal.Header>
-              <Modal.Body><div><span dangerouslySetInnerHTML={{__html: contenuModal}}></span></div></Modal.Body>
-              <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
-                  Close
-                </Button>
-              </Modal.Footer>
-            </Modal>
-
-            <Container fluid>
-              <Table bordered hover>
-                <thead>
-                  <tr>
-                  <th>#</th>
-                  <th>Autheur</th>
-                  <th>Titre</th>
-                  <th>Contenu</th>
-                  <th>Type ressource</th>
-                  <th>Relationship</th>
-                  <th>Categories</th>
-                  <th>Statut</th>
-                  <th>Date de création</th>
-                  </tr>
-                </thead>
-                <tbody>
-                {articleNonApprouved.map(article => ( 
-                  <tr key={article.idRessource} >
-                      {/* dangerouslySetInnerHTML={{__html: article.content}}> */}
-                      <td><button onClick={() => {approuvedRessource(article.idRessource); }} >Approuver</button>/
-                      <button onClick={() => {delRessource(article.idRessource); }} >Supprimer</button></td>
-                      <td>{article.user}</td>
-                      <td>{article.title}</td>
-                      <td><button onClick={() =>( modal(article.content,article.title) )}>Voir</button></td>
-                      <td>{article.nametyperss}</td>
-                      <td>{article.namerelationship}</td>
-                      <td>{article.categories}</td>
-                      <td>{article.namestatus}</td>
-                      <td>{article.date_creation.substring(8,10)}/{article.date_creation.substring(5,7)}/{article.date_creation.substring(0,4)} à {article.date_creation.substring(11,19)}</td>
-                  </tr>
-                ))}
-                    {/* <td><button>Approuver</button>/<button>Supprimer</button></td> */}
-                </tbody>
-              </Table>
-            </Container>
-
-          </Row>
-        </Col>
-      </Row>
-    </Container>
+        </Row>
+      </Col>
+    </>
   );
 }
