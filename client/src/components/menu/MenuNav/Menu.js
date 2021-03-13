@@ -1,4 +1,4 @@
-import React, { useState , useEffect } from "react";
+import React, { useState } from "react";
 import "./Menu.css";
 import MenuUser from "./SubMenuNav/MenuUser";
 import MenuRessources from "./SubMenuNav/MenuRessources";
@@ -41,7 +41,7 @@ export default function Menu({activeSubMenu , activeSubSubMenu , handleToggleMen
               <i className={ `fas fa-sliders-h ${ currentActiveMenu === 'backoffice' && 'activeTab' }` }></i>
             </div>
 
-            <div className="icon-tab" className="logo-navbar">
+            <div className="icon-tab logo-navbar">
               <img
                 src="/img/logo/logo_ressources_relationnelles_mini_menu.png"
                 className="app-logo-navbar"

@@ -1,6 +1,7 @@
 import LoginForm from "../form/LoginForm/LoginForm";
-import React, { useEffect, useState } from "react";
-import Axios from "axios";
+import React from "react";
+// import React, { useEffect, useState } from "react";
+// import Axios from "axios";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -8,18 +9,18 @@ import Col from "react-bootstrap/Col";
 import "./Home.css";
 
 export default function Home({ onSubmit, formValue, onChange, connected }) {
-  const [role, setRole] = useState("");
+  // const [role, setRole] = useState("");
 
-  Axios.defaults.withCredentials = true;
-  useEffect(() => {
-    Axios.get(process.env.REACT_APP_SITE_URL_API + "/users/login").then(
-      (response) => {
-        if (response.data.loggedIn === true) {
-          setRole(response.data.user[0].fk_role);
-        }
-      }
-    );
-  }, []);
+  // Axios.defaults.withCredentials = true;
+  // useEffect(() => {
+  //   Axios.get(process.env.REACT_APP_SITE_URL_API + "/users/login").then(
+  //     (response) => {
+  //       if (response.data.loggedIn === true) {
+  //         setRole(response.data.user[0].fk_role);
+  //       }
+  //     }
+  //   );
+  // }, []);
 
   return (
     <Container className="accueil-container">

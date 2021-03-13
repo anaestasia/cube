@@ -29,7 +29,7 @@ require("dotenv").config();
 
 function App() {
   const [openMenu, setOpenMenu] = useState(true);
-  const [role, setRole] = useState("");
+  const [role, setRole] = useState("");// eslint-disable-next-line
   const [status, setStatus] = useState("2");
   const [lastRessources, setLastRessources] = useState([]);
   const [connected, setConnected] = useState(false);
@@ -115,7 +115,7 @@ function App() {
       }
       console.log(response);
     });
-  }, []);
+  }, [status]);
 
   Axios.defaults.withCredentials = true;
 
@@ -135,6 +135,7 @@ function App() {
 
   if (role >= 1) {
     // Mail non verifé
+    // eslint-disable-next-line
     login = false;
     register = false;
     profile = true;

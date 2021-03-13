@@ -28,7 +28,7 @@ export default function RessourceForm() {
   const [relationshipRessource, setRelationshipRessource] = useState("");
   const [relationshipRessourceDB, setRelationshipRessourceDB] = useState([]);
 
-  const [categories, setCategories] = useState("");
+  const [categories, setCategories] = useState("");// eslint-disable-next-line
   const [categoriesDB, setCategoriesDB] = useState([]);
 
   const [idUser, setIdUser] = useState("");
@@ -125,13 +125,13 @@ const handleCkeditorState = (event,editor) => {
   setContent(data);
   // console.log(Ckeditor);
 }
-
+// eslint-disable-next-line
 const onSelect = (selectedList, selectedItem) =>
 {
   setCategories(selectedList)
   // selectedList.forEach(element => alert(element.name));
 }
-
+// eslint-disable-next-line
 const onRemove = (selectedList, selectedItem) =>
 {
   setCategories(selectedList)

@@ -6,7 +6,7 @@ import Axios from "axios";
 import Table from 'react-bootstrap/Table'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
-import Menu from '../../menu/MenuNav/Menu'
+// import Menu from '../../menu/MenuNav/Menu'
 
 export default function Admin() {
 
