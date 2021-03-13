@@ -1,22 +1,22 @@
 .last-adds {
-    padding: 1.5% 1.5% 3% 1.5%;
+    padding: 15px;
     background-color: #ffffff;
     width: 100%;
-    border-radius: 30px;
+    -webkit-border-top-left-radius: 30px;
+    -webkit-border-top-right-radius: 30px;
+    -moz-border-radius-topleft: 30px;
+    -moz-border-radius-topright: 30px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
     box-shadow: 1px 1px 5px #222320;
 }
-
+.last-adds-row {
+    height: 100%;
+}
 .last-adds h2 {
     margin-bottom: 2%;
 }
-
 .catalog{
     display: flex;
     height: 100%;
-}
-
-.search-catalog {
-    display: flex;
-    flex-direction: row;
-    padding: 1.5% 0;
 }

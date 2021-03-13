@@ -1,13 +1,15 @@
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+import './Favorites.css';
+
 export default function Favorites() {
 
   return (
     <>
-      <Col xl={9} className="col-content-page">
-        <Row className="my-favorites-list">Voici mes ressources favorites</Row>
-      </Col>
+      <Row className="my-favorites-list">
+        <h1>Voici mes ressources favorites</h1>
+      </Row>
     </>
   );
 }

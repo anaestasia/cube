@@ -9,6 +9,7 @@ import RegisterForm from "./components/form/RegisterForm/RegisterForm";
 import Catalog from "./components/Catalog/Catalog";
 import Ressource from "./components/ressource/Ressource";
 import Favorites from "./components/ressource/Favorites/Favorites";
+import MyRessources from "./components/ressource/MyRessources/MyRessources";
 import SubmitRessource from "./components/form/RessourceForm/RessourceForm";
 import Profile from "./components/profile/Profile";
 import RessourceNotConnected from "./components/ressource/RessourceNotConnected/RessourceNotConnected";
@@ -28,8 +29,6 @@ require("dotenv").config();
 
 function App() {
   const [openMenu, setOpenMenu] = useState(true);
-  const [xs, setXs] = useState(3);
-  const [md, setMd] = useState(9);
   const [role, setRole] = useState("");
   const [status, setStatus] = useState("2");
   const [lastRessources, setLastRessources] = useState([]);
@@ -41,12 +40,8 @@ function App() {
     console.log("fonction toggleMenu");
     if (openMenu === true) {
       setOpenMenu(false);
-      setXs(1);
-      setMd(11);
     } else {
       setOpenMenu(true);
-      setXs(3);
-      setMd(9);
     }
   };
 
@@ -100,10 +95,6 @@ function App() {
   const handleOnChange = (event) => {
     setLoginForm( { ...loginForm, [ event.target.name ] : event.target.value } )
   };
-
-  useEffect(() => {
-    console.log("Colonne OK");
-  }, [xs, md]);
 
   useEffect(() => {
     Axios.get(process.env.REACT_APP_SITE_URL_API + "/users/login").then(
@@ -183,7 +174,7 @@ function App() {
 
         <Container fluid>
           <Row className="parent-row">
-            <Col xl={xs} className="col-menu menuFixe">
+            <Col xl={3} className="col-menu menuFixe">
               <Menu
                 activeSubMenu="ressource"
                 activeSubSubMenu="catalog"
@@ -193,7 +184,7 @@ function App() {
               />
             </Col>
 
-            <Col xl={md} className="col-content-page">
+            <Col xl={9} className="col-content-page">
               <Route
                 exact
                 path="/catalog"
@@ -240,7 +231,7 @@ function App() {
                 exact
                 path="/my-ressources"
                 render={(props) =>
-                  myRessources ? "Mes Ressources" : <NoAccess />
+                  myRessources ? <MyRessources /> : <NoAccess />
                 }
               />
               <Route

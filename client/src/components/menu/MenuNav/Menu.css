@@ -110,7 +110,7 @@
     cursor: pointer;
 }
 .logoutHover:hover{
-    color: red;
+    color: rgb(236, 98, 98);
 }
 
 /* ----------------------- */

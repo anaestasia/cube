@@ -1,5 +1,4 @@
 import React from "react";
-import Col from 'react-bootstrap/Col';
 
 import './vignetteRessource.css';
 
@@ -7,20 +6,23 @@ import './vignetteRessource.css';
         const lienRessource = "/ressource/"+idRessource
         return (
             <div className="vignette-ressource-container">
-                <Col xl={12}>
-                    <h2>{titre} <a href={lienRessource} ><i className="fas fa-external-link-alt"></i></a></h2>
-                </Col>
-                <Col xl={12} className="btns-vignette">
-                    <span><i className="fas fa-thumbs-up"></i> {nombreLike} </span>
-                    <span><i className="fas fa-ellipsis-v"></i><i className="far fa-heart"></i><i className="fas fa-reply"></i></span>
-                    <span> vu : {nb_consultation}</span>
-                </Col>
+
+                <h3><a href={lienRessource} >{titre} <i className="fas fa-external-link-alt"></i></a></h3>
+                
+                <div className="icons-container">
+                    <div className="views"><i class="fas fa-eye"></i> : {nb_consultation}</div>
+                    <div className="likes"><i className="fas fa-thumbs-up"></i> : {nombreLike}</div>
+                    <div  className="options"><i className="far fa-heart"></i></div>
+                </div>
+
                 <ul>
                     <li className="ressource-categorie"> <i className="fas fa-folder-open"> </i> Catégorie : {categorie} </li>
                     <li className="ressource-type-relation"> <i className="fas fa-users"></i> Type(s) de relation : {typeRelation} </li>
                     <li className="ressource-type-ressource"> <i className="fas fa-file-alt"></i> Type(s) de ressource : {typeRessource} </li>
                 </ul>
+
                 <div className="description"></div>
+
             </div>
         );
     }

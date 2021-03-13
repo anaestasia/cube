@@ -1,7 +1,7 @@
 import React, { useState , useEffect } from "react";
 
 import CatalogFilter from './CatalogSearch/CatalogSearch';
-import VignetteLastRessource from '../ressource/VignetteRessource/vignetteLastRessource';
+import VignetteRessource from '../ressource/VignetteRessource/vignetteRessource';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -15,13 +15,13 @@ export default function Catalog( { ressources } ) {
 
       {/* Derniers ajouts ressources */}
       <Col xl={12} className="last-adds">
-        <Row>
-          <Col xl={12}><h2>DERNIERES RESSOURCES AJOUTÉES</h2></Col>
+        <h2>DERNIERES RESSOURCES AJOUTÉES</h2>
+        <Row className="last-adss-row">
           {ressources.map(ressources => ( 
             <Col key={ressources.idRessource} sm={12} xl={4}>
-              <VignetteLastRessource 
+              <VignetteRessource 
                 titre={ressources.title} 
-                categorie={ressources.categories}
+                categorie="Divers"
                 typeRelation={ressources.namerelationship}
                 typeRessource={ressources.nametyperss}
                 nombreLike={ressources.nb_like}

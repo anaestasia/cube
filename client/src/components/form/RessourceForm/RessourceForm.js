@@ -9,6 +9,7 @@ import { CKEditor } from '@ckeditor/ckeditor5-react';
 import SubmitBtn from "../../buttons/SubmitBtn/SubmitBtn";
 
 import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 
 import "./RessourceForm.css";
@@ -140,15 +141,13 @@ const onRemove = (selectedList, selectedItem) =>
   return (
     <>
       <Row className="submit-ressource">
-        <div className="formRessource">
+        <Col className="formRessource">
 
           <h1>Soumettre une ressource</h1>
           <form onSubmit={submitRessource}> 
 
-            <label>Titre :</label>
-            <input type="text" onChange={(e) => {setTitle(e.target.value); }} required/>
+            <input type="text" className="ressource-title" onChange={(e) => {setTitle(e.target.value); }} placeholder="Titre de la ressource" required/>
 
-            <label> Contenu :</label>
             <CKEditor 
                 editor={ClassicEditor}
                 data={content}
@@ -165,29 +164,33 @@ const onRemove = (selectedList, selectedItem) =>
               onRemove={onRemove} // Function will trigger on remove event
             /> */}
 
-            <select name="type-ressource" id="type-ressource" required onChange={(e) => {setTypesressources(e.target.value); }}>
-              <option disabled selected>--Sélectionner un type de ressource--</option>
-              {optionSelectTypeRessources}
-            </select>
+            <div className="select-inputs">
+              <select name="type-ressource" id="type-ressource" required onChange={(e) => {setTypesressources(e.target.value); }}>
+                <option disabled selected>-- Type de ressource --</option>
+                {optionSelectTypeRessources}
+              </select>
 
-            <select name="relationship-ressource" id="relationship-ressource" required onChange={(e) => {setRelationshipRessource(e.target.value); }}>
-              <option disabled selected>--Sélectionner un type de relationship Ressource--</option>
-              {optionSelectRelationshipRessourceDB}
-            </select>
+              <select name="relationship-ressource" id="relationship-ressource" required onChange={(e) => {setRelationshipRessource(e.target.value); }}>
+                <option disabled selected>-- Type de relation --</option>
+                {optionSelectRelationshipRessourceDB}
+              </select>
 
-            <select name="status-ressource" id="status-ressource" required onChange={(e) => {setStatus(e.target.value); }}>
-              <option disabled selected>--Sélectionner le statut--</option>
-              {optionSelectStatus}
-            </select>
+              <select name="status-ressource" id="status-ressource" required onChange={(e) => {setStatus(e.target.value); }}>
+                <option disabled selected>-- Statut --</option>
+                {optionSelectStatus}
+              </select>
+            </div>
 
-            <SubmitBtn inputText="Envoyer" />
-            <Link to="/">Retour</Link>
+            <div className="btns">
+              <Link to="/" className="cancel-btn">Annuler</Link>
+              <SubmitBtn inputText="Envoyer" />
+            </div>
 
           </form>
 
           <h1>{submitRessourceStatus}</h1>
           
-        </div>
+        </Col>
       </Row>
     </>
     

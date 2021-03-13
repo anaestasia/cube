@@ -1,7 +1,7 @@
 import React, { useState , useEffect } from "react";
 import Axios from "axios";
 
-import VignetteFilterRessource from '../../ressource/VignetteRessource/vignetteFilterRessource';
+import VignetteRessource from '../../ressource/VignetteRessource/vignetteRessource';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -126,41 +126,39 @@ export default function CatalogSearch() {
 
   return (
       <>
-        <Col xl={4}>
-            <div className="cards">
-                Filtres
+        <Col xl={3} className="search-filters">
+            <div>
+                <h2>Filtres</h2>
+                <label>Types :</label>
                 <select name="type-ressource" id="type-ressource" onChange={(e) => { filtreressource("fk_type_ressource",e.target.value);}}>
-                    <option value="">--Sélectionner un type de ressource--</option>
+                    <option value="">Tous les types</option>
                     {optionSelectTypeRessources}
                 </select>
+                <label>Relation :</label>
                 <select name="relationship-ressource" id="relationship-ressource" onChange={(e) => {filtreressource("fk_relationship_ressource",e.target.value); }}>
-                      <option value="">--Sélecti un type de relationship Ressource--</option>
-                      {optionSelectRelationshipRessourceDB}
-                    </select>
-                <br />
-                <br />
+                    <option value="">Toutes les relations</option>
+                    {optionSelectRelationshipRessourceDB}
+                </select>
             </div>
         </Col>
 
-        <Col xl={8}>
-            <div className="cards">
-                <Row>
-                    {filtreExiste ? lastRessources.map(lastRessource => ( 
-                        <Col key={lastRessource.idRessource} sm={12} xl={6}>
-                            <VignetteFilterRessource 
-                                titre={lastRessource.title} 
-                                categorie="champ vide"
-                                typeRelation={lastRessource.namerelationship} 
-                                typeRessource={lastRessource.nametyperss}
-                                nombreLike={lastRessource.nb_like}
-                                idRessource= {lastRessource.id}
-                                nb_consultation = {lastRessource.nb_consultation}
-                            />                         
-                        </Col>
-                    )) : <span>Aucun résultat</span>}
-                    
-                </Row>
-            </div>
+
+        <Col xl={9} className="cards">
+            <Row>
+                {filtreExiste ? lastRessources.map(lastRessource => ( 
+                    <Col key={lastRessource.idRessource} sm={12} xl={6} className="result-card">
+                        <VignetteRessource 
+                            titre={lastRessource.title} 
+                            categorie="Divers"
+                            typeRelation={lastRessource.namerelationship} 
+                            typeRessource={lastRessource.nametyperss}
+                            nombreLike={lastRessource.nb_like}
+                            idRessource= {lastRessource.id}
+                            nb_consultation = {lastRessource.nb_consultation}
+                        />                       
+                    </Col>
+                )) : <span>Aucun résultat</span>}
+            </Row>
         </Col>
     </>
   );

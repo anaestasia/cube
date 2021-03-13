@@ -1,7 +1,53 @@
 .vignette-ressource-container{
-    border: 1px solid black;
+    border: 1px solid #e7fcfd;
+    background-color: #e7fcfd;
     border-radius: 15px;
-    padding: 1.5%;
+    padding: 15px;
     height: 100%;
     box-shadow: 1px 1px 8px #646464;
+}
+.vignette-ressource-container:hover{
+    border: 1px solid #03989e;
+    background-color: #e7fcfd;
+}
+.vignette-ressource-container h3{
+    line-height: 24px;
+}
+.vignette-ressource-container h3 a{
+    color: #222320;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: bold;
+}
+.vignette-ressource-container h3 a:hover{
+    color: #03989e;
+    text-decoration: none;
+}
+.vignette-ressource-container h3 i{
+    font-size: 0.8em;
+}
+.vignette-ressource-container .icons-container {
+    display: flex;
+    border-top: 1px solid rgb(3, 152, 158, 0.5);
+    border-bottom: 1px solid rgb(3, 152, 158, 0.5);
+    padding: 5px 0;
+    margin-bottom: 15px;
+}
+.vignette-ressource-container .icons-container .views,
+    .vignette-ressource-container .icons-container .likes{
+    margin-right: 15px;
+}
+.vignette-ressource-container .icons-container .options{
+    margin-left: auto;
+}
+.vignette-ressource-container .icons-container .options:hover{
+    color: #03989e
+}
+.vignette-ressource-container ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.vignette-ressource-container ul li{
+    font-size: 0.9em;
 }

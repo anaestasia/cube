@@ -1,8 +1,38 @@
+.search-catalog {
+    display: flex;
+    flex-direction: row;
+    padding: 15px 0 0 0;
+}
+.search-filters {
+    padding: 0;
+}
+.search-filters div,
 .cards {
-    border-radius: 30px;
-    padding: 1.5%;
+    padding: 15px;
     background-color: #ffffff;
-    width: 100%;
-    border-radius: 30px;
     box-shadow: 1px 1px 5px #222320;
+}
+.cards {
+    -webkit-border-bottom-right-radius: 30px;
+    -moz-border-radius-bottomright: 30px;
+    border-bottom-right-radius: 30px;
+}
+.search-filters div{
+    width: calc(100% - 15px);
+    height: 100%;
+    -webkit-border-bottom-left-radius: 30px;
+    -moz-border-radius-bottomleft: 30px;
+    border-bottom-left-radius: 30px;
+}
+.search-filters div h2{
+    margin-bottom: 15px;
+}
+.search-filters div select{
+    border: 1px solid #bcbdbc;
+    padding: 5px 10px;
+    margin-bottom: 15px;
+    width: 100%;
+}
+.result-card {
+    padding: 15px;
 }
