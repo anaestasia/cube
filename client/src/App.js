@@ -49,7 +49,7 @@ function App() {
 
   const handleLogin = (event) => {
     event.preventDefault();
-    console.log("App :" + loginForm.email + " " + loginForm.password);
+    //console.log("App :" + loginForm.email + " " + loginForm.password);
     var hash = require("object-hash");
     const password = hash.sha1(loginForm.password);
 
@@ -63,6 +63,7 @@ function App() {
         console.log(response.data)
         if (response.data.connecte) {
           console.log(response);
+          console.log('response');
           const date = new Date();
           const sqlDate =
             date.getFullYear() +
@@ -101,8 +102,10 @@ function App() {
       (response) => {
         if (response.data.loggedIn === true) {
           setRole(response.data.user[0].fk_role);
+          setConnected(true);
         } else {
           setRole(0);
+          setConnected(false);
         }
       }
     );
