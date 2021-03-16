@@ -1,13 +1,19 @@
 import React, { useState , useEffect } from "react";
 import { useParams } from 'react-router-dom';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
+
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Axios from "axios";
-import '@ckeditor/ckeditor5-build-classic/build/translations/fr.js';
+
+// import '@ckeditor/ckeditor5-build-classic/build/translations/fr.js';
+// import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+// import { CKEditor } from '@ckeditor/ckeditor5-react';
+
+import 'ckeditor5-cube'
+import ClassicEditor from 'ckeditor5-cube'
+import CKEditor from  'ckeditor5-cube'
 
 export default function WriteComment () {
 

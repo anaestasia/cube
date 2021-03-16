@@ -1,9 +1,15 @@
 import React, { useState , useEffect } from "react";
 import Axios from "axios";
 import { Link } from 'react-router-dom';
-import '@ckeditor/ckeditor5-build-classic/build/translations/fr.js';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
+
+
+
+// import 'ckeditor5-cube'
+// import ClassicEditor from 'ckeditor5-cube'
+// import CKEditor from  'ckeditor5-cube'
+// import '@ckeditor/ckeditor5-build-classic/build/translations/fr.js';
+// import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+// import { CKEditor } from '@ckeditor/ckeditor5-react';
 // import { Multiselect } from 'multiselect-react-dropdown';
 
 import SubmitBtn from "../../buttons/SubmitBtn/SubmitBtn";
@@ -119,7 +125,7 @@ const optionSelectTypeRessources = typesressourcesDB.map((st) =>
 const optionSelectRelationshipRessourceDB = relationshipRessourceDB.map((st) =>
   <option  key={st.id} value={st.id}> {st.name} </option>
 );
-
+// eslint-disable-next-line
 const handleCkeditorState = (event,editor) => {
   const data = editor.getData();
   setContent(data);
@@ -148,14 +154,14 @@ const onRemove = (selectedList, selectedItem) =>
 
             <input type="text" className="ressource-title" onChange={(e) => {setTitle(e.target.value); }} placeholder="Titre de la ressource" required/>
 
-            <CKEditor 
+            {/* <CKEditor 
                 editor={ClassicEditor}
                 data={content}
                 onChange={handleCkeditorState}
                 config={ {
                   language: 'fr',
                 } }
-              />
+              /> */}
 
             {/* <Multiselect
               options={categoriesDB} // Options to display in the dropdown
