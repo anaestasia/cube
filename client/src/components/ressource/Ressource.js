@@ -59,7 +59,6 @@ import './Ressource.css';
                                     setMessage(response.data.result[0].content);  
                                     setContenuCommentsCkeditor(response.data.result[0].content); 
                                     setTitle(response.data.result[0].title);
-                                    setNbLike(response.data.result[0].nb_like);
                                     setDate_creation(response.data.result[0].date_creation);
                                     setDate_edition(response.data.result[0].date_edition);
                                     setAuteur(response.data.user[0].lastname + " "+ response.data.user[0].firstname);
@@ -91,7 +90,6 @@ import './Ressource.css';
                                 setMessage(response.data.result[0].content);  
                                 setContenuCommentsCkeditor(response.data.result[0].content); 
                                 setTitle(response.data.result[0].title);
-                                setNbLike(response.data.result[0].nb_like);
                                 setDate_creation(response.data.result[0].date_creation);
                                 setDate_edition(response.data.result[0].date_edition);
                                 setAuteur(response.data.user[0].lastname + " "+ response.data.user[0].firstname);
@@ -128,9 +126,11 @@ import './Ressource.css';
                     verifRole(0);
                 }
               });
-            
-            
+
+              getNbLike();
+
         }, [id,nombreVue,vueIncremente]);
+        
 
         const handleClose = () => setShow(false);
 
@@ -163,6 +163,35 @@ import './Ressource.css';
         });
         }
 
+        const likeRessource = () =>
+        {
+            if(idUserConnecte !== '')
+            {
+                Axios.post(process.env.REACT_APP_SITE_URL_API+"/ressourcesLike/create",{
+                user: idUserConnecte,
+                ressource: id
+                }).then((response) => 
+                {
+                    getNbLike();
+                });
+            }
+            else
+            {
+                alert('Veuillez vous connecter :-)');
+            }
+        }
+
+        const getNbLike = () =>
+        {
+            Axios.post(process.env.REACT_APP_SITE_URL_API+"/ressourcesLike/get/nbLike", 
+            {
+                ressource: 49,
+            }).then((response) => 
+            {
+                setNbLike(response.data[0].nbLike)
+            });
+        }
+
 
         return (
             <>
@@ -193,7 +222,7 @@ import './Ressource.css';
             <div className="ressource-container">
                 <div>
                     <h2>{title} <i className="fas fa-external-link-alt"></i></h2>
-                    <span><i className="fas fa-thumbs-up"></i> {nbLike}</span>
+                    <span><i className="fas fa-thumbs-up" onClick={likeRessource}></i> {nbLike}</span>
                     <span><i className="fas fa-ellipsis-v"></i><i className="far fa-heart"></i><i className="fas fa-reply"></i></span>
                 </div>
                 <ul>

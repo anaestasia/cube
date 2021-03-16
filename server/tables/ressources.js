@@ -8,7 +8,6 @@ app.post("/create", (req, res) => {
     const title = req.body.title;
     const content = req.body.content;
     const nb_consultation = req.body.nb_consultation;
-    const nb_like = req.body.nb_like;
     const approved = req.body.approved;
     const archived = req.body.archived;
     const date_creation = req.body.date_creation;
@@ -20,8 +19,8 @@ app.post("/create", (req, res) => {
     const idUser = req.body.idUser;
     
     db.query(
-      "INSERT INTO ressources (title,content,nb_consultation,nb_like,approved,archived,date_creation,date_edition,deleted,fk_type_ressource,fk_relationship_ressource,fk_status) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)",
-      [title,content,nb_consultation,nb_like,approved,archived,date_creation,date_edition,deleted,fk_type_ressource,fk_relationship_ressource,fk_status],
+      "INSERT INTO ressources (title,content,nb_consultation,approved,archived,date_creation,date_edition,deleted,fk_type_ressource,fk_relationship_ressource,fk_status) VALUES (?,?,?,?,?,?,?,?,?,?,?)",
+      [title,content,nb_consultation,approved,archived,date_creation,date_edition,deleted,fk_type_ressource,fk_relationship_ressource,fk_status],
       (err, result) => {
         if (err) {
           console.log(err);

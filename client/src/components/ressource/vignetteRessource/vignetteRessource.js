@@ -12,7 +12,7 @@ import './vignetteRessource.css';
                 <div className="icons-container">
                     <div className="views"><i class="fas fa-eye"></i> : {nb_consultation}</div>
                     <div className="likes"><i className="fas fa-thumbs-up"></i> : {nombreLike}</div>
-                    <div  className="options"><i className="far fa-heart"></i></div>
+                    <div className="options"><i className="far fa-heart"></i></div>
                 </div>
 
                 <ul>
