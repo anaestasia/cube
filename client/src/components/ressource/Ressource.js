@@ -2,10 +2,21 @@ import React, { useState , useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import Axios from "axios";
 import Button from 'react-bootstrap/Button'
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import '@ckeditor/ckeditor5-build-classic/build/translations/fr.js';
+
+// import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+// import { CKEditor } from '@ckeditor/ckeditor5-react';
+// import '@ckeditor/ckeditor5-build-classic/build/translations/fr.js';
+import 'ckeditor5-cube'
+import ClassicEditor from 'ckeditor5-cube'
+import CKEditor from  'ckeditor5-cube'
+
+
+
 import Modal from 'react-bootstrap/Modal'
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Comments from './Comment/Comment'
+import WriteComment from './Writecomment/writeComment'
 
 import './Ressource.css';
 
@@ -33,6 +44,8 @@ import './Ressource.css';
         const [nombreVue, setNombreVue] = useState("");
         const [vueIncremente, setVueIncremente] = useState(false);
         
+        const [ecrireCommentaire, setEcrireCommentaire] = useState(false);
+
         Axios.defaults.withCredentials = true;
 
         useEffect(() => 
@@ -119,6 +132,7 @@ import './Ressource.css';
                 if (response.data.loggedIn === true) {
                   verifRole(response.data.user[0].fk_role);
                   setIdUserConnecte(response.data.user[0].id);
+                  setEcrireCommentaire(true);
                   setRole(response.data.user[0].fk_role);
                 }
                 else
@@ -238,6 +252,8 @@ import './Ressource.css';
                     {(idUserConnecte === idUserAuteur || role >=4) && <Button variant="primary" onClick={() => {handleShow(id); }}> Edit </Button> }
                     Nombre de vue : {nombreVue}
             </div>
+            <Row className="row-comment"><Comments /></Row>
+            <Row className="row-write-comment"> {ecrireCommentaire ? <WriteComment /> : <Col />}</Row>
             </>
         );
     }

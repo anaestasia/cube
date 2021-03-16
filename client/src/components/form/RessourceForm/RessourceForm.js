@@ -1,9 +1,15 @@
 import React, { useState , useEffect } from "react";
 import Axios from "axios";
 import { Link } from 'react-router-dom';
-import '@ckeditor/ckeditor5-build-classic/build/translations/fr.js';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
+
+
+
+import 'ckeditor5-cube'
+import ClassicEditor from 'ckeditor5-cube'
+import CKEditor from  'ckeditor5-cube'
+// import '@ckeditor/ckeditor5-build-classic/build/translations/fr.js';
+// import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+// import { CKEditor } from '@ckeditor/ckeditor5-react';
 // import { Multiselect } from 'multiselect-react-dropdown';
 
 import SubmitBtn from "../../buttons/SubmitBtn/SubmitBtn";
