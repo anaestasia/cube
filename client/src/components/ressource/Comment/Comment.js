@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Posts from './Posts';
-import Pagination from './Pagination';
+import Pagination from '../Pagination';
 import axios from 'axios';
 import Col from 'react-bootstrap/Col';
 import './Comment.css';
@@ -54,6 +54,7 @@ const App = () => {
           postsPerPage={postsPerPage}
           totalPosts={posts.length}
           paginate={paginate}
+          currentPage={currentPage}
         />
       </Col>
   );
