@@ -2,6 +2,7 @@ import React, { useState , useEffect } from "react";
 import Axios from "axios";
 
 import VignetteRessource from '../../ressource/VignetteRessource/vignetteRessource';
+import Pagination from '../../ressource/Pagination'
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -16,12 +17,15 @@ export default function CatalogSearch() {
     const [relationshipRessource, setRelationshipRessource] = useState("");
     const [relationshipRessourceDB, setRelationshipRessourceDB] = useState([]);
 
-    const [lastRessources, setLastRessources] = useState([]);
+    const [ressourceFiltre, setRessourceFiltre] = useState([]);
     const [status, setStatus] = useState("2");
 
     const [role, setRole] = useState("");
 
     const [filtreExiste, setFiltreExiste] = useState(false);
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postsPerPage] = useState(4);
 
     useEffect(() => 
     {
@@ -42,7 +46,7 @@ export default function CatalogSearch() {
           }).then((response) => {
             if(response.data.existe !== false)
             {
-                setLastRessources(response.data)
+                setRessourceFiltre(response.data)
                 setFiltreExiste(true)
             } 
             else
@@ -115,7 +119,7 @@ export default function CatalogSearch() {
             if(response.data.existe !== false)
             {
                 setFiltreExiste(true)
-                setLastRessources(response.data)
+                setRessourceFiltre(response.data)
             } 
             else{
                 setFiltreExiste(false)
@@ -123,6 +127,14 @@ export default function CatalogSearch() {
             // console.log(response.data)
           });
     }
+
+    // Get current posts
+    const indexOfLastPost = currentPage * postsPerPage;
+    const indexOfFirstPost = indexOfLastPost - postsPerPage;
+    const currentPosts = ressourceFiltre.slice(indexOfFirstPost, indexOfLastPost);
+
+    // Change page
+    const paginate = pageNumber => setCurrentPage(pageNumber);
 
   return (
       <>
@@ -145,7 +157,7 @@ export default function CatalogSearch() {
 
         <Col xl={9} className="cards">
             <Row>
-                {filtreExiste ? lastRessources.map(lastRessource => ( 
+                {filtreExiste ? currentPosts.map(lastRessource => ( 
                     <Col key={lastRessource.idRessource} sm={12} xl={6} className="result-card">
                         <VignetteRessource 
                             titre={lastRessource.title} 
@@ -153,12 +165,18 @@ export default function CatalogSearch() {
                             typeRelation={lastRessource.namerelationship} 
                             typeRessource={lastRessource.nametyperss}
                             nombreLike={lastRessource.nb_like}
-                            idRessource= {lastRessource.id}
+                            idRessource= {lastRessource.idRessource}
                             nb_consultation = {lastRessource.nb_consultation}
                         />                       
                     </Col>
                 )) : <span>Aucun résultat</span>}
             </Row>
+            <Pagination
+                postsPerPage={postsPerPage}
+                totalPosts={ressourceFiltre.length}
+                paginate={paginate}
+                currentPage = {currentPage}
+            />
         </Col>
     </>
   );
