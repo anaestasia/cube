@@ -4,13 +4,9 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
-// import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-// import { CKEditor } from '@ckeditor/ckeditor5-react';
-// import '@ckeditor/ckeditor5-build-classic/build/translations/fr.js';
 
-import 'ckeditor5-cube'
-import ClassicEditor from 'ckeditor5-cube'
-import CKEditor from  'ckeditor5-cube'
+import { CKEditor } from 'cube-project-ril/ckeditor5-react';
+import ClassicEditor from 'cube-project-ril/ckeditor5-mon-build'
 
 import Axios from "axios";
 
@@ -67,9 +63,6 @@ const Posts = ({ posts , idUser , role}) => {
               editor={ClassicEditor}
               data={contenuCommentsCkeditor}
               onChange={handleCkeditorState}
-              config={ {
-                language: 'fr',
-              } }
             />
         </Modal.Body>
         <Modal.Footer>

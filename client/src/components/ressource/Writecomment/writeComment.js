@@ -7,13 +7,8 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Axios from "axios";
 
-// import '@ckeditor/ckeditor5-build-classic/build/translations/fr.js';
-// import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-// import { CKEditor } from '@ckeditor/ckeditor5-react';
-
-import 'ckeditor5-cube'
-import ClassicEditor from 'ckeditor5-cube'
-import CKEditor from  'ckeditor5-cube'
+import { CKEditor } from 'cube-project-ril/ckeditor5-react';
+import ClassicEditor from 'cube-project-ril/ckeditor5-mon-build'
 
 export default function WriteComment () {
 
