@@ -66,6 +66,9 @@ app.use("/usersRessources", usersRessourcesRoute);
 const ressourcesLikeRoute = require("./tables/ressourcesLike");
 app.use("/ressourcesLike", ressourcesLikeRoute);
 
+const commentsLikeRoute = require("./tables/commentsLike");
+app.use("/commentsLike", commentsLikeRoute);
+
 
 app.listen(3001, () => {
   console.log("Le serveur est lancé sur le port 3001");
