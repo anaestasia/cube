@@ -14,6 +14,11 @@ export default function MenuBackOffice({role , activeSubSubMenu}) {
                 <ul>
                     <li className="subtitle"><span><i className="fas fa-users-cog"></i> UTILISATEURS</span></li>
                     <li className="link"><span>Gérer les utilisateurs</span></li>
+                    <li className="link">
+                        <Link to={'/admin/gererPunishement'}>
+                            <span>Gérer les punitions</span>
+                        </Link>
+                    </li>
                 </ul> : <></> 
                 }
 
@@ -22,14 +27,36 @@ export default function MenuBackOffice({role , activeSubSubMenu}) {
                     <li className="subtitle"><span><i className="fas fa-folder-open"></i> RESSOURCES</span></li>
                     <li className="link">
                         <Link to={'/admin/approvedRessources'}>
-                            <span>Gérer les ressources</span>
+                            <span>Ressources à approuver</span>
                             {/* <span className={ activeSubSubMenu === 'approvedRessources' && 'activeSubTab' }>Gérer les ressources</span> */}
                         </Link>
                     </li>
-                    <li className="link"><span>Gérer les catégories</span></li>
-                    <li className="link"><span>Gérer les commentaires</span></li>
+                    <li className="link">
+                        <Link to={'/admin/gererRessources'}>
+                            <span>Gérer les catégories</span>
+                        </Link>
+                    </li>
+                    <li className="link">
+                        <Link to={'/admin/gererTypeRessources'}>
+                            <span>Gérer les types de ressources</span>
+                        </Link>
+                    </li>
+                    <li className="link">
+                        <Link to={'/admin/gererTypeRelationship'}>
+                            <span>Gérer les types de relation</span>
+                        </Link>
+                    </li>
                 </ul> : <></> 
                 }
+                <ul>
+                    <li className="subtitle"><span><i class="far fa-comments"></i> COMMENTAIRES</span></li>
+                    <li className="link"><span>Gérer les commentaires</span></li>
+                    <li className="link">
+                        <Link to={'/admin/gererLesRaisons'}>
+                            <span>Gérer les raisons</span>
+                        </Link>
+                    </li>
+                </ul>
                 <ul>
                     <li className="subtitle"><span><i className="fas fa-info-circle"></i> DOCUMENTATION</span></li>
                     <li className="link"><span>Visiteur</span></li>
