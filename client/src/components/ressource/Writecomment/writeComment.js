@@ -39,6 +39,7 @@ export default function WriteComment () {
 
   function envoyerMSG()
   {
+    // console.log(Ckeditor)
     if(Ckeditor.trim() !== '')
     {
       const date = new Date();
@@ -46,7 +47,6 @@ export default function WriteComment () {
 
       Axios.post(process.env.REACT_APP_SITE_URL_API+"/comments/create", {
         content : Ckeditor,
-        nb_like : 0,
         date_creation : sqlDate,
         date_edition : sqlDate,
         deleted : 0,
@@ -74,9 +74,6 @@ export default function WriteComment () {
               editor={ClassicEditor}
               data={donneCkeditor}
               onChange={handleCkeditorState}
-              config={ {
-                language: 'fr',
-              } }
             />
           </Col>
         </Row>
