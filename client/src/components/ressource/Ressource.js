@@ -3,9 +3,6 @@ import { useParams } from 'react-router-dom';
 import Axios from "axios";
 import Button from 'react-bootstrap/Button'
 
-// import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-// import { CKEditor } from '@ckeditor/ckeditor5-react';
-// import '@ckeditor/ckeditor5-build-classic/build/translations/fr.js';
 import { CKEditor } from 'cube-project-ril/ckeditor5-react';
 import ClassicEditor from 'cube-project-ril/ckeditor5-mon-build'
 

@@ -15,6 +15,11 @@ import Profile from "./components/profile/Profile";
 import RessourceNotConnected from "./components/ressource/RessourceNotConnected/RessourceNotConnected";
 import Admin from "./components/admin/Admin";
 import AdminApprovedRessources from "./components/admin/approvedRessources/ApprovedRessources";
+import AdminGererRessources from "./components/admin/gererRessources/GererRessources"
+import AdminGererTypeRessources from "./components/admin/gererTypeRessources/GererTypeRessources"
+import AdminGererTypeRelationship from "./components/admin/gererTypeRelationship/GererTypeRelationship"
+import AdminGererPunishement from "./components/admin/gererPunishement/GererPunishement"
+import AdminGererLesRaisonsDesSignalements from "./components/admin/gererLesRaisonsDesSignalements/GererLesRaisonsDesSignalements"
 import NoAccess from "./components/403/403";
 import NotFound from "./components/404/404";
 import Token from "./components/token/token";
@@ -135,6 +140,7 @@ function App() {
   let submitRessource = false;
   let adminApprovedRessources = false;
   let profile = false;
+  let adminGereRessources = false;
 
   if (role >= 1) {
     // Mail non verifé
@@ -153,6 +159,7 @@ function App() {
     // Modérateur
     admin = true;
     adminApprovedRessources = true;
+    adminGereRessources = true;
   }
   if (role >= 4) {
     // Admin
@@ -268,7 +275,61 @@ function App() {
                   )
                 }
               />
-
+              <Route
+                exact
+                path="/admin/gererTypeRessources"
+                render={(props) =>
+                  adminGereRessources ? (
+                    <AdminGererTypeRessources role={role} />
+                  ) : (
+                    <NotFound />
+                  )
+                }
+              />
+              <Route
+                exact
+                path="/admin/gererTypeRelationship"
+                render={(props) =>
+                  adminGereRessources ? (
+                    <AdminGererTypeRelationship role={role} />
+                  ) : (
+                    <NotFound />
+                  )
+                }
+              />
+              <Route
+                exact
+                path="/admin/gererRessources"
+                render={(props) =>
+                  adminGereRessources ? (
+                    <AdminGererRessources role={role} />
+                  ) : (
+                    <NotFound />
+                  )
+                }
+              />
+              <Route
+                exact
+                path="/admin/gererLesRaisons"
+                render={(props) =>
+                  adminGereRessources ? (
+                    <AdminGererLesRaisonsDesSignalements role={role} />
+                  ) : (
+                    <NotFound />
+                  )
+                }
+              />
+              <Route
+                exact
+                path="/admin/gererPunishement"
+                render={(props) =>
+                  adminGereRessources ? (
+                    <AdminGererPunishement role={role} />
+                  ) : (
+                    <NotFound />
+                  )
+                }
+              />
             </Col>
           </Row>
           <Footer />
