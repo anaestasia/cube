@@ -2,15 +2,8 @@ import React, { useState , useEffect } from "react";
 import Axios from "axios";
 import { Link } from 'react-router-dom';
 
-
-
-// import 'ckeditor5-cube'
-// import ClassicEditor from 'ckeditor5-cube'
-// import CKEditor from  'ckeditor5-cube'
-// import '@ckeditor/ckeditor5-build-classic/build/translations/fr.js';
-// import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-// import { CKEditor } from '@ckeditor/ckeditor5-react';
-// import { Multiselect } from 'multiselect-react-dropdown';
+import { CKEditor } from 'cube-project-ril/ckeditor5-react';
+import ClassicEditor from 'cube-project-ril/ckeditor5-mon-build'
 
 import SubmitBtn from "../../buttons/SubmitBtn/SubmitBtn";
 
@@ -154,22 +147,6 @@ const onRemove = (selectedList, selectedItem) =>
 
             <input type="text" className="ressource-title" onChange={(e) => {setTitle(e.target.value); }} placeholder="Titre de la ressource" required/>
 
-            {/* <CKEditor 
-                editor={ClassicEditor}
-                data={content}
-                onChange={handleCkeditorState}
-                config={ {
-                  language: 'fr',
-                } }
-              /> */}
-
-            {/* <Multiselect
-              options={categoriesDB} // Options to display in the dropdown
-              displayValue="name" // Property name to display in the dropdown options
-              onSelect={onSelect}
-              onRemove={onRemove} // Function will trigger on remove event
-            /> */}
-
             <div className="select-inputs">
               <select name="type-ressource" id="type-ressource" required onChange={(e) => {setTypesressources(e.target.value); }}>
                 <option disabled selected>-- Type de ressource --</option>
@@ -187,10 +164,25 @@ const onRemove = (selectedList, selectedItem) =>
               </select>
             </div>
 
-            <div className="btns">
+            <Col>
+                <CKEditor 
+                    editor={ClassicEditor}
+                    data={content}
+                    onChange={handleCkeditorState}
+                />
+            </Col>
+
+            {/* <Multiselect
+              options={categoriesDB} // Options to display in the dropdown
+              displayValue="name" // Property name to display in the dropdown options
+              onSelect={onSelect}
+              onRemove={onRemove} // Function will trigger on remove event
+            /> */}
+
+            <Row className="btns">
               <Link to="/" className="cancel-btn">Annuler</Link>
               <SubmitBtn inputText="Envoyer" />
-            </div>
+            </Row>
 
           </form>
 

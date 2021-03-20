@@ -152,8 +152,16 @@ export default function TableTypeRelationship({actionRole}) {
         }
         </Modal.Footer>
       </Modal>
-      <Button variant="success" onClick={addRow}> Ajouter </Button> 
-      { actionRole ? <Table titre={titreTableau} columns={columnsAction} data={data}/> : <Table titre={"Role"} columns={columns} data={data}/>}
+      <br></br>
+      { actionRole ? 
+        <>
+          <Button variant="success" onClick={addRow}> Ajouter </Button> 
+          <br></br>
+          <Table titre={titreTableau} columns={columnsAction} data={data}/> 
+        </>
+        : 
+        <Table titre={"Role"} columns={columns} data={data}/>}
+      <br></br>
     </>
   );
 }

@@ -17,6 +17,9 @@ const Posts = ({ posts , idUser , role}) => {
   const [idCommentaire, setIdCommentaire] = useState("");
   const [contenuCommentsCkeditor, setContenuCommentsCkeditor] = useState("");
 
+  const [idUserConnecte, setIdUserConnecte] = useState("");
+
+  const [nbLike, setNbLike] = useState("");
 
   const handleClose = () => setShow(false);
 
@@ -32,6 +35,35 @@ const Posts = ({ posts , idUser , role}) => {
     const data = editor.getData();
     setContenuCommentsCkeditor(data);
   }
+
+    const likeComment = () =>
+    {
+        if(idUserConnecte !== '')
+        {
+            Axios.post(process.env.REACT_APP_SITE_URL_API+"/commentsLike/create",{
+            user: idUserConnecte,
+            comment: idCommentaire
+            }).then((response) => 
+            {
+                getNbLike();
+            });
+        }
+        else
+        {
+            alert('Veuillez vous connecter :-)');
+        }
+    }
+
+    const getNbLike = () =>
+    {
+        Axios.post(process.env.REACT_APP_SITE_URL_API+"/commentsLike/get/nbLike", 
+        {
+            ressource: 49,
+        }).then((response) => 
+        {
+            setNbLike(response.data[0].nbLike)
+        });
+    }
 
   const editComments = () => 
   {
@@ -88,7 +120,7 @@ const Posts = ({ posts , idUser , role}) => {
           </Card.Text>
           <hr />
           {post.date_creation !== post.date_edition && <>Dernière modification : {post.date_edition.substring(8,10)}/{post.date_edition.substring(5,7)}/{post.date_edition.substring(0,4)} à {post.date_edition.substring(11,19)} <br /></> }
-           {post.nb_like} ♡ 
+           {post.nb_like} <i className="fas fa-thumbs-up" onClick= {likeComment}></i> 
         </Card><br />
       </div>
       ))}

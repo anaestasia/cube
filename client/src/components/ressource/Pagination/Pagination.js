@@ -40,7 +40,7 @@ const PaginationInterne = ({ postsPerPage, totalPosts, paginate , currentPage })
     }
     pagninationAfficer.push(pageNumberAfficher[i]);
   }
-console.log(pagninationAfficer)
+  // console.log(pagninationAfficer)
   // recupérer le dernier élémenet ajouter ===> pageNumberAfficher[pageNumberAfficher.length-1]
 
 
