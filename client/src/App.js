@@ -33,7 +33,9 @@ function App() {
   const [status, setStatus] = useState("2");
   const [lastRessources, setLastRessources] = useState([]);
   const [connected, setConnected] = useState(false);
-  const [loginForm, setLoginForm] = useState({ email: '', password:''});
+  const [loginForm, setLoginForm] = useState({ email: '', password:'' });
+  const [activeSubMenu, setActiveSubMenu] = useState('catalog');
+  const [activeSubSubMenu, setActiveSubSubMenu] = useState('ressource');
   
 
   const toggleMenu = () => {
@@ -49,7 +51,6 @@ function App() {
 
   const handleLogin = (event) => {
     event.preventDefault();
-    //console.log("App :" + loginForm.email + " " + loginForm.password);
     var hash = require("object-hash");
     const password = hash.sha1(loginForm.password);
 
@@ -180,8 +181,8 @@ function App() {
           <Row className="parent-row">
             <Col xl={3} className="col-menu menuFixe">
               <Menu
-                activeSubMenu="ressource"
-                activeSubSubMenu="catalog"
+                activeSubMenu={activeSubMenu}
+                activeSubSubMenu={activeSubSubMenu}
                 handleToggleMenu={toggleMenu}
                 openMenu={openMenu}
                 apiRole={role}

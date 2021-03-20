@@ -2,7 +2,7 @@ import React, { useState , useEffect } from "react";
 import Axios from "axios";
 
 import VignetteRessource from '../../ressource/VignetteRessource/vignetteRessource';
-import Pagination from '../../ressource/Pagination'
+import Pagination from '../../ressource/Pagination/Pagination'
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';

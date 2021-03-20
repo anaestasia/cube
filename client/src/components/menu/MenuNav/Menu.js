@@ -8,15 +8,13 @@ import Col from "react-bootstrap/Col";
 
 export default function Menu({activeSubMenu , activeSubSubMenu , handleToggleMenu, openMenu, apiRole }) {
 
-  const [currentActiveMenu, setCurrentActiveMenu] = useState(activeSubMenu);
+  const [activeMenu, setActiveMenu] = useState(activeSubMenu);
 
   const onClick = handleToggleMenu;
 
   const toggleTab = (activeMenu) =>
   {
-
-    setCurrentActiveMenu(activeMenu)
-
+    setActiveMenu(activeMenu);
   }
 
     return (
@@ -30,15 +28,15 @@ export default function Menu({activeSubMenu , activeSubSubMenu , handleToggleMen
             </div>
 
             <div className="icon-tab" onClick={() => toggleTab("user")}>
-              <i className={ `far fa-user ${ currentActiveMenu === 'user' && 'activeTab' }` }></i>
+              <i className={ `far fa-user ${ activeMenu === 'user' && 'activeTab' }` }></i>
             </div>
 
             <div className="icon-tab" onClick={() => toggleTab("ressource")}>
-              <i className={ `far fa-file-alt ${ currentActiveMenu === 'ressource' && 'activeTab' }` }></i>
+              <i className={ `far fa-file-alt ${ activeMenu === 'ressource' && 'activeTab' }` }></i>
             </div>
 
             <div className="icon-tab" onClick={() => toggleTab("backoffice") }>
-              <i className={ `fas fa-sliders-h ${ currentActiveMenu === 'backoffice' && 'activeTab' }` }></i>
+              <i className={ `fas fa-sliders-h ${ activeMenu === 'backoffice' && 'activeTab' }` }></i>
             </div>
 
             <div className="icon-tab logo-navbar">
@@ -53,9 +51,9 @@ export default function Menu({activeSubMenu , activeSubSubMenu , handleToggleMen
           {openMenu === true ? (
 
             <Col xs={9} md={10} className="sub-menu">
-              {currentActiveMenu === "ressource" ? (
+              {activeMenu === "ressource" ? (
                 <MenuRessources role={apiRole} activeSubSubMenu={activeSubSubMenu}/>
-              ) : currentActiveMenu === "user" ? (
+              ) : activeMenu === "user" ? (
                 <MenuUser role={apiRole} activeSubSubMenu={activeSubSubMenu}/>
               ) : (
                 <MenuBackOffice role={apiRole} activeSubSubMenu={activeSubSubMenu}/>

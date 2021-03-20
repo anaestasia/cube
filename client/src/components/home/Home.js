@@ -1,5 +1,6 @@
 import LoginForm from "../form/LoginForm/LoginForm";
 import React from "react";
+import { Link } from 'react-router-dom';
 // import React, { useEffect, useState } from "react";
 // import Axios from "axios";
 import Container from "react-bootstrap/Container";
@@ -47,10 +48,8 @@ export default function Home({ onSubmit, formValue, onChange, connected }) {
 
         <Col sm={12} md={6} xl={6} className="btn-discover">
           <img src="/img/discover.png" className="App-logo-menu" alt="logo" />
-          {/* <Link to="/catalog">Découvrir</Link> */}
-          <button onClick={() => (window.location.href = "/catalog")}>
-            Découvrir
-          </button>
+          <Link to="/catalog">Découvrir</Link>
+          {/* <button onClick={() => (window.location.href = "/catalog")}>Découvrir</button> */}
         </Col>
       </Row>
     </Container>
