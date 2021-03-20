@@ -25,9 +25,9 @@
     align-items: center;
     justify-content: space-between;
 }
-.form-login . {
+/* .form-login . {
     width: 100%;
-}
+} */
 .form-login img,
 .btn-discover img {
     margin-bottom: 10%;

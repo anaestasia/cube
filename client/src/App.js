@@ -15,11 +15,11 @@ import Profile from "./components/profile/Profile";
 import RessourceNotConnected from "./components/ressource/RessourceNotConnected/RessourceNotConnected";
 import Admin from "./components/admin/Admin";
 import AdminApprovedRessources from "./components/admin/approvedRessources/ApprovedRessources";
-import AdminGererRessources from "./components/admin/gererRessources/GererRessources"
-import AdminGererTypeRessources from "./components/admin/gererTypeRessources/GererTypeRessources"
-import AdminGererTypeRelationship from "./components/admin/gererTypeRelationship/GererTypeRelationship"
-import AdminGererPunishement from "./components/admin/gererPunishement/GererPunishement"
-import AdminGererLesRaisonsDesSignalements from "./components/admin/gererLesRaisonsDesSignalements/GererLesRaisonsDesSignalements"
+import AdminHandleRessources from "./components/admin/handleRessources/HandleRessources"
+import AdminHandleRessourcesType from "./components/admin/handleRessourcesType/HandleRessourcesType"
+import AdminHandleRelationshipType from "./components/admin/handleRelationshipType/HandleRelationshipType"
+import AdminHandlePunishement from "./components/admin/handlePunishement/HandlePunishement"
+import AdminHandleReportReason from "./components/admin/handleReportReason/HandleReportReason"
 import NoAccess from "./components/403/403";
 import NotFound from "./components/404/404";
 import Token from "./components/token/token";
@@ -281,7 +281,7 @@ function App() {
                 path="/admin/gererTypeRessources"
                 render={(props) =>
                   adminGereRessources ? (
-                    <AdminGererTypeRessources role={role} />
+                    <AdminHandleRessourcesType role={role} />
                   ) : (
                     <NotFound />
                   )
@@ -292,7 +292,7 @@ function App() {
                 path="/admin/gererTypeRelationship"
                 render={(props) =>
                   adminGereRessources ? (
-                    <AdminGererTypeRelationship role={role} />
+                    <AdminHandleRelationshipType role={role} />
                   ) : (
                     <NotFound />
                   )
@@ -303,7 +303,7 @@ function App() {
                 path="/admin/gererRessources"
                 render={(props) =>
                   adminGereRessources ? (
-                    <AdminGererRessources role={role} />
+                    <AdminHandleRessources role={role} />
                   ) : (
                     <NotFound />
                   )
@@ -314,7 +314,7 @@ function App() {
                 path="/admin/gererLesRaisons"
                 render={(props) =>
                   adminGereRessources ? (
-                    <AdminGererLesRaisonsDesSignalements role={role} />
+                    <AdminHandleReportReason role={role} />
                   ) : (
                     <NotFound />
                   )
@@ -325,7 +325,7 @@ function App() {
                 path="/admin/gererPunishement"
                 render={(props) =>
                   adminGereRessources ? (
-                    <AdminGererPunishement role={role} />
+                    <AdminHandlePunishement role={role} />
                   ) : (
                     <NotFound />
                   )

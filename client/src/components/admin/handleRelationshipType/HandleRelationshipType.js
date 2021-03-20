@@ -1,21 +1,21 @@
 import React from "react";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import TableCategories from '../../tables/categories';
-import './GererRessources.css';
+import TableTypeRelationship from '../../tables/typerelationship';
+import './HandleRelationshipType.css';
 
-export default function GererRessources({role}) {
+export default function HandleRelationshipType({role}) {
     
     let actionRole= false 
     if(role > 3)
     {
         actionRole = true 
     }
-
+    
   return (
     <Row className="fond">
         <Col>
-            <TableCategories actionRole={actionRole}/>
+            <TableTypeRelationship actionRole={actionRole}/>
         </Col>
     </Row>
   );

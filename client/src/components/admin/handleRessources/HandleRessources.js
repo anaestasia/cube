@@ -1,10 +1,10 @@
 import React from "react";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import TablePunishement from '../../tables/punishement';
-import './GererPunishement.css';
+import TableCategories from '../../tables/categories';
+import './HandleRessources.css';
 
-export default function GererPunishement({role}) {
+export default function HandleRessources({role}) {
     
     let actionRole= false 
     if(role > 3)
@@ -15,7 +15,7 @@ export default function GererPunishement({role}) {
   return (
     <Row className="fond">
         <Col>
-            <TablePunishement actionRole={actionRole}/>
+            <TableCategories actionRole={actionRole}/>
         </Col>
     </Row>
   );
