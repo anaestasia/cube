@@ -1,7 +1,7 @@
 import React from "react";
 
 import CatalogFilter from './CatalogSearch/CatalogSearch';
-import VignetteLastRessource from '../ressource/VignetteRessource/vignetteRessource';
+import VignetteLastRessource from '../ressource/vignetteRessource/vignetteRessource';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';

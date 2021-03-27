@@ -23,12 +23,14 @@ import AdminHandleReportReason from "./components/admin/handleReportReason/Handl
 import NoAccess from "./components/403/403";
 import NotFound from "./components/404/404";
 import Token from "./components/token/token";
+import CookieConset from "react-cookie-consent"
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 import "./App.css";
+import CookieConsent from "react-cookie-consent";
 
 require("dotenv").config();
 
@@ -332,6 +334,13 @@ function App() {
                 }
               />
             </Col>
+            <CookieConsent 
+            debug={true}
+            buttonText="Je comprends"
+            style={{color: '#03989e'}}
+            buttonStyle={{color:"#03989e", background: "#c0e5e7", fontSize: "14px"}}
+            >En continuant à utiliser ce site, vous acceptez l'utilisation des cookies.
+            </CookieConsent>
           </Row>
           <Footer />
         </Container>
