@@ -47,16 +47,15 @@ export default function EditStreetName() {
     }
 
     return (
-        <Row className="profile-field">
-            <form onSubmit={validerChangement} id="streetForm">
-              <Col sm={12}><label>Nom de rue :</label></Col>
+        <>
+            <form onSubmit={validerChangement} id="streetForm" className="field-form">
               <Row className="input-btn-field">
+                <Col sm={12}><label>Nom de rue :</label></Col>
                 <Col sm={10}><input id='street_name' className="pass-input" type="text" onChange={(e) => { setstreetName(e.target.value) }} /></Col>
                 <Col sm={2}><button id="btn-edit" form="streetForm"><i className="far fa-save"></i></button></Col>
               </Row>
           </form>  
           {informationstreetName}
-  
-        </Row>
+        </>
       );
     }

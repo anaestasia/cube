@@ -1,18 +1,144 @@
-div#root {
-  background-color: #03989e;
-  height: 100%;
-  width: 100%;
+@font-face {
+  font-family: 'Roboto';
+  src: local('Roboto'), url(./fonts/Roboto/Roboto-Medium.ttf) format('truetype');
 }
 
-div.row {
+@font-face {
+  font-family: 'Oswald-Light';
+  src: local('Oswald-Light'), url(./fonts/Oswald/Oswald-Light.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Oswald-Regular';
+  src: local('Oswald-Regular'), url(./fonts/Oswald/Oswald-Medium.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'SegoePrint';
+  src: local('SegoePrint'), url(./fonts/SegoePrint/SegoePrint.ttf) format('truetype');
+}
+
+* {
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
+  font-family: Roboto, sans-serif;
 }
 
-.menuFixe{
+#root {
+  background-color: #03989e;
+  min-height: 100vh;
+}
+
+.row{
+   margin: 0;
+}
+/* .menuFixe{
   position: sticky;
   position: -webkit-sticky;
   top: 20px;
   margin-bottom: 10px;
+} */
+
+h1 {
+  font-size: 2rem;
+  font-family: 'Oswald-Regular', sans-serif;
+}
+h2 {
+  font-size: 1.4rem;
+  font-family: 'Oswald-Regular', sans-serif;
 }
 
+.pages {
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+}
+
+/* ----------------------- */
+/* ----- MAX 1200 PX ----- */
+/* ----------------------- */
+@media (max-width: 1200px) {
+  
+}
+
+/* --------------------------------- */
+/* ----- MAX 1024 PX / Laptop  ----- */
+/* --------------------------------- */
+@media (max-width: 1024px){
+
+}
+
+/* ----------------------- */
+/* ----- MAX 966 PX  ----- */
+/* ----------------------- */
+@media (max-width: 966px){
+  
+}
+
+/* ---------------------- */
+/* ----- MAX 840 PX ----- */
+/* ---------------------- */
+@media (max-width: 840px) {
+  
+}
+
+/* ------------------------ */
+/* ----- MAX 800 PX   ----- */
+/* ------------------------ */
+@media (max-width: 800px){
+  
+}
+
+/* ---------------------------------- */
+/* ----- MAX 768 PX / Tablette  ----- */
+/* ---------------------------------- */
+@media (max-width: 768px) {
+  
+}
+
+/* ---------------------- */
+/* ----- MAX 710 PX ----- */
+/* ---------------------- */
+@media (max-width: 709px) {
+  
+}
+
+/* ----------------------- */
+/* ----- MAX 660 PX  ----- */
+/* ----------------------- */
+@media (max-width: 660px){
+  
+}
+
+/* A partir de 630px la taille de l'écran est bizarre */
+
+/* ---------------------- */
+/* ----- MAX 481 PX ----- */
+/* ---------------------- */
+
+@media (max-width: 481px) {
+
+}
+
+/* ---------------------------------- */
+/* ----- MAX 425 PX / L mobile  ----- */
+/* ---------------------------------- */
+@media (max-width: 425px){
+  
+}
+
+/* ---------------------------------- */
+/* ----- MAX 375 PX / M mobile  ----- */
+/* ---------------------------------- */
+@media (max-width: 375px){
+  
+}
+
+/* ---------------------------------- */
+/* ----- MAX 320 PX / S mobile  ----- */
+/* ---------------------------------- */
+@media (max-width: 320px){
+  
+}
 

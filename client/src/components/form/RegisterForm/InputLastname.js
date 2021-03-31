@@ -47,16 +47,15 @@ export default function EditLastName() {
     }
 
     return (
-        <Row className="profile-field">
-            <form onSubmit={validerChangement} id="lastnameForm">
-              <Col sm={12}><label>Nom :</label></Col>
-              <Row className="input-btn-field">
+        <>
+            <form onSubmit={validerChangement} id="lastnameForm" className="field-form">
+              <Row>
+                <Col sm={12}><label>Nom :</label></Col>
                 <Col sm={10}><input id='lastName' className="pass-input" type="text" onChange={(e) => { setNom(e.target.value) }} /></Col>
                 <Col sm={2}><button id="btn-edit" form="lastnameForm"><i className="far fa-save"></i></button></Col>
               </Row>
           </form>  
           {informationNom}
-  
-        </Row>
+        </>
       );
     }

@@ -1,7 +1,7 @@
 import React from "react";
 
-import CatalogFilter from './CatalogSearch/CatalogSearch';
-import VignetteLastRessource from '../ressource/VignetteRessource/vignetteRessource';
+import CatalogSearch from './CatalogSearch/CatalogSearch';
+import VignetteLastRessource from '../ressource/VignetteRessource/VignetteRessource';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -35,7 +35,7 @@ export default function Catalog( { ressources } ) {
 
       {/* catalogue + filtres */}
       <Col xl={12} className="search-catalog">
-        <CatalogFilter />
+        <CatalogSearch />
       </Col>
     </Row>
   );

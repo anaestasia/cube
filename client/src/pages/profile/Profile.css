@@ -1,0 +1,79 @@
+.profile-form{
+    padding: 1.5%;
+    background-color: #ffffff;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    box-shadow: 1px 1px 5px #222320;
+}
+h1.page-title{
+    padding: 15px;
+}
+.profile-fields{
+    display: flex;
+    flex-direction: column;
+}
+.field-form{
+    padding: 0.8rem 0;
+}
+.id-form {
+    padding: 2rem 0;
+}
+.field-form input,
+.id-form input{
+    padding: 5px 10px;
+    width: 100%;
+}
+.id-form input{
+    margin-bottom: 2rem;
+}
+
+.field-form input{
+    border: none;
+    border-bottom:  1px solid #222320;
+    background-color: #f0f0f0;
+}
+.input-info{
+    font-style: italic;
+    line-height: 2.5em;
+    font-size: 0.9em;
+    color: red;
+}
+.btn-edit-text{
+    text-align: right;
+}
+#btn-edit {
+    border: none;
+    color: #222320;
+    background: none;
+    font-size: 160%;
+}
+#btn-edit:hover {
+    color: #febd59;
+}
+button.btn-email-psswd {
+    width: 100%;
+    padding: 10px;
+    border: none;
+}
+button.btn-email-psswd:hover {
+    background-color: #febd59;
+}
+
+button#btn-edit-email,
+button#btn-edit-psswd{
+    background-color: #febd59;
+    color: #222320;
+    font-size: 1.2em;
+    padding: 5px 20px;
+    border : none;
+    border-radius: 10px;
+    text-decoration: none;
+}
+button#btn-edit-email:hover,
+button#btn-edit-psswd:hover {
+    background-color: #bcbdbc;
+}
+button.activeForm{
+    background-color: #febd59;
+}

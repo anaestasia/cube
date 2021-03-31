@@ -77,24 +77,23 @@ export default function EditMail() {
     }
 
     return (
-        <Row className="profile-field-part-2">
-            <Col sm={12}>
-                <form onSubmit={validerChangementEmail} id="emailForm">
-                    <Row>
-                        <Col sm={12}><label>Email :</label></Col>
-                        <Col sm={12}><input id='inputEmail1' className="pass-input" type="email"  onChange={(e) => { emailIdentique1(e) }} /></Col>
-                    </Row>
+        <>
+            <form onSubmit={validerChangementEmail} id="emailForm" className="id-form">
+                <Row>
+                    <Col sm={12}><label>Email :</label></Col>
+                    <Col sm={12}><input id='inputEmail1' className="pass-input" type="email"  onChange={(e) => { emailIdentique1(e) }} /></Col>
 
-                    <Row>
-                        <Col sm={12}><label>Vérification email :</label></Col>
-                        <Col sm={12}><input id='inputEmail2' className="pass-input"  type="email" onChange={(e) => { emailIdentique2(e) }} /></Col>
-                        <Col sm={12}><span className="input-info">{doubleEmailMessage}</span></Col>
-                    </Row>
+                    <Col sm={12}><label>Vérification email :</label></Col>
+                    <Col sm={12}><input id='inputEmail2' className="pass-input"  type="email" onChange={(e) => { emailIdentique2(e) }} /></Col>
+
+                    <Col sm={12}><span className="input-info">{doubleEmailMessage}</span></Col>
+
                     <Col sm={12} className="btn-edit-text"><button id="btn-edit-email" form="emailForm" disabled> Modifier </button></Col>
+                </Row>
+                
             </form>  
             {informationEmail}
 
-            </Col>
-        </Row>
+        </>
       );
     }  

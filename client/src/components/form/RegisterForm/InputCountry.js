@@ -50,16 +50,15 @@ export default function EditCountry() {
     }
 
     return (
-        <Row className="profile-field">
-            <form onSubmit={validerChangement} id="countryForm">
-              <Col sm={12}><label>Pays :</label></Col>
-              <Row className="input-btn-field">
+        <>
+            <form onSubmit={validerChangement} id="countryForm" className="field-form">
+              <Row>
+                <Col sm={12}><label>Pays :</label></Col>
                 <Col sm={10}><input id='countryId' className="pass-input" type="text" onChange={(e) => { setCountry(e.target.value) }} /></Col>
                 <Col sm={2}><button id="btn-edit" form="countryForm"><i className="far fa-save"></i></button></Col>
               </Row>
           </form>  
           {informationCountry}
-  
-        </Row>
+        </>
       );
     }

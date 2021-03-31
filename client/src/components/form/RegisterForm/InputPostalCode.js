@@ -47,16 +47,15 @@ export default function EditPostalCode() {
     }
 
     return (
-        <Row className="profile-field">
-            <form onSubmit={validerChangement} id="codeForm">
-              <Col sm={12}><label>Code postale :</label></Col>
-              <Row className="input-btn-field">
+        <>
+            <form onSubmit={validerChangement} id="codeForm" className="field-form">
+              <Row>
+                <Col sm={12}><label>Code postal :</label></Col>
                 <Col sm={10}><input id='postal_codeId' max="99999" className="pass-input" type="number" onChange={(e) => { setPostalCode(e.target.value) }} /></Col>
                 <Col sm={2}><button id="btn-edit" form="codeForm"><i className="far fa-save"></i></button></Col>
               </Row>
           </form>  
           {informationPostalCode}
-  
-        </Row>
+        </>
       );
     }

@@ -47,16 +47,15 @@ export default function EditStreetNB() {
     }
 
     return (
-        <Row className="profile-field">
-            <form onSubmit={validerChangement} id="nbStreetForm">
-              <Col sm={12}><label>Numéro de rue :</label></Col>
-              <Row className="input-btn-field">
+        <>
+            <form onSubmit={validerChangement} id="nbStreetForm"  className="field-form">
+              <Row>
+                <Col sm={12}><label>Numéro de rue :</label></Col>
                 <Col sm={10}><input id='street_nb' max="99999" className="pass-input" type="number"  onChange={(e) => { setstreetNb(e.target.value) }} /></Col>
                 <Col sm={2}><button id="btn-edit" form="nbStreetForm"><i className="far fa-save"></i></button></Col>
               </Row>
           </form>  
           {informationstreetNb}
-  
-        </Row>
+        </>
       );
     }

@@ -132,33 +132,27 @@ export default function EditPassword() {
     }
 
     return (
-        <Row className="profile-field-part-2">
-            <Col sm={12}>
-                <form onSubmit={validerChangementMdp} id="passForm">
-                
-                    <Row>
-                        <Col sm={12}><label>Ancien mot de passe :</label></Col>
-                        <Col sm={12}><input id='ancienMDP' className="pass-input" type="password"  onChange={(e) => {verifSibonMDP(e) }} /> { '  ' }</Col>
-                        <Col sm={12}><span>{bonMDPMessage}</span></Col>
-                    </Row>
-                    
-                    <Row>
-                        <Col sm={12}><label>Mot de passe :</label></Col>
-                        <Col sm={12}><input id='inputMDP1' className="pass-input"  minlength="12" type="password" onChange={(e) => { mdpIdentique1(e) }} /></Col>
-                    </Row>
-                    <Row>
-                        <Col sm={12}><label>Vérification mot de passe :</label></Col>
-                        <Col sm={12}><input id='inputMDP2' className="pass-input"  minlength="12" type="password" onChange={(e) => { mdpIdentique2(e) }} /></Col>
-                        <Col sm={12}><span className="input-info">{doubleMdpMessage}</span></Col>
-                    </Row>
-                    <Row>
-                        <Col sm={12} className="btn-edit-text"><button id="btn-edit-psswd" form="passForm" disabled> Modifier </button></Col>
-                    </Row>
-    
-                </form>  
-                {informationMDP}
-            </Col>
-        </Row>
+        <>
+            <form onSubmit={validerChangementMdp} id="passForm" className="id-form">
+            
+                <Row>
+                    <Col sm={12}><label>Ancien mot de passe :</label></Col>
+                    <Col sm={12}><input id='ancienMDP' className="pass-input" type="password"  onChange={(e) => {verifSibonMDP(e) }} /> { '  ' }</Col>
+                    <Col sm={12}><span>{bonMDPMessage}</span></Col>
+
+                    <Col sm={12}><label>Mot de passe :</label></Col>
+                    <Col sm={12}><input id='inputMDP1' className="pass-input"  minlength="12" type="password" onChange={(e) => { mdpIdentique1(e) }} /></Col>
+
+                    <Col sm={12}><label>Vérification mot de passe :</label></Col>
+                    <Col sm={12}><input id='inputMDP2' className="pass-input"  minlength="12" type="password" onChange={(e) => { mdpIdentique2(e) }} /></Col>
+                    <Col sm={12}><span className="input-info">{doubleMdpMessage}</span></Col>
+
+                    <Col sm={12} className="btn-edit-text"><button id="btn-edit-psswd" form="passForm" disabled> Modifier </button></Col>
+                </Row>
+
+            </form>  
+            {informationMDP}
+        </>
       );
     }
 

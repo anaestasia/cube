@@ -1,0 +1,47 @@
+.logo-home{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3rem;
+}
+
+.form-login,
+.btn-discover {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.form-login img,
+.btn-discover img {
+    margin-bottom: 10%;
+}
+
+.form-login button,
+.form-login a,
+.btn-discover a {
+    background-color: #febd59;
+    color: #222320;
+    font-size: 1.2em;
+    padding: 5px 15px;
+    border : none;
+    border-radius: 10px;
+    text-decoration: none;
+}
+.form-login button:hover,
+.form-login a:hover,
+.btn-discover a:hover {
+    background-color: #c0e5e7;
+}
+
+
+.form-login svg {
+    font-size: 11rem;
+}
+
+/* ---------------------------------- */
+/* ----- MAX 768 PX / Tablette  ----- */
+/* ---------------------------------- */
+@media (max-width: 767px) {
+
+}
+    

@@ -1,33 +1,45 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Axios from "axios";
 
-import Home from "./components/home/Home";
-import Menu from "./components/menu/MenuNav/Menu";
+// PAGES
+import Home from "./pages/home/Home";
+import NoAccess from "./pages/403/403";
+import NotFound from "./pages/404/404";
+import Admin from "./components/admin/Admin";
+import Catalog from "./pages/Catalog/Catalog";
+import Profile from "./pages/profile/Profile";
+import Favorites from "./components/ressource/Favorites/Favorites";
+import MyRessources from "./pages/MyRessources/MyRessources";
+
+// COMPONENTS
+// import Menu from "./components/menu/MenuNav/Menu";
+import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
 import RegisterForm from "./components/form/RegisterForm/RegisterForm";
-import Catalog from "./components/Catalog/Catalog";
-import Ressource from "./components/ressource/Ressource";
-import Favorites from "./components/ressource/Favorites/Favorites";
-import MyRessources from "./components/ressource/MyRessources/MyRessources";
+import Ressource from "./components/form/RessourceForm/RessourceFormEdit";
 import SubmitRessource from "./components/form/RessourceForm/RessourceForm";
-import Profile from "./components/profile/Profile";
+
 import RessourceNotConnected from "./components/ressource/RessourceNotConnected/RessourceNotConnected";
-import Admin from "./components/admin/Admin";
+
 import AdminApprovedRessources from "./components/admin/approvedRessources/ApprovedRessources";
 import AdminHandleRessources from "./components/admin/handleRessources/HandleRessources"
 import AdminHandleRessourcesType from "./components/admin/handleRessourcesType/HandleRessourcesType"
 import AdminHandleRelationshipType from "./components/admin/handleRelationshipType/HandleRelationshipType"
 import AdminHandlePunishement from "./components/admin/handlePunishement/HandlePunishement"
 import AdminHandleReportReason from "./components/admin/handleReportReason/HandleReportReason"
-import NoAccess from "./components/403/403";
-import NotFound from "./components/404/404";
+
 import Token from "./components/token/token";
 
+
+// STYLE
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
+import './fonts/SegoePrint/SegoePrint.ttf';
+import './fonts/Roboto/Roboto-Light.ttf';
+import './fonts/Oswald/Oswald-Medium.ttf';
 import "./App.css";
 
 require("dotenv").config();
@@ -39,18 +51,18 @@ function App() {
   const [lastRessources, setLastRessources] = useState([]);
   const [connected, setConnected] = useState(false);
   const [loginForm, setLoginForm] = useState({ email: '', password:'' });
-  const [activeSubMenu, setActiveSubMenu] = useState('catalog');
-  const [activeSubSubMenu, setActiveSubSubMenu] = useState('ressource');
+  // const [activeSubMenu, setActiveSubMenu] = useState('catalog');
+  // const [activeSubSubMenu, setActiveSubSubMenu] = useState('ressource');
   
 
-  const toggleMenu = () => {
-    console.log("fonction toggleMenu");
-    if (openMenu === true) {
-      setOpenMenu(false);
-    } else {
-      setOpenMenu(true);
-    }
-  };
+  // const toggleMenu = () => {
+  //   console.log("fonction toggleMenu");
+  //   if (openMenu === true) {
+  //     setOpenMenu(false);
+  //   } else {
+  //     setOpenMenu(true);
+  //   }
+  // };
 
   Axios.defaults.withCredentials = true;
 
@@ -169,174 +181,197 @@ function App() {
     // Super-Admin
   }
   return (
-    <Router>
-      <Switch>
-        <Route
-          exact
-          path="/"
-          render={(props) =>
-            home ? (
-              <Home onSubmit={handleLogin} formValue={ loginForm } onChange={ handleOnChange } connected = { connected }/>
-            ) : (
-              <NotFound />
-            )
-          }
-          onChange={handleOnChange}
-        />
+    <>
+      <Navbar />
 
-        <Container fluid>
-          <Row className="parent-row">
-            <Col xl={3} className="col-menu menuFixe">
-              <Menu
-                activeSubMenu={activeSubMenu}
-                activeSubSubMenu={activeSubSubMenu}
-                handleToggleMenu={toggleMenu}
-                openMenu={openMenu}
-                apiRole={role}
-              />
-            </Col>
+      <Container fluid className="pages">
 
-            <Col xl={9} className="col-content-page">
-              <Route
-                exact
-                path="/catalog"
-                render={(props) =>
-                  catalog ? (
-                    <Catalog ressources={lastRessources} />
-                  ) : (
-                    <NoAccess />
-                  )
-                }
-              />
+        <Switch>
 
-              {/* RESSOURCES */}
+          {/* HOME */}
+          <Route
+            exact
+            path="/"
+            render={(props) =>
+              home ? (
+                <Home onSubmit={handleLogin} formValue={ loginForm } onChange={ handleOnChange } connected = { connected }/>
+              ) : (
+                <NotFound />
+              )
+            }
+            onChange={handleOnChange}
+          />
 
-              <Route
-                exact
-                path="/submit-ressource"
-                render={ (props) =>  (submitRessource ? <SubmitRessource /> : <NotFound /> ) }
-              />
-              <Route
-                exact
-                path="/ressource/:id"
-                render={(props) => (ressource ? <Ressource /> : <NotFound />)}
-              />
-              <Route
-                exact
-                path="/ressource-not-connected"
-                render={(props) =>
-                  ressourceNotConnected ? (
-                    <RessourceNotConnected />
-                  ) : (
-                    <NotFound />
-                  )
-                }
-              />
+          {/* <Col xl={3} className="col-menu menuFixe">
+            <Menu
+              activeSubMenu={activeSubMenu}
+              activeSubSubMenu={activeSubSubMenu}
+              handleToggleMenu={toggleMenu}
+              openMenu={openMenu}
+              apiRole={role}
+            />
+          </Col> */}
 
-              {/* USER */}
-              <Route
-                exact
-                path="/profile"
-                render={(props) => (profile ? <Profile /> : <NoAccess />)}
-              />
-              <Route
-                exact
-                path="/my-ressources"
-                render={(props) =>
-                  myRessources ? <MyRessources /> : <NoAccess />
-                }
-              />
-              <Route
-                exact
-                path="/my-favorites"
-                render={(props) => (myFavorites ? <Favorites /> : <NoAccess />)}
-              />
+          {/* CATALOGUE */}
+          <Route
+            exact
+            path="/catalog"
+            render={(props) =>
+              catalog ? (
+                <Catalog ressources={lastRessources} />
+              ) : (
+                <NoAccess />
+              )
+            }
+          />
 
-              <Route
-                exact
-                path="/register"
-                render={(props) => (register ? <RegisterForm /> : <NoAccess />)}
-              />
-              <Route exact path="/token/:token" render={(props) => <Token />} />
+          {/* RESSOURCE - Ajout ressource */}
+          <Route
+            exact
+            path="/submit-ressource"
+            render={ (props) =>  (submitRessource ? <SubmitRessource /> : <NotFound /> ) }
+          />
+          {/* RESSOURCE - Lecture ressource */}
+          <Route
+            exact
+            path="/ressource/:id"
+            render={(props) => (ressource ? <Ressource /> : <NotFound />)}
+          />
 
-              {/* BO */}
-              <Route
-                exact
-                path="/admin"
-                render={(props) => (admin ? <Admin /> : <NotFound />)}
-              />
-              <Route
-                exact
-                path="/admin/approvedRessources"
-                render={(props) =>
-                  adminApprovedRessources ? (
-                    <AdminApprovedRessources />
-                  ) : (
-                    <NotFound />
-                  )
-                }
-              />
-              <Route
-                exact
-                path="/admin/gererTypeRessources"
-                render={(props) =>
-                  adminGereRessources ? (
-                    <AdminHandleRessourcesType role={role} />
-                  ) : (
-                    <NotFound />
-                  )
-                }
-              />
-              <Route
-                exact
-                path="/admin/gererTypeRelationship"
-                render={(props) =>
-                  adminGereRessources ? (
-                    <AdminHandleRelationshipType role={role} />
-                  ) : (
-                    <NotFound />
-                  )
-                }
-              />
-              <Route
-                exact
-                path="/admin/gererRessources"
-                render={(props) =>
-                  adminGereRessources ? (
-                    <AdminHandleRessources role={role} />
-                  ) : (
-                    <NotFound />
-                  )
-                }
-              />
-              <Route
-                exact
-                path="/admin/gererLesRaisons"
-                render={(props) =>
-                  adminGereRessources ? (
-                    <AdminHandleReportReason role={role} />
-                  ) : (
-                    <NotFound />
-                  )
-                }
-              />
-              <Route
-                exact
-                path="/admin/gererPunishement"
-                render={(props) =>
-                  adminGereRessources ? (
-                    <AdminHandlePunishement role={role} />
-                  ) : (
-                    <NotFound />
-                  )
-                }
-              />
-            </Col>
-          </Row>
-          <Footer />
-        </Container>
-      </Switch>
-    </Router>
+          {/* RESSOURCE - Non connecté */}
+          <Route
+            exact
+            path="/ressource-not-connected"
+            render={(props) =>
+              ressourceNotConnected ? (
+                <RessourceNotConnected />
+              ) : (
+                <NotFound />
+              )
+            }
+          />
+
+          {/* USER - Modifier mon profil */}
+          <Route
+            exact
+            path="/profile"
+            render={(props) => (profile ? <Profile /> : <NoAccess />)}
+          />
+
+          {/* USER - Mes ressources personnelles */}
+          <Route
+            exact
+            path="/my-ressources"
+            render={(props) =>
+              myRessources ? <MyRessources /> : <NoAccess />
+            }
+          />
+          {/* USER - Mes ressources préférée */}
+          <Route
+            exact
+            path="/my-favorites"
+            render={(props) => (myFavorites ? <Favorites /> : <NoAccess />)}
+          />
+
+          {/* INSCRIPTION */}
+          <Route
+            exact
+            path="/register"
+            render={(props) => (register ? <RegisterForm /> : <NoAccess />)}
+          />
+          <Route exact path="/token/:token" render={(props) => <Token />} />
+
+          {/* BO - Dashboard */}
+          <Route
+            exact
+            path="/admin"
+            render={(props) => (admin ? <Admin /> : <NotFound />)}
+          />
+
+          {/* BO - Approuver les ressources */}
+          <Route
+            exact
+            path="/admin/approvedRessources"
+            render={(props) =>
+              adminApprovedRessources ? (
+                <AdminApprovedRessources />
+              ) : (
+                <NotFound />
+              )
+            }
+          />
+
+          {/* BO - Types de ressources */}
+          <Route
+            exact
+            path="/admin/gererTypeRessources"
+            render={(props) =>
+              adminGereRessources ? (
+                <AdminHandleRessourcesType role={role} />
+              ) : (
+                <NotFound />
+              )
+            }
+          />
+
+          {/* BO - Types de relations */}
+          <Route
+            exact
+            path="/admin/gererTypeRelationship"
+            render={(props) =>
+              adminGereRessources ? (
+                <AdminHandleRelationshipType role={role} />
+              ) : (
+                <NotFound />
+              )
+            }
+          />
+
+          {/* BO - Ressources */}
+          <Route
+            exact
+            path="/admin/gererRessources"
+            render={(props) =>
+              adminGereRessources ? (
+                <AdminHandleRessources role={role} />
+              ) : (
+                <NotFound />
+              )
+            }
+          />
+
+          {/* BO - Motifs de ban */}
+          <Route
+            exact
+            path="/admin/gererLesRaisons"
+            render={(props) =>
+              adminGereRessources ? (
+                <AdminHandleReportReason role={role} />
+              ) : (
+                <NotFound />
+              )
+            }
+          />
+
+          {/* BO - Banissements */}
+          <Route
+            exact
+            path="/admin/gererPunishement"
+            render={(props) =>
+              adminGereRessources ? (
+                <AdminHandlePunishement role={role} />
+              ) : (
+                <NotFound />
+              )
+            }
+          />
+        </Switch>
+
+      </Container>
+      
+      <Footer />
+      
+    </>
   );
 }
 
