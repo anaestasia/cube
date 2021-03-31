@@ -30,6 +30,7 @@ import AdminHandlePunishement from "./components/admin/handlePunishement/HandleP
 import AdminHandleReportReason from "./components/admin/handleReportReason/HandleReportReason"
 
 import Token from "./components/token/token";
+import CookieConset from "react-cookie-consent"
 
 
 // STYLE
@@ -41,6 +42,7 @@ import './fonts/SegoePrint/SegoePrint.ttf';
 import './fonts/Roboto/Roboto-Light.ttf';
 import './fonts/Oswald/Oswald-Medium.ttf';
 import "./App.css";
+import CookieConsent from "react-cookie-consent";
 
 require("dotenv").config();
 
