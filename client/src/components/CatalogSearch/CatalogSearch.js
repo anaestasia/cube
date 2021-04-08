@@ -1,7 +1,7 @@
 import React, { useState , useEffect } from "react";
 import Axios from "axios";
 
-import VignetteRessource from '../ressource/VignetteRessource/VignetteRessource';
+import VignetteRessource from '../ressource/vignetteRessource/vignetteRessource';
 import Pagination from '../ressource/Pagination/Pagination'
 
 import Row from 'react-bootstrap/Row';

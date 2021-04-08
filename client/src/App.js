@@ -370,7 +370,14 @@ function App() {
         </Switch>
 
       </Container>
-      
+      <CookieConsent
+      debug={true}
+      style={{background: '#222320', textAlign: "center"}}
+      buttonStyle={{background: '#febd59'}}
+      buttonText="Je comprends"
+      >
+        En continuant la navigation sur ce site, vous consentez
+      à l'utilisation des cookies.</CookieConsent>
       <Footer />
       
     </>
