@@ -17,8 +17,10 @@ const Posts = ({ posts , idUser , role}) => {
   const [idCommentaire, setIdCommentaire] = useState("");
   const [contenuCommentsCkeditor, setContenuCommentsCkeditor] = useState("");
 
+  // eslint-disable-next-line
   const [idUserConnecte, setIdUserConnecte] = useState("");
 
+  // eslint-disable-next-line
   const [nbLike, setNbLike] = useState("");
 
   const handleClose = () => setShow(false);

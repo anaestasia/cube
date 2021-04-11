@@ -30,13 +30,11 @@ import AdminHandlePunishement from "./components/admin/handlePunishement/HandleP
 import AdminHandleReportReason from "./components/admin/handleReportReason/HandleReportReason"
 
 import Token from "./components/token/token";
-import CookieConset from "react-cookie-consent"
+// import CookieConset from "react-cookie-consent"
 
 
 // STYLE
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 
 import './fonts/SegoePrint/SegoePrint.ttf';
 import './fonts/Roboto/Roboto-Light.ttf';
@@ -47,7 +45,7 @@ import CookieConsent from "react-cookie-consent";
 require("dotenv").config();
 
 function App() {
-  const [openMenu, setOpenMenu] = useState(true);
+  //const [openMenu, setOpenMenu] = useState(true);
   const [role, setRole] = useState("");// eslint-disable-next-line
   const [status, setStatus] = useState("2");
   const [lastRessources, setLastRessources] = useState([]);

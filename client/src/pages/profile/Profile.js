@@ -10,7 +10,6 @@ import InputCity from '../../components/form/RegisterForm/InputCity';
 import InputCountry from '../../components/form/RegisterForm/InputCountry';
 import InputPostalCode from '../../components/form/RegisterForm/InputPostalCode';
 
-import Container from "react-bootstrap/Container";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './Profile.css';
