@@ -365,6 +365,8 @@ function App() {
               )
             }
           />
+        <Route component={NotFound} />
+
         </Switch>
 
       </Container>

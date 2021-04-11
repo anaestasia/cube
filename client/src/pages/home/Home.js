@@ -2,6 +2,7 @@ import LoginForm from "../../components/form/LoginForm/LoginForm";
 import React from "react";
 import { Link } from 'react-router-dom';
 import * as RiIcons from "react-icons/ri";
+import Axios from "axios";
 
 // import Axios from "axios";
 
@@ -23,6 +24,16 @@ export default function Home({ onSubmit, formValue, onChange, connected }) {
   //     }
   //   );
   // }, []);
+
+  Axios.defaults.withCredentials = true;
+
+    const deco = () => {
+        Axios.get(process.env.REACT_APP_SITE_URL_API+"/users/logout").then((response) => {
+            if (response.data.destroy === true) {
+            window.location.href = "/";
+            }
+        });
+        }
 
   return (
     <Row>
@@ -48,7 +59,7 @@ export default function Home({ onSubmit, formValue, onChange, connected }) {
       ) : (
         <Col sm={12} md={6} xl={6} className="form-login">
           <RiIcons.RiLogoutBoxLine />
-          <Link to="#">Déconnexion</Link>
+          <Link onClick={deco}>Déconnexion</Link>
         </Col>
       )}
       
