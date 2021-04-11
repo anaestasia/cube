@@ -156,7 +156,6 @@ export default function RegisterForm() {
       </div>
 
       </Row>
-      <Footer/>
     </Container>
   );
 }
