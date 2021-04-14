@@ -76,7 +76,6 @@ function App() {
       Axios.post(process.env.REACT_APP_SITE_URL_API + "/users/login", {
         mail: loginForm.email,
         password: password,
-
       }).then((response) => {
         console.log(response.data)
         if (response.data.connecte) {
@@ -103,6 +102,7 @@ function App() {
           })
             .then((res) => {
               setConnected(true);
+              window.location = "/catalog";
             })
         } else {
           setConnected(false);
