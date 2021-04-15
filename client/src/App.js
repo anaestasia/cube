@@ -355,13 +355,19 @@ function App() {
             }
           />
 
+          {/* DOC - Visiteur */}
+          <Route
+            exact
+            path="/documentation/visitor"
+            render={(props) => <Documentation /> }
+          />
+
         <Route component={NotFound} />
 
         </Switch>
       
       </Container>
       <CookieBanner />
-      <img src="google.com/bite.png" aria="Cette image depicte un penis masculing" />
 
       <Footer />
       

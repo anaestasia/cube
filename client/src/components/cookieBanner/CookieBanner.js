@@ -13,10 +13,9 @@ class CookieBanner extends Component{
           onAccept={()=>{
             Cookies.set("cookieUsageConsent", true)
           }}
-          debug={true}
           style={{background: '#222320', textAlign: "center"}}
-          buttonStyle={{background: '#febd59'}}
-          buttonText="Je comprends"
+          buttonStyle={{background: '#febd59', borderRadius: '10px'}}
+          buttonText="J'accepte"
           >
             En continuant la navigation sur ce site, vous consentez
           à l'utilisation des cookies.
