@@ -20,8 +20,8 @@ export const SubNavDocData = [
     }
     ,
     {
-        title: 'Visiteur',
-        path: '/documentation/visiteur',
+        title: 'Administrateur',
+        path: '/documentation/administrateur',
         cName: 'sub-nav-text'
     }
 
