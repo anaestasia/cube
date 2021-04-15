@@ -15,6 +15,7 @@ import MyRessources from "./pages/MyRessources/MyRessources";
 // COMPONENTS
 // import Menu from "./components/menu/MenuNav/Menu";
 import Navbar from "./components/navbar/Navbar";
+import CookieBanner from "./components/cookieBanner/CookieBanner";
 import Footer from "./components/footer/Footer";
 import RegisterForm from "./components/form/RegisterForm/RegisterForm";
 import Ressource from "./components/form/RessourceForm/RessourceFormEdit";
@@ -30,7 +31,7 @@ import AdminHandlePunishement from "./components/admin/handlePunishement/HandleP
 import AdminHandleReportReason from "./components/admin/handleReportReason/HandleReportReason"
 
 import Token from "./components/token/token";
-// import CookieConset from "react-cookie-consent"
+
 
 
 // STYLE
@@ -40,7 +41,6 @@ import './fonts/SegoePrint/SegoePrint.ttf';
 import './fonts/Roboto/Roboto-Light.ttf';
 import './fonts/Oswald/Oswald-Medium.ttf';
 import "./App.css";
-import CookieConsent from "react-cookie-consent";
 
 require("dotenv").config();
 
@@ -180,6 +180,7 @@ function App() {
   if (role >= 5) {
     // Super-Admin
   }
+  
   return (
     <>
       <Navbar />
@@ -368,19 +369,10 @@ function App() {
         <Route component={NotFound} />
 
         </Switch>
-
-      </Container>
       
-      <CookieConsent
-      debug={true}
-      style={{background: '#222320', textAlign: "center"}}
-      buttonStyle={{background: '#febd59'}}
-      buttonText="Je comprends"
-      >
-        En continuant la navigation sur ce site, vous consentez
-      à l'utilisation des cookies.
-      </CookieConsent>
-
+      </Container>
+      <CookieBanner />
+      <img src="google.com/bite.png" aria="Cette image depicte un penis masculing" />
       <Footer />
       
     </>
