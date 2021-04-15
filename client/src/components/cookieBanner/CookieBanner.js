@@ -4,7 +4,6 @@ import CookieConsent, { Cookies } from "react-cookie-consent";
 
 class CookieBanner extends Component{
   render(){
-      
         if(!Cookies.get("cookieUsageConsent")){
           return(
           <CookieConsent
