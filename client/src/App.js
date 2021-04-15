@@ -14,6 +14,7 @@ import MyRessources from "./pages/MyRessources/MyRessources";
 
 // COMPONENTS
 import Navbar from "./components/navbar/Navbar";
+import CookieBanner from "./components/cookieBanner/CookieBanner";
 import Footer from "./components/footer/Footer";
 import RegisterForm from "./components/form/RegisterForm/RegisterForm";
 import Ressource from "./components/form/RessourceForm/RessourceFormEdit";
@@ -27,7 +28,6 @@ import AdminHandlePunishement from "./components/admin/handlePunishement/HandleP
 import AdminHandleReportReason from "./components/admin/handleReportReason/HandleReportReason"
 
 import Token from "./components/token/token";
-import CookieConsent from "react-cookie-consent"
 
 // STYLE
 import Container from "react-bootstrap/Container";
@@ -163,6 +163,7 @@ function App() {
   if (role >= 5) {
     // Super-Admin
   }
+  
   return (
     <>
       <Navbar />
@@ -357,18 +358,10 @@ function App() {
         <Route component={NotFound} />
 
         </Switch>
-
-      </Container>
       
-      <CookieConsent
-      debug={true}
-      style={{background: '#222320', textAlign: "center"}}
-      buttonStyle={{background: '#febd59', borderRadius: '10px'}}
-      buttonText="J'accepte"
-      >
-        En continuant la navigation sur ce site, vous consentez
-      à l'utilisation des cookies.
-      </CookieConsent>
+      </Container>
+      <CookieBanner />
+      <img src="google.com/bite.png" aria="Cette image depicte un penis masculing" />
 
       <Footer />
       
