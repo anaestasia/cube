@@ -18,21 +18,17 @@
     margin-bottom: 15px;
     border: 1px solid #bcbdbc;
 }
-.formRessource .ck-editor {
-    height: 70%;
+.formRessource .ck.ck-editor {
+    margin-bottom: 15px;
 }
-.formRessource .ck-editor__main {
-    height: 100%;
-    max-height: 65vh;
-}
-.formRessource .ck-content {
-    height: 100%;
+.formRessource .ck.ck-content {
+    min-height: 200px;
 }
 .formRessource select {
     border: 1px solid #bcbdbc;
     padding: 5px 10px;
     margin-right: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
 }
 .formRessource .cancel-btn {
     background-color: rgb(236, 98, 98);
