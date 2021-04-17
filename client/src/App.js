@@ -28,6 +28,7 @@ import AdminHandleRessourcesType from "./components/admin/handleRessourcesType/H
 import AdminHandleRelationshipType from "./components/admin/handleRelationshipType/HandleRelationshipType"
 import AdminHandlePunishement from "./components/admin/handlePunishement/HandlePunishement"
 import AdminHandleReportReason from "./components/admin/handleReportReason/HandleReportReason"
+import AdminHandleUser from "./components/admin/handleUser/HandleUser"
 
 import Token from "./components/token/token";
 // import CookieConset from "react-cookie-consent"
@@ -154,7 +155,8 @@ function App() {
   let adminApprovedRessources = false;
   let profile = false;
   let adminGereRessources = false;
-
+  let adminHandleUser = false;
+  
   if (role >= 1) {
     // Mail non verifé
     // eslint-disable-next-line
@@ -176,6 +178,7 @@ function App() {
   }
   if (role >= 4) {
     // Admin
+    adminHandleUser = true;
   }
   if (role >= 5) {
     // Super-Admin
@@ -365,6 +368,20 @@ function App() {
               )
             }
           />
+
+          <Route
+            exact
+            path="/admin/gererUser"
+            render={(props) =>
+              adminHandleUser ? (
+                <AdminHandleUser/>
+              ) : (
+                <NotFound />
+              )
+            }
+          />
+
+
         <Route component={NotFound} />
 
         </Switch>

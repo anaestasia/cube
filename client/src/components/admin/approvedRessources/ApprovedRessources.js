@@ -73,7 +73,7 @@ export default function Admin() {
               <thead>
                 <tr>
                 <th>#</th>
-                <th>Autheur</th>
+                <th>Auteur</th>
                 <th>Titre</th>
                 <th>Contenu</th>
                 <th>Type ressource</th>

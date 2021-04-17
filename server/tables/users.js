@@ -104,7 +104,7 @@ app.post("/create", (req, res) => {
 
 //get
 app.get("/get", (req, res) => {
-    db.query("SELECT * FROM users", (err, result) => {
+    db.query("SELECT * FROM users where deleted=0", (err, result) => {
       if (err) {
         console.log(err);
       } else {
