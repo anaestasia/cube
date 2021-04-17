@@ -13,15 +13,13 @@ import Favorites from "./components/ressource/Favorites/Favorites";
 import MyRessources from "./pages/MyRessources/MyRessources";
 
 // COMPONENTS
-// import Menu from "./components/menu/MenuNav/Menu";
 import Navbar from "./components/navbar/Navbar";
+import CookieBanner from "./components/cookieBanner/CookieBanner";
 import Footer from "./components/footer/Footer";
 import RegisterForm from "./components/form/RegisterForm/RegisterForm";
 import Ressource from "./components/form/RessourceForm/RessourceFormEdit";
 import SubmitRessource from "./components/form/RessourceForm/RessourceForm";
-
 import RessourceNotConnected from "./components/ressource/RessourceNotConnected/RessourceNotConnected";
-
 import AdminApprovedRessources from "./components/admin/approvedRessources/ApprovedRessources";
 import AdminHandleRessources from "./components/admin/handleRessources/HandleRessources"
 import AdminHandleRessourcesType from "./components/admin/handleRessourcesType/HandleRessourcesType"
@@ -31,8 +29,6 @@ import AdminHandleReportReason from "./components/admin/handleReportReason/Handl
 import AdminHandleUser from "./components/admin/handleUser/HandleUser"
 
 import Token from "./components/token/token";
-// import CookieConset from "react-cookie-consent"
-
 
 // STYLE
 import Container from "react-bootstrap/Container";
@@ -41,29 +37,16 @@ import './fonts/SegoePrint/SegoePrint.ttf';
 import './fonts/Roboto/Roboto-Light.ttf';
 import './fonts/Oswald/Oswald-Medium.ttf';
 import "./App.css";
-import CookieConsent from "react-cookie-consent";
 
 require("dotenv").config();
 
 function App() {
-  //const [openMenu, setOpenMenu] = useState(true);
+
   const [role, setRole] = useState("");// eslint-disable-next-line
   const [status, setStatus] = useState("2");
   const [lastRessources, setLastRessources] = useState([]);
   const [connected, setConnected] = useState(false);
   const [loginForm, setLoginForm] = useState({ email: '', password:'' });
-  // const [activeSubMenu, setActiveSubMenu] = useState('catalog');
-  // const [activeSubSubMenu, setActiveSubSubMenu] = useState('ressource');
-  
-
-  // const toggleMenu = () => {
-  //   console.log("fonction toggleMenu");
-  //   if (openMenu === true) {
-  //     setOpenMenu(false);
-  //   } else {
-  //     setOpenMenu(true);
-  //   }
-  // };
 
   Axios.defaults.withCredentials = true;
 
@@ -183,6 +166,7 @@ function App() {
   if (role >= 5) {
     // Super-Admin
   }
+  
   return (
     <>
       <Navbar />
@@ -205,16 +189,6 @@ function App() {
             onChange={handleOnChange}
           />
 
-          {/* <Col xl={3} className="col-menu menuFixe">
-            <Menu
-              activeSubMenu={activeSubMenu}
-              activeSubSubMenu={activeSubSubMenu}
-              handleToggleMenu={toggleMenu}
-              openMenu={openMenu}
-              apiRole={role}
-            />
-          </Col> */}
-
           {/* CATALOGUE */}
           <Route
             exact
@@ -234,6 +208,7 @@ function App() {
             path="/submit-ressource"
             render={ (props) =>  (submitRessource ? <SubmitRessource /> : <NotFound /> ) }
           />
+
           {/* RESSOURCE - Lecture ressource */}
           <Route
             exact
@@ -269,6 +244,7 @@ function App() {
               myRessources ? <MyRessources /> : <NoAccess />
             }
           />
+
           {/* USER - Mes ressources préférée */}
           <Route
             exact
@@ -291,6 +267,19 @@ function App() {
             render={(props) => (admin ? <Admin /> : <NotFound />)}
           />
 
+          {/* BO - Gérer les utilisateurs */}
+          {/* <Route
+            exact
+            path="/admin/users"
+            render={(props) =>
+              adminApprovedRessources ? (
+                <AdminUsers />
+              ) : (
+                <NotFound />
+              )
+            }
+          /> */}
+
           {/* BO - Approuver les ressources */}
           <Route
             exact
@@ -307,7 +296,7 @@ function App() {
           {/* BO - Types de ressources */}
           <Route
             exact
-            path="/admin/gererTypeRessources"
+            path="/admin/ressources-types"
             render={(props) =>
               adminGereRessources ? (
                 <AdminHandleRessourcesType role={role} />
@@ -320,7 +309,7 @@ function App() {
           {/* BO - Types de relations */}
           <Route
             exact
-            path="/admin/gererTypeRelationship"
+            path="/admin/relationships-types"
             render={(props) =>
               adminGereRessources ? (
                 <AdminHandleRelationshipType role={role} />
@@ -333,7 +322,7 @@ function App() {
           {/* BO - Ressources */}
           <Route
             exact
-            path="/admin/gererRessources"
+            path="/admin/ressources"
             render={(props) =>
               adminGereRessources ? (
                 <AdminHandleRessources role={role} />
@@ -346,7 +335,7 @@ function App() {
           {/* BO - Motifs de ban */}
           <Route
             exact
-            path="/admin/gererLesRaisons"
+            path="/admin/reports-reasons"
             render={(props) =>
               adminGereRessources ? (
                 <AdminHandleReportReason role={role} />
@@ -359,7 +348,7 @@ function App() {
           {/* BO - Banissements */}
           <Route
             exact
-            path="/admin/gererPunishement"
+            path="/admin/reports"
             render={(props) =>
               adminGereRessources ? (
                 <AdminHandlePunishement role={role} />
@@ -382,21 +371,19 @@ function App() {
           />
 
 
+          {/* DOC - Visiteur */}
+          <Route
+            exact
+            path="/documentation/visitor"
+            render={(props) => <Documentation /> }
+          />
+
         <Route component={NotFound} />
 
         </Switch>
-
-      </Container>
       
-      <CookieConsent
-      debug={true}
-      style={{background: '#222320', textAlign: "center"}}
-      buttonStyle={{background: '#febd59'}}
-      buttonText="Je comprends"
-      >
-        En continuant la navigation sur ce site, vous consentez
-      à l'utilisation des cookies.
-      </CookieConsent>
+      </Container>
+      <CookieBanner />
 
       <Footer />
       
