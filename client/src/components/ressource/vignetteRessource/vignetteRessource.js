@@ -1,6 +1,6 @@
 import React from "react";
 
-import './VignetteRessource.css';
+import './vignetteRessource.css';
 
     export default function VignetteRessource({titre , idRessource , nombreLike , categorie , typeRelation , typeRessource , nb_consultation}){
         const lienRessource = "/ressource/"+idRessource

@@ -322,7 +322,7 @@ function App() {
           {/* BO - Ressources */}
           <Route
             exact
-            path="/admin/ressources"
+            path="/admin/categories"
             render={(props) =>
               adminGereRessources ? (
                 <AdminHandleRessources role={role} />
@@ -360,7 +360,7 @@ function App() {
 
           <Route
             exact
-            path="/admin/gererUser"
+            path="/admin/users"
             render={(props) =>
               adminHandleUser ? (
                 <AdminHandleUser/>
@@ -372,11 +372,11 @@ function App() {
 
 
           {/* DOC - Visiteur */}
-          <Route
+          {/* <Route
             exact
             path="/documentation/visitor"
             render={(props) => <Documentation /> }
-          />
+          /> */}
 
         <Route component={NotFound} />
 
