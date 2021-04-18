@@ -27,13 +27,14 @@ import AdminHandleRelationshipType from "./components/admin/handleRelationshipTy
 import AdminHandlePunishement from "./components/admin/handlePunishement/HandlePunishement"
 import AdminHandleReportReason from "./components/admin/handleReportReason/HandleReportReason"
 import AdminHandleUser from "./components/admin/handleUser/HandleUser"
+import AdminHandleComment from "./components/admin/handleComments/Comments";
 import DocVisitor from "./pages/Docs/DocVisitor.js"
 import DocCitizen from "./pages/Docs/DocCitizen.js"
 import DocModerator from "./pages/Docs/DocModerator.js"
 import DocAdmin from "./pages/Docs/DocAdmin.js"
 
 import Token from "./components/token/token";
-import ManageComments from "./components/manage/Comments";
+
 
 // STYLE
 import Container from "react-bootstrap/Container";
@@ -66,10 +67,9 @@ function App() {
         mail: loginForm.email,
         password: password,
       }).then((response) => {
-        console.log(response.data)
+
         if (response.data.connecte) {
-          console.log(response);
-          console.log('response');
+
           const date = new Date();
           const sqlDate =
             date.getFullYear() +
@@ -123,7 +123,6 @@ function App() {
       if (response.data.existe !== false) {
         setLastRessources(response.data);
       }
-      console.log(response);
     });
   }, [status]);
 
@@ -275,17 +274,17 @@ function App() {
           />
 
           {/* BO - Gérer les utilisateurs */}
-          {/* <Route
+          <Route
             exact
             path="/admin/users"
             render={(props) =>
-              adminApprovedRessources ? (
-                <AdminUsers />
+              adminHandleUser ? (
+                <AdminHandleUser/>
               ) : (
                 <NotFound />
               )
             }
-          /> */}
+          />
 
           {/* BO - Approuver les ressources */}
           <Route
@@ -365,31 +364,18 @@ function App() {
             }
           />
 
+          {/* BO - Commentaires */}
           <Route
-            exact
-            path="/admin/users"
-            render={(props) =>
-              adminHandleUser ? (
-                <AdminHandleUser/>
+          exact
+          path="/admin/comments"
+          render={(props) =>
+              manageComments ? (
+              <AdminHandleComment role={role}/>
               ) : (
-                <NotFound />
+                  <NotFound/>
               )
-            }
-          />
-
-        {/* MANAGE - Commentaire */}
-        <Route
-            exact
-            path="/manage/Comments"
-            render={(props) =>
-                manageComments ? (
-                <ManageComments role={role}/>
-                ) : (
-                    <NotFound/>
-                )
-            }
-            />
-
+          }
+        />
 
           {/* DOC - Visiteur */}
           <Route
