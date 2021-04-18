@@ -23,7 +23,7 @@ router.post("/create", (req, res) => {
 
 //get
   router.get("/get", (req, res) => {
-    db.query("SELECT * FROM reasons", (err, result) => {
+    db.query("SELECT id as 'value', label FROM reasons", (err, result) => {
       if (err) {
         console.log(err);
       } else {

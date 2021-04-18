@@ -49,5 +49,42 @@ router.delete("/delete/:id", (req, res) => {
     });
   });
 //fin delete
+
+//get non traiter
+router.get("/getNonTreated", (req, res) => {
+    db.query("SELECT reports.id, fk_user, fk_comment, fk_reason FROM reports INNER JOIN users ON users.id = reports.fk_user WHERE treated = 0", (err, result) => {
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            res.send(result);
+        }
+    });
+});
+//fin get non traiter
+
+//valid report
+router.post("/valid/:id", (req, res) => 
+{
+    const id = req.params.id;
+    const reason = req.body.reason;
+
+    db.query("UPDATE reports SET treated = 1, fk_reason = ? WHERE id = ?", [reason, id], (err, result) => 
+    {
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            console.log(reason);
+            res.send(result);
+        }
+    })
+});
+
+//fin valid report
   
 module.exports = router;

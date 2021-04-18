@@ -23,6 +23,7 @@ import AdminGererLesRaisonsDesSignalements from "./components/admin/gererLesRais
 import NoAccess from "./components/403/403";
 import NotFound from "./components/404/404";
 import Token from "./components/token/token";
+import ManageComments from "./components/manage/Comments";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -141,6 +142,7 @@ function App() {
   let adminApprovedRessources = false;
   let profile = false;
   let adminGereRessources = false;
+  let manageComments = false;
 
   if (role >= 1) {
     // Mail non verifé
@@ -160,6 +162,7 @@ function App() {
     admin = true;
     adminApprovedRessources = true;
     adminGereRessources = true;
+    manageComments = true;
   }
   if (role >= 4) {
     // Admin
@@ -330,6 +333,17 @@ function App() {
                   )
                 }
               />
+              <Route
+                exact
+                path="/manage/Comments"
+                render={(props) =>
+                    manageComments ? (
+                    <ManageComments role={role}/>
+                    ) : (
+                        <NotFound/>
+                    )
+                }
+                />
             </Col>
           </Row>
           <Footer />

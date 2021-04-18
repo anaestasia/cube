@@ -44,6 +44,7 @@ import './Ressource.css';
 
         useEffect(() => 
         {
+
             const verifRole = (role) => {
                 if (isNaN(id)) 
                 {
@@ -116,7 +117,7 @@ import './Ressource.css';
                         }
                         else
                         {
-                            window.location.href = "/main";
+                            window.location.href = "/catalog";
                         }
                       });
                 }
@@ -124,18 +125,24 @@ import './Ressource.css';
             
             Axios.get(process.env.REACT_APP_SITE_URL_API+"/users/login").then((response) => {
                 if (response.data.loggedIn === true) {
-                  verifRole(response.data.user[0].fk_role);
-                  setIdUserConnecte(response.data.user[0].id);
-                  setEcrireCommentaire(true);
-                  setRole(response.data.user[0].fk_role);
+                    verifRole(response.data.user[0].fk_role);
+                    setIdUserConnecte(response.data.user[0].id);
+                    setEcrireCommentaire(true);
+                    setRole(response.data.user[0].fk_role);
                 }
                 else
                 {
                     verifRole(0);
                 }
-              });
+            });
 
-              getNbLike();
+            Axios.post(process.env.REACT_APP_SITE_URL_API+"/ressourcesLike/get/nbLike", 
+            {
+                ressource: id,
+            }).then((response) => 
+            {
+                setNbLike(response.data[0].nbLike)
+            });
 
         }, [id,nombreVue,vueIncremente]);
         
@@ -193,7 +200,7 @@ import './Ressource.css';
         {
             Axios.post(process.env.REACT_APP_SITE_URL_API+"/ressourcesLike/get/nbLike", 
             {
-                ressource: 49,
+                ressource: id,
             }).then((response) => 
             {
                 setNbLike(response.data[0].nbLike)

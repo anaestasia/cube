@@ -50,7 +50,11 @@ export default function MenuBackOffice({role , activeSubSubMenu}) {
                 }
                 <ul>
                     <li className="subtitle"><span><i class="far fa-comments"></i> COMMENTAIRES</span></li>
-                    <li className="link"><span>Gérer les commentaires</span></li>
+                    <li className="link">
+                        <Link to={'/manage/Comments'}>
+                            <span>Gérer les commentaires</span>
+                        </Link>
+                    </li>
                     <li className="link">
                         <Link to={'/admin/gererLesRaisons'}>
                             <span>Gérer les raisons</span>
