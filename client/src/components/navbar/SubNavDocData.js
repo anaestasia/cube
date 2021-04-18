@@ -21,7 +21,7 @@ export const SubNavDocData = [
     ,
     {
         title: 'Administrateur',
-        path: '/documentation/administrateur',
+        path: '/documentation/admin',
         cName: 'sub-nav-text'
     }
 

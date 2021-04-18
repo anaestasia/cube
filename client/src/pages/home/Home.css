@@ -1,7 +1,16 @@
+.home {
+    display: flex;
+    align-items: center;
+}
 .logo-home{
     display: flex;
     justify-content: center;
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
+}
+.logo-home img{
+    display: flex;
+    justify-content: center;
+    max-width: 90%;
 }
 
 .form-login,
@@ -10,6 +19,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    padding: 2rem;
 }
 .form-login img,
 .btn-discover img {
@@ -34,14 +44,9 @@
 }
 
 
-.form-login svg {
-    font-size: 11rem;
-}
-
-/* ---------------------------------- */
-/* ----- MAX 768 PX / Tablette  ----- */
-/* ---------------------------------- */
-@media (max-width: 767px) {
-
+.form-login svg,
+.btn-discover svg {
+    font-size: 10rem;
+    margin-bottom: 1rem;
 }
     

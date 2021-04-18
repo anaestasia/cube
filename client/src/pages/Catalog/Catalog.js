@@ -16,9 +16,9 @@ export default function Catalog( { ressources } ) {
       {/* Derniers ajouts ressources */}
       <Col xl={12} className="last-adds">
         <h2>DERNIERES RESSOURCES AJOUTÉES</h2>
-        <Row className="last-adss-row">
+        <Row>
           {ressources.map(ressources => ( 
-            <Col key={ressources.idRessource} sm={12} xl={4}>
+            <Col key={ressources.idRessource} sm={12} xl={4} className="last-adss-col">
               <VignetteRessource 
                 titre={ressources.title} 
                 categorie="Divers"
@@ -34,9 +34,8 @@ export default function Catalog( { ressources } ) {
       </Col>
 
       {/* catalogue + filtres */}
-      <Col xl={12} className="search-catalog">
-        <CatalogFilter />
-      </Col>
+      <CatalogFilter />
+      
     </Row>
   );
 }

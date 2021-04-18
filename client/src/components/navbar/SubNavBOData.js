@@ -16,7 +16,7 @@ export const SubNavBOData = [
         cName: 'sub-nav-text'
     },
     {
-        title: 'Gérer les types relationship',
+        title: 'Gérer les types relation',
         path: '/admin/relationships-types',
         cName: 'sub-nav-text'
     },

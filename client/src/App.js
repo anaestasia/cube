@@ -27,6 +27,10 @@ import AdminHandleRelationshipType from "./components/admin/handleRelationshipTy
 import AdminHandlePunishement from "./components/admin/handlePunishement/HandlePunishement"
 import AdminHandleReportReason from "./components/admin/handleReportReason/HandleReportReason"
 import AdminHandleUser from "./components/admin/handleUser/HandleUser"
+import DocVisitor from "./pages/Docs/DocVisitor.js"
+import DocCitizen from "./pages/Docs/DocCitizen.js"
+import DocModerator from "./pages/Docs/DocModerator.js"
+import DocAdmin from "./pages/Docs/DocAdmin.js"
 
 import Token from "./components/token/token";
 
@@ -372,11 +376,32 @@ function App() {
 
 
           {/* DOC - Visiteur */}
-          {/* <Route
+          <Route
             exact
             path="/documentation/visitor"
-            render={(props) => <Documentation /> }
-          /> */}
+            render={(props) => <DocVisitor /> }
+          />
+
+          {/* DOC - Citoyen */}
+          <Route
+            exact
+            path="/documentation/citizen"
+            render={(props) => <DocCitizen /> }
+          />
+
+          {/* DOC - Modérateur */}
+          <Route
+            exact
+            path="/documentation/moderator"
+            render={(props) => <DocModerator /> }
+          />
+
+          {/* DOC - Administrateur */}
+          <Route
+            exact
+            path="/documentation/admin"
+            render={(props) => <DocAdmin /> }
+          />
 
         <Route component={NotFound} />
 
