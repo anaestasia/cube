@@ -44,19 +44,23 @@ router.get("/get/:id", (req, res) => {
   
   let requete;
   requete = "SELECT comments.*, users.lastname AS 'nom' ";
+  requete += ", comments.id AS idCommentaire"
   requete += ", users.firstname AS 'prénom' ";
+  requete += ", COUNT(comments_like.id) as 'nbLike' "
   requete += "FROM comments ";
   requete += "INNER JOIN users ON users.id = comments.fk_user ";
-  requete += "where fk_ressource = ? and comments.deleted = 0";
-  requete += " ORDER BY comments.date_creation ASC";
+  requete += "LEFT OUTER JOIN comments_like ON comments.id = comments_like.fk_comment "
+  requete += "WHERE fk_ressource = ? and comments.deleted = 0 ";
+  requete += "GROUP BY comments.id ";
+  requete += "ORDER BY comments.date_creation ASC";
   //"SELECT * FROM comments WHERE fk_ressource = ?"
   db.query(requete, id, (err, result) => {
     if (err) {
-      console.log(err);
+        console.log(err);
     } else {
-      res.send(result);
+        res.send(result);
     }
-  });
+    });
 });
 
 router.get("/gets/:id", (req, res) => {

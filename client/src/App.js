@@ -33,6 +33,7 @@ import DocModerator from "./pages/Docs/DocModerator.js"
 import DocAdmin from "./pages/Docs/DocAdmin.js"
 
 import Token from "./components/token/token";
+import ManageComments from "./components/manage/Comments";
 
 // STYLE
 import Container from "react-bootstrap/Container";
@@ -142,8 +143,9 @@ function App() {
   let adminApprovedRessources = false;
   let profile = false;
   let adminGereRessources = false;
+  let manageComments = false;
   let adminHandleUser = false;
-  
+
   if (role >= 1) {
     // Mail non verifé
     // eslint-disable-next-line
@@ -162,6 +164,7 @@ function App() {
     admin = true;
     adminApprovedRessources = true;
     adminGereRessources = true;
+    manageComments = true;
   }
   if (role >= 4) {
     // Admin
@@ -373,6 +376,19 @@ function App() {
               )
             }
           />
+
+        {/* MANAGE - Commentaire */}
+        <Route
+            exact
+            path="/manage/Comments"
+            render={(props) =>
+                manageComments ? (
+                <ManageComments role={role}/>
+                ) : (
+                    <NotFound/>
+                )
+            }
+            />
 
 
           {/* DOC - Visiteur */}
