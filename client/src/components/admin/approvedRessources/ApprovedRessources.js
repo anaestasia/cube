@@ -25,7 +25,6 @@ export default function Admin() {
             {
                 setArticleNonApprouved(response.data)
             } 
-            console.log(response)
         });
     }, []);
 

@@ -37,7 +37,6 @@ router.post("/create", (req, res) => {
       }
       else
       {
-        console.log(result);
         if(result.length !== 0)
         {
             db.query("DELETE FROM comments_like WHERE fk_user = ? AND fk_comment = ?", 

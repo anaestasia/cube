@@ -61,12 +61,9 @@ function ajoutCategories(result) {
             }
           }
           //fin for
-          // console.log(lesCategories)
-          // console.log(g);
           result[g].categories = lesCategories
           g++;
         }
-        // console.log(lesCategories)
         if(result.length === g)
         {
           resolve();

@@ -34,12 +34,12 @@ export default function WriteComment () {
     const data = editor.getData();
     setCkeditor(data);
     setDonneCkeditor(data);
-    //console.log(Ckeditor);
+
   }
 
   function envoyerMSG()
   {
-    // console.log(Ckeditor)
+
     if(Ckeditor.trim() !== '')
     {
       const date = new Date();
@@ -53,9 +53,7 @@ export default function WriteComment () {
         fk_ressource : id,
         fk_user : idUser,
       }).then((response) => {
-        console.log(response);
         setDonneCkeditor('');
-        console.log(donneCkeditor);
       });
     }
     else

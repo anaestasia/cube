@@ -53,16 +53,13 @@ export default function CatalogSearch() {
             {
                 setFiltreExiste(false)
             }
-            console.log(response)
         });
 
         Axios.get(process.env.REACT_APP_SITE_URL_API+"/typesressources/get").then((response) => {
             setTypesressourcesDB(response.data);
-            // console.log(response.data)
           });
           Axios.get(process.env.REACT_APP_SITE_URL_API+"/relationshipRessources/get").then((response) => {
             setRelationshipRessourceDB(response.data);
-            // console.log(response.data)
           });
     }, [role,status]);
 
@@ -115,7 +112,7 @@ export default function CatalogSearch() {
         Axios.post(process.env.REACT_APP_SITE_URL_API+"/ressources/getFiltre", {
             filtre: filtre,
           }).then((response) => {
-              console.log(response)
+
             if(response.data.existe !== false)
             {
                 setFiltreExiste(true)
@@ -124,7 +121,6 @@ export default function CatalogSearch() {
             else{
                 setFiltreExiste(false)
             }
-            // console.log(response.data)
           });
     }
 

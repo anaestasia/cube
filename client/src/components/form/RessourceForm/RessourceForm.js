@@ -60,7 +60,6 @@ export default function RessourceForm() {
           idUser: idUser,
         }).then((response) => {
 
-          console.log(response);
           setSubmitRessourceStatus(response.data);
 
           categories.forEach(element => {
@@ -84,19 +83,15 @@ export default function RessourceForm() {
   {
     Axios.get(process.env.REACT_APP_SITE_URL_API+"/status/get").then((response) => {
         setStatusDB(response.data);
-        // console.log(response.data)
     });
     Axios.get(process.env.REACT_APP_SITE_URL_API+"/typesressources/get").then((response) => {
       setTypesressourcesDB(response.data);
-      // console.log(response.data)
     });
     Axios.get(process.env.REACT_APP_SITE_URL_API+"/relationshipRessources/get").then((response) => {
       setRelationshipRessourceDB(response.data);
-      // console.log(response.data)
     });
     Axios.get(process.env.REACT_APP_SITE_URL_API+"/categories/get").then((response) => {
       setCategoriesDB(response.data);
-      // console.log(response.data)
     });
     
   
@@ -122,7 +117,6 @@ const optionSelectRelationshipRessourceDB = relationshipRessourceDB.map((st) =>
 const handleCkeditorState = (event,editor) => {
   const data = editor.getData();
   setContent(data);
-  // console.log(Ckeditor);
 }
 // eslint-disable-next-line
 const onSelect = (selectedList, selectedItem) =>

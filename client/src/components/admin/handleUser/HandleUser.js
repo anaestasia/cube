@@ -16,7 +16,6 @@ export default function HandleUser() {
       if(refreshKey)
       {
         Axios.get(process.env.REACT_APP_SITE_URL_API+"/users/get").then((response) => {
-              console.log(response.data)
               setTheUsers(response.data)
               setRefreshKey(0)
         });
