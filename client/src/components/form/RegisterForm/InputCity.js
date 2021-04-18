@@ -47,16 +47,15 @@ export default function EditCity() {
     }
 
     return (
-        <Row className="profile-field">
-            <form onSubmit={validerChangement} id="cityForm">
-              <Col sm={12}><label>Nom de la ville :</label></Col>
-              <Row className="input-btn-field">
-                <Col sm={10}><input id='cityId' className="pass-input" type="text" onChange={(e) => { setCity(e.target.value) }} /></Col>
-                <Col sm={2}><button id="btn-edit" form="cityForm"><i className="far fa-save"></i></button></Col>
-              </Row>
+        <>
+          <form onSubmit={validerChangement} id="cityForm" className="field-form">
+            <Row>
+              <Col sm={12}><label>Ville :</label></Col>
+              <Col sm={10}><input id='cityId' className="pass-input" type="text" onChange={(e) => { setCity(e.target.value) }} /></Col>
+              <Col sm={2}><button id="btn-edit" form="cityForm"><i className="far fa-save"></i></button></Col>
+            </Row>
           </form>  
           {informationCity}
-  
-        </Row>
+        </>
       );
     }

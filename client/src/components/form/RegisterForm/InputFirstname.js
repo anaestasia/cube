@@ -47,16 +47,15 @@ export default function EditFirstname() {
     }
 
     return (
-        <Row className="profile-field">
-            <form onSubmit={validerChangement} id="firstnameForm">
-                <Col sm={12}><label>Prénom :</label></Col>
-                <Row className="input-btn-field">
-                  <Col sm={10}><input id='firstName' className="pass-input" type="text" onChange={(e) => { setPrenom(e.target.value) }} /></Col>
-                  <Col sm={2}><button id="btn-edit" form="firstnameForm"><i className="far fa-save"></i></button></Col>
-                </Row>
+        <>
+          <form onSubmit={validerChangement} id="firstnameForm" className="field-form">
+            <Row>
+              <Col sm={12}><label>Prénom :</label></Col>
+              <Col sm={9} md={10} lg={10} xl={10}><input id='firstName' className="pass-input" type="text" onChange={(e) => { setPrenom(e.target.value) }} /></Col>
+              <Col sm={3} md={2} lg={2} xl={2}><button id="btn-edit" form="firstnameForm"><i className="far fa-save"></i></button></Col>
+            </Row>
           </form>  
           {informationPrenom}
-  
-        </Row>
+        </>
       );
     }

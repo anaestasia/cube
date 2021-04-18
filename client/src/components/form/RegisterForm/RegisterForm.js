@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Axios from "axios";
 import { Link } from 'react-router-dom';
 import SubmitBtn from "../../buttons/SubmitBtn/SubmitBtn";
-import Footer from "../../footer/Footer";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -156,7 +155,6 @@ export default function RegisterForm() {
       </div>
 
       </Row>
-      <Footer/>
     </Container>
   );
 }

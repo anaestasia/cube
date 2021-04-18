@@ -1,61 +1,58 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Axios from "axios";
 
-import Home from "./components/home/Home";
-import Menu from "./components/menu/MenuNav/Menu";
+// PAGES
+import Home from "./pages/home/Home";
+import NoAccess from "./pages/403/403";
+import NotFound from "./pages/404/404";
+import Admin from "./components/admin/Admin";
+import Catalog from "./pages/Catalog/Catalog";
+import Profile from "./pages/profile/Profile";
+import Favorites from "./components/ressource/Favorites/Favorites";
+import MyRessources from "./pages/MyRessources/MyRessources";
+
+// COMPONENTS
+import Navbar from "./components/navbar/Navbar";
+import CookieBanner from "./components/cookieBanner/CookieBanner";
 import Footer from "./components/footer/Footer";
 import RegisterForm from "./components/form/RegisterForm/RegisterForm";
-import Catalog from "./components/Catalog/Catalog";
-import Ressource from "./components/ressource/Ressource";
-import Favorites from "./components/ressource/Favorites/Favorites";
-import MyRessources from "./components/ressource/MyRessources/MyRessources";
+import Ressource from "./components/form/RessourceForm/RessourceFormEdit";
 import SubmitRessource from "./components/form/RessourceForm/RessourceForm";
-import Profile from "./components/profile/Profile";
 import RessourceNotConnected from "./components/ressource/RessourceNotConnected/RessourceNotConnected";
-import Admin from "./components/admin/Admin";
 import AdminApprovedRessources from "./components/admin/approvedRessources/ApprovedRessources";
-import AdminGererRessources from "./components/admin/gererRessources/GererRessources"
-import AdminGererTypeRessources from "./components/admin/gererTypeRessources/GererTypeRessources"
-import AdminGererTypeRelationship from "./components/admin/gererTypeRelationship/GererTypeRelationship"
-import AdminGererPunishement from "./components/admin/gererPunishement/GererPunishement"
-import AdminGererLesRaisonsDesSignalements from "./components/admin/gererLesRaisonsDesSignalements/GererLesRaisonsDesSignalements"
-import NoAccess from "./components/403/403";
-import NotFound from "./components/404/404";
+import AdminHandleRessources from "./components/admin/handleRessources/HandleRessources"
+import AdminHandleRessourcesType from "./components/admin/handleRessourcesType/HandleRessourcesType"
+import AdminHandleRelationshipType from "./components/admin/handleRelationshipType/HandleRelationshipType"
+import AdminHandlePunishement from "./components/admin/handlePunishement/HandlePunishement"
+import AdminHandleReportReason from "./components/admin/handleReportReason/HandleReportReason"
+import AdminHandleUser from "./components/admin/handleUser/HandleUser"
+
 import Token from "./components/token/token";
 import ManageComments from "./components/manage/Comments";
 
+// STYLE
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 
+import './fonts/SegoePrint/SegoePrint.ttf';
+import './fonts/Roboto/Roboto-Light.ttf';
+import './fonts/Oswald/Oswald-Medium.ttf';
 import "./App.css";
 
 require("dotenv").config();
 
 function App() {
-  const [openMenu, setOpenMenu] = useState(true);
+
   const [role, setRole] = useState("");// eslint-disable-next-line
   const [status, setStatus] = useState("2");
   const [lastRessources, setLastRessources] = useState([]);
   const [connected, setConnected] = useState(false);
-  const [loginForm, setLoginForm] = useState({ email: '', password:''});
-  
-
-  const toggleMenu = () => {
-    console.log("fonction toggleMenu");
-    if (openMenu === true) {
-      setOpenMenu(false);
-    } else {
-      setOpenMenu(true);
-    }
-  };
+  const [loginForm, setLoginForm] = useState({ email: '', password:'' });
 
   Axios.defaults.withCredentials = true;
 
   const handleLogin = (event) => {
     event.preventDefault();
-    //console.log("App :" + loginForm.email + " " + loginForm.password);
     var hash = require("object-hash");
     const password = hash.sha1(loginForm.password);
 
@@ -64,7 +61,6 @@ function App() {
       Axios.post(process.env.REACT_APP_SITE_URL_API + "/users/login", {
         mail: loginForm.email,
         password: password,
-
       }).then((response) => {
         console.log(response.data)
         if (response.data.connecte) {
@@ -91,6 +87,7 @@ function App() {
           })
             .then((res) => {
               setConnected(true);
+              window.location = "/catalog";
             })
         } else {
           setConnected(false);
@@ -143,6 +140,7 @@ function App() {
   let profile = false;
   let adminGereRessources = false;
   let manageComments = false;
+  let adminHandleUser = false;
 
   if (role >= 1) {
     // Mail non verifé
@@ -166,190 +164,246 @@ function App() {
   }
   if (role >= 4) {
     // Admin
+    adminHandleUser = true;
   }
   if (role >= 5) {
     // Super-Admin
   }
+  
   return (
-    <Router>
-      <Switch>
+    <>
+      <Navbar />
+
+      <Container fluid className="pages">
+
+        <Switch>
+
+          {/* HOME */}
+          <Route
+            exact
+            path="/"
+            render={(props) =>
+              home ? (
+                <Home onSubmit={handleLogin} formValue={ loginForm } onChange={ handleOnChange } connected = { connected }/>
+              ) : (
+                <NotFound />
+              )
+            }
+            onChange={handleOnChange}
+          />
+
+          {/* CATALOGUE */}
+          <Route
+            exact
+            path="/catalog"
+            render={(props) =>
+              catalog ? (
+                <Catalog ressources={lastRessources} />
+              ) : (
+                <NoAccess />
+              )
+            }
+          />
+
+          {/* RESSOURCE - Ajout ressource */}
+          <Route
+            exact
+            path="/submit-ressource"
+            render={ (props) =>  (submitRessource ? <SubmitRessource /> : <NotFound /> ) }
+          />
+
+          {/* RESSOURCE - Lecture ressource */}
+          <Route
+            exact
+            path="/ressource/:id"
+            render={(props) => (ressource ? <Ressource /> : <NotFound />)}
+          />
+
+          {/* RESSOURCE - Non connecté */}
+          <Route
+            exact
+            path="/ressource-not-connected"
+            render={(props) =>
+              ressourceNotConnected ? (
+                <RessourceNotConnected />
+              ) : (
+                <NotFound />
+              )
+            }
+          />
+
+          {/* USER - Modifier mon profil */}
+          <Route
+            exact
+            path="/profile"
+            render={(props) => (profile ? <Profile /> : <NoAccess />)}
+          />
+
+          {/* USER - Mes ressources personnelles */}
+          <Route
+            exact
+            path="/my-ressources"
+            render={(props) =>
+              myRessources ? <MyRessources /> : <NoAccess />
+            }
+          />
+
+          {/* USER - Mes ressources préférée */}
+          <Route
+            exact
+            path="/my-favorites"
+            render={(props) => (myFavorites ? <Favorites /> : <NoAccess />)}
+          />
+
+          {/* INSCRIPTION */}
+          <Route
+            exact
+            path="/register"
+            render={(props) => (register ? <RegisterForm /> : <NoAccess />)}
+          />
+          <Route exact path="/token/:token" render={(props) => <Token />} />
+
+          {/* BO - Dashboard */}
+          <Route
+            exact
+            path="/admin"
+            render={(props) => (admin ? <Admin /> : <NotFound />)}
+          />
+
+          {/* BO - Gérer les utilisateurs */}
+          {/* <Route
+            exact
+            path="/admin/users"
+            render={(props) =>
+              adminApprovedRessources ? (
+                <AdminUsers />
+              ) : (
+                <NotFound />
+              )
+            }
+          /> */}
+
+          {/* BO - Approuver les ressources */}
+          <Route
+            exact
+            path="/admin/approvedRessources"
+            render={(props) =>
+              adminApprovedRessources ? (
+                <AdminApprovedRessources />
+              ) : (
+                <NotFound />
+              )
+            }
+          />
+
+          {/* BO - Types de ressources */}
+          <Route
+            exact
+            path="/admin/ressources-types"
+            render={(props) =>
+              adminGereRessources ? (
+                <AdminHandleRessourcesType role={role} />
+              ) : (
+                <NotFound />
+              )
+            }
+          />
+
+          {/* BO - Types de relations */}
+          <Route
+            exact
+            path="/admin/relationships-types"
+            render={(props) =>
+              adminGereRessources ? (
+                <AdminHandleRelationshipType role={role} />
+              ) : (
+                <NotFound />
+              )
+            }
+          />
+
+          {/* BO - Ressources */}
+          <Route
+            exact
+            path="/admin/categories"
+            render={(props) =>
+              adminGereRessources ? (
+                <AdminHandleRessources role={role} />
+              ) : (
+                <NotFound />
+              )
+            }
+          />
+
+          {/* BO - Motifs de ban */}
+          <Route
+            exact
+            path="/admin/reports-reasons"
+            render={(props) =>
+              adminGereRessources ? (
+                <AdminHandleReportReason role={role} />
+              ) : (
+                <NotFound />
+              )
+            }
+          />
+
+          {/* BO - Banissements */}
+          <Route
+            exact
+            path="/admin/reports"
+            render={(props) =>
+              adminGereRessources ? (
+                <AdminHandlePunishement role={role} />
+              ) : (
+                <NotFound />
+              )
+            }
+          />
+
+          <Route
+            exact
+            path="/admin/users"
+            render={(props) =>
+              adminHandleUser ? (
+                <AdminHandleUser/>
+              ) : (
+                <NotFound />
+              )
+            }
+          />
+
+        {/* MANAGE - Commentaire */}
         <Route
-          exact
-          path="/"
-          render={(props) =>
-            home ? (
-              <Home onSubmit={handleLogin} formValue={ loginForm } onChange={ handleOnChange } connected = { connected }/>
-            ) : (
-              <NotFound />
-            )
-          }
-          onChange={handleOnChange}
-        />
+            exact
+            path="/manage/Comments"
+            render={(props) =>
+                manageComments ? (
+                <ManageComments role={role}/>
+                ) : (
+                    <NotFound/>
+                )
+            }
+            />
 
-        <Container fluid>
-          <Row className="parent-row">
-            <Col xl={3} className="col-menu menuFixe">
-              <Menu
-                activeSubMenu="ressource"
-                activeSubSubMenu="catalog"
-                handleToggleMenu={toggleMenu}
-                openMenu={openMenu}
-                apiRole={role}
-              />
-            </Col>
 
-            <Col xl={9} className="col-content-page">
-              <Route
-                exact
-                path="/catalog"
-                render={(props) =>
-                  catalog ? (
-                    <Catalog ressources={lastRessources} />
-                  ) : (
-                    <NoAccess />
-                  )
-                }
-              />
+          {/* DOC - Visiteur */}
+          {/* <Route
+            exact
+            path="/documentation/visitor"
+            render={(props) => <Documentation /> }
+          /> */}
 
-              {/* RESSOURCES */}
+        <Route component={NotFound} />
 
-              <Route
-                exact
-                path="/submit-ressource"
-                render={ (props) =>  (submitRessource ? <SubmitRessource /> : <NotFound /> ) }
-              />
-              <Route
-                exact
-                path="/ressource/:id"
-                render={(props) => (ressource ? <Ressource /> : <NotFound />)}
-              />
-              <Route
-                exact
-                path="/ressource-not-connected"
-                render={(props) =>
-                  ressourceNotConnected ? (
-                    <RessourceNotConnected />
-                  ) : (
-                    <NotFound />
-                  )
-                }
-              />
+        </Switch>
+      
+      </Container>
+      <CookieBanner />
 
-              {/* USER */}
-              <Route
-                exact
-                path="/profile"
-                render={(props) => (profile ? <Profile /> : <NoAccess />)}
-              />
-              <Route
-                exact
-                path="/my-ressources"
-                render={(props) =>
-                  myRessources ? <MyRessources /> : <NoAccess />
-                }
-              />
-              <Route
-                exact
-                path="/my-favorites"
-                render={(props) => (myFavorites ? <Favorites /> : <NoAccess />)}
-              />
-
-              <Route
-                exact
-                path="/register"
-                render={(props) => (register ? <RegisterForm /> : <NoAccess />)}
-              />
-              <Route exact path="/token/:token" render={(props) => <Token />} />
-
-              {/* BO */}
-              <Route
-                exact
-                path="/admin"
-                render={(props) => (admin ? <Admin /> : <NotFound />)}
-              />
-              <Route
-                exact
-                path="/admin/approvedRessources"
-                render={(props) =>
-                  adminApprovedRessources ? (
-                    <AdminApprovedRessources />
-                  ) : (
-                    <NotFound />
-                  )
-                }
-              />
-              <Route
-                exact
-                path="/admin/gererTypeRessources"
-                render={(props) =>
-                  adminGereRessources ? (
-                    <AdminGererTypeRessources role={role} />
-                  ) : (
-                    <NotFound />
-                  )
-                }
-              />
-              <Route
-                exact
-                path="/admin/gererTypeRelationship"
-                render={(props) =>
-                  adminGereRessources ? (
-                    <AdminGererTypeRelationship role={role} />
-                  ) : (
-                    <NotFound />
-                  )
-                }
-              />
-              <Route
-                exact
-                path="/admin/gererRessources"
-                render={(props) =>
-                  adminGereRessources ? (
-                    <AdminGererRessources role={role} />
-                  ) : (
-                    <NotFound />
-                  )
-                }
-              />
-              <Route
-                exact
-                path="/admin/gererLesRaisons"
-                render={(props) =>
-                  adminGereRessources ? (
-                    <AdminGererLesRaisonsDesSignalements role={role} />
-                  ) : (
-                    <NotFound />
-                  )
-                }
-              />
-              <Route
-                exact
-                path="/admin/gererPunishement"
-                render={(props) =>
-                  adminGereRessources ? (
-                    <AdminGererPunishement role={role} />
-                  ) : (
-                    <NotFound />
-                  )
-                }
-              />
-              <Route
-                exact
-                path="/manage/Comments"
-                render={(props) =>
-                    manageComments ? (
-                    <ManageComments role={role}/>
-                    ) : (
-                        <NotFound/>
-                    )
-                }
-                />
-            </Col>
-          </Row>
-          <Footer />
-        </Container>
-      </Switch>
-    </Router>
+      <Footer />
+      
+    </>
   );
 }
 

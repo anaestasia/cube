@@ -1,7 +1,10 @@
 import { Link, useParams } from 'react-router-dom';
 import React, { useState , useEffect } from "react";
-import "./token.css";
+// import "./token.css";
 import Axios from "axios";
+
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 export default function Token() {
 
@@ -23,13 +26,15 @@ export default function Token() {
     }, [token]);
 
     return (
-    <div id="token">
-		<div className="token">
-			<div className="token-div">
-                <h2>{message}</h2>
-                <Link to="/main">Retour sur le site</Link>
-            </div>
-		</div>
-	</div>
+      <Row>
+        <Col>
+          <br></br>
+          <h2>{message}</h2>
+          <Link to="/catalog">Retour sur le site</Link>
+          <br></br>
+          <br></br>
+          <br></br>
+        </Col>
+      </Row>
   );
 }

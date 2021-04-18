@@ -7,8 +7,6 @@ import './fonts/Roboto/Roboto-Light.ttf';
 import './fonts/Oswald/Oswald-Medium.ttf';
 import { BrowserRouter } from 'react-router-dom';
 
-import './index.css';
-
 ReactDOM.render(
   <BrowserRouter>
     <App />
