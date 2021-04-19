@@ -176,7 +176,7 @@ function App() {
   
   return (
     <>
-      <Navbar />
+      <Navbar role={role}/>
 
       <Container fluid className="pages">
 

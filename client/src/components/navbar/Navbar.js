@@ -10,7 +10,7 @@ import { IconContext } from 'react-icons'
 
 import './Navbar.css'
 
-function Navbar() {
+function Navbar({role}) {
     const [sidebar, setSidebar] = useState(false)
 
     const showSidebar = () => setSidebar(!sidebar)
@@ -90,13 +90,18 @@ function Navbar() {
                                     }
                                     {item.subNav === 'doc' && (
                                             SubNavDocData.map((subItem, subIndex) => {
-                                                return (
+                                                if(subItem.role === role)
+                                                {
+                                                    return (
+                                                    // {role === subItem.role &&  }
                                                     <li key={subIndex} className={subItem.cName}>
                                                         <Link to={subItem.path}>
                                                             <span>{subItem.title}</span>
                                                         </Link>
                                                     </li>
-                                                )
+                                                    )
+                                                }
+                                                else{ return ( <></>)}
                                             })
                                         ) 
                                     }
