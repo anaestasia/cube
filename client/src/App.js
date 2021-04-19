@@ -32,6 +32,7 @@ import DocVisitor from "./pages/Docs/DocVisitor.js"
 import DocCitizen from "./pages/Docs/DocCitizen.js"
 import DocModerator from "./pages/Docs/DocModerator.js"
 import DocAdmin from "./pages/Docs/DocAdmin.js"
+import LegalNotice from "./pages/LegalNotice/LegalNotice";
 
 import Token from "./components/token/token";
 
@@ -403,6 +404,13 @@ function App() {
             exact
             path="/documentation/admin"
             render={(props) => <DocAdmin /> }
+          />
+
+          {/* Mentions légales */}
+          <Route
+            exact
+            path="/legal-notice"
+            render={(props) => <LegalNotice /> }
           />
 
         <Route component={NotFound} />

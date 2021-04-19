@@ -121,7 +121,7 @@ export default function CatalogSearch() {
             else{
                 setFiltreExiste(false)
             }
-          });
+        });
     }
 
     // Get current posts
