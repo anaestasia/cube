@@ -1,12 +1,12 @@
 import React, { useState , useEffect } from "react";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import Axios from "axios";
 import Table from 'react-bootstrap/Table'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
-// import Menu from '../../menu/MenuNav/Menu'
+
+import './Admin.css'
 
 export default function Admin() {
 
@@ -52,8 +52,7 @@ export default function Admin() {
 
   return (
     <>
-      <Col xl={9} className="col-content-page">
-        <Row className="approved-ressource-container">
+        <Row className="admin-container">
 
           <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
@@ -68,6 +67,8 @@ export default function Admin() {
           </Modal>
 
           <Container fluid>
+            <h1 className="page-title">APPROUVER LES RESSOURCES</h1>
+
             <Table bordered hover>
               <thead>
                 <tr>
@@ -104,7 +105,6 @@ export default function Admin() {
           </Container>
 
         </Row>
-      </Col>
     </>
   );
 }

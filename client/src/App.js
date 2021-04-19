@@ -20,14 +20,14 @@ import RegisterForm from "./components/form/RegisterForm/RegisterForm";
 import Ressource from "./components/form/RessourceForm/RessourceFormEdit";
 import SubmitRessource from "./components/form/RessourceForm/RessourceForm";
 import RessourceNotConnected from "./components/ressource/RessourceNotConnected/RessourceNotConnected";
-import AdminApprovedRessources from "./components/admin/approvedRessources/ApprovedRessources";
-import AdminHandleRessources from "./components/admin/handleRessources/HandleRessources"
-import AdminHandleRessourcesType from "./components/admin/handleRessourcesType/HandleRessourcesType"
-import AdminHandleRelationshipType from "./components/admin/handleRelationshipType/HandleRelationshipType"
-import AdminHandlePunishement from "./components/admin/handlePunishement/HandlePunishement"
-import AdminHandleReportReason from "./components/admin/handleReportReason/HandleReportReason"
-import AdminHandleUser from "./components/admin/handleUser/HandleUser"
-import AdminHandleComment from "./components/admin/handleComments/Comments";
+import AdminApprovedRessources from "./components/admin/ApprovedRessources";
+import AdminHandleCategories from "./components/admin/HandleCategories"
+import AdminHandleRessourcesType from "./components/admin/HandleRessourcesType"
+import AdminHandleRelationshipType from "./components/admin/HandleRelationshipType"
+import AdminHandlePunishement from "./components/admin/HandlePunishement"
+import AdminHandleReportReason from "./components/admin/HandleReportReason"
+import AdminHandleUser from "./components/admin/HandleUser"
+import AdminHandleComment from "./components/admin/HandleComments";
 import DocVisitor from "./pages/Docs/DocVisitor.js"
 import DocCitizen from "./pages/Docs/DocCitizen.js"
 import DocModerator from "./pages/Docs/DocModerator.js"
@@ -326,13 +326,13 @@ function App() {
             }
           />
 
-          {/* BO - Ressources */}
+          {/* BO - Catégories */}
           <Route
             exact
             path="/admin/categories"
             render={(props) =>
               adminGereRessources ? (
-                <AdminHandleRessources role={role} />
+                <AdminHandleCategories role={role} />
               ) : (
                 <NotFound />
               )

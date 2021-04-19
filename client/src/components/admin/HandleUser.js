@@ -1,10 +1,13 @@
 import React, { useState , useEffect } from "react";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import Axios from "axios";
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
+import * as VscIcons from "react-icons/vsc"
+import * as FaIcons from "react-icons/fa"
+
+import './Admin.css'
 
 export default function HandleUser() {
 
@@ -52,11 +55,11 @@ export default function HandleUser() {
 
   return (
     <>
-      <Col xl={9} className="col-content-page">
-        <Row className="approved-ressource-container">
+        <Row className="admin-container">
 
-          
           <Container fluid>
+            <h1 className="page-title">GESTION DES UTILIATEURS</h1>
+            
             <Table bordered hover>
               <thead>
                 <tr>
@@ -77,7 +80,7 @@ export default function HandleUser() {
                     <td>{user.lastname}</td>
                     <td>{user.firstname}</td>
                     <td>{user.mail}</td>
-                    <td>{user.street_nb}{' '}{user.street_name}{' '}{user.postal_code}{' '}{user.city}{' en '}{user.country}</td>
+                    <td>{user.street_nb}{' '}{user.street_name}{' '}{user.postal_code}{' '}{user.city}{' '}{user.country}</td>
                     <td>{user.checked === 1 ? 'Oui' : 'Non'}</td>
                     <td>
                       <div><select id={'selectUser' + user.id}>
@@ -87,11 +90,11 @@ export default function HandleUser() {
                         {user.fk_role === 4 ? <option value='4' selected>Admin</option> : <option value='4'>Admin</option>}
                         {user.fk_role === 5 ? <option value='5' selected>Super-Admin</option> : <option value='5'>Super-Admin</option>}
                       </select>
-                      <Button onClick={() => {changeRole(user.id); }} variant="secondary">Ok</Button>{' '}</div>
+                      <Button className="btn-save" onClick={() => {changeRole(user.id); }}><FaIcons.FaRegSave /></Button>{' '}</div>
                       </td>
                     <td>{user.last_connexion.substring(8,10)}/{user.last_connexion.substring(5,7)}/{user.last_connexion.substring(0,4)} à {user.last_connexion.substring(11,19)}</td>
                     <td>{user.date_creation.substring(8,10)}/{user.date_creation.substring(5,7)}/{user.date_creation.substring(0,4)} à {user.date_creation.substring(11,19)}</td>
-                    <td><Button variant="danger" onClick={() => {deleteUser(user.id); }} >Supprimer</Button></td>
+                    <td><Button variant="danger" onClick={() => {deleteUser(user.id); }} ><VscIcons.VscTrash /></Button></td>
                 </tr>
               ))}
               </tbody>
@@ -99,7 +102,6 @@ export default function HandleUser() {
           </Container>
 
         </Row>
-      </Col>
     </>
   );
 }
