@@ -52,9 +52,7 @@ export default function RegisterForm() {
           deleted	:'0',
           fk_role:'1', //regarder pour faire une recherche sur le nom sinon laisser l'id de la table role
         }).then((response) => {
-          console.log(response);
           setregisterStatus(response.data.message);
-          //window.location.href = "/";
         });
       }
       else

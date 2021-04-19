@@ -44,10 +44,10 @@ class DocAdmin extends Component {
                             <p><h2>Réponse à un commentaire</h2>
                             Cliquer sur la partie supérieur droite du commentaire et sélectionner « répondre » au sein du menu déroulant ouvert.</p>
 
-                            <p><h2>Ajouter une ressource de ses favoris</h2>
+                            <p><h2>Ajouter une ressource de ses favoris <span className="later">A venir</span></h2>
                             Cliquez sur l’icône en forme de coeur sur le coin supérieur droit de la ressource. Si cette dernière est pleine, la ressource est déjà en favoris.</p>
 
-                            <p><h2>Retirer une ressource de ses favoris</h2>
+                            <p><h2>Retirer une ressource de ses favoris <span className="later">A venir</span></h2>
                             Dans la rubrique tableau de bord, sélectionnez "Mes favoris" puis cliquez sur le coeur situé à gauche de la ressource concernée.</p>
 
                             <p><h2>Indiquer une ressource comme exploitée / non exploitée <span className="later">A venir</span></h2>

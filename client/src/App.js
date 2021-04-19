@@ -20,20 +20,22 @@ import RegisterForm from "./components/form/RegisterForm/RegisterForm";
 import Ressource from "./components/form/RessourceForm/RessourceFormEdit";
 import SubmitRessource from "./components/form/RessourceForm/RessourceForm";
 import RessourceNotConnected from "./components/ressource/RessourceNotConnected/RessourceNotConnected";
-import AdminApprovedRessources from "./components/admin/approvedRessources/ApprovedRessources";
-import AdminHandleRessources from "./components/admin/handleRessources/HandleRessources"
-import AdminHandleRessourcesType from "./components/admin/handleRessourcesType/HandleRessourcesType"
-import AdminHandleRelationshipType from "./components/admin/handleRelationshipType/HandleRelationshipType"
-import AdminHandlePunishement from "./components/admin/handlePunishement/HandlePunishement"
-import AdminHandleReportReason from "./components/admin/handleReportReason/HandleReportReason"
-import AdminHandleUser from "./components/admin/handleUser/HandleUser"
+import AdminApprovedRessources from "./components/admin/ApprovedRessources";
+import AdminHandleCategories from "./components/admin/HandleCategories"
+import AdminHandleRessourcesType from "./components/admin/HandleRessourcesType"
+import AdminHandleRelationshipType from "./components/admin/HandleRelationshipType"
+import AdminHandlePunishement from "./components/admin/HandlePunishement"
+import AdminHandleReportReason from "./components/admin/HandleReportReason"
+import AdminHandleUser from "./components/admin/HandleUser"
+import AdminHandleComment from "./components/admin/HandleComments";
 import DocVisitor from "./pages/Docs/DocVisitor.js"
 import DocCitizen from "./pages/Docs/DocCitizen.js"
 import DocModerator from "./pages/Docs/DocModerator.js"
 import DocAdmin from "./pages/Docs/DocAdmin.js"
+import LegalNotice from "./pages/LegalNotice/LegalNotice";
 
 import Token from "./components/token/token";
-import ManageComments from "./components/manage/Comments";
+
 
 // STYLE
 import Container from "react-bootstrap/Container";
@@ -66,10 +68,9 @@ function App() {
         mail: loginForm.email,
         password: password,
       }).then((response) => {
-        console.log(response.data)
+
         if (response.data.connecte) {
-          console.log(response);
-          console.log('response');
+
           const date = new Date();
           const sqlDate =
             date.getFullYear() +
@@ -123,7 +124,6 @@ function App() {
       if (response.data.existe !== false) {
         setLastRessources(response.data);
       }
-      console.log(response);
     });
   }, [status]);
 
@@ -275,17 +275,17 @@ function App() {
           />
 
           {/* BO - Gérer les utilisateurs */}
-          {/* <Route
+          <Route
             exact
             path="/admin/users"
             render={(props) =>
-              adminApprovedRessources ? (
-                <AdminUsers />
+              adminHandleUser ? (
+                <AdminHandleUser/>
               ) : (
                 <NotFound />
               )
             }
-          /> */}
+          />
 
           {/* BO - Approuver les ressources */}
           <Route
@@ -326,13 +326,13 @@ function App() {
             }
           />
 
-          {/* BO - Ressources */}
+          {/* BO - Catégories */}
           <Route
             exact
             path="/admin/categories"
             render={(props) =>
               adminGereRessources ? (
-                <AdminHandleRessources role={role} />
+                <AdminHandleCategories role={role} />
               ) : (
                 <NotFound />
               )
@@ -365,31 +365,18 @@ function App() {
             }
           />
 
+          {/* BO - Commentaires */}
           <Route
-            exact
-            path="/admin/users"
-            render={(props) =>
-              adminHandleUser ? (
-                <AdminHandleUser/>
+          exact
+          path="/admin/comments"
+          render={(props) =>
+              manageComments ? (
+              <AdminHandleComment role={role}/>
               ) : (
-                <NotFound />
+                  <NotFound/>
               )
-            }
-          />
-
-        {/* MANAGE - Commentaire */}
-        <Route
-            exact
-            path="/manage/Comments"
-            render={(props) =>
-                manageComments ? (
-                <ManageComments role={role}/>
-                ) : (
-                    <NotFound/>
-                )
-            }
-            />
-
+          }
+        />
 
           {/* DOC - Visiteur */}
           <Route
@@ -417,6 +404,13 @@ function App() {
             exact
             path="/documentation/admin"
             render={(props) => <DocAdmin /> }
+          />
+
+          {/* Mentions légales */}
+          <Route
+            exact
+            path="/legal-notice"
+            render={(props) => <LegalNotice /> }
           />
 
         <Route component={NotFound} />

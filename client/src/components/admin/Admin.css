@@ -1,0 +1,29 @@
+.admin-container {
+    padding: 1.5%;
+    background-color: #ffffff;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    box-shadow: 1px 1px 5px #222320;
+}
+.admin-container .container-fluid {
+    overflow-x: scroll;
+}
+.admin-container .btn-save{
+    background-color: #03989e;
+    border: 1px solid #03989e;
+    color: #ffffff;
+    margin-left: 15px;
+}
+.admin-container .btn-save:hover{
+    background-color: #117579;
+    border: 1px solid #117579;
+}
+.bo-part{
+    padding: 1.5%;
+    background-color: #ffffff;
+    width: 100%;
+    border-radius: 30px;
+    box-shadow: 1px 1px 5px #222320;
+    margin: 2rem 0;
+}

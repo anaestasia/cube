@@ -24,8 +24,8 @@ class Footer extends Component {
                 <Col md={2} className="services">
                     <h3>Services</h3>
                     <ul>
-                        <li className="footer-link"><Link to="#">Mentions légales</Link></li>
-                        <li className="footer-link"><Link to="#">Contactez-nous</Link></li>
+                        <li className="footer-link"><Link to="/legal-notice">Mentions légales</Link></li>
+                        <li className="footer-link"><Link to="/legal-notice">Contactez-nous</Link></li>
                     </ul>
                 </Col>
 

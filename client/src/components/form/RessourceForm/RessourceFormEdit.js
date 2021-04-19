@@ -55,7 +55,6 @@ import './RessourceFormEdit.css';
                     Axios.post(process.env.REACT_APP_SITE_URL_API+"/ressources/getid", {
                         id: id,
                       }).then((response) => {
-                          console.log(response)
                         if (response.data.existe) {
                             if(response.data.result[0].namestatus === 'privée')
                             {

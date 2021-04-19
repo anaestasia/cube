@@ -79,7 +79,6 @@ router.post("/valid/:id", (req, res) =>
         }
         else
         {
-            console.log(reason);
             res.send(result);
         }
     })

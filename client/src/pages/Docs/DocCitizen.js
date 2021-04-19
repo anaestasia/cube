@@ -44,22 +44,22 @@ class DocCitizen extends Component {
                             <p><h2>Réponse à un commentaire</h2>
                             Cliquer sur la partie supérieur droite du commentaire et sélectionner « répondre » au sein du menu déroulant ouvert.</p>
 
-                            <p><h2>Ajouter une ressource de ses favoris</h2>
+                            <p><h2>Ajouter une ressource de ses favoris <span className="later">A venir</span></h2>
                             Cliquez sur l’icône en forme de coeur sur le coin supérieur droit de la ressource. Si cette dernière est pleine, la ressource est déjà en favoris.</p>
 
-                            <p><h2>Retirer une ressource de ses favoris</h2>
+                            <p><h2>Retirer une ressource de ses favoris <span className="later">A venir</span></h2>
                             Dans la rubrique tableau de bord, sélectionnez "Mes favoris" puis cliquez sur le coeur situé à gauche de la ressource concernée.</p>
 
-                            <p><span className="later">A venir</span> <h2>Indiquer une ressource comme exploitée / non exploitée</h2>
+                            <p><h2>Indiquer une ressource comme exploitée / non exploitée <span className="later">A venir</span></h2>
                             Dans le cas ou la couleur du titre de la ressource est ternie, cela signifie que la ressource à déjà été consultée.</p>
 
-                            <p><span className="later">A venir</span> <h2>Démarrer une ressource de type activité / jeu</h2>
+                            <p><h2>Démarrer une ressource de type activité / jeu <span className="later">A venir</span></h2>
                             Pour accéder aux ressources de type jeu, cliquez sur l’icône représentant un document dans le menu situé à gauche de l’écran. Filtrez les ressources par type afin d’afficher les ressource de type Activité/Jeu puis sélectionner par un clic sur le titre.</p>
 
-                            <p><span className="later">A venir</span> <h2>Inviter des participants</h2>
+                            <p><h2>Inviter des participants <span className="later">A venir</span></h2>
                             Une fois la ressource choisie, cliquez sur « Inviter des participants ». Sélectionnez des utilisateurs parmi votre liste de contact.</p>
 
-                            <p><h2><span className="later">A venir</span> Échanger des messages dans le cadre de la ressource avec les autres participants</h2>
+                            <p><h2>Échanger des messages dans le cadre de la ressource avec les autres participants <span className="later">A venir</span></h2>
                             Une fois la ressource activité jeu lancée, une conversation contenant uniquement les participants de l’activité apparait sur la partie inférieure droite de l’écran, cliquer sur la partie inférieure puis entrez votre message.</p>
 
                         </div>

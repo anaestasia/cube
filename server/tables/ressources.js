@@ -66,14 +66,9 @@ app.post("/create", (req, res) => {
           }
           else
           {
-            // console.log(h);
             result[i].user = resultUser[0].lastname + " "+ resultUser[0].firstname;
-            // console.log(result)
-            // console.log(resultUser);
-            // console.log(resultUser[0].fk_user);
             i++;
           }
-          // console.log(resultRess)
           if(result.length === i)
           {
             resolve();
@@ -97,14 +92,12 @@ app.post("/create", (req, res) => {
           }
           else
           {
-            // console.log(h);
             result[h].fk_user = resultRes[0].fk_user;
              console.log(result[h].idRessource)
              console.log(resultRes);
              console.log(resultRes[0].fk_user);
             h++;
           }
-          // console.log(resultRess)
           if(result.length === h)
           {
             resolve();
@@ -142,12 +135,9 @@ app.post("/create", (req, res) => {
             }
           }
           //fin for
-          // console.log(lesCategories)
-          // console.log(g);
           result[g].categories = lesCategories
           g++;
         }
-        // console.log(lesCategories)
         if(result.length === g)
         {
           resolve();
@@ -277,7 +267,7 @@ app.post("/getid", (req, res) => {
   requete += "INNER JOIN relationship_ressources ON relationship_ressources.id = ressources.fk_relationship_ressource ";
   requete += "INNER JOIN status ON status.id = ressources.fk_status ";
   requete += "where ressources.id = ? and deleted = 0 and approved = 1";
-  //console.log(requete);
+
   db.query(requete, id, (err, result) => {
     if (err) {
       console.log(err);
@@ -311,7 +301,6 @@ app.post("/getid", (req, res) => {
             }
           });
           
-          //console.log(result);
         }
         else
         {
