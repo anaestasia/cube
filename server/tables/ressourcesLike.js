@@ -39,7 +39,6 @@ router.post("/create", (req, res) => {
       }
       else
       {
-        console.log(result);
         if(result.length !== 0)
         {
             db.query("DELETE FROM ressources_like WHERE fk_user = ? AND fk_ressource = ?", 

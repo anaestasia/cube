@@ -33,16 +33,13 @@
 .row{
    margin: 0;
 }
-/* .menuFixe{
-  position: sticky;
-  position: -webkit-sticky;
-  top: 20px;
-  margin-bottom: 10px;
-} */
 
 h1 {
   font-size: 2rem;
   font-family: 'Oswald-Regular', sans-serif;
+}
+h1.page-title{
+  padding: 15px;
 }
 h2 {
   font-size: 1.4rem;
@@ -53,13 +50,16 @@ h2 {
   display: flex;
   justify-content: center;
   padding: 15px;
+  min-height: calc(100vh - 48px);
 }
 
 /* ----------------------- */
 /* ----- MAX 1200 PX ----- */
 /* ----------------------- */
 @media (max-width: 1200px) {
-  
+  .profile-fields{
+    padding-bottom: 3rem;
+}
 }
 
 /* --------------------------------- */
@@ -94,7 +94,17 @@ h2 {
 /* ----- MAX 768 PX / Tablette  ----- */
 /* ---------------------------------- */
 @media (max-width: 768px) {
-  
+  .logo-footer img {
+    max-width: 50%;
+  }
+  .search-filters div{
+    width: 100%;
+    border-bottom-left-radius: 0;
+  }
+  .cards{
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+  }
 }
 
 /* ---------------------- */
@@ -108,7 +118,11 @@ h2 {
 /* ----- MAX 660 PX  ----- */
 /* ----------------------- */
 @media (max-width: 660px){
-  
+  .form-login svg,
+  .btn-discover svg {
+      font-size: 8rem;
+      margin-bottom: 1rem;
+  }
 }
 
 /* A partir de 630px la taille de l'écran est bizarre */
@@ -125,14 +139,25 @@ h2 {
 /* ----- MAX 425 PX / L mobile  ----- */
 /* ---------------------------------- */
 @media (max-width: 425px){
-  
+  h1 {
+    font-size: 1.8rem;
+  }
 }
 
 /* ---------------------------------- */
 /* ----- MAX 375 PX / M mobile  ----- */
 /* ---------------------------------- */
 @media (max-width: 375px){
-  
+  .form-login,
+  .btn-discover {
+      padding: 4rem;
+  }
+
+  .form-login svg,
+  .btn-discover svg {
+      font-size: 6rem;
+      margin-bottom: 1rem;
+  }
 }
 
 /* ---------------------------------- */

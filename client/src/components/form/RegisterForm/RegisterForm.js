@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Axios from "axios";
 import { Link } from 'react-router-dom';
 import SubmitBtn from "../../buttons/SubmitBtn/SubmitBtn";
-import Footer from "../../footer/Footer";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -53,9 +52,7 @@ export default function RegisterForm() {
           deleted	:'0',
           fk_role:'1', //regarder pour faire une recherche sur le nom sinon laisser l'id de la table role
         }).then((response) => {
-          console.log(response);
           setregisterStatus(response.data.message);
-          //window.location.href = "/";
         });
       }
       else

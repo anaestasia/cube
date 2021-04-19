@@ -33,7 +33,6 @@ export default function CommentForm () {
     const data = editor.getData();
     setCkeditor(data);
     setDonneCkeditor(data);
-    //console.log(Ckeditor);
   }
 
   function envoyerMSG()
@@ -52,9 +51,7 @@ export default function CommentForm () {
         fk_ressource : id,
         fk_user : idUser,
       }).then((response) => {
-        console.log(response);
         setDonneCkeditor('');
-        console.log(donneCkeditor);
       });
     }
     else

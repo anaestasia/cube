@@ -60,7 +60,6 @@ export default function RessourceForm() {
           idUser: idUser,
         }).then((response) => {
 
-          console.log(response);
           setSubmitRessourceStatus(response.data);
 
           categories.forEach(element => {
@@ -84,19 +83,15 @@ export default function RessourceForm() {
   {
     Axios.get(process.env.REACT_APP_SITE_URL_API+"/status/get").then((response) => {
         setStatusDB(response.data);
-        // console.log(response.data)
     });
     Axios.get(process.env.REACT_APP_SITE_URL_API+"/typesressources/get").then((response) => {
       setTypesressourcesDB(response.data);
-      // console.log(response.data)
     });
     Axios.get(process.env.REACT_APP_SITE_URL_API+"/relationshipRessources/get").then((response) => {
       setRelationshipRessourceDB(response.data);
-      // console.log(response.data)
     });
     Axios.get(process.env.REACT_APP_SITE_URL_API+"/categories/get").then((response) => {
       setCategoriesDB(response.data);
-      // console.log(response.data)
     });
     
   
@@ -122,7 +117,6 @@ const optionSelectRelationshipRessourceDB = relationshipRessourceDB.map((st) =>
 const handleCkeditorState = (event,editor) => {
   const data = editor.getData();
   setContent(data);
-  // console.log(Ckeditor);
 }
 // eslint-disable-next-line
 const onSelect = (selectedList, selectedItem) =>
@@ -142,7 +136,7 @@ const onRemove = (selectedList, selectedItem) =>
       <Row className="submit-ressource">
         <Col className="formRessource">
 
-          <h1>Soumettre une ressource</h1>
+          <h1 className="page-title">CRÉER UNE RESSOURCE</h1>
           <form onSubmit={submitRessource}> 
 
             <input type="text" className="ressource-title" onChange={(e) => {setTitle(e.target.value); }} placeholder="Titre de la ressource" required/>
@@ -164,25 +158,17 @@ const onRemove = (selectedList, selectedItem) =>
               </select>
             </div>
 
-            <Col>
-                <CKEditor 
-                    editor={ClassicEditor}
-                    data={content}
-                    onChange={handleCkeditorState}
-                />
-            </Col>
+            <CKEditor 
+                editor={ClassicEditor}
+                data={content}
+                onChange={handleCkeditorState}
+            />
 
-            {/* <Multiselect
-              options={categoriesDB} // Options to display in the dropdown
-              displayValue="name" // Property name to display in the dropdown options
-              onSelect={onSelect}
-              onRemove={onRemove} // Function will trigger on remove event
-            /> */}
 
-            <Row className="btns">
+            <div className="btns">
               <Link to="/" className="cancel-btn">Annuler</Link>
               <SubmitBtn inputText="Envoyer" />
-            </Row>
+            </div>
 
           </form>
 

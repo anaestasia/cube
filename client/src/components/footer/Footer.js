@@ -4,6 +4,7 @@ import Row from "react-bootstrap/esm/Row";
 import logo from './img/logo_mini_ressources_relationnelles_tranparent.png';
 
 import './Footer.css';
+import { Link } from "react-router-dom";
 
 
 class Footer extends Component {
@@ -23,8 +24,8 @@ class Footer extends Component {
                 <Col md={2} className="services">
                     <h3>Services</h3>
                     <ul>
-                        <li className="link">Mentions légales</li>
-                        <li className="link">Contactez-nous</li>
+                        <li className="footer-link"><Link to="/legal-notice">Mentions légales</Link></li>
+                        <li className="footer-link"><Link to="/legal-notice">Contactez-nous</Link></li>
                     </ul>
                 </Col>
 

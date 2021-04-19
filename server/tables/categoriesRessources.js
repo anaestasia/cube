@@ -30,7 +30,6 @@ router.post("/create", (req, res) => {
         if (err) {
           console.log(err);
         } else {
-          // console.log("ok")
           res.send("Valeur insérée !");
         }
       }

@@ -2,6 +2,7 @@ import LoginForm from "../../components/form/LoginForm/LoginForm";
 import React from "react";
 import { Link } from 'react-router-dom';
 import * as RiIcons from "react-icons/ri";
+import * as ImIcons from "react-icons/im";
 import Axios from "axios";
 
 // import Axios from "axios";
@@ -36,39 +37,41 @@ export default function Home({ onSubmit, formValue, onChange, connected }) {
         }
 
   return (
-    <Row>
-    
-      <Col sm={12} md={12} xl={12}>
-        <div className="logo-home">
-          <img
-            src="/img/logo/logo_ressources_relationnelles_transparent.png"
-            className="App-logo-menu"
-            alt="logo"
-          />
-        </div>
-      </Col>
-
-      {!connected ? (
-        <Col sm={12} md={6} xl={6} className="form-login">
-          <LoginForm
-            onSubmit={onSubmit}
-            onChange={onChange}
-            formValue={formValue}
-          />
-        </Col>
-      ) : (
-        <Col sm={12} md={6} xl={6} className="form-login">
-          <RiIcons.RiLogoutBoxLine />
-          <Link onClick={deco}>Déconnexion</Link>
-        </Col>
-      )}
+    <div className="home">
+      <Row>
       
+        <Col sm={12} md={12} xl={12}>
+          <div className="logo-home">
+            <img
+              src="/img/logo/logo_ressources_relationnelles_transparent.png"
+              className="App-logo-menu"
+              alt="logo"
+            />
+          </div>
+        </Col>
 
-      <Col sm={12} md={6} xl={6} className="btn-discover">
-        <img src="/img/discover.png" className="App-logo-menu" alt="logo" />
-        <Link to="/catalog">Découvrir</Link>
-      </Col>
+        {!connected ? (
+          <Col sm={12} md={6} xl={6} className="form-login">
+            <LoginForm
+              onSubmit={onSubmit}
+              onChange={onChange}
+              formValue={formValue}
+            />
+          </Col>
+        ) : (
+          <Col sm={12} md={6} xl={6} className="form-login">
+            <RiIcons.RiLogoutBoxLine />
+            <Link onClick={deco}>Déconnexion</Link>
+          </Col>
+        )}
+        
 
-    </Row>
+        <Col sm={12} md={6} xl={6} className="btn-discover">
+          <ImIcons.ImEnter />
+          <Link to="/catalog">Découvrir</Link>
+        </Col>
+
+      </Row>
+    </div>
   );
 }

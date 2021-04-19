@@ -10,8 +10,8 @@
     border-top-right-radius: 30px;
     box-shadow: 1px 1px 5px #222320;
 }
-.last-adds-row {
-    height: 100%;
+.last-adss-col {
+    padding: 15px;
 }
 .last-adds h2 {
     margin-bottom: 2%;

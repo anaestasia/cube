@@ -1,6 +1,4 @@
 .search-catalog {
-    display: flex;
-    flex-direction: row;
     padding: 15px 0 0 0;
 }
 .search-filters {
@@ -12,6 +10,9 @@
     background-color: #ffffff;
     box-shadow: 1px 1px 5px #222320;
 }
+.cards-col {
+    padding: 15px 0 0 0;
+}
 .cards {
     -webkit-border-bottom-right-radius: 30px;
     -moz-border-radius-bottomright: 30px;
@@ -19,7 +20,8 @@
 }
 .search-filters div{
     width: calc(100% - 15px);
-    height: 100%;
+    margin-top: 15px;
+    height: calc(100% - 15px);
     -webkit-border-bottom-left-radius: 30px;
     -moz-border-radius-bottomleft: 30px;
     border-bottom-left-radius: 30px;

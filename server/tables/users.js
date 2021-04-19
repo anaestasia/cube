@@ -104,7 +104,7 @@ app.post("/create", (req, res) => {
 
 //get
 app.get("/get", (req, res) => {
-    db.query("SELECT * FROM users", (err, result) => {
+    db.query("SELECT * FROM users where deleted=0", (err, result) => {
       if (err) {
         console.log(err);
       } else {
@@ -151,16 +151,12 @@ app.post("/login", (req, res) => {
   const mail = req.body.mail;
   const password = req.body.password;
 
-  // console.log(mail);
-  // console.log(password);
-
   db.query("SELECT * FROM users where mail = ?", mail, (err, result) => {
     
     if (err) {
       console.log(err);
       res.status(404).send('username incorrect');
     } else {
-       //console.log(result);
        if (result.length > 0) {
         if(password === result[0].password)
         {
@@ -199,7 +195,6 @@ app.post("/token", (req, res) => {
       console.log(err);
     } 
     else {
-       //console.log(result);
        if (result.length > 0) {
         if(token === result[0].token)
         {
@@ -219,7 +214,7 @@ app.post("/token", (req, res) => {
        }
        else
        {
-          console.log('liens erronée');
+          console.log('lien erroné');
           res.send({ token: false });
        }
     }
@@ -237,7 +232,7 @@ app.post("/editPassword", (req, res) => {
     } 
     else {
       res.send({ verif: true });
-      console.log('MdpChangé')
+      console.log('Mdp Changé')
     }
   });
 });

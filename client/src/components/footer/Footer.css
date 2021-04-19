@@ -2,6 +2,8 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+    text-align: center;
     background-color: #222320;
     color: #ffffff;
     width: 100%;
@@ -9,7 +11,8 @@
 }
 .footer .logo-footer {
     margin: auto;
-    padding-left: 1%;
+    max-width: fit-content;
+    padding: 15px;
 }
 .footer .img-logo-footer {
     width: 100%;
@@ -19,7 +22,8 @@
     flex-direction: column;
     text-align: center;
     margin: auto;
-    font-size: 14px;;
+    padding: 15px;
+    font-size: 14px;
 }
 .presentation .slogan {
     font: italic 18px 'SegoePrint', sans-serif;
@@ -33,22 +37,27 @@
     display: flex;
     flex-direction: column;
     margin: auto;
-}
-.footer .services {
-    display: flex;
-    flex-direction: column;
-    margin: auto;
+    width:fit-content;
+    padding: 15px;
 }
 .footer .services h3 {
     font-size: 20px;
     font-weight: bold;
 }
 .footer .services ul {
-    padding-left: 15px;
+    display: flex;
+    flex-direction: column;
 }
 .footer .services ul li {
     list-style-type: none;
     font-size: 14px;
+}
+.footer-link a {
+    color: #ffffff;
+    text-decoration: none;
+}
+.footer-link a:hover {
+    color: #febd59;
 }
 
 /* ----------------------- */

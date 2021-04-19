@@ -1,7 +1,7 @@
 import React, { useState , useEffect } from "react";
 import Axios from "axios";
 
-import VignetteRessource from '../ressource/vignetteRessource/vignetteRessource';
+import VignetteRessource from '../ressource/VignetteRessource/VignetteRessource';
 import Pagination from '../ressource/Pagination/Pagination'
 
 import Row from 'react-bootstrap/Row';
@@ -53,16 +53,13 @@ export default function CatalogSearch() {
             {
                 setFiltreExiste(false)
             }
-            console.log(response)
         });
 
         Axios.get(process.env.REACT_APP_SITE_URL_API+"/typesressources/get").then((response) => {
             setTypesressourcesDB(response.data);
-            // console.log(response.data)
           });
           Axios.get(process.env.REACT_APP_SITE_URL_API+"/relationshipRessources/get").then((response) => {
             setRelationshipRessourceDB(response.data);
-            // console.log(response.data)
           });
     }, [role,status]);
 
@@ -115,7 +112,7 @@ export default function CatalogSearch() {
         Axios.post(process.env.REACT_APP_SITE_URL_API+"/ressources/getFiltre", {
             filtre: filtre,
           }).then((response) => {
-              console.log(response)
+
             if(response.data.existe !== false)
             {
                 setFiltreExiste(true)
@@ -124,8 +121,7 @@ export default function CatalogSearch() {
             else{
                 setFiltreExiste(false)
             }
-            // console.log(response.data)
-          });
+        });
     }
 
     // Get current posts
@@ -138,7 +134,7 @@ export default function CatalogSearch() {
 
   return (
       <>
-        <Col xl={3} className="search-filters">
+        <Col sm={12} md={3} lg={3} xl={3} className="search-filters">
             <div>
                 <h2>Filtres</h2>
                 <label>Types :</label>
@@ -155,28 +151,31 @@ export default function CatalogSearch() {
         </Col>
 
 
-        <Col xl={9} className="cards">
-            <Row>
-                {filtreExiste ? currentPosts.map(lastRessource => ( 
-                    <Col key={lastRessource.idRessource} sm={12} xl={6} className="result-card">
-                        <VignetteRessource 
-                            titre={lastRessource.title} 
-                            categorie="Divers"
-                            typeRelation={lastRessource.namerelationship} 
-                            typeRessource={lastRessource.nametyperss}
-                            nombreLike={lastRessource.nb_like}
-                            idRessource= {lastRessource.idRessource}
-                            nb_consultation = {lastRessource.nb_consultation}
-                        />                       
-                    </Col>
-                )) : <span>Aucun résultat</span>}
-            </Row>
-            <Pagination
-                postsPerPage={postsPerPage}
-                totalPosts={ressourceFiltre.length}
-                paginate={paginate}
-                currentPage = {currentPage}
-            />
+        <Col sm={12} md={9} lg={9} xl={9} className="cards-col">
+            <div className="cards">
+                <Row>
+                    {filtreExiste ? currentPosts.map(lastRessource => ( 
+                        <Col key={lastRessource.idRessource} sm={12} xl={6} className="result-card">
+                            <VignetteRessource 
+                                titre={lastRessource.title} 
+                                categorie="Divers"
+                                typeRelation={lastRessource.namerelationship} 
+                                typeRessource={lastRessource.nametyperss}
+                                nombreLike={lastRessource.nb_like}
+                                idRessource= {lastRessource.idRessource}
+                                nb_consultation = {lastRessource.nb_consultation}
+                            />                       
+                        </Col>
+                    )) : <span>Aucun résultat</span>}
+                </Row>
+
+                <Pagination
+                    postsPerPage={postsPerPage}
+                    totalPosts={ressourceFiltre.length}
+                    paginate={paginate}
+                    currentPage = {currentPage}
+                />
+            </div>
         </Col>
     </>
   );

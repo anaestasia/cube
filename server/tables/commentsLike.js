@@ -6,7 +6,7 @@ const db = require("../config/db");
 const getNbLike = (id, res) => 
 {
     db.query(
-        "SELECT COUNT(*) as nbLike FROM comments_like WHERE fk_comments = ?",
+        "SELECT COUNT(*) as nbLike FROM comments_like WHERE fk_comment = ?",
         id,
         (err, result) => 
     {
@@ -23,14 +23,12 @@ const getNbLike = (id, res) =>
 
 //insert
 router.post("/create", (req, res) => {
-  const fk_ressource = req.body.ressource;
+  const fk_comment = req.body.comment;
   const fk_user = req.body.user;
 
-  //console.log('id ressource: ' + fk_ressource + " id user: " + fk_user);
-
   db.query(
-    "SELECT * FROM comments_like WHERE fk_user = ? AND fk_ressource = ?", 
-    [fk_user, fk_ressource],
+    "SELECT * FROM comments_like WHERE fk_user = ? AND fk_comment = ?", 
+    [fk_user, fk_comment],
     (err, result) => 
     {
       if(err)
@@ -39,11 +37,10 @@ router.post("/create", (req, res) => {
       }
       else
       {
-        console.log(result);
         if(result.length !== 0)
         {
-            db.query("DELETE FROM comments_like WHERE fk_user = ? AND fk_ressource = ?", 
-            [fk_user, fk_ressource], 
+            db.query("DELETE FROM comments_like WHERE fk_user = ? AND fk_comment = ?", 
+            [fk_user, fk_comment], 
             (err, result) => {
                 if (err) 
                 {
@@ -51,15 +48,15 @@ router.post("/create", (req, res) => {
                 } 
                 else 
                 {
-                    getNbLike(fk_ressource, res);
+                    getNbLike(fk_comment, res);
                 }
             });
         }
         else
         {
           db.query(
-            "INSERT INTO comments_like (fk_user,fk_ressource) VALUES (?,?)",
-            [fk_user,fk_ressource],
+            "INSERT INTO comments_like (fk_user,fk_comment) VALUES (?,?)",
+            [fk_user,fk_comment],
             (err, result) => {
                 if (err) 
                 {
@@ -67,7 +64,7 @@ router.post("/create", (req, res) => {
                 } 
                 else 
                 {
-                    getNbLike(fk_ressource, res);
+                    getNbLike(fk_comment, res);
                 }
             }
           );
@@ -81,8 +78,8 @@ router.post("/create", (req, res) => {
 //get nbLike
 router.post("/get/nbLike", (req, res) => 
 {
-    const fk_ressource = req.body.ressource;
-    getNbLike(fk_ressource, res);
+    const fk_comment = req.body.comment;
+    getNbLike(fk_comment, res);
 });
 //fin getNbLike
 
